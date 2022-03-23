@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+
+    <sys:String x:Key="start.login">Anmelden</sys:String>
+    <sys:String x:Key="start.register">Registrieren</sys:String>
+    <sys:String x:Key="start.key">Produktschlüssel</sys:String>
+    <sys:String x:Key="start.keyActive">Produkt Aktiv!</sys:String>
+    <sys:String x:Key="start.keyNotActive">Das Produkt ist nicht aktiviert!</sys:String>
+</ResourceDictionary>  
