@@ -12,5 +12,38 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Graphics/Background.png" Stretch="UniformToFill"/>
         </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".8*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ListBox Background="Transparent" BorderBrush="Transparent" >
+            <ListBoxItem>
+                <Button Content="Test" HorizontalContentAlignment="Center" Width="200" Height="35" />
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Content="Test" HorizontalContentAlignment="Center" Width="200" Height="35" />
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Content="Test" HorizontalContentAlignment="Center" Width="200" Height="35" />
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Content="Test" HorizontalContentAlignment="Center" Width="200" Height="35" />
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Content="Test" HorizontalContentAlignment="Center" Width="200" Height="35" />
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Content="Test" HorizontalContentAlignment="Center" Width="200" Height="35" />
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Content="Test" HorizontalContentAlignment="Center" Width="200" Height="35" />
+            </ListBoxItem>
+        </ListBox>
+
+
+
     </Grid>
 </Page>
