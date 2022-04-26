@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace Star_Citizen_Pfusch
 {
@@ -34,15 +34,10 @@ namespace Star_Citizen_Pfusch
             InitializeComponent();
         }
 
-        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
+        private void MainMenuButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            ControlTemplate ct = comboBox.Template;
-            Popup pop = ct.FindName("PART_Popup", comboBox) as Popup;
-            pop.Placement = PlacementMode.Right;
-        }
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ContentFrame.Content = new Pages.Ships.ShipInformation((ComboBoxItem) comboBox.SelectedItem);
+            Button bu = (Button)sender;
+            bu.Foreground = Brushes.Pink;
         }
     }
 }

@@ -8,5 +8,7 @@
     <sys:String x:Key="start.key">Productkey</sys:String>
     <sys:String x:Key="start.keyActive">Product is active!</sys:String>
     <sys:String x:Key="start.keyNotActive">Product is not activated yet!</sys:String>
+
+    <sys:String x:Key="home.homeButton">main menu</sys:String>
     
 </ResourceDictionary>

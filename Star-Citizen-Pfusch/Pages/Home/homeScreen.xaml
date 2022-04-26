@@ -9,6 +9,10 @@
       Title="homeScreen" RenderOptions.BitmapScalingMode="HighQuality" >
 
     <Grid>
+        
+        
+        
+        
         <Grid.Background>
             <ImageBrush ImageSource="/Graphics/Background.png" Stretch="UniformToFill"/>
         </Grid.Background>
@@ -19,14 +23,39 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <ComboBox Grid.Column="0" x:Name="comboBox" VerticalAlignment="Top" Width="Auto" Height="40" Loaded="ComboBox_Loaded" SelectionChanged="comboBox_SelectionChanged" >
 
-            <ComboBoxItem Content="Current Ships" x:Name="PledgeStore" />
-            <ComboBoxItem Content="All Ships" x:Name="AllShips" />
-            <ComboBoxItem Content="Ships in Game" x:Name="ShipsInGame" />
+        <Rectangle Grid.Column="0" Grid.Row="0" Grid.RowSpan="8" Opacity=".9" >
+            <Rectangle.Fill>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="50" G="50" B="50" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
 
-        </ComboBox>
+        <Button Grid.Row="0" Grid.Column="0" x:Name="MainMenuButton" Foreground="White" Background="Transparent" BorderBrush="Transparent" MouseEnter="MainMenuButton_MouseEnter" >
+            <Viewbox Stretch="Uniform" Margin="0,5" >
+                <TextBlock Text="Hauptmenü" />
+            </Viewbox>
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="0" x:Name="ShipButton" Foreground="White" Background="Transparent" BorderBrush="Transparent" >
+            <Viewbox Stretch="Uniform" Margin="0,5">
+                <TextBlock Text="Schiffe" />
+            </Viewbox>
+        </Button>
 
         <Frame x:Name="ContentFrame" Grid.Column="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" />
 

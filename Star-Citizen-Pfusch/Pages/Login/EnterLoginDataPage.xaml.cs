@@ -63,6 +63,10 @@ namespace Star_Citizen_Pfusch.Pages.Login
 
                 if (ms.StatusCode == System.Net.HttpStatusCode.OK)
                 {
+                    LocalDataManager local = new LocalDataManager();
+
+                    if ((bool)SavePasswordBox.IsChecked) local.SavePassword(UsernameBox.Text, hashed);
+
                     currentWindow.Close();
                     MainWindow.setContent(new homeScreen());
                 }

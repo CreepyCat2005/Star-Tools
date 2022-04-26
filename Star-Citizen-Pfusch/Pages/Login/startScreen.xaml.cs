@@ -62,7 +62,8 @@ namespace Star_Citizen_Pfusch.Pages
                     if (ms.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         Debug.WriteLine("Logged in");
-                        //successfully logged in
+                        MainWindow.setContent(new homeScreen());
+                        //login successfull
                         //do sth
                     }
                     else
