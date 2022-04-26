@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Star_Citizen_Pfusch.Functions;
 using Star_Citizen_Pfusch.Models;
 using System;
