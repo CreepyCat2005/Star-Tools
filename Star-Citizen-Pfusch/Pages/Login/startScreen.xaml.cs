@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Star_Citizen_Pfusch.Functions;
 using Star_Citizen_Pfusch.Models;
 using System;
@@ -95,6 +94,17 @@ namespace Star_Citizen_Pfusch.Pages
             window.Content = new Register.Register(window);
             window.Width = 350;
             window.Height = 450;
+            window.Show();
+        }
+
+        private void ProduktKeyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = new Window();
+            window.Title = "ProductKey";
+            window.Owner = Application.Current.MainWindow;
+            window.Content = new Register.ProductKey(window);
+            window.Width = 500;
+            window.Height = 150;
             window.Show();
         }
     }

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using Star_Citizen_Pfusch.Pages.Ships;
+using System;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,17 +30,28 @@ namespace Star_Citizen_Pfusch
                 case "de-DE":
                     dictionary.Source = new Uri("/languages/german.xaml", UriKind.Relative);
                     break;
-
             }
             this.Resources.MergedDictionaries.Add(dictionary);
 
             InitializeComponent();
         }
 
-        private void MainMenuButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void Button_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            Button bu = (Button)sender;
-            bu.Foreground = Brushes.Pink;
+            Button button = (Button) sender;
+            Indicator.Visibility = Visibility.Visible;
+            Indicator.SetValue(Grid.RowProperty, Grid.GetRow(button));
+        }
+
+        private void Button_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Button button = (Button)sender;
+            Indicator.Visibility = Visibility.Hidden;
+        }
+
+        private void ShipButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDisplay.Content = new ShipList();
         }
     }
 }

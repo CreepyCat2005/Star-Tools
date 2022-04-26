@@ -50,7 +50,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Grid.Row="3" Grid.Column="0" Content="{DynamicResource start.key}" x:Name="ProduktKeyButton" Background="Black" Foreground="GhostWhite" Opacity=".75" >
+        <Button Grid.Row="3" Grid.Column="0" Content="{DynamicResource start.key}" x:Name="ProduktKeyButton" Background="Black" Foreground="GhostWhite" Opacity=".75" Click="ProduktKeyButton_Click" >
             <Button.Resources>
                 <Style TargetType="Border" >
                     <Setter Property="CornerRadius" Value="10" />

@@ -20,9 +20,11 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     /// </summary>
     public partial class ShipInformation : Page
     {
-        public ShipInformation(ComboBoxItem item)
+        public ShipInformation()
         {
             InitializeComponent();
+
+
         }
     }
 }

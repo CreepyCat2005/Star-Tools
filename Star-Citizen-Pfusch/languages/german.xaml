@@ -10,4 +10,7 @@
     <sys:String x:Key="start.keyNotActive">Das Produkt ist nicht aktiviert!</sys:String>
 
     <sys:String x:Key="home.homeButton">Hauptmenü</sys:String>
+
+    <sys:String x:Key="ProductKey.Cancel">Zurück</sys:String>
+    <sys:String x:Key="ProductKey.Submit">Senden</sys:String>
 </ResourceDictionary>  
