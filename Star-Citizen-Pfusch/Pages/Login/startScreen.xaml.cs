@@ -96,16 +96,5 @@ namespace Star_Citizen_Pfusch.Pages
             window.Height = 450;
             window.Show();
         }
-
-        private void ProduktKeyButton_Click(object sender, RoutedEventArgs e)
-        {
-            Window window = new Window();
-            window.Title = "ProductKey";
-            window.Owner = Application.Current.MainWindow;
-            window.Content = new Register.ProductKey(window);
-            window.Width = 500;
-            window.Height = 150;
-            window.Show();
-        }
     }
 }

@@ -50,16 +50,5 @@
             </Button.Resources>
         </Button>
 
-        <Button Grid.Row="3" Grid.Column="0" Content="{DynamicResource start.key}" x:Name="ProduktKeyButton" Background="Black" Foreground="GhostWhite" Opacity=".75" Click="ProduktKeyButton_Click" >
-            <Button.Resources>
-                <Style TargetType="Border" >
-                    <Setter Property="CornerRadius" Value="10" />
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{ DynamicResource start.keyNotActive}" Background="Transparent" Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Stretch" BorderThickness="0" />
-
-
     </Grid>
 </Page>

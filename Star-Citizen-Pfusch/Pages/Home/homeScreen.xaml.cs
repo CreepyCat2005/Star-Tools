@@ -53,5 +53,15 @@ namespace Star_Citizen_Pfusch
         {
             ContentDisplay.Content = new ShipList();
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = new Window();
+            window.Title = "Settings";
+            window.Owner = Application.Current.MainWindow;
+            window.Width = 800;
+            window.Height = 450;
+            window.Show();
+        }
     }
 }
