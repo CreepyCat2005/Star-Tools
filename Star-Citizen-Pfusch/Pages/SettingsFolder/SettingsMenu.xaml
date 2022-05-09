@@ -9,7 +9,8 @@
       Title="SettingsMenu">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="230" />
+            <ColumnDefinition Width="200" MaxWidth="450" MinWidth="120" />
+            <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -17,7 +18,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TreeView x:Name="treeview" BorderThickness="0" >
+        <TreeView x:Name="treeview" BorderThickness="0" Grid.Column="0" >
             <TreeView.Background>
                 <SolidColorBrush>
                     <SolidColorBrush.Color>
@@ -25,14 +26,22 @@
                     </SolidColorBrush.Color>
                 </SolidColorBrush>
             </TreeView.Background>
-            <TreeViewItem Header="General" Foreground="White" FontSize="25" x:Name="GeneralItem" MouseDoubleClick="GeneralItem_MouseDoubleClick" />
-            <TreeViewItem Header="License" Foreground="White" FontSize="25" x:Name="LicenseItem" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
-            <TreeViewItem Header="Quantum" Foreground="White" FontSize="25" >
-                <TreeViewItem Header="Drive" Foreground="White" FontSize="25" />
+            <TreeViewItem Header="General" Foreground="White" FontSize="25" x:Name="GeneralItem" MouseDoubleClick="GeneralItem_MouseDoubleClick" >
+                <TreeViewItem Header="License" Foreground="White" FontSize="25" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
             </TreeViewItem>
         </TreeView>
 
-        <Frame Grid.Row="0" Grid.Column="1" x:Name="contentDisplay" NavigationUIVisibility="Hidden" >
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" BorderThickness="0" >
+            <GridSplitter.Background>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="40" G="40" B="40" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </GridSplitter.Background>
+        </GridSplitter>
+
+        <Frame Grid.Row="0" Grid.Column="2" x:Name="contentDisplay" NavigationUIVisibility="Hidden" >
             <Frame.Background>
                 <SolidColorBrush>
                     <SolidColorBrush.Color>

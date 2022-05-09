@@ -52,7 +52,7 @@ namespace Star_Citizen_Pfusch.Pages.Login
 
                 PasswordHasher hasher = new PasswordHasher();
                 string hashed = hasher.hashPassword(PasswordBox.Text, salt);
-                LoginUser user = new LoginUser();
+                LoginItem user = new LoginItem();
                 user.Username = UsernameBox.Text;
                 user.Password = hashed;
 

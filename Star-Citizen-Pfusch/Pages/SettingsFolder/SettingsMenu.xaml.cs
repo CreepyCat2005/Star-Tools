@@ -32,7 +32,7 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
 
         private void LicenseItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            contentDisplay.Content = new LicenseSettings();
         }
     }
 }

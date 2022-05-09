@@ -49,7 +49,7 @@ namespace Star_Citizen_Pfusch.Pages
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    LoginUser user = new LoginUser();
+                    LoginItem user = new LoginItem();
                     user.Username = manager.getUsername();
                     user.Password = manager.getPassword();
 
@@ -58,10 +58,17 @@ namespace Star_Citizen_Pfusch.Pages
 
                     HttpResponseMessage ms = await client.PostAsync(Config.URL + "/Login", message.Content);
 
+                    string res = await ms.Content.ReadAsStringAsync();
+
+                    LoginItem item = JsonConvert.DeserializeObject<LoginItem>(res); 
+
                     if (ms.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         Debug.WriteLine("Logged in");
                         MainWindow.setContent(new homeScreen());
+                        Config.username = item.Username;
+                        Config.password = item.Password;
+                        Config.email = item.Email;
                         //login successfull
                         //do sth
                     }

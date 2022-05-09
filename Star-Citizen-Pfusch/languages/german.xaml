@@ -6,11 +6,12 @@
     <sys:String x:Key="start.login">Anmelden</sys:String>
     <sys:String x:Key="start.register">Registrieren</sys:String>
     <sys:String x:Key="start.key">Produktschlüssel</sys:String>
-    <sys:String x:Key="start.keyActive">Produkt Aktiv!</sys:String>
-    <sys:String x:Key="start.keyNotActive">Das Produkt ist nicht aktiviert!</sys:String>
 
     <sys:String x:Key="home.homeButton">Hauptmenü</sys:String>
 
     <sys:String x:Key="ProductKey.Cancel">Zurück</sys:String>
     <sys:String x:Key="ProductKey.Submit">Senden</sys:String>
+    <sys:String x:Key="ProductKey.keyActive">Produkt Aktiv!</sys:String>
+    <sys:String x:Key="ProductKey.keyNotActive">Das Produkt ist nicht aktiviert!</sys:String>
+    <sys:String x:Key="ProductKey.activate">🗸</sys:String>
 </ResourceDictionary>  
