@@ -51,7 +51,7 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             using (HttpClient client = new HttpClient())
             {
                 HttpRequestMessage request = new HttpRequestMessage();
-                request.Content = new StringContent(JsonConvert.SerializeObject(new Models.ProductKeyModel() { Email = Config.email, key = licenseKeyBox.Text }), Encoding.UTF8, "application/json");
+                request.Content = new StringContent(JsonConvert.SerializeObject(new Models.ProductKeyModel() { key = licenseKeyBox.Text }), Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PostAsync(Config.URL + "/ProductKey", request.Content);
                 string res = await response.Content.ReadAsStringAsync();

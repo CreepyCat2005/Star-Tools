@@ -66,9 +66,7 @@ namespace Star_Citizen_Pfusch.Pages
                     {
                         Debug.WriteLine("Logged in");
                         MainWindow.setContent(new homeScreen());
-                        Config.username = item.Username;
-                        Config.password = item.Password;
-                        Config.email = item.Email;
+                        Config.SessionToken = item.SessionToken;
                         //login successfull
                         //do sth
                     }

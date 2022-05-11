@@ -60,12 +60,17 @@ namespace Star_Citizen_Pfusch.Pages.Login
                 message.Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
                 HttpResponseMessage ms = await client.PostAsync(Config.URL + "/Login", message.Content);
+                string res = await ms.Content.ReadAsStringAsync();
+
+                LoginItem item = JsonConvert.DeserializeObject<LoginItem>(res);
 
                 if (ms.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     LocalDataManager local = new LocalDataManager();
 
                     if ((bool)SavePasswordBox.IsChecked) local.SavePassword(UsernameBox.Text, hashed);
+
+                    Config.SessionToken = item.SessionToken;
 
                     currentWindow.Close();
                     MainWindow.setContent(new homeScreen());

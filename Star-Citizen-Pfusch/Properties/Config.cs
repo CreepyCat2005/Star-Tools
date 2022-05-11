@@ -9,6 +9,6 @@ namespace Star_Citizen_Pfusch
     class Config
     {
         public static string URL = @"http://localhost:5001";
-        public static string username, email, password, salt;
+        public static string SessionToken;
     }
 }

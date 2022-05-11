@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace Star_Citizen_Pfusch
@@ -40,12 +41,12 @@ namespace Star_Citizen_Pfusch
         {
             Button button = (Button) sender;
             Indicator.Visibility = Visibility.Visible;
-            Indicator.SetValue(Grid.RowProperty, Grid.GetRow(button));
+            
         }
 
         private void Button_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            Button button = (Button)sender;
+
             Indicator.Visibility = Visibility.Hidden;
         }
 
@@ -63,6 +64,27 @@ namespace Star_Citizen_Pfusch
             window.Width = 800;
             window.Height = 450;
             window.Show();
+        }
+
+        private void VehicleButton_Click(object sender, RoutedEventArgs e)
+        {
+
+
+        }
+
+        private void fpsEquipmentButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void shipEquipmentButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MainMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDisplay.Content = new Pages.Home.Telemetry();
         }
     }
 }
