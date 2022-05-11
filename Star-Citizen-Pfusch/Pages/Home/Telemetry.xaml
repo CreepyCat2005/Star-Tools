@@ -1,0 +1,30 @@
+﻿<Page x:Class="Star_Citizen_Pfusch.Pages.Home.Telemetry"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Home"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Telemetry">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <GridSplitter Grid.Row="0" Grid.RowSpan="3" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+    </Grid>
+    
+</Page>

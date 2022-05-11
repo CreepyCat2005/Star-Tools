@@ -16,28 +16,13 @@ using System.Windows.Shapes;
 namespace Star_Citizen_Pfusch.Pages.SettingsFolder
 {
     /// <summary>
-    /// Interaction logic for SettingsMenu.xaml
+    /// Interaction logic for PrivacySettings.xaml
     /// </summary>
-    public partial class SettingsMenu : Page
+    public partial class PrivacySettings : Page
     {
-        public SettingsMenu()
+        public PrivacySettings()
         {
             InitializeComponent();
-        }
-
-        private void GeneralItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void LicenseItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            contentDisplay.Content = new LicenseSettings();
-        }
-
-        private void dataItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
         }
     }
 }

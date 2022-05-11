@@ -31,6 +31,7 @@ namespace Star_Citizen_Pfusch
         public MainWindow()
         {
             window = this;
+            PlaytimeCounter counter = new PlaytimeCounter(30000);
 
             InitializeComponent();
 
