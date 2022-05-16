@@ -32,26 +32,26 @@ namespace Star_Citizen_Pfusch.Functions
             {
                 playtime += waitTime / 1000.0;
 
-                if (counter >= 10)
+            if (counter >= 10)
+            {
+                using (HttpClient client = new HttpClient())
                 {
-                    using (HttpClient client = new HttpClient())
-                    {
-                        HttpRequestMessage request = new HttpRequestMessage();
+                    HttpRequestMessage request = new HttpRequestMessage();
                         request.Content = new StringContent(JsonConvert.SerializeObject(new Models.AccountData() { Playtime = playtime, SessionToken = Config.SessionToken }),Encoding.UTF8, "application/json");
 
                         HttpResponseMessage response = await client.PutAsync(Config.URL + "/AccountData", request.Content);
-                        
+
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
                         {
                             playtime = 0;
-                            counter = 0;
-                        }
+                counter = 0;
+            }
                     }
                 }
-                else
-                {
-                    counter++;
-                }
+            else
+            {
+                counter++;
+            }
             }
             Debug.WriteLine(playtime);
         }
