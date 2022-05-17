@@ -37,33 +37,38 @@
             </Grid.RowDefinitions>
 
             <Label Content="Total Playtime" Grid.Row="0" Grid.Column="0" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
-            <Line Grid.Row="0" Grid.Column="0" Stroke="White" StrokeThickness="1.5" X1="0" X2="1000" Y1="35" Y2="35" />
+            <Line Grid.Row="0" Grid.Column="0" Stroke="White" StrokeThickness="1.5" X1="0" X2="10000" Y1="35" Y2="35" />
             <Viewbox Margin="0,35,0,0" Grid.Row="0" Grid.Column="0">
-                <Label VerticalAlignment="Center" Content="105H 42M" Foreground="White" />
+                <Label x:Name="PlaytimeLabel" VerticalAlignment="Center" Foreground="White" />
             </Viewbox>
 
             <Label Content="Client Version" Grid.Row="1" Grid.Column="0" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
-            <Line Grid.Row="1" Grid.Column="0" Stroke="White" StrokeThickness="1.5" X1="0" X2="1000" Y1="35" Y2="35" />
+            <Line Grid.Row="1" Grid.Column="0" Stroke="White" StrokeThickness="1.5" X1="0" X2="10000" Y1="35" Y2="35" />
             <Viewbox Margin="0,35,0,0" Grid.Row="1" Grid.Column="0">
-                <Label VerticalAlignment="Center" Content="V0.0.1" Foreground="White" />
+                <Label x:Name="ClientVersionLabel" VerticalAlignment="Center" Foreground="White" />
             </Viewbox>
 
             <Label Content="Game Version" Grid.Row="1" Grid.Column="1" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
-            <Line Grid.Row="1" Grid.Column="1" Stroke="White" StrokeThickness="1.5" X1="0" X2="1000" Y1="35" Y2="35" />
+            <Line Grid.Row="1" Grid.Column="1" Stroke="White" StrokeThickness="1.5" X1="0" X2="10000" Y1="35" Y2="35" />
             <Viewbox Margin="0,35,0,0" Grid.Row="1" Grid.Column="1">
-                <Label VerticalAlignment="Center" Content="3.17" Foreground="White" />
+                <Label x:Name="GameVersionLabel" VerticalAlignment="Center" Foreground="White" />
             </Viewbox>
 
             <Label Content="Time until next Patch" Grid.Row="0" Grid.Column="1" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
-            <Line Grid.Row="0" Grid.Column="1" Stroke="White" StrokeThickness="1.5" X1="0" X2="1000" Y1="35" Y2="35" />
+            <Line Grid.Row="0" Grid.Column="1" Stroke="White" StrokeThickness="1.5" X1="0" X2="10000" Y1="35" Y2="35" />
             <Viewbox Margin="0,35,0,0" Grid.Row="0" Grid.Column="1">
-                <Label VerticalAlignment="Center" Content="23 Days" Foreground="White" />
+                <Label x:Name="NextPatchLabel" VerticalAlignment="Center" Foreground="White" />
             </Viewbox>
 
 
-            <Line Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Stroke="Gray" StrokeThickness="2" Y1="0" Y2="1000" />
-            <Line Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" StrokeThickness="2" Stroke="Gray" X1="0" X2="1000" />
+            <Line Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Stroke="Gray" StrokeThickness="2" Y1="0" Y2="10000" />
+            <Line Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" StrokeThickness="2" Stroke="Gray" X1="0" X2="10000" />
 
+            
+            
+            
+            
+            
         </Grid>
     </Grid>
     

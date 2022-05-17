@@ -44,204 +44,176 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle Grid.Column="0" Grid.Row="0" Panel.ZIndex="5" Visibility="Hidden" Width="5" HorizontalAlignment="Left" x:Name="Indicator" Fill="White" />
-
         <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Background="LightGray" />
 
         <ListBox Grid.Row="0" Background="Transparent" BorderThickness="0" Grid.Column="0" >
-            <ListBoxItem>
-                <Button Grid.Column="0" Grid.Row="0" BorderBrush="{x:Null}" Content="Hauptmenü" FontSize="35" Foreground="White" x:Name="MainMenuButton" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="MainMenuButton_Click" >
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" >
-                                        <Setter.Value>
-                                            <SolidColorBrush>
-                                                <SolidColorBrush.Color>
-                                                    <Color A="255" R="30" G="30" B="30" />
-                                                </SolidColorBrush.Color>
-                                            </SolidColorBrush>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+            <ListBoxItem Content="Hauptmenü" FontSize="35" Foreground="White" x:Name="MainMenuItem" PreviewMouseLeftButtonDown="MainMenuItem_MouseLeftButtonDown" >
+                <ListBoxItem.Style>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="White" Offset="0.025"/>
+                                            <GradientStop Offset="0.025">
+                                                <GradientStop.Color>
+                                                    <Color A="255" R="40" G="40" B="40" />
+                                                </GradientStop.Color>
+                                            </GradientStop>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem>
-                <Button Grid.Column="0" Grid.Row="1" BorderBrush="{x:Null}" Content="Schiffe" FontSize="35" Foreground="White" x:Name="ShipButton" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="ShipButton_Click" >
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" >
-                                        <Setter.Value>
-                                            <SolidColorBrush>
-                                                <SolidColorBrush.Color>
-                                                    <Color A="255" R="30" G="30" B="30" />
-                                                </SolidColorBrush.Color>
-                                            </SolidColorBrush>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+            <ListBoxItem Content="Schiffe" FontSize="35" Foreground="White" x:Name="ShipItem" PreviewMouseLeftButtonDown="ShipItem_MouseLeftButtonDown" >
+                <ListBoxItem.Style>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="White" Offset="0.025"/>
+                                            <GradientStop Offset="0.025">
+                                                <GradientStop.Color>
+                                                    <Color A="255" R="40" G="40" B="40" />
+                                                </GradientStop.Color>
+                                            </GradientStop>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem>
-                <Button Grid.Column="0" Grid.Row="1" BorderBrush="{x:Null}" Content="Fahrzeuge" FontSize="35" Foreground="White" x:Name="VehicleButton" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="VehicleButton_Click" >
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" >
-                                        <Setter.Value>
-                                            <SolidColorBrush>
-                                                <SolidColorBrush.Color>
-                                                    <Color A="255" R="30" G="30" B="30" />
-                                                </SolidColorBrush.Color>
-                                            </SolidColorBrush>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+            <ListBoxItem Content="Fahrzeuge" FontSize="35" Foreground="White" >
+                <ListBoxItem.Style>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="White" Offset="0.025"/>
+                                            <GradientStop Offset="0.025">
+                                                <GradientStop.Color>
+                                                    <Color A="255" R="40" G="40" B="40" />
+                                                </GradientStop.Color>
+                                            </GradientStop>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem>
-                <Button BorderBrush="{x:Null}" Content="Schiffskomponenten" FontSize="35" Foreground="White" x:Name="shipEquipmentButton" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="shipEquipmentButton_Click" >
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" >
-                                        <Setter.Value>
-                                            <SolidColorBrush>
-                                                <SolidColorBrush.Color>
-                                                    <Color A="255" R="30" G="30" B="30" />
-                                                </SolidColorBrush.Color>
-                                            </SolidColorBrush>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+            <ListBoxItem Content="Komponenten" FontSize="35" Foreground="White" >
+                <ListBoxItem.Style>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="White" Offset="0.025"/>
+                                            <GradientStop Offset="0.025">
+                                                <GradientStop.Color>
+                                                    <Color A="255" R="40" G="40" B="40" />
+                                                </GradientStop.Color>
+                                            </GradientStop>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem>
-                <Button BorderBrush="{x:Null}" Content="FPS Equipment" FontSize="35" Foreground="White" x:Name="fpsEquipmentButton" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="fpsEquipmentButton_Click" >
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" >
-                                        <Setter.Value>
-                                            <SolidColorBrush>
-                                                <SolidColorBrush.Color>
-                                                    <Color A="255" R="30" G="30" B="30" />
-                                                </SolidColorBrush.Color>
-                                            </SolidColorBrush>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-            </ListBoxItem>
-
-            <ListBoxItem>
-                <Button Grid.Column="0" Grid.Row="7" BorderBrush="{x:Null}" Content="Einstellungen" FontSize="35" Foreground="White" x:Name="SettingsButton" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="SettingsButton_Click" >
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" >
-                                        <Setter.Value>
-                                            <SolidColorBrush>
-                                                <SolidColorBrush.Color>
-                                                    <Color A="255" R="30" G="30" B="30" />
-                                                </SolidColorBrush.Color>
-                                            </SolidColorBrush>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+            <ListBoxItem Content="Einstellungen" FontSize="35" Foreground="White" x:Name="SettingsItem" PreviewMouseLeftButtonDown="SettingsItem_MouseLeftButtonDown" >
+                <ListBoxItem.Style>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="White" Offset="0.025"/>
+                                            <GradientStop Offset="0.025">
+                                                <GradientStop.Color>
+                                                    <Color A="255" R="40" G="40" B="40" />
+                                                </GradientStop.Color>
+                                            </GradientStop>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBoxItem.Style>
             </ListBoxItem>
         </ListBox>
 
+        
         <Frame x:Name="ContentFrame" Grid.Column="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" />
 
     </Grid>

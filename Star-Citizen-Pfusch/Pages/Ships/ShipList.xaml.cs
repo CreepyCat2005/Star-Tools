@@ -27,7 +27,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         {
             InitializeComponent();
 
-            init();
+            //init();
         }
 
         private async void init()
