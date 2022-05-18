@@ -3,6 +3,7 @@ using Star_Citizen_Pfusch.Models;
 using System;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading;
 using System.Timers;
 using System.Windows.Controls;
@@ -59,8 +60,8 @@ namespace Star_Citizen_Pfusch.Pages.Home
                 timer.Elapsed += elapsed;
                 timer.AutoReset = true;
                 timer.Enabled = true;
-
             }
+            ClientVersionLabel.Content = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private string formateDatetime(TimeSpan time)
