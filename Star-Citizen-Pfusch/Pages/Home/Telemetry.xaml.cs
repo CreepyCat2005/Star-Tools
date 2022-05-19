@@ -2,11 +2,16 @@
 using Star_Citizen_Pfusch.Models;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Net.Cache;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Timers;
 using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Star_Citizen_Pfusch.Pages.Home
 {
@@ -46,8 +51,10 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
                 NextPatchLabel.Content = formateDatetime(item.NextPatch - DateTime.Now);
                 GameVersionLabel.Content = item.GameVersion;
+                DailyShipDetails.Text = formateShipData(item.DailyShip);
+                DailyShipDescription.Text = "Beschreibung:\n" + item.DailyShip.description;
 
-
+                DailyShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.DailyShip.localName + ".jpg", UriKind.Relative));
 
                 response = await client.GetAsync(Config.URL + "/AccountData");
                 res = await response.Content.ReadAsStringAsync();
@@ -74,6 +81,14 @@ namespace Star_Citizen_Pfusch.Pages.Home
             {
                 NextPatchLabel.Content = formateDatetime(item.NextPatch - DateTime.Now);
             });
+        }
+
+        private string formateShipData(ShipItem item)
+        {
+            return $"Name: {item.name}\n" +
+                $"Größe: {item.length} x {item.width} x {item.height}\n" +
+                $"Rolle: {item.role}\n" +
+                $"Career: {item.career}";
         }
     }
 }

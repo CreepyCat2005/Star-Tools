@@ -59,17 +59,41 @@
             <Viewbox Margin="0,35,0,0" Grid.Row="0" Grid.Column="1">
                 <Label x:Name="NextPatchLabel" VerticalAlignment="Center" Foreground="White" />
             </Viewbox>
-
-
+            
             <Line Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Stroke="Gray" StrokeThickness="2" Y1="0" Y2="10000" />
             <Line Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" StrokeThickness="2" Stroke="Gray" X1="0" X2="10000" />
 
-            
-            
-            
-            
-            
         </Grid>
+
+
+        <Grid Grid.Row="2" Grid.Column="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2" />
+                <ColumnDefinition Width=".45*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2" />
+                <RowDefinition Height=".4*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Ship of the Day" Foreground="White" FontSize="25" HorizontalAlignment="Center" />
+            <Line Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" X1="0" X2="10000" Y1="45" Y2="45" StrokeThickness="2" Stroke="White" />
+
+            <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" />
+            <GridSplitter Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" />
+
+            <Image Margin="3,0" Grid.Row="1" Grid.Column="0" x:Name="DailyShipImage" />
+            <TextBlock Foreground="White" x:Name="DailyShipDetails" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Top"  />
+            <TextBlock Margin="3,0,0,0" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Foreground="White" x:Name="DailyShipDescription" TextWrapping="Wrap" FontSize="18" />
+        </Grid>
+        
+        
+        
     </Grid>
     
 </Page>

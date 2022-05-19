@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Star_Citizen_Pfusch.Models
 {
-    class PublicDataItem
+    class ShipItem
     {
-        public string GameVersion, SessionToken;
-        public DateTime NextPatch;
-        public ShipItem DailyShip;
+        public int ID;
+        public string name, localName, role, career, description;
+        public double length, width, height;
     }
 }
