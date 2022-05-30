@@ -24,8 +24,7 @@ namespace Star_Citizen_Pfusch
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-
+    { 
         private static MainWindow window;
 
         public MainWindow()

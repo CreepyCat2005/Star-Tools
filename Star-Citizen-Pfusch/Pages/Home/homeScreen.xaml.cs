@@ -53,7 +53,7 @@ namespace Star_Citizen_Pfusch
         private void ShipItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             ContentDisplay.Content = null;
-            ContentDisplay.Content = new ShipList();
+            ContentDisplay.Content = new ShipList(ContentDisplay);
         }
 
         private void SettingsItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

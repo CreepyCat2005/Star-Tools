@@ -1,6 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Star_Citizen_Pfusch.Functions;
+using Star_Citizen_Pfusch.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -23,15 +27,19 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     /// </summary>
     public partial class ShipList : Page
     {
-        public ShipList()
+        private ShipView shipView;
+        private Frame contentFrame;
+        public ShipList(Frame frame)
         {
+            contentFrame = frame;
             InitializeComponent();
 
-            //init();
+            init();
         }
 
         private async void init()
         {
+            ObservableCollection<ShipItem> shipItems = new ObservableCollection<ShipItem>();
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(Config.URL + "/Fleet");
@@ -42,9 +50,20 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
                 for (int i = 0; i < (int)json["size"]; i++)
                 {
-                    this.ListBox.Items.Add(new ListBoxItem() { Content = json["items"][i]["name"], Height = 40, Foreground = Brushes.White, FontSize = 25 });
+                    ShipItem item = JsonConvert.DeserializeObject<ShipItem>(json["items"][i].ToString());
+
+                    shipItems.Add(item);
                 }
             }
+            ShipListView.ItemsSource = shipItems;
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListView listView = (ListView)sender;
+            ShipItem item = (ShipItem)listView.SelectedItem;
+            shipView = new ShipView(contentFrame, item.ID);
+            contentFrame.Content = shipView;
         }
     }
 }

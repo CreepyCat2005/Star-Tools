@@ -52,9 +52,9 @@ namespace Star_Citizen_Pfusch.Pages.Home
                 NextPatchLabel.Content = formateDatetime(item.NextPatch - DateTime.Now);
                 GameVersionLabel.Content = item.GameVersion;
                 DailyShipDetails.Text = formateShipData(item.DailyShip);
-                DailyShipDescription.Text = "Beschreibung:\n" + item.DailyShip.description;
+                DailyShipDescription.Text = "Beschreibung:\n" + item.DailyShip.Description;
 
-                DailyShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.DailyShip.localName + ".jpg", UriKind.Relative));
+                DailyShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.DailyShip.LocalName + ".jpg", UriKind.Relative));
 
                 response = await client.GetAsync(Config.URL + "/AccountData");
                 res = await response.Content.ReadAsStringAsync();
@@ -85,10 +85,11 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
         private string formateShipData(ShipItem item)
         {
-            return $"Name: {item.name}\n" +
-                $"Größe: {item.length} x {item.width} x {item.height}\n" +
-                $"Rolle: {item.role}\n" +
-                $"Career: {item.career}";
+            return $"Name: {item.Name}\n" +
+                $"Größe: {item.Length} x {item.Width} x {item.Height}\n" +
+                $"Rolle: {item.Role}\n" +
+                $"Career: {item.Career}\n" +
+                $"Status: {item.Status}";
         }
     }
 }

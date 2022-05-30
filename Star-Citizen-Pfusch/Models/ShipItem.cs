@@ -8,8 +8,11 @@ namespace Star_Citizen_Pfusch.Models
 {
     class ShipItem
     {
-        public int ID;
-        public string name, localName, role, career, description;
-        public double length, width, height;
+        public int ID { get; set; }
+        public string Name { get; set; }
+
+        public int Mass, Cargo, Hp, Price;
+        public string LocalName, Role, Career, Description, ShieldType, Status;
+        public double Length, Width, Height;
     }
 }
