@@ -1,10 +1,10 @@
 ﻿<Page x:Class="Star_Citizen_Pfusch.Pages.Ships.ShipView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Ships"
-      mc:Ignorable="d" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:uc="clr-namespace:Star_Citizen_Pfusch.Models"
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ShipInformation" RenderOptions.BitmapScalingMode="HighQuality" >
 
@@ -19,7 +19,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="4" />
-            <ColumnDefinition Width=".5*" />
+            <ColumnDefinition Width=".56*" />
         </Grid.ColumnDefinitions>
 
         <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White" />
@@ -81,9 +81,52 @@
             <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipShieldType" IsReadOnly="True" Grid.Row="8" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
             <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipPrice" IsReadOnly="True" Grid.Row="9" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
 
+        </Grid>
+
+        <TextBox TextWrapping="Wrap" Grid.Row="0" Grid.Column="0" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" LostFocus="TextBox_LostFocus" CaretBrush="White" />
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <uc:DragAndDropTarget Text="Power Plant" Grid.Column="1" type="Power_Plant" />
+
+            <uc:DragAndDropTarget Text="Quantum Drive" type="Quantum_Drive" />
+
+            <uc:DragAndDropTarget Text="Cooler" Grid.Column="2" type="Cooler" />
+
+            <uc:DragAndDropTarget Text="Shield" Grid.Column="3" type="Shield" />
+
 
         </Grid>
-        
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <uc:DragAndDropItem QtNameText="Quantum Drive" QtGradeText="ad" QtSizeText="ad" type="Quantum_Drive" />
+
+            <uc:DragAndDropItem Grid.Column="1" QtNameText="Power Plant" QtGradeText="ad" QtSizeText="ad" type="Power_Plant" />
+
+            <uc:DragAndDropItem Grid.Column="2" QtNameText="Cooler" QtGradeText="ad" QtSizeText="ad" type="Cooler" />
+
+            <uc:DragAndDropItem Grid.Column="0" Grid.Row="1" QtNameText="XL-1" QtGradeText="ad" QtSizeText="ad" type="Quantum_Drive" />
+        </Grid>
 
     </Grid>
 </Page>

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +26,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     /// </summary>
     public partial class ShipView : Page
     {
-        Popup popup = new Popup();
         public ShipView(Frame frame, int shipID)
         {
             init(shipID);
@@ -54,8 +54,12 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 ShipShieldType.Text = item.ShieldType;
                 ShipPrice.Text = item.Price.ToString();
                 ShipStatus.Content = item.Status;
-
             }
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

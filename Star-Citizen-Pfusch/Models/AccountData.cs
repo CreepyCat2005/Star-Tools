@@ -8,7 +8,7 @@ namespace Star_Citizen_Pfusch.Models
 {
     class AccountData
     {
-        public double Playtime;
+        public int Playtime;
         public string SessionToken;
     }
 }

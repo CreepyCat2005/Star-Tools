@@ -6,6 +6,7 @@ using System.IO;
 using System.Net.Cache;
 using System.Net.Http;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Timers;
 using System.Windows.Controls;
@@ -56,12 +57,13 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
                 DailyShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.DailyShip.LocalName + ".jpg", UriKind.Relative));
 
+                client.DefaultRequestHeaders.Add("token",Config.SessionToken);
                 response = await client.GetAsync(Config.URL + "/AccountData");
                 res = await response.Content.ReadAsStringAsync();
 
                 AccountData data = JsonConvert.DeserializeObject<AccountData>(res);
 
-                PlaytimeLabel.Content = data.Playtime;
+                PlaytimeLabel.Content = formatePlayTime(data.Playtime);
 
                 timer = new System.Timers.Timer(1000);
                 timer.Elapsed += elapsed;
@@ -81,6 +83,12 @@ namespace Star_Citizen_Pfusch.Pages.Home
             {
                 NextPatchLabel.Content = formateDatetime(item.NextPatch - DateTime.Now);
             });
+        }
+        private string formatePlayTime(int playtime)
+        {
+            int hour = playtime / 60;
+            int minute = playtime - (hour * 60);
+            return $"{hour}h {minute}m";
         }
 
         private string formateShipData(ShipItem item)

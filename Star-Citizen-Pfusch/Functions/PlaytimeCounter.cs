@@ -13,7 +13,7 @@ namespace Star_Citizen_Pfusch.Functions
     class PlaytimeCounter
     {
         private static int counter, waitTime;
-        private static double playtime;
+        private static int playtime;
         public PlaytimeCounter(int interval)
         {
             waitTime = interval;
@@ -30,28 +30,30 @@ namespace Star_Citizen_Pfusch.Functions
             Process[] processes = Process.GetProcessesByName("notepad");
             if (processes.Length > 0)
             {
-                playtime += waitTime / 1000.0;
+                playtime += waitTime / 1000;
 
-            if (counter >= 10)
-            {
-                using (HttpClient client = new HttpClient())
+                if (counter >= 10)
                 {
-                    HttpRequestMessage request = new HttpRequestMessage();
-                        request.Content = new StringContent(JsonConvert.SerializeObject(new Models.AccountData() { Playtime = playtime, SessionToken = Config.SessionToken }),Encoding.UTF8, "application/json");
+                    using (HttpClient client = new HttpClient())
+                    {
+                        HttpRequestMessage request = new HttpRequestMessage();
+                        request.Content = new StringContent(JsonConvert.SerializeObject(new Models.AccountData() { Playtime = playtime, SessionToken = Config.SessionToken }), Encoding.UTF8, "application/json");
 
                         HttpResponseMessage response = await client.PutAsync(Config.URL + "/AccountData", request.Content);
-
+                        Debug.WriteLine(await request.Content.ReadAsStringAsync());
+                        Debug.WriteLine("Send playtime to server!");
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
                         {
                             playtime = 0;
-                counter = 0;
-            }
+                            counter = 0;
+                            Debug.WriteLine("Server replied OK!");
+                        }
                     }
                 }
-            else
-            {
-                counter++;
-            }
+                else
+                {
+                    counter++;
+                }
             }
             Debug.WriteLine(playtime);
         }

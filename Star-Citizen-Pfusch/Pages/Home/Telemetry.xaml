@@ -87,7 +87,7 @@
             <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" />
             <GridSplitter Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" />
 
-            <Image Margin="5,0" Grid.Row="1" Grid.Column="0" x:Name="DailyShipImage" />
+            <Image Margin="1,1" Grid.Row="1" Grid.Column="0" x:Name="DailyShipImage" />
             <TextBlock Foreground="White" x:Name="DailyShipDetails" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Top"  />
             <TextBlock Margin="3,0,0,0" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Foreground="White" x:Name="DailyShipDescription" TextWrapping="Wrap" FontSize="18" />
         </Grid>
