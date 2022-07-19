@@ -49,7 +49,7 @@ namespace Star_Citizen_Pfusch.Pages
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    LoginItem user = new LoginItem();
+                    AccountItem user = new AccountItem();
                     user.Username = manager.getUsername();
                     user.Password = manager.getPassword();
 
@@ -60,14 +60,14 @@ namespace Star_Citizen_Pfusch.Pages
 
                     string res = await ms.Content.ReadAsStringAsync();
 
-                    LoginItem item = JsonConvert.DeserializeObject<LoginItem>(res); 
+                    AccountItem item = JsonConvert.DeserializeObject<AccountItem>(res); 
 
                     if (ms.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         Debug.WriteLine("Logged in");
                         PlaytimeCounter playtime = new PlaytimeCounter(1000 * 60);
                         MainWindow.setContent(new homeScreen());
-                        Config.SessionToken = item.SessionToken;
+                        Config.SessionToken = item.AccountData.SessionToken;
                         //login successfull
                         //do sth
                     }

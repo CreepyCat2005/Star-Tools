@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MongoDB.Bson;
+using Newtonsoft.Json;
 using Star_Citizen_Pfusch.Models;
 using System;
 using System.Diagnostics;
@@ -50,12 +51,12 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
                 item = JsonConvert.DeserializeObject<PublicDataItem>(res);
 
-                NextPatchLabel.Content = formateDatetime(item.NextPatch - DateTime.Now);
-                GameVersionLabel.Content = item.GameVersion;
-                DailyShipDetails.Text = formateShipData(item.DailyShip);
-                DailyShipDescription.Text = "Beschreibung:\n" + item.DailyShip.Description;
+                NextPatchLabel.Content = formateDatetime(item.nextPatch - DateTime.Now);
+                GameVersionLabel.Content = item.gameVersion;
+                DailyShipDetails.Text = formatedata(item.dailyShip);
+                DailyShipDescription.Text = "Beschreibung:\n" + item.dailyShip.description;
 
-                DailyShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.DailyShip.LocalName + ".jpg", UriKind.Relative));
+                DailyShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.dailyShip.localName + ".jpg", UriKind.Relative));
 
                 client.DefaultRequestHeaders.Add("token",Config.SessionToken);
                 response = await client.GetAsync(Config.URL + "/AccountData");
@@ -81,7 +82,7 @@ namespace Star_Citizen_Pfusch.Pages.Home
         {
             this.Dispatcher.Invoke(() =>
             {
-                NextPatchLabel.Content = formateDatetime(item.NextPatch - DateTime.Now);
+                NextPatchLabel.Content = formateDatetime(item.nextPatch - DateTime.Now);
             });
         }
         private string formatePlayTime(int playtime)
@@ -91,13 +92,13 @@ namespace Star_Citizen_Pfusch.Pages.Home
             return $"{hour}h {minute}m";
         }
 
-        private string formateShipData(ShipItem item)
+        private string formatedata(ShipItem item)
         {
-            return $"Name: {item.Name}\n" +
-                $"Größe: {item.Length} x {item.Width} x {item.Height}\n" +
-                $"Rolle: {item.Role}\n" +
-                $"Career: {item.Career}\n" +
-                $"Status: {item.Status}";
+            return $"Name: {item.name}\n" +
+                $"Größe: {item.data.size.x} x {item.data.size.y} x {item.data.size.z}\n" +
+                $"Rolle: {item.data.role}\n" +
+                $"Career: {item.data.career}\n" +
+                $"Status: {item.status}";
         }
     }
 }

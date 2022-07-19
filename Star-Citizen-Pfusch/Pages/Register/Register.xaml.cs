@@ -87,14 +87,15 @@ namespace Star_Citizen_Pfusch.Pages.Register
 
             using (HttpClient client = new HttpClient())
             {
-                RegisterUser user = new RegisterUser();
-                user.Username = UsernameBox.Text;
-                user.Password = hashed;
-                user.EMail = EMailBox.Text;
-                user.Salt = hasher.saltString;
+                AccountItem item = new AccountItem();
+                item.Username = UsernameBox.Text;
+                item.Password = hashed;
+                item.Email = EMailBox.Text;
+                item.Salt = hasher.saltString;
+                item.AccountData = new AccountDataItem() { Playtime = 0, SessionToken = "" };
 
                 HttpRequestMessage message = new HttpRequestMessage();
-                message.Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+                message.Content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
 
                 HttpResponseMessage ms = await client.PostAsync(Config.URL + "/Register", message.Content);
 

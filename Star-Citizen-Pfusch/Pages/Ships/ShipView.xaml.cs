@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MongoDB.Bson;
+using Newtonsoft.Json;
 using Star_Citizen_Pfusch.Models;
 using System;
 using System.Collections.Generic;
@@ -26,14 +27,14 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     /// </summary>
     public partial class ShipView : Page
     {
-        public ShipView(Frame frame, int shipID)
+        public ShipView(Frame frame, string shipID)
         {
             init(shipID);
 
             InitializeComponent();
         }
 
-        private async void init(int shipID)
+        private async void init(string shipID)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -42,18 +43,18 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
                 ShipItem item = JsonConvert.DeserializeObject<ShipItem>(res);
 
-                ShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.LocalName + ".jpg", UriKind.Relative));
-                ShipName.Text = item.Name;
-                ShipRole.Text = item.Role;
-                ShipCareer.Text = item.Career;
-                ShipDescription.Text = item.Description;
-                ShipSize.Text = $"{item.Width} x {item.Length} x {item.Height}";
-                ShipMass.Text = item.Mass.ToString();
-                ShipCargo.Text = item.Cargo.ToString();
-                ShipHp.Text = item.Hp.ToString();
-                ShipShieldType.Text = item.ShieldType;
-                ShipPrice.Text = item.Price.ToString();
-                ShipStatus.Content = item.Status;
+                ShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.localName + ".jpg", UriKind.Relative));
+                ShipName.Text = item.name;
+                ShipRole.Text = item.data.role;
+                ShipCareer.Text = item.data.career;
+                ShipDescription.Text = item.description;
+                ShipSize.Text = $"{item.data.size.x} x {item.data.size.y} x {item.data.size.z}";
+                ShipMass.Text = item.hull.mass.ToString();
+                ShipCargo.Text = item.cargo.ToString();
+                ShipHp.Text = item.health.ToString();
+                //ShipShieldType.Text = item.shieldType;
+                //ShipPrice.Text = item.price.ToString();
+                ShipStatus.Content = item.status;
             }
         }
 

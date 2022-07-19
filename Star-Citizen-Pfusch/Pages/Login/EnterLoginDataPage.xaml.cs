@@ -52,7 +52,7 @@ namespace Star_Citizen_Pfusch.Pages.Login
 
                 PasswordHasher hasher = new PasswordHasher();
                 string hashed = hasher.hashPassword(PasswordBox.Text, salt);
-                LoginItem user = new LoginItem();
+                AccountItem user = new AccountItem();
                 user.Username = UsernameBox.Text;
                 user.Password = hashed;
 
@@ -62,7 +62,7 @@ namespace Star_Citizen_Pfusch.Pages.Login
                 HttpResponseMessage ms = await client.PostAsync(Config.URL + "/Login", message.Content);
                 string res = await ms.Content.ReadAsStringAsync();
 
-                LoginItem item = JsonConvert.DeserializeObject<LoginItem>(res);
+                AccountItem item = JsonConvert.DeserializeObject<AccountItem>(res);
 
                 if (ms.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -70,7 +70,7 @@ namespace Star_Citizen_Pfusch.Pages.Login
 
                     if ((bool)SavePasswordBox.IsChecked) local.SavePassword(UsernameBox.Text, hashed);
 
-                    Config.SessionToken = item.SessionToken;
+                    Config.SessionToken = item.AccountData.SessionToken;
 
                     currentWindow.Close();
                     MainWindow.setContent(new homeScreen());
