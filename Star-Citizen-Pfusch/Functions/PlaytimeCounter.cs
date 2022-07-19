@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
-
 namespace Star_Citizen_Pfusch.Functions
 {
     class PlaytimeCounter
@@ -16,6 +12,7 @@ namespace Star_Citizen_Pfusch.Functions
         private static int playtime;
         public PlaytimeCounter(int interval)
         {
+
             waitTime = interval;
             playtime = 0;
             counter = 0;
@@ -28,11 +25,12 @@ namespace Star_Citizen_Pfusch.Functions
         private static async void Elapsed(object source, ElapsedEventArgs e)
         {
             Process[] processes = Process.GetProcessesByName("notepad");
-            if (processes.Length > 0)
+            if (processes.Length > 0 || counter != 0)
             {
                 playtime += waitTime / 1000;
+                counter++;
 
-                if (counter >= 10)
+                if (counter >= 10 || processes.Length == 0)
                 {
                     using (HttpClient client = new HttpClient())
                     {
@@ -49,10 +47,6 @@ namespace Star_Citizen_Pfusch.Functions
                             Debug.WriteLine("Server replied OK!");
                         }
                     }
-                }
-                else
-                {
-                    counter++;
                 }
             }
             Debug.WriteLine(playtime);

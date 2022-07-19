@@ -111,22 +111,28 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <uc:DragAndDropItem QtNameText="Quantum Drive" QtGradeText="ad" QtSizeText="ad" type="Quantum_Drive" />
+            <ListBox Background="Transparent" BorderThickness="0" Grid.Column="0" >
+                <ListBoxItem>
+                    <uc:DragAndDropItem Width="100" Height="80"  />
+                </ListBoxItem>
+            </ListBox>
+            <ListBox Background="Transparent" BorderThickness="0" Grid.Column="1" >
 
-            <uc:DragAndDropItem Grid.Column="1" QtNameText="Power Plant" QtGradeText="ad" QtSizeText="ad" type="Power_Plant" />
+            </ListBox>
+            <ListBox Background="Transparent" BorderThickness="0" Grid.Column="2" >
 
-            <uc:DragAndDropItem Grid.Column="2" QtNameText="Cooler" QtGradeText="ad" QtSizeText="ad" type="Cooler" />
+            </ListBox>
+            <ListBox Background="Transparent" BorderThickness="0" Grid.Column="3" >
 
-            <uc:DragAndDropItem Grid.Column="0" Grid.Row="1" QtNameText="XL-1" QtGradeText="ad" QtSizeText="ad" type="Quantum_Drive" />
+            </ListBox>
+
         </Grid>
-
     </Grid>
 </Page>

@@ -11,9 +11,10 @@ namespace Star_Citizen_Pfusch.Models
     [BsonIgnoreExtraElements]
     public class ShipItem
     {
-        public string _id;
+        public string _id { get; set; }
+        public string name { get; set; }
         public int health, maxLifetimeHours, size;
-        public string type, subtype, grade, name, description, localName, status;
+        public string type, subtype, grade, description, localName, status;
         public double cargo, qtFuelCapacity, fuelCapacity;
         public ShipDataItem data;
         public ShipHullItem hull;

@@ -13,8 +13,8 @@
         <ListView x:Name="ShipListView" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" SelectionChanged="ListView_SelectionChanged" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
-                    <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding _id}" />
+                    <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding name}" />
                 </GridView>
             </ListView.View>
         </ListView>

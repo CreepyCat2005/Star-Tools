@@ -46,11 +46,11 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
                 string input = await response.Content.ReadAsStringAsync();
 
-                JObject json = JObject.Parse(input);
+                JArray json = JArray.Parse(input);
 
-                for (int i = 0; i < (int)json["size"]; i++)
+                foreach (var entry in json)
                 {
-                    ShipItem item = JsonConvert.DeserializeObject<ShipItem>(json["items"][i].ToString());
+                    ShipItem item = JsonConvert.DeserializeObject<ShipItem>(entry.ToString());
 
                     shipItems.Add(item);
                 }
