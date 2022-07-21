@@ -25,65 +25,13 @@
         <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White" />
         <GridSplitter Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White" />
 
-        <Rectangle Grid.Column="2" Grid.Row="2" >
-            <Rectangle.Fill>
-                <SolidColorBrush>
-                    <SolidColorBrush.Color>
-                        <Color A="200" R="30" G="30" B="30" />
-                    </SolidColorBrush.Color>
-                </SolidColorBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-
         <Image Grid.Column="2" Grid.Row="0" x:Name="ShipImage" />
 
         <Label Grid.Row="0" Grid.Column="2" x:Name="ShipStatus" FontSize="12" Content="Flight-Ready" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
 
-        <Grid Grid.Row="2" Grid.Column="2">
+        <Frame x:Name="SettingsFrame" Grid.Column="2" Grid.Row="2" />
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".8*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <TextBox Margin="5,0" Text="Name" IsReadOnly="True" Grid.Row="0" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox Margin="5,0" Text="Role" IsReadOnly="True" Grid.Row="1" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox Margin="5,0" Text="Career" IsReadOnly="True" Grid.Row="2" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox Margin="5,0" Text="Description" IsReadOnly="True" Grid.Row="3" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox Margin="5,0" Text="Size" IsReadOnly="True" Grid.Row="4" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox Margin="5,0" Text="Mass" IsReadOnly="True" Grid.Row="5" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox Margin="5,0" Text="Cargo" IsReadOnly="True" Grid.Row="6" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox Margin="5,0" Text="Hp" IsReadOnly="True" Grid.Row="7" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox Margin="5,0" Text="ShieldType" IsReadOnly="True" Grid.Row="8" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox Margin="5,0" Text="Price" IsReadOnly="True" Grid.Row="9" Grid.Column="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipName" IsReadOnly="True" Grid.Row="0" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipRole" IsReadOnly="True" Grid.Row="1" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipCareer" IsReadOnly="True" Grid.Row="2" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipDescription" IsReadOnly="True" Grid.Row="3" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipSize" IsReadOnly="True" Grid.Row="4" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipMass" IsReadOnly="True" Grid.Row="5" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipCargo" IsReadOnly="True" Grid.Row="6" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipHp" IsReadOnly="True" Grid.Row="7" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipShieldType" IsReadOnly="True" Grid.Row="8" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-            <TextBox TextWrapping="Wrap" Margin="5,0" x:Name="ShipPrice" IsReadOnly="True" Grid.Row="9" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Background="Transparent" BorderThickness="0" />
-
-        </Grid>
-
-        <TextBox TextWrapping="Wrap" Grid.Row="0" Grid.Column="0" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" LostFocus="TextBox_LostFocus" CaretBrush="White" />
+        <TextBox TextWrapping="Wrap" Grid.Row="0" Grid.Column="0" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" CaretBrush="White" />
 
         <Grid>
 
@@ -109,29 +57,128 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition Height=".08*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <ListBox Background="Transparent" BorderThickness="0" Grid.Column="0" >
-                <ListBoxItem>
-                    <uc:DragAndDropItem Width="100" Height="80"  />
-                </ListBoxItem>
-            </ListBox>
-            <ListBox Background="Transparent" BorderThickness="0" Grid.Column="1" >
+            <Rectangle Grid.Row="0" >
+                <Rectangle.Fill>
+                    <SolidColorBrush>
+                        <SolidColorBrush.Color>
+                            <Color A="255" R="40" G="40" B="40" />
+                        </SolidColorBrush.Color>
+                    </SolidColorBrush>
+                </Rectangle.Fill>
+            </Rectangle>
 
-            </ListBox>
-            <ListBox Background="Transparent" BorderThickness="0" Grid.Column="2" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button HorizontalAlignment="Right" BorderThickness="0" Margin="0,0,5,0" Click="SwitchButton_Click" ToolTip="Anzeigemodus" >
+                    <Button.Style>
+                        <Style TargetType="Button" >
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" >
+                                    <Setter Property="Background" >
+                                        <Setter.Value>
+                                            <SolidColorBrush>
+                                                <SolidColorBrush.Color>
+                                                    <Color A="255" R="50" G="50" B="50" />
+                                                </SolidColorBrush.Color>
+                                            </SolidColorBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image Source="/Graphics/Switch-Icon.png" />
+                </Button>
+                <Button HorizontalAlignment="Right" BorderThickness="0" Margin="0,0,10,0" Click="FilterButton_Click" ToolTip="Filter" >
+                    <Button.Style>
+                        <Style TargetType="Button" >
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" >
+                                    <Setter Property="Background" >
+                                        <Setter.Value>
+                                            <SolidColorBrush>
+                                                <SolidColorBrush.Color>
+                                                    <Color A="255" R="50" G="50" B="50" />
+                                                </SolidColorBrush.Color>
+                                            </SolidColorBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image Source="/Graphics/Filter-Icon.png" />
+                </Button>
+            </StackPanel>
 
-            </ListBox>
-            <ListBox Background="Transparent" BorderThickness="0" Grid.Column="3" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button BorderThickness="0" Margin="5,0,0,0" Click="ShipStatsButton_Click" ToolTip="Schiff-Stats" >
+                    <Button.Style>
+                        <Style TargetType="Button" >
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" >
+                                    <Setter Property="Background" >
+                                        <Setter.Value>
+                                            <SolidColorBrush>
+                                                <SolidColorBrush.Color>
+                                                    <Color A="255" R="50" G="50" B="50" />
+                                                </SolidColorBrush.Color>
+                                            </SolidColorBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image Source="/Graphics/Info-Icon.png" />
+                </Button>
+            </StackPanel>
 
-            </ListBox>
+            <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
+                <ListBox Grid.Row="1" x:Name="ModuleList" Background="Transparent" BorderThickness="0" >
+                    <ListBox.Template>
+                        <ControlTemplate>
+                            <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
+                        </ControlTemplate>
+                    </ListBox.Template>
+                </ListBox>
+            </ScrollViewer>
 
         </Grid>
     </Grid>

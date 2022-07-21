@@ -26,6 +26,7 @@ namespace Star_Citizen_Pfusch.Models
             InitializeComponent();
             this.DataContext = this;
         }
+
         public DragAndDropItem(string grade, string size, string name,ModuleTypeEnum type)
         {
             QtGradeText = grade;

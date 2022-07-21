@@ -14,7 +14,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding _id}" />
-                    <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding name}" />
+                    <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}" />
                 </GridView>
             </ListView.View>
         </ListView>

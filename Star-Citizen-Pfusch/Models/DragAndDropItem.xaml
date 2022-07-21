@@ -5,17 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="500" >
+             d:DesignHeight="130" d:DesignWidth="200" >
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".3*" />
+            <ColumnDefinition Width=".6*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height=".25*" />
+            <RowDefinition Height=".3*" />
         </Grid.RowDefinitions>
         
         <Border x:Name="BackgroundBorder" Grid.RowSpan="2" CornerRadius="20" BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.ColumnSpan="10" SizeChanged="Border_SizeChanged" >
@@ -28,25 +28,25 @@
             </Border.Background>
         </Border>
 
-        <Image x:Name="ModuleImage" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0" />
+        <Image x:Name="ModuleImage" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10" />
 
         <Viewbox Grid.Column="1" HorizontalAlignment="Left" >
             <Label Content="{Binding QtNameText}" Foreground="White" Background="Transparent" BorderThickness="0" />
         </Viewbox>
 
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
-            <Viewbox HorizontalAlignment="Left" Margin="0,0,0,2">
-                <Label Content="{Binding QtSizeText}" Grid.Column="1" Foreground="Gray" Background="Transparent" BorderThickness="0" />
+
+            <Viewbox HorizontalAlignment="Center" Margin="0,0,0,2" >
+                <Label Content="{Binding QtSizeText}" Foreground="Gray" Background="Transparent" BorderThickness="0" />
             </Viewbox>
 
-            <Viewbox Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,2">
-                <Label Content="{Binding QtGradeText}" Grid.Column="1" Foreground="Gray" Background="Transparent" BorderThickness="0" />
+            <Viewbox Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,2">
+                <Label Content="{Binding QtGradeText}" Foreground="Gray" Background="Transparent" BorderThickness="0" />
             </Viewbox>
         </Grid>
     </Grid>

@@ -12,10 +12,14 @@ namespace Star_Citizen_Pfusch.Models.Enums
         Power_Plant,
         Weapon,
         Missile,
+        Missile_Rack,
         Emp,
         Qed,
         Shield,
         Cooler,
-        Paint
+        Paint,
+        Mining,
+        Mounting,
+        Turret
     }
 }

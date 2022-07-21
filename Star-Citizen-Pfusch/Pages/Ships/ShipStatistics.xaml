@@ -1,0 +1,47 @@
+﻿<Page x:Class="Star_Citizen_Pfusch.Pages.Ships.ShipStatistics"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Ships"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="450"
+      Title="ShipStatistics">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".08*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Viewbox HorizontalAlignment="Left" Margin="0,0,0,5" >
+            <TextBox Background="Transparent" BorderThickness="0" Text="Schiff Statistiken" Foreground="White" />
+        </Viewbox>
+        <Rectangle Fill="White" Height="2" VerticalAlignment="Bottom" Grid.Row="0" />
+
+        <ListBox Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+            <ListBoxItem Margin="0,0,0,5">
+                <TextBox x:Name="ShipNameBox" Text="Name: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+            </ListBoxItem>
+            <ListBoxItem Margin="0,0,0,5">
+                <TextBox x:Name="ShipSizeBox" Text="Size: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+            </ListBoxItem>
+            <ListBoxItem Margin="0,0,0,5">
+                <TextBox x:Name="ShipMassBox" Text="Mass: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+            </ListBoxItem>
+            <ListBoxItem Margin="0,0,0,5">
+            <TextBox x:Name="ShipRoleBox" Text="Role: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+            </ListBoxItem>
+            <ListBoxItem Margin="0,0,0,5">
+                <TextBox x:Name="ShipCareerBox" Text="Career: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+            </ListBoxItem>
+            <ListBoxItem Margin="0,0,0,5">
+            <TextBox x:Name="ShipDescriptionBox" Text="Description: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" TextWrapping="Wrap" />
+            </ListBoxItem>
+            <ListBoxItem Margin="0,0,0,5">
+            <TextBox x:Name="ShipCargoBox" Text="Cargo: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+            </ListBoxItem>
+        </ListBox>
+    </Grid>
+</Page>
