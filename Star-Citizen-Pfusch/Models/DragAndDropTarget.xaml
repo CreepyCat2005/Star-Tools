@@ -57,6 +57,7 @@
         </Viewbox>
 
         <Frame x:Name="ContentFrame" Grid.Column="1" Grid.Row="1" Margin="3,3" />
+        <Rectangle Grid.Column="1" Grid.Row="1" Fill="Transparent" />
 
     </Grid>
 </UserControl>

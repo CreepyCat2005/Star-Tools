@@ -33,15 +33,7 @@
 
         <TextBox TextWrapping="Wrap" Grid.Row="0" Grid.Column="0" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" CaretBrush="White" />
 
-        <ScrollViewer Grid.Row="0" Grid.Column="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
-            <ListBox x:Name="ModuleDragDestinationList" Background="Transparent" BorderThickness="0" >
-                <ListBox.Template>
-                    <ControlTemplate>
-                        <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
-                    </ControlTemplate>
-                </ListBox.Template>
-            </ListBox>
-        </ScrollViewer>
+        <Grid x:Name="ModuleGrid" />
 
         <Grid Grid.Row="2">
 

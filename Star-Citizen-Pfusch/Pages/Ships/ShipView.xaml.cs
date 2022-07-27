@@ -7,6 +7,7 @@ using Star_Citizen_Pfusch.Pages.SettingsFolder;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
@@ -117,7 +118,26 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             }
             ModuleList.ItemsSource = moduleItems;
 
+            List<string> validTypes = new List<string>(new string[] { "Shield", "PowerPlant", "QuantumDrive", "Cooler" });
+            List<JToken> localNames = new List<JToken>(jArray.Children()["localName"]);
+            int counter = 0;
 
+            foreach (var element in JArray.Parse(JObject.Parse(shipRes)["modules"].ToString()))
+            {
+                if (element.Value<JToken>("itemTypes").Type != JTokenType.Null && validTypes.Contains(element.Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type")))
+                {
+                    ModuleItem temp = JsonConvert.DeserializeObject<ModuleItem>(jArray[localNames.IndexOf(element.Value<string>("localName"))].ToString());
+
+                    DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = element.Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type") , type = (ModuleTypeEnum)temp.type };
+                    dragAndDropTarget.ContentFrame.Content = new DragAndDropItem() { QtNameText = temp.name, QtGradeText = temp.grade, QtSizeText = temp.size.ToString(), type = (ModuleTypeEnum)temp.type };
+
+                    ModuleGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                    Grid.SetColumn(dragAndDropTarget, counter);
+                    ModuleGrid.Children.Add(dragAndDropTarget);
+
+                    counter++;
+                }
+            }
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
