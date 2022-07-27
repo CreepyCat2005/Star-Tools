@@ -8,7 +8,8 @@ namespace Star_Citizen_Pfusch
 {
     class Config
     {
-        public static string URL = @"http://localhost:5001";
+        public static string URL = @"http://45.88.109.120:80";
+        //public static string URL = @"http://localhost:5001";
         public static string SessionToken;
     }
 }

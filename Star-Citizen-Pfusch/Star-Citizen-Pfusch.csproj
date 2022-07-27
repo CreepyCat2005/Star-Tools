@@ -6,6 +6,8 @@
     <RootNamespace>Star_Citizen_Pfusch</RootNamespace>
     <UseWPF>true</UseWPF>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <ApplicationIcon>Star-Tools-Logo.ico</ApplicationIcon>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

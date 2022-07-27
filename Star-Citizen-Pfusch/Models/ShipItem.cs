@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Star_Citizen_Backend.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,6 @@ namespace Star_Citizen_Pfusch.Models
         public double cargo, qtFuelCapacity, fuelCapacity;
         public ShipDataItem data;
         public ShipHullItem hull;
+        public ModuleItem[] modules;
     }
 }

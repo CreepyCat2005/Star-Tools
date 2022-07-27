@@ -9,7 +9,7 @@ namespace Star_Citizen_Backend.Models
     [BsonIgnoreExtraElements]
     public class ModuleItem
     {
-        public string subType, grade, name, description, localName;
+        public string grade, name, description, localName, @class;
         public double health, mass;
         public int size, type;
     }

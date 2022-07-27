@@ -33,25 +33,15 @@
 
         <TextBox TextWrapping="Wrap" Grid.Row="0" Grid.Column="0" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" CaretBrush="White" />
 
-        <Grid>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <uc:DragAndDropTarget Text="Power Plant" Grid.Column="1" type="Power_Plant" />
-
-            <uc:DragAndDropTarget Text="Quantum Drive" type="Quantum_Drive" />
-
-            <uc:DragAndDropTarget Text="Cooler" Grid.Column="2" type="Cooler" />
-
-            <uc:DragAndDropTarget Text="Shield" Grid.Column="3" type="Shield" />
-
-
-        </Grid>
+        <ScrollViewer Grid.Row="0" Grid.Column="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
+            <ListBox x:Name="ModuleDragDestinationList" Background="Transparent" BorderThickness="0" >
+                <ListBox.Template>
+                    <ControlTemplate>
+                        <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
+                    </ControlTemplate>
+                </ListBox.Template>
+            </ListBox>
+        </ScrollViewer>
 
         <Grid Grid.Row="2">
 

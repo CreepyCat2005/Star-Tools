@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using Star_Citizen_Backend.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Star_Citizen_Pfusch.Models
         public string career, role;
         public double inventoryCapacity;
         public ShipSizeItem size;
+        public ModuleItem[] modules;
     }
     public class ShipSizeItem
     {

@@ -76,47 +76,48 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
         private async void init(string shipID)
         {
-            using (HttpClient client = new HttpClient())
+            HttpClient client = new HttpClient();
+
+            HttpResponseMessage response = await client.GetAsync(Config.URL + $"/Ship?ID={shipID}");
+            string shipRes = await response.Content.ReadAsStringAsync();
+
+            ShipItem item = JsonConvert.DeserializeObject<ShipItem>(shipRes);
+
+            ShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.localName + ".jpg", UriKind.Relative));
+            ShipStatus.Content = item.status;
+
+            shipStatistics.ShipNameBox.Text += item.name;
+            shipStatistics.ShipMassBox.Text += item.hull.mass;
+            shipStatistics.ShipSizeBox.Text += $"{item.data.size.x}m x {item.data.size.y}m x {item.data.size.z}m";
+            shipStatistics.ShipRoleBox.Text += item.data.role;
+            shipStatistics.ShipCareerBox.Text += item.data.career;
+            shipStatistics.ShipDescriptionBox.Text += item.description;
+            shipStatistics.ShipCargoBox.Text += item.cargo;
+
+            response = await client.GetAsync(Config.URL + "/Module");
+            string moduleRes = await response.Content.ReadAsStringAsync();
+
+            JArray jArray = JArray.Parse(moduleRes);
+
+            moduleItems = new ObservableCollection<ListBoxItem>();
+
+            foreach (var module in jArray)
             {
-                HttpResponseMessage response = await client.GetAsync(Config.URL + $"/Ship?ID={shipID}");
-                string res = await response.Content.ReadAsStringAsync();
-
-                ShipItem item = JsonConvert.DeserializeObject<ShipItem>(res);
-
-                ShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.localName + ".jpg", UriKind.Relative));
-                ShipStatus.Content = item.status;
-
-                shipStatistics.ShipNameBox.Text += item.name;
-                shipStatistics.ShipMassBox.Text += item.hull.mass;
-                shipStatistics.ShipSizeBox.Text += $"{item.data.size.x}m x {item.data.size.y}m x {item.data.size.z}m";
-                shipStatistics.ShipRoleBox.Text += item.data.role;
-                shipStatistics.ShipCareerBox.Text += item.data.career;
-                shipStatistics.ShipDescriptionBox.Text += item.description;
-                shipStatistics.ShipCargoBox.Text += item.cargo;
-
-                response = await client.GetAsync(Config.URL + "/Module");
-                res = await response.Content.ReadAsStringAsync();
-
-                JArray jArray = JArray.Parse(res);
-
-                moduleItems = new ObservableCollection<ListBoxItem>();
-
-                foreach (var module in jArray)
+                ModuleItem moduleItem = JsonConvert.DeserializeObject<ModuleItem>(module.ToString());
+                DragAndDropItem dragAndDropItem = new DragAndDropItem()
                 {
-                    ModuleItem moduleItem = JsonConvert.DeserializeObject<ModuleItem>(module.ToString());
-                    DragAndDropItem dragAndDropItem = new DragAndDropItem()
-                    {
-                        QtNameText = moduleItem.name,
-                        QtGradeText = moduleItem.grade,
-                        QtSizeText = moduleItem.size.ToString(),
-                        type = (ModuleTypeEnum)moduleItem.type,
-                        Width = 130,
-                        Height = 100
-                    };
-                    moduleItems.Add(new ListBoxItem() { Content = dragAndDropItem });
-                }
-                ModuleList.ItemsSource = moduleItems;
+                    QtNameText = moduleItem.name,
+                    QtGradeText = moduleItem.grade,
+                    QtSizeText = moduleItem.size.ToString(),
+                    type = (ModuleTypeEnum)moduleItem.type,
+                    Width = 130,
+                    Height = 100
+                };
+                moduleItems.Add(new ListBoxItem() { Content = dragAndDropItem });
             }
+            ModuleList.ItemsSource = moduleItems;
+
+
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
