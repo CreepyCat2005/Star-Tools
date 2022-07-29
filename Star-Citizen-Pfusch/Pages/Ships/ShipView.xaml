@@ -150,6 +150,31 @@
                     </Button.Style>
                     <Image Source="/Graphics/Info-Icon.png" />
                 </Button>
+                <Viewbox Margin="10,0,0,0">
+                    <TextBox BorderThickness="1" Text="Search" Width="100" FontSize="15" TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" >
+                        <TextBox.Background>
+                            <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Color A="255" R="30" G="30" B="30" />
+                                </SolidColorBrush.Color>
+                            </SolidColorBrush>
+                        </TextBox.Background>
+                        <TextBox.BorderBrush>
+                            <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Color A="255" R="90" G="90" B="90" />
+                                </SolidColorBrush.Color>
+                            </SolidColorBrush>
+                        </TextBox.BorderBrush>
+                        <TextBox.Foreground>
+                            <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Color A="255" R="80" G="80" B="80" />
+                                </SolidColorBrush.Color>
+                            </SolidColorBrush>
+                        </TextBox.Foreground>
+                    </TextBox>
+                </Viewbox>
             </StackPanel>
 
             <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >

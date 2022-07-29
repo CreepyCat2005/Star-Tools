@@ -62,7 +62,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         {
             ListView listView = (ListView)sender;
             ShipItem item = (ShipItem)listView.SelectedItem;
-            shipView = new ShipView(contentFrame, item._id);
+            shipView = new ShipView(item._id);
             contentFrame.Content = shipView;
         }
     }

@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 
@@ -21,12 +22,12 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     /// </summary>
     public partial class ShipView : Page
     {
-        private ObservableCollection<ListBoxItem> moduleItems;
+        private ObservableCollection<ListBoxItem> moduleItems = new ObservableCollection<ListBoxItem>();
         private FilterSettings filterSettings = new FilterSettings();
         private List<ModuleTypeEnum> checkedBoxes = new List<ModuleTypeEnum>();
         private ShipStatistics shipStatistics = new ShipStatistics();
 
-        public ShipView(Frame frame, string shipID)
+        public ShipView(string shipID)
         {
             init(shipID);
 
@@ -35,11 +36,18 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             filterSettings.QuantumDriveBox.Click += ModuleBox_Checked;
             filterSettings.ShieldBox.Click += ModuleBox_Checked;
             InitializeComponent();
+
+            SettingsFrame.Navigate(shipStatistics);
         }
 
         private void ModuleBox_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox item = (CheckBox)sender;
+
+            sortModules(item);
+        }
+        private void sortModules(CheckBox item)
+        {
 
             switch (item.Content.ToString())
             {
@@ -100,36 +108,18 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             JArray jArray = JArray.Parse(moduleRes);
 
-            moduleItems = new ObservableCollection<ListBoxItem>();
-
-            foreach (var module in jArray)
-            {
-                ModuleItem moduleItem = JsonConvert.DeserializeObject<ModuleItem>(module.ToString());
-                DragAndDropItem dragAndDropItem = new DragAndDropItem()
-                {
-                    QtNameText = moduleItem.name,
-                    QtGradeText = moduleItem.grade,
-                    QtSizeText = moduleItem.size.ToString(),
-                    type = (ModuleTypeEnum)moduleItem.type,
-                    Width = 130,
-                    Height = 100
-                };
-                moduleItems.Add(new ListBoxItem() { Content = dragAndDropItem });
-            }
-            ModuleList.ItemsSource = moduleItems;
-
             List<string> validTypes = new List<string>(new string[] { "Shield", "PowerPlant", "QuantumDrive", "Cooler" });
             List<JToken> localNames = new List<JToken>(jArray.Children()["localName"]);
             int counter = 0;
 
             foreach (var element in JArray.Parse(JObject.Parse(shipRes)["modules"].ToString()))
             {
-                if (element.Value<JToken>("itemTypes").Type != JTokenType.Null && validTypes.Contains(element.Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type")))
+                if (element.Value<JToken>("itemTypes").Type != JTokenType.Null && element.Value<JToken>("itemTypes").HasValues && validTypes.Contains(element.Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type")))
                 {
                     ModuleItem temp = JsonConvert.DeserializeObject<ModuleItem>(jArray[localNames.IndexOf(element.Value<string>("localName"))].ToString());
 
-                    DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = element.Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type") , type = (ModuleTypeEnum)temp.type };
-                    dragAndDropTarget.ContentFrame.Content = new DragAndDropItem() { QtNameText = temp.name, QtGradeText = temp.grade, QtSizeText = temp.size.ToString(), type = (ModuleTypeEnum)temp.type };
+                    DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = element.Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type") , type = (ModuleTypeEnum)temp.type, Size = "Size: " + temp.size.ToString() };
+                    dragAndDropTarget.ContentFrame.Content = new DragAndDropItem() { QtNameText = temp.name, QtGradeText = "Grade: " + temp.grade, QtSizeText = "Size: " + temp.size.ToString(), type = (ModuleTypeEnum)temp.type };
 
                     ModuleGrid.ColumnDefinitions.Add(new ColumnDefinition());
                     Grid.SetColumn(dragAndDropTarget, counter);
@@ -138,6 +128,34 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     counter++;
                 }
             }
+
+            foreach (var module in jArray)
+            {
+                ModuleItem moduleItem = JsonConvert.DeserializeObject<ModuleItem>(module.ToString());
+                if (moduleItem.size != getModuleSize((ModuleTypeEnum)moduleItem.type)) continue;
+                DragAndDropItem dragAndDropItem = new DragAndDropItem()
+                {
+                    QtNameText = moduleItem.name,
+                    QtGradeText = "Grade: " + moduleItem.grade,
+                    QtSizeText = "Size: " + moduleItem.size.ToString(),
+                    type = (ModuleTypeEnum)moduleItem.type,
+                    Width = 130,
+                    Height = 100
+                };
+                moduleItems.Add(new ListBoxItem() { Content = dragAndDropItem });
+            }
+            ModuleList.ItemsSource = moduleItems;
+        }
+        private int getModuleSize(ModuleTypeEnum type)
+        {
+            DragAndDropTarget[] targets = new DragAndDropTarget[10];
+            ModuleGrid.Children.CopyTo(targets,0);
+
+            foreach (var item in targets)
+            {
+                if (item.type == type) return int.Parse(item.Size.Replace("Size: ",""));
+            }
+            return 9354;
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -167,6 +185,52 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             else
             {
                 SettingsFrame.Content = null;
+            }
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+            string boxText = box.Text;
+            if (box.Text.Equals("Search")) boxText = "";
+            for (int i = 0; i < moduleItems.Count; i++)
+            {
+                DragAndDropItem dragAndDropItem = (DragAndDropItem)moduleItems[i].Content;
+                if (!dragAndDropItem.QtNameText.Contains(boxText))
+                {
+                    moduleItems[i].Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    moduleItems[i].Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+
+            if (box.Text.Equals("Search"))
+            {
+                box.Text = "";
+                box.Foreground = new SolidColorBrush(Colors.White);
+            }
+        }
+
+        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = (TextBox)sender;
+
+            if(box.Text.Equals(""))
+            {
+                box.Text = "Search";
+                box.Foreground = new SolidColorBrush(Color.FromArgb(255, 80, 80, 80));
+
+                sortModules(filterSettings.CoolerBox);
+                sortModules(filterSettings.PowerPlantBox);
+                sortModules(filterSettings.QuantumDriveBox);
+                sortModules(filterSettings.ShieldBox);
             }
         }
     }

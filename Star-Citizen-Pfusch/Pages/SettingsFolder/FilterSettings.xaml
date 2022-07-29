@@ -23,16 +23,16 @@
         </Grid.RowDefinitions>
 
         <Viewbox HorizontalAlignment="Left" Margin="0,0,0,5" >
-            <TextBox Background="Transparent" BorderThickness="0" Text="Filter Settings" Foreground="White" />
+            <TextBox IsReadOnly="True" Background="Transparent" BorderThickness="0" Text="Filter Settings" Foreground="White" />
         </Viewbox>
         <Rectangle Fill="White" Height="2" VerticalAlignment="Bottom" Grid.Row="0" />
 
         <TreeView Grid.Row="1" Background="Transparent" BorderThickness="0" >
             <TreeViewItem Header="Sichtbarkeit" Foreground="White" FontSize="30" IsExpanded="True" >
-                <CheckBox Foreground="White" x:Name="QuantumDriveBox" Content="Quantum Drive" VerticalContentAlignment="Center" />
-                <CheckBox Foreground="White" x:Name="PowerPlantBox" Content="Power Plant" VerticalContentAlignment="Center" />
-                <CheckBox Foreground="White" x:Name="CoolerBox" Content="Cooler" VerticalContentAlignment="Center" />
-                <CheckBox Foreground="White" x:Name="ShieldBox" Content="Shield" VerticalContentAlignment="Center" />
+                <CheckBox IsChecked="True" Foreground="White" x:Name="QuantumDriveBox" Content="Quantum Drive" VerticalContentAlignment="Center" />
+                <CheckBox IsChecked="True" Foreground="White" x:Name="PowerPlantBox" Content="Power Plant" VerticalContentAlignment="Center" />
+                <CheckBox IsChecked="True" Foreground="White" x:Name="CoolerBox" Content="Cooler" VerticalContentAlignment="Center" />
+                <CheckBox IsChecked="True" Foreground="White" x:Name="ShieldBox" Content="Shield" VerticalContentAlignment="Center" />
             </TreeViewItem>
         </TreeView>
         

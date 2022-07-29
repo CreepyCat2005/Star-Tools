@@ -34,7 +34,7 @@ namespace Star_Citizen_Pfusch.Models
             {
                 DragAndDropItem item = e.Data.GetData("Object") as DragAndDropItem;
 
-                if (item.type == type)
+                if (item.type == type && item.QtSizeText.Equals(Size))
                 {
                     ContentFrame.Content = new DragAndDropItem(item.QtGradeText, item.QtSizeText, item.QtNameText, item.type);
                     item = null;
@@ -46,6 +46,7 @@ namespace Star_Citizen_Pfusch.Models
             e.Handled = true;
         }
         public string Text { get; set; }
+        public string Size { get; set; }
         public ModuleTypeEnum type { get; set; }
 
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
