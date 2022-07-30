@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using Star_Citizen_Backend.Models;
 using Star_Citizen_Pfusch.Models;
 using Star_Citizen_Pfusch.Models.Enums;
+using Star_Citizen_Pfusch.Pages.Modules;
 using Star_Citizen_Pfusch.Pages.SettingsFolder;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,13 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         private FilterSettings filterSettings = new FilterSettings();
         private List<ModuleTypeEnum> checkedBoxes = new List<ModuleTypeEnum>();
         private ShipStatistics shipStatistics = new ShipStatistics();
+        private ModuleStatistics moduleStatistics;
 
         public ShipView(string shipID)
         {
             init(shipID);
 
+            checkedBoxes.AddRange(new ModuleTypeEnum[] { ModuleTypeEnum.Quantum_Drive, ModuleTypeEnum.Power_Plant, ModuleTypeEnum.Shield, ModuleTypeEnum.Cooler});
             filterSettings.CoolerBox.Click += ModuleBox_Checked;
             filterSettings.PowerPlantBox.Click += ModuleBox_Checked;
             filterSettings.QuantumDriveBox.Click += ModuleBox_Checked;
@@ -82,7 +85,14 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 }
             }
         }
-
+        private string formate(string s)
+        {
+            for (int i = s.Length - 3; i > 0; i -= 3)
+            {
+                s = s.Insert(i, ".");
+            }
+            return s;
+        }
         private async void init(string shipID)
         {
             HttpClient client = new HttpClient();
@@ -96,14 +106,23 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             ShipStatus.Content = item.status;
 
             shipStatistics.ShipNameBox.Text += item.name;
-            shipStatistics.ShipMassBox.Text += item.hull.mass;
+            shipStatistics.ShipMassBox.Text += formate(item.hull.mass.ToString());
             shipStatistics.ShipSizeBox.Text += $"{item.data.size.x}m x {item.data.size.y}m x {item.data.size.z}m";
             shipStatistics.ShipRoleBox.Text += item.data.role;
             shipStatistics.ShipCareerBox.Text += item.data.career;
             shipStatistics.ShipDescriptionBox.Text += item.description;
-            shipStatistics.ShipCargoBox.Text += item.cargo;
+            shipStatistics.ShipCargoBox.Text += formate(item.cargo.ToString()) + " scu";
 
-            response = await client.GetAsync(Config.URL + "/Module");
+            List<TreeViewItem> treeViewItems = new List<TreeViewItem>();
+
+            foreach (var shop in item.shops)
+            {
+                treeViewItems.Add(new TreeViewItem() { Foreground = new SolidColorBrush(Colors.White), FontSize = 25, Header = shop.name + " | " + shop.location + " | " + formate(shop.price.ToString()) + " UAC", Background = new SolidColorBrush(Colors.Transparent)});
+            }
+
+            shipStatistics.ShopTreeView.ItemsSource = treeViewItems;
+
+            response = await client.GetAsync(Config.URL + "/Module/All");
             string moduleRes = await response.Content.ReadAsStringAsync();
 
             JArray jArray = JArray.Parse(moduleRes);
@@ -135,6 +154,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 if (moduleItem.size != getModuleSize((ModuleTypeEnum)moduleItem.type)) continue;
                 DragAndDropItem dragAndDropItem = new DragAndDropItem()
                 {
+                    _id = moduleItem._id,
                     QtNameText = moduleItem.name,
                     QtGradeText = "Grade: " + moduleItem.grade,
                     QtSizeText = "Size: " + moduleItem.size.ToString(),
@@ -142,10 +162,36 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     Width = 130,
                     Height = 100
                 };
-                moduleItems.Add(new ListBoxItem() { Content = dragAndDropItem });
+
+                ListBoxItem boxItem = new ListBoxItem() { Content = dragAndDropItem };
+                boxItem.MouseEnter += BoxItem_MouseEnter;
+                boxItem.MouseLeave += BoxItem_MouseLeave;
+                boxItem.MouseDoubleClick += BoxItem_MouseDoubleClick;
+
+                moduleItems.Add(boxItem);
             }
             ModuleList.ItemsSource = moduleItems;
         }
+
+        private void BoxItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragAndDropItem item = (DragAndDropItem)((ListBoxItem)sender).Content;
+            moduleStatistics = new ModuleStatistics(item._id, (int)item.type);
+            SettingsFrame.Content = moduleStatistics;
+        }
+
+        private void BoxItem_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            DragAndDropItem item = (DragAndDropItem)((ListBoxItem)sender).Content;
+            item.BackgroundBorder.Background = new SolidColorBrush(Color.FromArgb(255, 40, 40, 40));
+        }
+
+        private void BoxItem_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            DragAndDropItem item = (DragAndDropItem)((ListBoxItem)sender).Content;
+            item.BackgroundBorder.Background = new SolidColorBrush(Color.FromArgb(255,80,80,80));
+        }
+
         private int getModuleSize(ModuleTypeEnum type)
         {
             DragAndDropTarget[] targets = new DragAndDropTarget[10];

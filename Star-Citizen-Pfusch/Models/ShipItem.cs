@@ -20,5 +20,6 @@ namespace Star_Citizen_Pfusch.Models
         public ShipDataItem data;
         public ShipHullItem hull;
         public ModuleItem[] modules;
+        public ShopItem[] shops;
     }
 }

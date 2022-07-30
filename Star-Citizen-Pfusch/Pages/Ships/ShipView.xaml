@@ -179,6 +179,21 @@
 
             <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
                 <ListBox Grid.Row="1" x:Name="ModuleList" Background="Transparent" BorderThickness="0" >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                  BorderThickness="{TemplateBinding BorderThickness}" 
+                  Background="{TemplateBinding Background}">
+                                            <ContentPresenter />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
                     <ListBox.Template>
                         <ControlTemplate>
                             <WrapPanel IsItemsHost="True" Orientation="Horizontal" />

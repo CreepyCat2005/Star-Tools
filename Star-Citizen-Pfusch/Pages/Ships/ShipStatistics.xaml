@@ -8,11 +8,6 @@
       d:DesignHeight="700" d:DesignWidth="450"
       Title="ShipStatistics">
 
-    <Page.Resources>
-        <Style x:Key="ListBoxStyle" TargetType="ListBoxItem">
-        </Style>
-    </Page.Resources>
-
     <Grid>
 
         <Grid.RowDefinitions>
@@ -26,26 +21,57 @@
         <Rectangle Fill="White" Height="2" VerticalAlignment="Bottom" Grid.Row="0" />
 
         <ListBox Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
-            <ListBoxItem Margin="0,0,0,5" Style="{StaticResource ListBoxStyle}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                  BorderThickness="{TemplateBinding BorderThickness}" 
+                  Background="{TemplateBinding Background}">
+                                    <ContentPresenter />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBoxItem Margin="0,0,0,5" >
                 <TextBox IsReadOnly="True" x:Name="ShipNameBox" Text="Name: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
             </ListBoxItem>
-            <ListBoxItem Margin="0,0,0,5" Style="{StaticResource ListBoxStyle}">
+            <ListBoxItem Margin="0,0,0,5" >
                 <TextBox IsReadOnly="True" x:Name="ShipSizeBox" Text="Size: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
             </ListBoxItem>
-            <ListBoxItem Margin="0,0,0,5" Style="{StaticResource ListBoxStyle}">
+            <ListBoxItem Margin="0,0,0,5" >
                 <TextBox IsReadOnly="True" x:Name="ShipMassBox" Text="Mass: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
             </ListBoxItem>
-            <ListBoxItem Margin="0,0,0,5" Style="{StaticResource ListBoxStyle}">
+            <ListBoxItem Margin="0,0,0,5" >
                 <TextBox IsReadOnly="True" x:Name="ShipRoleBox" Text="Role: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
             </ListBoxItem>
-            <ListBoxItem Margin="0,0,0,5" Style="{StaticResource ListBoxStyle}">
+            <ListBoxItem Margin="0,0,0,5" >
                 <TextBox IsReadOnly="True" x:Name="ShipCareerBox" Text="Career: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
             </ListBoxItem>
-            <ListBoxItem Margin="0,0,0,5" Style="{StaticResource ListBoxStyle}">
+            <ListBoxItem Margin="0,0,0,5" >
                 <TextBox IsReadOnly="True" x:Name="ShipDescriptionBox" Text="Description: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" TextWrapping="Wrap" />
             </ListBoxItem>
-            <ListBoxItem Margin="0,0,0,5" Style="{StaticResource ListBoxStyle}">
+            <ListBoxItem Margin="0,0,0,5" >
                 <TextBox IsReadOnly="True" x:Name="ShipCargoBox" Text="Cargo: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+            </ListBoxItem>
+            <ListBoxItem Margin="0,0,0,5" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".05*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width=".05*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle Fill="Gray" Height="2" Grid.Column="1" />
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Margin="0,0,0,5" >
+                <TreeView Background="Transparent" BorderThickness="0" >
+                    <TreeViewItem x:Name="ShopTreeView" Foreground="White" Header="Shops" FontSize="25" Background="Transparent" />
+                </TreeView>
             </ListBoxItem>
         </ListBox>
     </Grid>

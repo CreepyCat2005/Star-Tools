@@ -50,6 +50,7 @@ namespace Star_Citizen_Pfusch.Models
             }
         }
 
+        public string _id { get; set; }
         public string QtGradeText { get; set; }
         public string QtSizeText { get; set; }
         public string QtNameText { get; set; }

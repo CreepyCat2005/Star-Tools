@@ -1,23 +1,28 @@
-﻿using Star_Citizen_Backend.Models;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Star_Citizen_Pfusch.Models
+namespace Star_Citizen_Backend.Models
 {
-    class QuantumDriveItem : ModuleItem
+    [BsonIgnoreExtraElements]
+    public class QuantumDriveItem : ModuleItem
     {
-        public int disconnectRange;
-        public double quantumFuelRequirement;
+        [BsonElement("qdrive")]
         public QuantumDriveDataItem data;
     }
-
-    class QuantumDriveDataItem
+    [BsonIgnoreExtraElements]
+    public class QuantumDriveDataItem
     {
-        public int driveSpeed, stageOneAccelRate, stageTwoAccelRate, engageSpeed, interdictionEffectTime, calibrationRate, minCalibrationRequirement,
-            maxCalibrationRequirement, calibrationProcessAngleLimit, calibrationWarningAngleLimit, calibrationDelayInSeconds;
-        public double cooldownTime, spoolUpTime;
+        public double quantumFuelRequirement;
+        public int disconnectRange;
+        public QuantumDriveParamsItem @params;
+    }
+    [BsonIgnoreExtraElements]
+    public class QuantumDriveParamsItem
+    {
+        public int driveSpeed, engageSpeed, interdictionEffectTime, calibrationRate, minCalibrationRequirement, maxCalibrationRequirement, calibrationProcessAngleLimit, calibrationWarningAngleLimit;
+        public double calibrationDelayInSeconds, spoolUpTime, cooldownTime, stageOneAccelRate, stageTwoAccelRate;
     }
 }
