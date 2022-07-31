@@ -28,12 +28,14 @@
         <Rectangle Fill="White" Height="2" VerticalAlignment="Bottom" Grid.Row="0" />
 
         <TreeView Grid.Row="1" Background="Transparent" BorderThickness="0" >
-            <TreeViewItem Header="Sichtbarkeit" Foreground="White" FontSize="30" IsExpanded="True" >
-                <CheckBox IsChecked="True" Foreground="White" x:Name="QuantumDriveBox" Content="Quantum Drive" VerticalContentAlignment="Center" />
-                <CheckBox IsChecked="True" Foreground="White" x:Name="PowerPlantBox" Content="Power Plant" VerticalContentAlignment="Center" />
-                <CheckBox IsChecked="True" Foreground="White" x:Name="CoolerBox" Content="Cooler" VerticalContentAlignment="Center" />
-                <CheckBox IsChecked="True" Foreground="White" x:Name="ShieldBox" Content="Shield" VerticalContentAlignment="Center" />
+            <TreeViewItem Header="Sichtbarkeit" Foreground="White" FontSize="25" IsExpanded="True" >
+                <CheckBox Foreground="White" x:Name="AllBox" Content="All" VerticalContentAlignment="Center" Checked="Box_Checked" />
+                <CheckBox Foreground="White" x:Name="QuantumDriveBox" Content="Quantum Drive" VerticalContentAlignment="Center" Checked="Box_Checked" />
+                <CheckBox Foreground="White" x:Name="PowerPlantBox" Content="Power Plant" VerticalContentAlignment="Center" Checked="Box_Checked" />
+                <CheckBox Foreground="White" x:Name="CoolerBox" Content="Cooler" VerticalContentAlignment="Center" Checked="Box_Checked" />
+                <CheckBox Foreground="White" x:Name="ShieldBox" Content="Shield" VerticalContentAlignment="Center" Checked="Box_Checked" />
             </TreeViewItem>
+            <TreeViewItem Header="Advanced" Foreground="White" FontSize="25" IsExpanded="True" x:Name="AdvancedTreeItem" />
         </TreeView>
         
         

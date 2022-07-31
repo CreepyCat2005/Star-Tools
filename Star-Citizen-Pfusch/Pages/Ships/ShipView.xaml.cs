@@ -14,6 +14,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Linq;
 
 
 namespace Star_Citizen_Pfusch.Pages.Ships
@@ -23,7 +24,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     /// </summary>
     public partial class ShipView : Page
     {
-        private ObservableCollection<ListBoxItem> moduleItems = new ObservableCollection<ListBoxItem>();
+        private List<ListBoxItem> moduleItems = new List<ListBoxItem>();
         private FilterSettings filterSettings = new FilterSettings();
         private List<ModuleTypeEnum> checkedBoxes = new List<ModuleTypeEnum>();
         private ShipStatistics shipStatistics = new ShipStatistics();
@@ -34,55 +35,104 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             init(shipID);
 
             checkedBoxes.AddRange(new ModuleTypeEnum[] { ModuleTypeEnum.Quantum_Drive, ModuleTypeEnum.Power_Plant, ModuleTypeEnum.Shield, ModuleTypeEnum.Cooler});
-            filterSettings.CoolerBox.Click += ModuleBox_Checked;
-            filterSettings.PowerPlantBox.Click += ModuleBox_Checked;
-            filterSettings.QuantumDriveBox.Click += ModuleBox_Checked;
-            filterSettings.ShieldBox.Click += ModuleBox_Checked;
+            filterSettings.CoolerBox.Checked += ModuleBox_Checked;
+            filterSettings.PowerPlantBox.Checked += ModuleBox_Checked;
+            filterSettings.QuantumDriveBox.Checked += ModuleBox_Checked;
+            filterSettings.ShieldBox.Checked += ModuleBox_Checked;
+            filterSettings.AllBox.Checked += ModuleBox_Checked;
             InitializeComponent();
 
             SettingsFrame.Navigate(shipStatistics);
         }
+        private ModuleTypeEnum stringToModuleType(string s)
+        {
+            switch (s)
+            {
+                case "Quantum Drive":
+                    return ModuleTypeEnum.Quantum_Drive;
+                case "Cooler":
+                    return ModuleTypeEnum.Cooler;
+                case "Power Plant":
+                    return ModuleTypeEnum.Power_Plant;
+                case "Shield":
+                    return ModuleTypeEnum.Shield;
+                default:
+                    return ModuleTypeEnum.Unknown;
+            }
+        }
+        private ModuleTypeEnum checkBoxToModuleType(string s)
+        {
+            switch (s)
+            {
+                case "Speed":
+                case "Efficiency":
+                    return ModuleTypeEnum.Quantum_Drive;
+                case "Cooling Rate":
+                    return ModuleTypeEnum.Cooler;
+                case "Power":
+                    return ModuleTypeEnum.Power_Plant;
+                case "Shield HP":
+                case "Regeneration Rate":
+                    return ModuleTypeEnum.Shield;
+                default:
+                    return ModuleTypeEnum.Unknown;
+            }
+        }
+        private void filterModules(object sender, RoutedEventArgs e)
+        {
+            CheckBox box = (CheckBox)sender;
 
+            switch (box.Content.ToString())
+            {
+                case "Speed":
+                    moduleItems = moduleItems.OrderBy(o => ((QuantumDriveItem)((DragAndDropItem)o.Content).moduleItem).data.@params.driveSpeed).ToList();
+
+                    break;
+                case "Efficiency":
+
+                    break;
+                case "Power":
+
+                    break;
+                case "Shield HP":
+
+                    break;
+                case "Regeneration Rate":
+
+                    break;
+                case "Cooling Rate":
+
+                    break;
+            }
+
+        }
         private void ModuleBox_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox item = (CheckBox)sender;
+
+            foreach (var element in filterSettings.AdvancedTreeItem.Items)
+            {
+                CheckBox box = (CheckBox)element;
+                box.Checked += filterModules;
+            }
 
             sortModules(item);
         }
         private void sortModules(CheckBox item)
         {
-
-            switch (item.Content.ToString())
-            {
-                case "Quantum Drive":
-                    if ((bool)item.IsChecked) checkedBoxes.Add(ModuleTypeEnum.Quantum_Drive);
-                    else checkedBoxes.Remove(ModuleTypeEnum.Quantum_Drive);
-                    break;
-                case "Shield":
-                    if ((bool)item.IsChecked) checkedBoxes.Add(ModuleTypeEnum.Shield);
-                    else checkedBoxes.Remove(ModuleTypeEnum.Shield);
-                    break;
-                case "Cooler":
-                    if ((bool)item.IsChecked) checkedBoxes.Add(ModuleTypeEnum.Cooler);
-                    else checkedBoxes.Remove(ModuleTypeEnum.Cooler);
-                    break;
-                case "Power Plant":
-                    if ((bool)item.IsChecked) checkedBoxes.Add(ModuleTypeEnum.Power_Plant);
-                    else checkedBoxes.Remove(ModuleTypeEnum.Power_Plant);
-                    break;
-            }
-
             for (int i = 0; i < moduleItems.Count; i++)
             {
                 DragAndDropItem dragAndDropItem = (DragAndDropItem)moduleItems[i].Content;
-                if (!checkedBoxes.Contains(dragAndDropItem.type))
-                {
-                    moduleItems[i].Visibility = Visibility.Collapsed;
-                }
-                else
+
+                if (stringToModuleType(item.Content.ToString()) == dragAndDropItem.type || stringToModuleType(item.Content.ToString()) == ModuleTypeEnum.Unknown)
                 {
                     moduleItems[i].Visibility = Visibility.Visible;
                 }
+                else
+                {
+                    moduleItems[i].Visibility = Visibility.Collapsed;
+                }
+
             }
         }
         private string formate(string s)
@@ -150,11 +200,30 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             foreach (var module in jArray)
             {
-                ModuleItem moduleItem = JsonConvert.DeserializeObject<ModuleItem>(module.ToString());
+                ModuleItem moduleItem  = JsonConvert.DeserializeObject<ModuleItem>(module.ToString());
+                object obj = null;
+
+                switch ((ModuleTypeEnum)int.Parse(module["type"].ToString()))
+                {
+                    case ModuleTypeEnum.Quantum_Drive:
+                        obj = JsonConvert.DeserializeObject<QuantumDriveItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Cooler:
+                        obj = JsonConvert.DeserializeObject<CoolerItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Power_Plant:
+                        obj = JsonConvert.DeserializeObject<PowerPlantItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Shield:
+                        obj = JsonConvert.DeserializeObject<ShieldItem>(module.ToString());
+                        break;
+                }
+
                 if (moduleItem.size != getModuleSize((ModuleTypeEnum)moduleItem.type)) continue;
                 DragAndDropItem dragAndDropItem = new DragAndDropItem()
                 {
                     _id = moduleItem._id,
+                    moduleItem = obj,
                     QtNameText = moduleItem.name,
                     QtGradeText = "Grade: " + moduleItem.grade,
                     QtSizeText = "Size: " + moduleItem.size.ToString(),

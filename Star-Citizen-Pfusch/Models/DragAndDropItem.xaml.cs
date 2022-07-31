@@ -1,4 +1,5 @@
-﻿using Star_Citizen_Pfusch.Models.Enums;
+﻿using Star_Citizen_Backend.Models;
+using Star_Citizen_Pfusch.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,7 @@ namespace Star_Citizen_Pfusch.Models
         public string QtGradeText { get; set; }
         public string QtSizeText { get; set; }
         public string QtNameText { get; set; }
+        public object moduleItem { get; set; }
         public ModuleTypeEnum type { get; set; }
 
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)

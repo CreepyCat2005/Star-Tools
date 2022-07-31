@@ -20,6 +20,7 @@ namespace Star_Citizen_Pfusch.Models.Enums
         Paint,
         Mining,
         Mounting,
-        Turret
+        Turret,
+        Unknown
     }
 }

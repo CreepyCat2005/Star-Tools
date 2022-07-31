@@ -11,8 +11,8 @@ namespace Star_Citizen_Backend.Models
     [BsonIgnoreExtraElements]
     public class ShieldDataItem
     {
-        public int maxShieldHealth, regenExcessMax, regenExcessChargePerSec, regenExcessUseCooldown, downedRegenDelay, damagedRegenDelay;
-        public double maxShieldRegen, decayRatio;
+        public int regenExcessMax, regenExcessChargePerSec, regenExcessUseCooldown, downedRegenDelay, damagedRegenDelay;
+        public double maxShieldRegen, decayRatio, maxShieldHealth;
         public ShieldAbsorptionItem absorption;
     }
     [BsonIgnoreExtraElements]

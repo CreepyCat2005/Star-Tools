@@ -39,7 +39,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
         private async void init()
         {
-            ObservableCollection<ShipItem> shipItems = new ObservableCollection<ShipItem>();
+            List<ShipItem> shipItems = new List<ShipItem>();
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(Config.URL + "/Fleet");
@@ -55,6 +55,8 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     shipItems.Add(item);
                 }
             }
+            shipItems = shipItems.OrderBy(o => o.name).ToList();
+
             ShipListView.ItemsSource = shipItems;
         }
 
