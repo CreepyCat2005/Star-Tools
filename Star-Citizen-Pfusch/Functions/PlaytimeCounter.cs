@@ -11,31 +11,29 @@ namespace Star_Citizen_Pfusch.Functions
 {
     class PlaytimeCounter
     {
-        private static int counter, waitTime;
+        private static int waitTime;
         private static int playtime;
         public static void start(int interval)
         {
             waitTime = interval;
             playtime = 0;
-            counter = 0;
             Timer timer = new Timer(interval);
             timer.Elapsed += Elapsed;
             timer.AutoReset = true;
             timer.Enabled = true;
         }
 
-        private static void Elapsed(object source, ElapsedEventArgs e)
+        private static async void Elapsed(object source, ElapsedEventArgs e)
         {
             Process[] processes = Process.GetProcessesByName("StarCitizen");
-            if (processes.Length > 0 || counter != 0)
+            if (processes.Length > 0 || playtime != 0)
             {
-                playtime += waitTime / 1000;
-                counter++;
-                Debug.WriteLine("Playtime: " + playtime + " Counter: " + counter);
+                playtime += waitTime / (1000 * 60);
+                Debug.WriteLine("Playtime: " + playtime);
 
-                if (counter >= 10 || processes.Length == 0)
+                if (playtime >= 10 || processes.Length == 0)
                 {
-                    savePlaytime();
+                    await savePlaytime();
                 }
             }
         }
@@ -52,7 +50,6 @@ namespace Star_Citizen_Pfusch.Functions
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     playtime = 0;
-                    counter = 0;
                     Debug.WriteLine("Server replied OK!");
                 }
             }
