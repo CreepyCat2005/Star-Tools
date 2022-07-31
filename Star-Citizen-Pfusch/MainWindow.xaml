@@ -7,6 +7,4 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" RenderOptions.BitmapScalingMode="HighQuality" MinHeight="400" MinWidth="670">
 
-
-
 </Window>

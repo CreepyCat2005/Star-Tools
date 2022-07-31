@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using Star_Citizen_Pfusch.Functions;
 using Star_Citizen_Pfusch.Pages.Home;
 using Star_Citizen_Pfusch.Pages.Ships;
 using System;
@@ -38,8 +39,8 @@ namespace Star_Citizen_Pfusch
             this.Resources.MergedDictionaries.Add(dictionary);
 
             InitializeComponent();
+            PlaytimeCounter.start(1000 * 60);
         }
-
         private void MainMenuItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (telemetry == null)

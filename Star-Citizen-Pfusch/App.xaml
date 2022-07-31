@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Star_Citizen_Pfusch"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
-</Application>
+    </Application>

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -8,6 +8,8 @@
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <ApplicationIcon>Star-Tools-Logo.ico</ApplicationIcon>
     <Platforms>AnyCPU;x64</Platforms>
+	<UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -295,6 +297,7 @@
     <None Remove="Graphics\Star-Tools-Logo.png" />
     <None Remove="Graphics\Switch-Icon.png" />
     <None Remove="Graphics\Weapon.png" />
+    <None Remove="Star-Tools-Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -323,6 +326,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Switch-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Star-Tools-Logo.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -65,7 +65,6 @@ namespace Star_Citizen_Pfusch.Pages
                     if (ms.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         Debug.WriteLine("Logged in");
-                        PlaytimeCounter playtime = new PlaytimeCounter(1000 * 60);
                         MainWindow.setContent(new homeScreen());
                         Config.SessionToken = item.AccountData.SessionToken;
                         //login successfull
