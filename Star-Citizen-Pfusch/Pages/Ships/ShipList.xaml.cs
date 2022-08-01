@@ -5,10 +5,12 @@ using Star_Citizen_Pfusch.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,17 +31,81 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     {
         private ShipView shipView;
         private Frame contentFrame;
+        private GridViewColumnHeader lastHeaderClicked = null;
+        private ListSortDirection lastDirection = ListSortDirection.Ascending;
         public ShipList(Frame frame)
         {
+
+            this.Language = System.Windows.Markup.XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);
             contentFrame = frame;
             InitializeComponent();
 
             init();
         }
+        private void GridViewColumnHeaderClickedHandler(object sender, RoutedEventArgs e)
+        {
+            var headerClicked = e.OriginalSource as GridViewColumnHeader;
+            ListSortDirection direction;
+
+            if (headerClicked != null)
+            {
+                if (headerClicked.Role != GridViewColumnHeaderRole.Padding)
+                {
+                    if (headerClicked != lastHeaderClicked)
+                    {
+                        direction = ListSortDirection.Ascending;
+                    }
+                    else
+                    {
+                        if (lastDirection == ListSortDirection.Ascending)
+                        {
+                            direction = ListSortDirection.Descending;
+                        }
+                        else
+                        {
+                            direction = ListSortDirection.Ascending;
+                        }
+                    }
+
+                    var columnBinding = headerClicked.Column.DisplayMemberBinding as Binding;
+                    var sortBy = columnBinding?.Path.Path ?? headerClicked.Column.Header as string;
+
+                    Sort(sortBy, direction);
+
+                    if (direction == ListSortDirection.Ascending)
+                    {
+                        headerClicked.Column.HeaderTemplate = Resources["ArrowDown"] as DataTemplate;
+                    }
+                    else
+                    {
+                        headerClicked.Column.HeaderTemplate = Resources["ArrowUp"] as DataTemplate;
+                    }
+
+                    // Remove arrow from previously sorted header
+                    if (lastHeaderClicked != null && lastHeaderClicked != headerClicked)
+                    {
+                        lastHeaderClicked.Column.HeaderTemplate = null;
+                    }
+
+                    lastHeaderClicked = headerClicked;
+                    lastDirection = direction;
+                }
+            }
+        }
+        private void Sort(string sortBy, ListSortDirection direction)
+        {
+            ICollectionView dataView =
+              CollectionViewSource.GetDefaultView(ShipListView.ItemsSource);
+
+            dataView.SortDescriptions.Clear();
+            SortDescription sd = new SortDescription(sortBy, direction);
+            dataView.SortDescriptions.Add(sd);
+            dataView.Refresh();
+        }
 
         private async void init()
         {
-            List<ShipItem> shipItems = new List<ShipItem>();
+            List<FleetItem> shipItems = new List<FleetItem>();
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(Config.URL + "/Fleet");
@@ -50,7 +116,8 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
                 foreach (var entry in json)
                 {
-                    ShipItem item = JsonConvert.DeserializeObject<ShipItem>(entry.ToString());
+                    FleetItem item = JsonConvert.DeserializeObject<FleetItem>(entry.ToString());
+                    item.cargo = (int)item.cargo;
 
                     shipItems.Add(item);
                 }
@@ -63,9 +130,17 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListView listView = (ListView)sender;
-            ShipItem item = (ShipItem)listView.SelectedItem;
+            FleetItem item = (FleetItem)listView.SelectedItem;
             shipView = new ShipView(item._id);
             contentFrame.Content = shipView;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in ((GridView)ShipListView.View).Columns)
+            {
+                Debug.WriteLine($"Header: {item.Header} Width: {item.Width}");
+            }
         }
     }
 }

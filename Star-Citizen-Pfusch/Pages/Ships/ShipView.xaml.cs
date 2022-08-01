@@ -137,7 +137,9 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         }
         private string formate(string s)
         {
-            for (int i = s.Length - 3; i > 0; i -= 3)
+            int index = s.Length;
+            if (s.Contains(",")) index = s.LastIndexOf(",");
+            for (int i = index - 3; i > 0; i -= 3)
             {
                 s = s.Insert(i, ".");
             }
@@ -342,10 +344,16 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 box.Text = "Search";
                 box.Foreground = new SolidColorBrush(Color.FromArgb(255, 80, 80, 80));
 
-                sortModules(filterSettings.CoolerBox);
-                sortModules(filterSettings.PowerPlantBox);
-                sortModules(filterSettings.QuantumDriveBox);
-                sortModules(filterSettings.ShieldBox);
+                CheckBox[] checkBoxes = new CheckBox[] { filterSettings.AllBox, filterSettings.CoolerBox, filterSettings.PowerPlantBox, filterSettings.QuantumDriveBox, filterSettings.ShieldBox };
+
+                for (int i = 0; i < checkBoxes.Length; i++)
+                {
+                    if ((bool)checkBoxes[i].IsChecked)
+                    {
+                        sortModules(checkBoxes[i]);
+                        break;
+                    }
+                }
             }
         }
     }

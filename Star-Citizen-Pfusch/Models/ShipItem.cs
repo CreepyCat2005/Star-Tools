@@ -17,7 +17,7 @@ namespace Star_Citizen_Pfusch.Models
         public int health, maxLifetimeHours, size;
         public string type, subtype, grade, description, localName, status;
         public double cargo, qtFuelCapacity, fuelCapacity;
-        public ShipDataItem data;
+        public ShipDataItem data { get; set; }
         public ShipHullItem hull;
         public ModuleItem[] modules;
         public ShopItem[] shops;

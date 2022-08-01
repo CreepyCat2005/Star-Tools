@@ -3,21 +3,75 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Ships"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ShipList">
 
     <Grid>
 
-        <ListView x:Name="ShipListView" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" SelectionChanged="ListView_SelectionChanged" >
+        <ListView x:Name="ShipListView" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" SelectionChanged="ListView_SelectionChanged" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border Padding="{TemplateBinding Padding}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    SnapsToDevicePixels="true">
+                                    <GridViewRowPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" >
+                                <Setter.Value>
+                                    <SolidColorBrush>
+                                        <SolidColorBrush.Color>
+                                            <Color A="255" R="60" G="60" B="60" />
+                                        </SolidColorBrush.Color>
+                                    </SolidColorBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="BorderBrush" Value="Gray" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding _id}" />
                     <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}" />
+                    <GridViewColumn Header="Manufacturer" Width="270" DisplayMemberBinding="{Binding manufacturer.data.name}" />
+                    <GridViewColumn Header="Role" Width="250" DisplayMemberBinding="{Binding data.role}" />
+                    <GridViewColumn Header="Career" Width="170" DisplayMemberBinding="{Binding data.career}" />
+                    <GridViewColumn Header="Size" Width="190" DisplayMemberBinding="{Binding data.size.size}" />
+                    <GridViewColumn Header="Cargo" Width="130" DisplayMemberBinding="{Binding cargo}" />
+                    <GridViewColumn Header="Mass" Width="160" DisplayMemberBinding="{Binding hull.mass, StringFormat='0,0'}" />
+                    <GridViewColumn Header="Health" Width="130" DisplayMemberBinding="{Binding hull.hp, StringFormat='0,0'}" />
+                    <GridViewColumn Header="Speed" Width="120" DisplayMemberBinding="{Binding ifcs.maxSpeed}" />
+                    <GridViewColumn Header="Afterburner" Width="110" DisplayMemberBinding="{Binding ifcs.maxAfterburnSpeed, StringFormat='0,0'}" />
+                    <GridViewColumn Header="Pitch" Width="90" DisplayMemberBinding="{Binding ifcs.velocity.pitch}" />
+                    <GridViewColumn Header="Yaw" Width="90" DisplayMemberBinding="{Binding ifcs.velocity.yaw}" />
+                    <GridViewColumn Header="Roll" Width="90" DisplayMemberBinding="{Binding ifcs.velocity.roll}" />
+                    <GridViewColumn Header="Hydrogen Fuel" Width="140" DisplayMemberBinding="{Binding fuelCapacity, StringFormat='0,0'}" />
+                    <GridViewColumn Header="Quantum Fuel" Width="120" DisplayMemberBinding="{Binding qtFuelCapacity, StringFormat='0,0'}" />
+                    <GridViewColumn Header="Shield Type" Width="130" DisplayMemberBinding="{Binding shield.type}" />
+                    <GridViewColumn Header="Price" Width="120" DisplayMemberBinding="{Binding price, StringFormat='0,0'}" />
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Button Width="50" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,10" Click="Button_Click" />
 
     </Grid>
 </Page>

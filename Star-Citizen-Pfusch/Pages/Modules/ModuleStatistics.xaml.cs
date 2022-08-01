@@ -118,7 +118,7 @@ namespace Star_Citizen_Pfusch.Pages.Modules
         {
             int index = s.Length;
             if (s.Contains(",")) index = s.LastIndexOf(","); 
-            for (int i = s.Length - 3; i > 0; i -= 3)
+            for (int i = index - 3; i > 0; i -= 3)
             {
                 s = s.Insert(i,".");
             }

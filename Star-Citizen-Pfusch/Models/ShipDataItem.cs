@@ -10,7 +10,7 @@ namespace Star_Citizen_Pfusch.Models
 {
     public class ShipDataItem
     {
-        public int crewSize;
+        public int crewSize { get; set; }
         public string career, role;
         public double inventoryCapacity;
         public ShipSizeItem size;

@@ -14,6 +14,8 @@
 
   <ItemGroup>
     <None Remove="Background.png" />
+    <None Remove="Graphics\ArrowDown.png" />
+    <None Remove="Graphics\ArrowUp.png" />
     <None Remove="Graphics\Cooler.png" />
     <None Remove="Graphics\Discord-Logo.png" />
     <None Remove="Graphics\Filter-Icon.png" />
@@ -353,6 +355,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Shield.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ArrowDown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ArrowUp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Graphics\ShipImages\A2 Hercules.jpg">
