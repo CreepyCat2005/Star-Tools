@@ -85,7 +85,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             switch (box.Content.ToString())
             {
                 case "Speed":
-                    moduleItems = moduleItems.OrderBy(o => ((QuantumDriveItem)((DragAndDropItem)o.Content).moduleItem).data.@params.driveSpeed).ToList();
 
                     break;
                 case "Efficiency":

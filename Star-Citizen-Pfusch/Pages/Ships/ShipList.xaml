@@ -70,8 +70,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <Button Width="50" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,10" Click="Button_Click" />
-
     </Grid>
 </Page>

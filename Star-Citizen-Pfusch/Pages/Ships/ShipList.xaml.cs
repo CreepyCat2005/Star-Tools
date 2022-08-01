@@ -134,13 +134,5 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             shipView = new ShipView(item._id);
             contentFrame.Content = shipView;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (var item in ((GridView)ShipListView.View).Columns)
-            {
-                Debug.WriteLine($"Header: {item.Header} Width: {item.Width}");
-            }
-        }
     }
 }
