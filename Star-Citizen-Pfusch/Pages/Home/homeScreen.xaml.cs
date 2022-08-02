@@ -19,7 +19,9 @@ namespace Star_Citizen_Pfusch
     /// </summary>
     public partial class homeScreen : Page
     {
-        private Telemetry telemetry = null;
+        private Telemetry Telemetry = null;
+        private ShipList ShipList = null;
+        private ShipList VehicleList = null;
         public homeScreen()
         {
             ResourceDictionary dictionary = new ResourceDictionary();
@@ -43,18 +45,19 @@ namespace Star_Citizen_Pfusch
         }
         private void MainMenuItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (telemetry == null)
+            if (Telemetry == null)
             {
                 Debug.WriteLine("New Telemetry");
-                telemetry = new Telemetry();
+                Telemetry = new Telemetry();
             }
-            ContentDisplay.Navigate(telemetry);
+            ContentDisplay.Navigate(Telemetry);
         }
 
         private void ShipItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (ShipList == null) ShipList = new ShipList(ContentDisplay, "Vehicle_Spaceship");
             ContentDisplay.Content = null;
-            ContentDisplay.Content = new ShipList(ContentDisplay);
+            ContentDisplay.Content = ShipList;
         }
 
         private void SettingsItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -66,6 +69,13 @@ namespace Star_Citizen_Pfusch
             window.Width = 800;
             window.Height = 450;
             window.Show();
+        }
+
+        private void Vehicle_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (VehicleList == null) VehicleList = new ShipList(ContentDisplay, "Vehicle_GroundVehicle");
+            ContentDisplay.Content = null;
+            ContentDisplay.Content = VehicleList;
         }
     }
 }

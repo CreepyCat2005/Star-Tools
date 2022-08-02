@@ -114,6 +114,7 @@
     <None Remove="Graphics\ShipImages\Crucible.jpg" />
     <None Remove="Graphics\ShipImages\crus_starfighter_inferno.jpg" />
     <None Remove="Graphics\ShipImages\crus_starfighter_ion.jpg" />
+    <None Remove="Graphics\ShipImages\crus_starlifter_m2.jpg" />
     <None Remove="Graphics\ShipImages\crus_star_runner.jpg" />
     <None Remove="Graphics\ShipImages\Cutlass Blue.jpg" />
     <None Remove="Graphics\ShipImages\Cutlass_Black.jpg" />
@@ -185,7 +186,6 @@
     <None Remove="Graphics\ShipImages\krig_p72_archimedes.jpg" />
     <None Remove="Graphics\ShipImages\Legionnaire.jpg" />
     <None Remove="Graphics\ShipImages\Liberator.jpg" />
-    <None Remove="Graphics\ShipImages\M2 Hercules.jpg" />
     <None Remove="Graphics\ShipImages\M2_Hercules_Starlifter.jpg" />
     <None Remove="Graphics\ShipImages\M50.jpg" />
     <None Remove="Graphics\ShipImages\Mantis.jpg" />
@@ -216,7 +216,6 @@
     <None Remove="Graphics\ShipImages\Mustang_Omega.jpg" />
     <None Remove="Graphics\ShipImages\Nautilus.jpg" />
     <None Remove="Graphics\ShipImages\Nomad.jpg" />
-    <None Remove="Graphics\ShipImages\Nova.jpg" />
     <None Remove="Graphics\ShipImages\Nox.jpg" />
     <None Remove="Graphics\ShipImages\Odyssey.jpg" />
     <None Remove="Graphics\ShipImages\orig_100i.jpg" />
@@ -285,6 +284,7 @@
     <None Remove="Graphics\ShipImages\tmbl_cyclone_rc.jpg" />
     <None Remove="Graphics\ShipImages\tmbl_cyclone_rn.jpg" />
     <None Remove="Graphics\ShipImages\tmbl_cyclone_tr.jpg" />
+    <None Remove="Graphics\ShipImages\tmbl_nova.jpg" />
     <None Remove="Graphics\ShipImages\vncl_blade.jpg" />
     <None Remove="Graphics\ShipImages\vncl_glaive.jpg" />
     <None Remove="Graphics\ShipImages\vncl_scythe.jpg" />
@@ -642,7 +642,7 @@
     <Resource Include="Graphics\ShipImages\Liberator.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Graphics\ShipImages\M2 Hercules.jpg">
+    <Resource Include="Graphics\ShipImages\crus_starlifter_m2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Graphics\ShipImages\Merchantman.jpg">
@@ -699,9 +699,9 @@
     <Resource Include="Graphics\ShipImages\Nomad.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Graphics\ShipImages\Nova.jpg">
+    <Content Include="Graphics\ShipImages\tmbl_nova.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Resource Include="Graphics\ShipImages\Odyssey.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

@@ -113,7 +113,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem Content="Fahrzeuge" FontSize="35" Foreground="White" >
+            <ListBoxItem Content="Fahrzeuge" FontSize="35" Foreground="White" PreviewMouseLeftButtonUp="Vehicle_PreviewMouseLeftButtonUp" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>

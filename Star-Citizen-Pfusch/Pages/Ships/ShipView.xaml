@@ -64,8 +64,8 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" >
+                                            <Image Source="/Graphics/Switch-Icon.png" />
                                         </Border>
                                     </ControlTemplate>
                                 </Setter.Value>
@@ -85,7 +85,6 @@
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
-                    <Image Source="/Graphics/Switch-Icon.png" />
                 </Button>
                 <Button HorizontalAlignment="Right" BorderThickness="0" Margin="0,0,10,0" Click="FilterButton_Click" ToolTip="Filter" >
                     <Button.Style>

@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace Star_Citizen_Backend.Models
+namespace Star_Citizen_Pfusch.Models
 {
     [BsonIgnoreExtraElements]
     public class ShieldItem : ModuleItem

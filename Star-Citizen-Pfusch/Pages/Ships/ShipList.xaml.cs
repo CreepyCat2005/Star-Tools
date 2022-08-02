@@ -33,14 +33,14 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         private Frame contentFrame;
         private GridViewColumnHeader lastHeaderClicked = null;
         private ListSortDirection lastDirection = ListSortDirection.Ascending;
-        public ShipList(Frame frame)
+        public ShipList(Frame frame, string type)
         {
 
             this.Language = System.Windows.Markup.XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);
             contentFrame = frame;
             InitializeComponent();
 
-            init();
+            init(type);
         }
         private void GridViewColumnHeaderClickedHandler(object sender, RoutedEventArgs e)
         {
@@ -103,12 +103,12 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             dataView.Refresh();
         }
 
-        private async void init()
+        private async void init(string type)
         {
             List<FleetItem> shipItems = new List<FleetItem>();
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage response = await client.GetAsync(Config.URL + "/Fleet");
+                HttpResponseMessage response = await client.GetAsync(Config.URL + "/Fleet?type=" + type);
 
                 string input = await response.Content.ReadAsStringAsync();
 
