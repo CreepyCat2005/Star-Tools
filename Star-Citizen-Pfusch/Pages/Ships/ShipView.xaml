@@ -8,6 +8,16 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ShipInformation" RenderOptions.BitmapScalingMode="HighQuality" >
 
+    <Page.Resources>
+        <ControlTemplate TargetType="ListBoxItem" x:Key="ControlTemplate" >
+            <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                  BorderThickness="{TemplateBinding BorderThickness}" 
+                  Background="{TemplateBinding Background}">
+                <ContentPresenter />
+            </Border>
+        </ControlTemplate>
+    </Page.Resources>
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -33,7 +43,7 @@
 
         <TextBox TextWrapping="Wrap" Grid.Row="0" Grid.Column="0" Background="Transparent" Foreground="White" BorderThickness="0" FontSize="20" CaretBrush="White" />
 
-        <Grid x:Name="ModuleGrid" />
+        <ListBox Background="Transparent" BorderThickness="0" x:Name="ModuleTargetListBox" Grid.Row="0" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" />
 
         <Grid Grid.Row="2">
 

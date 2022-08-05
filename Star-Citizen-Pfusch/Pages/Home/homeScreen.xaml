@@ -179,6 +179,39 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
+            <ListBoxItem Content="Shops" FontSize="35" Foreground="White" x:Name="ShopItem" PreviewMouseLeftButtonUp="ShopItem_PreviewMouseLeftButtonUp" >
+                <ListBoxItem.Style>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="White" Offset="0.025"/>
+                                            <GradientStop Offset="0.025">
+                                                <GradientStop.Color>
+                                                    <Color A="255" R="40" G="40" B="40" />
+                                                </GradientStop.Color>
+                                            </GradientStop>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBoxItem.Style>
+            </ListBoxItem>
+
             <ListBoxItem Content="Einstellungen" FontSize="35" Foreground="White" x:Name="SettingsItem" PreviewMouseLeftButtonUp="SettingsItem_MouseLeftButtonDown" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">

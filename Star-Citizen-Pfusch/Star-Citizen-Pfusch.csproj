@@ -22,6 +22,7 @@
     <None Remove="Graphics\Info-Icon.png" />
     <None Remove="Graphics\MadeByTheCommunity_White-00.png" />
     <None Remove="Graphics\Missile.png" />
+    <None Remove="Graphics\Missile_Rack.png" />
     <None Remove="Graphics\Power_Plant.png" />
     <None Remove="Graphics\Quantum_Drive.png" />
     <None Remove="Graphics\Shield.png" />
@@ -318,6 +319,12 @@
     <Content Include="Graphics\MadeByTheCommunity_White-00.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\Missile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Missile_Rack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\ShipImages\orig_890jump.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -336,6 +343,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.21.1" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.4" />
     <PackageReference Include="MongoDB.Bson" Version="2.16.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -343,9 +351,6 @@
 
   <ItemGroup>
     <Content Include="Graphics\Cooler.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Graphics\Missile.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Power_Plant.png">

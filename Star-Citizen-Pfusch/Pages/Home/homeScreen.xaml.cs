@@ -2,6 +2,7 @@
 using Star_Citizen_Pfusch.Functions;
 using Star_Citizen_Pfusch.Pages.Home;
 using Star_Citizen_Pfusch.Pages.Ships;
+using Star_Citizen_Pfusch.Pages.Shops;
 using System;
 using System.Diagnostics;
 using System.Net.Http;
@@ -22,6 +23,7 @@ namespace Star_Citizen_Pfusch
         private Telemetry Telemetry = null;
         private ShipList ShipList = null;
         private ShipList VehicleList = null;
+        private ShopList ShopList = null;
         public homeScreen()
         {
             ResourceDictionary dictionary = new ResourceDictionary();
@@ -76,6 +78,13 @@ namespace Star_Citizen_Pfusch
             if (VehicleList == null) VehicleList = new ShipList(ContentDisplay, "Vehicle_GroundVehicle");
             ContentDisplay.Content = null;
             ContentDisplay.Content = VehicleList;
+        }
+
+        private void ShopItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (ShopList == null) ShopList = new ShopList();
+            ContentDisplay.Content = null;
+            ContentDisplay.Content = ShopList;
         }
     }
 }

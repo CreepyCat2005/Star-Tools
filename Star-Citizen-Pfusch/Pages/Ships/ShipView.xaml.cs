@@ -168,26 +168,46 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             JArray jArray = JArray.Parse(moduleRes);
 
-            List<string> validTypes = new List<string>(new string[] { "Shield", "PowerPlant", "QuantumDrive", "Cooler" });
+            List<string> validTypes = new List<string>(new string[] { "Shield", "PowerPlant", "QuantumDrive", "Cooler", "MissileLauncher" });
             List<JToken> localNames = new List<JToken>(jArray.Children()["localName"]);
             int counter = 0;
-
-            foreach (var element in JArray.Parse(JObject.Parse(shipRes)["modules"].ToString()))
+            ListBoxItem listBoxItem = new ListBoxItem()
             {
-                if (element.Value<JToken>("itemTypes").Type != JTokenType.Null && element.Value<JToken>("itemTypes").HasValues && validTypes.Contains(element.Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type")))
+                Content = new Grid(),
+                Background = new SolidColorBrush(Colors.Transparent),
+                Foreground = new SolidColorBrush(Colors.White),
+                Template = (ControlTemplate)Resources["ControlTemplate"],
+                Height = 200
+            };
+            var element = JArray.Parse(JObject.Parse(shipRes)["modules"].ToString()).Where(o => o.Value<JToken>("itemTypes").Type != JTokenType.Null && o.Value<JToken>("itemTypes").HasValues && validTypes.Contains(o.Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type"))).ToList();
+
+            List<int> distributedIntegers = DistributeInteger(element.Count, (int)Math.Ceiling(element.Count / 8.0)).ToList();
+            int distributedIntegersCounter = 0;
+
+            for (int i = 0; i < element.Count; i++)
+            {
+                Grid grid = (Grid)listBoxItem.Content;
+                ModuleItem temp = JsonConvert.DeserializeObject<ModuleItem>(jArray[localNames.IndexOf(element[i].Value<string>("localName"))].ToString());
+
+                DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = element[i].Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type"), type = (ModuleTypeEnum)temp.type, Size = "Size: " + temp.size.ToString() };
+                dragAndDropTarget.ContentFrame.Content = new DragAndDropItem() { QtNameText = temp.name, QtGradeText = "Grade: " + temp.grade, QtSizeText = "Size: " + temp.size.ToString(), type = (ModuleTypeEnum)temp.type };
+
+
+                if (grid.Children.Count >= distributedIntegers[distributedIntegersCounter])
                 {
-                    ModuleItem temp = JsonConvert.DeserializeObject<ModuleItem>(jArray[localNames.IndexOf(element.Value<string>("localName"))].ToString());
-
-                    DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = element.Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type") , type = (ModuleTypeEnum)temp.type, Size = "Size: " + temp.size.ToString() };
-                    dragAndDropTarget.ContentFrame.Content = new DragAndDropItem() { QtNameText = temp.name, QtGradeText = "Grade: " + temp.grade, QtSizeText = "Size: " + temp.size.ToString(), type = (ModuleTypeEnum)temp.type };
-
-                    ModuleGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                    Grid.SetColumn(dragAndDropTarget, counter);
-                    ModuleGrid.Children.Add(dragAndDropTarget);
-
-                    counter++;
+                    ModuleTargetListBox.Items.Add(listBoxItem);
+                    listBoxItem = new ListBoxItem() { Content = new Grid(), Background = new SolidColorBrush(Colors.Transparent), Foreground = new SolidColorBrush(Colors.White), Template = (ControlTemplate)Resources["ControlTemplate"], Height = 200 };
+                    grid = (Grid)listBoxItem.Content;
+                    counter = 0;
+                    distributedIntegersCounter++;
                 }
+                if (grid.ColumnDefinitions.Count < distributedIntegers[distributedIntegersCounter]) grid.ColumnDefinitions.Add(new ColumnDefinition());
+                Grid.SetColumn(dragAndDropTarget, counter);
+                grid.Children.Add(dragAndDropTarget);
+
+                counter++;
             }
+            ModuleTargetListBox.Items.Add(listBoxItem);
 
             foreach (var module in jArray)
             {
@@ -207,6 +227,12 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                         break;
                     case ModuleTypeEnum.Shield:
                         obj = JsonConvert.DeserializeObject<ShieldItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Mining:
+                        obj = JsonConvert.DeserializeObject<MiningLaserItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Missile_Rack:
+                        obj = JsonConvert.DeserializeObject<MissileRackItem>(module.ToString());
                         break;
                 }
 
@@ -234,7 +260,26 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             }
             ModuleList.ItemsSource = moduleItems;
         }
+        private static IEnumerable<int> DistributeInteger(int total, int divider)
+        {
+            if (divider == 0)
+            {
+                yield return 0;
+            }
+            else
+            {
+                int rest = total % divider;
+                double result = total / (double)divider;
 
+                for (int i = 0; i < divider; i++)
+                {
+                    if (rest-- > 0)
+                        yield return (int)Math.Ceiling(result);
+                    else
+                        yield return (int)Math.Floor(result);
+                }
+            }
+        }
         private void BoxItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             DragAndDropItem item = (DragAndDropItem)((ListBoxItem)sender).Content;
@@ -256,8 +301,11 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
         private int getModuleSize(ModuleTypeEnum type)
         {
-            DragAndDropTarget[] targets = new DragAndDropTarget[10];
-            ModuleGrid.Children.CopyTo(targets,0);
+            List<DragAndDropTarget> targets = new List<DragAndDropTarget>();
+            foreach (ListBoxItem item in ModuleTargetListBox.Items)
+            {
+                targets.AddRange(((Grid)item.Content).Children.OfType<DragAndDropTarget>());
+            }
 
             foreach (var item in targets)
             {
