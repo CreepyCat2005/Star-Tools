@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Linq;
+using Star_Citizen_Pfusch.Pages.Ships;
 
 
 namespace Star_Citizen_Pfusch.Pages.Ships

@@ -29,7 +29,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     /// </summary>
     public partial class ShipList : Page
     {
-        private _3DShipView shipView;
+        private ShipView shipView;
         private Frame contentFrame;
         private GridViewColumnHeader lastHeaderClicked = null;
         private ListSortDirection lastDirection = ListSortDirection.Ascending;
@@ -131,7 +131,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         {
             ListView listView = (ListView)sender;
             FleetItem item = (FleetItem)listView.SelectedItem;
-            shipView = new _3DShipView(item._id);
+            shipView = new ShipView(item._id);
             contentFrame.Content = shipView;
         }
     }
