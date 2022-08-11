@@ -54,5 +54,10 @@ namespace Star_Citizen_Pfusch.Models
             DropField.CornerRadius = new CornerRadius((this.ActualHeight + this.ActualWidth) / 2 / 20);
             ModuleImage.Source = new BitmapImage(new Uri("/Graphics/" + type + ".png", UriKind.Relative));
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Content = null;
+        }
     }
 }
