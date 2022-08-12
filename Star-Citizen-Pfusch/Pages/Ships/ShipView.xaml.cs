@@ -190,8 +190,8 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 Grid grid = (Grid)listBoxItem.Content;
                 ModuleItem temp = JsonConvert.DeserializeObject<ModuleItem>(jArray[localNames.IndexOf(element[i].Value<string>("localName"))].ToString());
 
-                DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = element[i].Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type"), type = (ModuleTypeEnum)temp.type, Size = "Size: " + temp.size.ToString() };
-                dragAndDropTarget.ContentFrame.Content = new DragAndDropItem() { QtNameText = temp.name, QtGradeText = "Grade: " + temp.grade, QtSizeText = "Size: " + temp.size.ToString(), type = (ModuleTypeEnum)temp.type };
+                DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = element[i].Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type"), type = (ModuleTypeEnum)temp.type, Size = temp.size };
+                dragAndDropTarget.ContentFrame.Content = new DragAndDropItem() { QtNameText = temp.name, QtGradeText = "Grade: " + temp.grade, Size = temp.size, type = (ModuleTypeEnum)temp.type, QtSizeText = "Size: " + temp.size };
 
 
                 if (grid.Children.Count >= distributedIntegers[distributedIntegersCounter])
@@ -235,6 +235,9 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     case ModuleTypeEnum.Missile_Rack:
                         obj = JsonConvert.DeserializeObject<MissileRackItem>(module.ToString());
                         break;
+                    case ModuleTypeEnum.Missile:
+                        obj = JsonConvert.DeserializeObject<MissileItem>(module.ToString());
+                        break;
                 }
 
                 if (moduleItem.size != getModuleSize((ModuleTypeEnum)moduleItem.type)) continue;
@@ -246,7 +249,8 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     moduleItem = obj,
                     QtNameText = moduleItem.name,
                     QtGradeText = "Grade: " + moduleItem.grade,
-                    QtSizeText = "Size: " + moduleItem.size.ToString(),
+                    QtSizeText = "Size: " + moduleItem.size,
+                    Size = moduleItem.size,
                     type = (ModuleTypeEnum)moduleItem.type,
                     Width = (int)width,
                     Height = (int)heigth
@@ -310,7 +314,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             foreach (var item in targets)
             {
-                if (item != null && item.type == type) return int.Parse(item.Size.Replace("Size: ",""));
+                if (item != null && (ModuleTypeEnum)item.type == type) return item.Size;
             }
             return 9354;
         }

@@ -958,4 +958,10 @@
     <Folder Include="Graphics\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Models\DragAndDropFrame.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>

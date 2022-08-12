@@ -34,9 +34,27 @@ namespace Star_Citizen_Pfusch.Models
             {
                 DragAndDropItem item = e.Data.GetData("Object") as DragAndDropItem;
 
-                if (item.type == type && item.QtSizeText.Equals(Size))
+                if (item.type == type && item.Size.Equals(Size))
                 {
-                    ContentFrame.Content = new DragAndDropItem(item.QtGradeText, item.QtSizeText, item.QtNameText, item.type);
+                    if (ContentFrame.Content.GetType() == typeof(DragAndDropFrame))
+                    {
+                        ((DragAndDropFrame)ContentFrame.Content).ContentFrame.Content = new DragAndDropItem(item.QtGradeText, item.Size, item.QtNameText, item.type);
+                    }
+                    else
+                    {
+                        ContentFrame.Content = new DragAndDropItem(item.QtGradeText, item.Size, item.QtNameText, item.type);
+                    }
+
+                    e.Effects = DragDropEffects.Move;
+                }
+            }
+            if (e.Data.GetDataPresent("Frame"))
+            {
+                DragAndDropFrame item = e.Data.GetData("Frame") as DragAndDropFrame;
+
+                if (item.Type == type && item.Size.Equals(Size))
+                {
+                    ContentFrame.Content = new DragAndDropFrame(item.Size, item.ModuleName, item.Type);
                     item = null;
 
                     e.Effects = DragDropEffects.Move;
@@ -46,7 +64,7 @@ namespace Star_Citizen_Pfusch.Models
             e.Handled = true;
         }
         public string Text { get; set; }
-        public string Size { get; set; }
+        public int Size { get; set; }
         public ModuleTypeEnum type { get; set; }
 
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)

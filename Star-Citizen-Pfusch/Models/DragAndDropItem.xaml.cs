@@ -27,11 +27,12 @@ namespace Star_Citizen_Pfusch.Models
             this.DataContext = this;
         }
 
-        public DragAndDropItem(string grade, string size, string name,ModuleTypeEnum type)
+        public DragAndDropItem(string grade, int size, string name,ModuleTypeEnum type)
         {
             QtGradeText = grade;
             QtNameText = name;
-            QtSizeText = size;
+            QtSizeText = "Size: " + size;
+            Size = size;
             this.type = type;
 
             InitializeComponent();
@@ -51,6 +52,7 @@ namespace Star_Citizen_Pfusch.Models
         }
 
         public string _id { get; set; }
+        public int Size { get; set; }
         public string QtGradeText { get; set; }
         public string QtSizeText { get; set; }
         public string QtNameText { get; set; }

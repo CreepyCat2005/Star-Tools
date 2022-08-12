@@ -23,12 +23,12 @@ namespace Star_Citizen_Pfusch.Models
         public int zeroDamageRate { get; set; }
         public int heatPerSecond { get; set; }
         public double hitRadius { get; set; }
-        public MiningLaserDamageItem damage { get; set; }
+        public DamageItem damage { get; set; }
     }
     [BsonIgnoreExtraElements]
-    public class MiningLaserDamageItem
+    public class DamageItem
     {
-        public int damagePhysical { get; set; }
+        public double damagePhysical { get; set; }
         public int damageEnergy { get; set; }
         public int damageDistortion { get; set; }
         public int damageThermal { get; set; }

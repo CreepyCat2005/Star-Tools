@@ -51,7 +51,7 @@
                 <TextBox IsReadOnly="True" Background="Transparent" Foreground="White" Text="{Binding Text}" BorderThickness="0" />
             </Viewbox>
         </Grid>
-        
+
         <Viewbox Grid.Row="1" Grid.Column="1" Margin="0,20" >
             <Label Content="Empty" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" />
         </Viewbox>

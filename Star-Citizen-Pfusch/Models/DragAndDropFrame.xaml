@@ -5,12 +5,55 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="130" d:DesignWidth="200" >
     <Grid>
-        
-        
-        
-        
-            
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".05*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width=".05*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".25*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".07*" />
+        </Grid.RowDefinitions>
+
+        <Border x:Name="BackgroundBorder" Grid.RowSpan="3" CornerRadius="20" BorderThickness="1" BorderBrush="Black" Grid.Column="0" Grid.ColumnSpan="10" SizeChanged="Border_SizeChanged" >
+            <Border.Background>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="40" G="40" B="40" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </Border.Background>
+        </Border>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,2" >
+            <Image x:Name="ModuleImage" Grid.Column="1" Grid.Row="0" />
+            <Viewbox VerticalAlignment="Center">
+                <TextBox Grid.Column="1" Text="{Binding ModuleName}" Background="Transparent" Foreground="White" BorderThickness="0" VerticalAlignment="Center"  />
+            </Viewbox>
+        </StackPanel>
+
+        <Border x:Name="DropField" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Row="1" BorderThickness="1" BorderBrush="Gray" SizeChanged="Border_SizeChanged" >
+            <Border.Background>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="30" G="30" B="30" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </Border.Background>
+        </Border>
+
+        <Viewbox Grid.Row="1" Grid.Column="0" Margin="0,20" Grid.RowSpan="2" Grid.ColumnSpan="3" >
+            <Label Content="Empty" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" />
+        </Viewbox>
+
+        <Frame x:Name="ContentFrame" Grid.Column="0" Grid.Row="1" Margin="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+        <Rectangle Grid.Column="1" Grid.Row="1" Fill="Transparent" />
+
+
     </Grid>
 </UserControl>
