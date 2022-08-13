@@ -45,7 +45,14 @@ namespace Star_Citizen_Pfusch.Models
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DataObject data = new DataObject();
-                data.SetData("Object", this);
+                if (this.type != ModuleTypeEnum.Missile_Rack)
+                {
+                    data.SetData("Object", this);
+                }
+                else
+                {
+                    data.SetData("Frame", this);
+                }
 
                 DragDrop.DoDragDrop(this, data, DragDropEffects.Move);
             }

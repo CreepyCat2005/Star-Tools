@@ -34,6 +34,8 @@
                 <CheckBox Foreground="White" x:Name="PowerPlantBox" Content="Power Plant" VerticalContentAlignment="Center" Checked="Box_Checked" />
                 <CheckBox Foreground="White" x:Name="CoolerBox" Content="Cooler" VerticalContentAlignment="Center" Checked="Box_Checked" />
                 <CheckBox Foreground="White" x:Name="ShieldBox" Content="Shield" VerticalContentAlignment="Center" Checked="Box_Checked" />
+                <CheckBox Foreground="White" x:Name="MissileRackBox" Content="Missile Rack" VerticalContentAlignment="Center" Checked="Box_Checked" />
+                <CheckBox Foreground="White" x:Name="MissileBox" Content="Missile" VerticalContentAlignment="Center" Checked="Box_Checked" />
             </TreeViewItem>
             <TreeViewItem Header="Advanced" Foreground="White" FontSize="25" IsExpanded="True" x:Name="AdvancedTreeItem" />
         </TreeView>

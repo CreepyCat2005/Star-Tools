@@ -34,27 +34,30 @@ namespace Star_Citizen_Pfusch.Models
             {
                 DragAndDropItem item = e.Data.GetData("Object") as DragAndDropItem;
 
-                if (item.type == type && item.Size.Equals(Size))
+                if (ContentFrame.Content.GetType() == typeof(DragAndDropFrame))
                 {
-                    if (ContentFrame.Content.GetType() == typeof(DragAndDropFrame))
+                    if (item.type == getSubType(type) && item.Size.Equals(((DragAndDropFrame)ContentFrame.Content).Size))
                     {
                         ((DragAndDropFrame)ContentFrame.Content).ContentFrame.Content = new DragAndDropItem(item.QtGradeText, item.Size, item.QtNameText, item.type);
                     }
-                    else
+                }
+                else
+                {
+                    if (item.type == type && item.Size.Equals(Size))
                     {
                         ContentFrame.Content = new DragAndDropItem(item.QtGradeText, item.Size, item.QtNameText, item.type);
                     }
-
-                    e.Effects = DragDropEffects.Move;
                 }
+
+                e.Effects = DragDropEffects.Move;
             }
             if (e.Data.GetDataPresent("Frame"))
             {
-                DragAndDropFrame item = e.Data.GetData("Frame") as DragAndDropFrame;
+                DragAndDropItem item = e.Data.GetData("Frame") as DragAndDropItem;
 
-                if (item.Type == type && item.Size.Equals(Size))
+                if (item.type == type && item.Size.Equals(Size))
                 {
-                    ContentFrame.Content = new DragAndDropFrame(item.Size, item.ModuleName, item.Type);
+                    ContentFrame.Content = new DragAndDropFrame(item.Size, item.QtNameText, item.type);
                     item = null;
 
                     e.Effects = DragDropEffects.Move;
@@ -62,6 +65,16 @@ namespace Star_Citizen_Pfusch.Models
             }
 
             e.Handled = true;
+        }
+        private ModuleTypeEnum getSubType(ModuleTypeEnum type)
+        {
+            switch (type)
+            {
+                case ModuleTypeEnum.Missile_Rack:
+                    return ModuleTypeEnum.Missile;
+                default:
+                    return ModuleTypeEnum.Unknown;
+            }
         }
         public string Text { get; set; }
         public int Size { get; set; }

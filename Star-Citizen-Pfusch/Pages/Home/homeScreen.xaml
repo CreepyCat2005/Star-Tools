@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="homeScreen" RenderOptions.BitmapScalingMode="HighQuality" >
 
-    <Grid>
+    <Grid x:Name="Grid" >
         
         <Grid.Background>
             <ImageBrush ImageSource="/Graphics/Background.png" Stretch="UniformToFill"/>
@@ -24,7 +24,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Frame x:Name="ContentDisplay" Grid.Column="2" Grid.Row="0" Grid.RowSpan="8" BorderThickness="0" NavigationUIVisibility="Hidden" >
+        <Frame x:Name="ContentDisplay" Grid.Column="2" Grid.Row="0" Grid.RowSpan="8" BorderThickness="0" NavigationUIVisibility="Hidden" MouseLeftButtonDown="ContentFrame_MouseLeftButtonDown" MouseMove="ContentFrame_MouseMove" MouseRightButtonUp="ContentDisplay_MouseRightButtonUp" >
             <Frame.Background>
                 <SolidColorBrush>
                     <SolidColorBrush.Color>
@@ -245,9 +245,6 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
         </ListBox>
-
-        
-        <Frame x:Name="ContentFrame" Grid.Column="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" />
 
     </Grid>
 </Page>

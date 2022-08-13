@@ -28,7 +28,7 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
 
         private void Box_Checked(object sender, RoutedEventArgs e)
         {
-            List<CheckBox> boxes = new List<CheckBox>(new CheckBox[] { PowerPlantBox, QuantumDriveBox, CoolerBox, ShieldBox, AllBox });
+            List<CheckBox> boxes = new List<CheckBox>(new CheckBox[] { PowerPlantBox, QuantumDriveBox, CoolerBox, ShieldBox, AllBox, MissileBox, MissileRackBox });
             boxes.Remove((CheckBox)sender);
 
             for (int i = 0; i < boxes.Count; i++)

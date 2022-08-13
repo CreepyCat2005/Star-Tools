@@ -14,8 +14,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Linq;
-using Star_Citizen_Pfusch.Pages.Ships;
-
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Star_Citizen_Pfusch.Pages.Ships
 {
@@ -26,25 +26,87 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     {
         private List<ListBoxItem> moduleItems = new List<ListBoxItem>();
         private FilterSettings filterSettings = new FilterSettings();
-        private List<ModuleTypeEnum> checkedBoxes = new List<ModuleTypeEnum>();
         private ShipStatistics shipStatistics = new ShipStatistics();
         private ModuleStatistics moduleStatistics;
         private ShipItem shipItem;
+        private JArray jArray;
 
         public ShipView(string shipID)
         {
+            InitializeComponent();
+
             init(shipID);
 
-            checkedBoxes.AddRange(new ModuleTypeEnum[] { ModuleTypeEnum.Quantum_Drive, ModuleTypeEnum.Power_Plant, ModuleTypeEnum.Shield, ModuleTypeEnum.Cooler});
+            ModuleTargetListBox.Loaded += ModuleTargetListBox_Loaded;
             filterSettings.CoolerBox.Checked += ModuleBox_Checked;
             filterSettings.PowerPlantBox.Checked += ModuleBox_Checked;
             filterSettings.QuantumDriveBox.Checked += ModuleBox_Checked;
             filterSettings.ShieldBox.Checked += ModuleBox_Checked;
+            filterSettings.MissileBox.Checked += ModuleBox_Checked;
+            filterSettings.MissileRackBox.Checked += ModuleBox_Checked;
             filterSettings.AllBox.Checked += ModuleBox_Checked;
-            InitializeComponent();
 
             SettingsFrame.Navigate(shipStatistics);
         }
+
+        private void ModuleTargetListBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach (var module in jArray)
+            {
+                ModuleItem moduleItem = JsonConvert.DeserializeObject<ModuleItem>(module.ToString());
+                object obj = null;
+
+                switch ((ModuleTypeEnum)int.Parse(module["type"].ToString()))
+                {
+                    case ModuleTypeEnum.Quantum_Drive:
+                        obj = JsonConvert.DeserializeObject<QuantumDriveItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Cooler:
+                        obj = JsonConvert.DeserializeObject<CoolerItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Power_Plant:
+                        obj = JsonConvert.DeserializeObject<PowerPlantItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Shield:
+                        obj = JsonConvert.DeserializeObject<ShieldItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Mining:
+                        obj = JsonConvert.DeserializeObject<MiningLaserItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Missile_Rack:
+                        obj = JsonConvert.DeserializeObject<MissileRackItem>(module.ToString());
+                        break;
+                    case ModuleTypeEnum.Missile:
+                        obj = JsonConvert.DeserializeObject<MissileItem>(module.ToString());
+                        break;
+                }
+
+                if (!getModuleSize((ModuleTypeEnum)moduleItem.type).Contains(moduleItem.size)) continue;
+                double width = 130.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 1920.0);
+                double heigth = 100.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height / 1080.0);
+                DragAndDropItem dragAndDropItem = new DragAndDropItem()
+                {
+                    _id = moduleItem._id,
+                    moduleItem = obj,
+                    QtNameText = moduleItem.name,
+                    QtGradeText = "Grade: " + moduleItem.grade,
+                    QtSizeText = "Size: " + moduleItem.size,
+                    Size = moduleItem.size,
+                    type = (ModuleTypeEnum)moduleItem.type,
+                    Width = (int)width,
+                    Height = (int)heigth
+                };
+
+                ListBoxItem boxItem = new ListBoxItem() { Content = dragAndDropItem };
+                boxItem.MouseEnter += BoxItem_MouseEnter;
+                boxItem.MouseLeave += BoxItem_MouseLeave;
+                boxItem.MouseDoubleClick += BoxItem_MouseDoubleClick;
+
+                moduleItems.Add(boxItem);
+            }
+            ModuleList.ItemsSource = moduleItems;
+        }
+
         private ModuleTypeEnum stringToModuleType(string s)
         {
             switch (s)
@@ -57,24 +119,10 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     return ModuleTypeEnum.Power_Plant;
                 case "Shield":
                     return ModuleTypeEnum.Shield;
-                default:
-                    return ModuleTypeEnum.Unknown;
-            }
-        }
-        private ModuleTypeEnum checkBoxToModuleType(string s)
-        {
-            switch (s)
-            {
-                case "Speed":
-                case "Efficiency":
-                    return ModuleTypeEnum.Quantum_Drive;
-                case "Cooling Rate":
-                    return ModuleTypeEnum.Cooler;
-                case "Power":
-                    return ModuleTypeEnum.Power_Plant;
-                case "Shield HP":
-                case "Regeneration Rate":
-                    return ModuleTypeEnum.Shield;
+                case "Missile":
+                    return ModuleTypeEnum.Missile;
+                case "Missile Rack":
+                    return ModuleTypeEnum.Missile_Rack;
                 default:
                     return ModuleTypeEnum.Unknown;
             }
@@ -135,12 +183,12 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             }
         }
-        private async void init(string shipID)
+        private void init(string shipID)
         {
             HttpClient client = new HttpClient();
 
-            HttpResponseMessage response = await client.GetAsync(Config.URL + $"/Ship?ID={shipID}");
-            string shipRes = await response.Content.ReadAsStringAsync();
+            HttpResponseMessage response = client.GetAsync(Config.URL + $"/Ship?ID={shipID}").Result;
+            string shipRes = response.Content.ReadAsStringAsync().Result;
 
             shipItem = JsonConvert.DeserializeObject<ShipItem>(shipRes);
 
@@ -164,10 +212,10 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             shipStatistics.ShopTreeView.ItemsSource = treeViewItems;
 
-            response = await client.GetAsync(Config.URL + "/Module/All");
-            string moduleRes = await response.Content.ReadAsStringAsync();
+            response = client.GetAsync(Config.URL + "/Module/All").Result;
+            string moduleRes = response.Content.ReadAsStringAsync().Result;
 
-            JArray jArray = JArray.Parse(moduleRes);
+            jArray = JArray.Parse(moduleRes);
 
             List<string> validTypes = new List<string>(new string[] { "Shield", "PowerPlant", "QuantumDrive", "Cooler", "MissileLauncher" });
             List<JToken> localNames = new List<JToken>(jArray.Children()["localName"]);
@@ -191,8 +239,20 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 ModuleItem temp = JsonConvert.DeserializeObject<ModuleItem>(jArray[localNames.IndexOf(element[i].Value<string>("localName"))].ToString());
 
                 DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = element[i].Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type"), type = (ModuleTypeEnum)temp.type, Size = temp.size };
-                dragAndDropTarget.ContentFrame.Content = new DragAndDropItem() { QtNameText = temp.name, QtGradeText = "Grade: " + temp.grade, Size = temp.size, type = (ModuleTypeEnum)temp.type, QtSizeText = "Size: " + temp.size };
+                if (dragAndDropTarget.type == ModuleTypeEnum.Missile_Rack)
+                {
+                    MissileRackItem missileRack = JsonConvert.DeserializeObject<MissileRackItem>(jArray[localNames.IndexOf(element[i].Value<string>("localName"))].ToString());
+                    MissileItem missile = JsonConvert.DeserializeObject<MissileItem>(jArray[localNames.IndexOf(element[i]["loadout"].Select(o => o.Value<JToken>("localName")).ToList()[0])].ToString());
 
+                    DragAndDropFrame frame = new DragAndDropFrame() { Type = ModuleTypeEnum.Missile_Rack, ModuleName = temp.name, Size = missile.size };
+                    frame.ContentFrame.Content = new DragAndDropItem() { type = ModuleTypeEnum.Missile, QtNameText = missile.name, Size = missile.size, QtSizeText = "Size: " + missile.size, QtGradeText = "Anzahl: " + missileRack.ports.Length };
+
+                    dragAndDropTarget.ContentFrame.Content = frame;
+                }
+                else
+                {
+                    dragAndDropTarget.ContentFrame.Content = new DragAndDropItem() { QtNameText = temp.name, QtGradeText = "Grade: " + temp.grade, Size = temp.size, type = (ModuleTypeEnum)temp.type, QtSizeText = "Size: " + temp.size };
+                }
 
                 if (grid.Children.Count >= distributedIntegers[distributedIntegersCounter])
                 {
@@ -209,61 +269,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 counter++;
             }
             ModuleTargetListBox.Items.Add(listBoxItem);
-
-            foreach (var module in jArray)
-            {
-                ModuleItem moduleItem  = JsonConvert.DeserializeObject<ModuleItem>(module.ToString());
-                object obj = null;
-
-                switch ((ModuleTypeEnum)int.Parse(module["type"].ToString()))
-                {
-                    case ModuleTypeEnum.Quantum_Drive:
-                        obj = JsonConvert.DeserializeObject<QuantumDriveItem>(module.ToString());
-                        break;
-                    case ModuleTypeEnum.Cooler:
-                        obj = JsonConvert.DeserializeObject<CoolerItem>(module.ToString());
-                        break;
-                    case ModuleTypeEnum.Power_Plant:
-                        obj = JsonConvert.DeserializeObject<PowerPlantItem>(module.ToString());
-                        break;
-                    case ModuleTypeEnum.Shield:
-                        obj = JsonConvert.DeserializeObject<ShieldItem>(module.ToString());
-                        break;
-                    case ModuleTypeEnum.Mining:
-                        obj = JsonConvert.DeserializeObject<MiningLaserItem>(module.ToString());
-                        break;
-                    case ModuleTypeEnum.Missile_Rack:
-                        obj = JsonConvert.DeserializeObject<MissileRackItem>(module.ToString());
-                        break;
-                    case ModuleTypeEnum.Missile:
-                        obj = JsonConvert.DeserializeObject<MissileItem>(module.ToString());
-                        break;
-                }
-
-                if (moduleItem.size != getModuleSize((ModuleTypeEnum)moduleItem.type)) continue;
-                double width = 130.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 1920.0);
-                double heigth = 100.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height / 1080.0);
-                DragAndDropItem dragAndDropItem = new DragAndDropItem()
-                {
-                    _id = moduleItem._id,
-                    moduleItem = obj,
-                    QtNameText = moduleItem.name,
-                    QtGradeText = "Grade: " + moduleItem.grade,
-                    QtSizeText = "Size: " + moduleItem.size,
-                    Size = moduleItem.size,
-                    type = (ModuleTypeEnum)moduleItem.type,
-                    Width = (int)width,
-                    Height = (int)heigth
-                };
-
-                ListBoxItem boxItem = new ListBoxItem() { Content = dragAndDropItem };
-                boxItem.MouseEnter += BoxItem_MouseEnter;
-                boxItem.MouseLeave += BoxItem_MouseLeave;
-                boxItem.MouseDoubleClick += BoxItem_MouseDoubleClick;
-
-                moduleItems.Add(boxItem);
-            }
-            ModuleList.ItemsSource = moduleItems;
         }
         private static IEnumerable<int> DistributeInteger(int total, int divider)
         {
@@ -304,9 +309,10 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             item.BackgroundBorder.Background = new SolidColorBrush(Color.FromArgb(255,80,80,80));
         }
 
-        private int getModuleSize(ModuleTypeEnum type)
+        private List<int> getModuleSize(ModuleTypeEnum type)
         {
             List<DragAndDropTarget> targets = new List<DragAndDropTarget>();
+            List<int> sizes = new List<int>();
             foreach (ListBoxItem item in ModuleTargetListBox.Items)
             {
                 targets.AddRange(((Grid)item.Content).Children.OfType<DragAndDropTarget>());
@@ -314,9 +320,20 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             foreach (var item in targets)
             {
-                if (item != null && (ModuleTypeEnum)item.type == type) return item.Size;
+                if (item != null && item.type == type && item.ContentFrame.Content.GetType() != typeof(DragAndDropFrame) || (item != null && item.type == type && item.ContentFrame.Content.GetType() == typeof(DragAndDropFrame) && ((DragAndDropFrame)item.ContentFrame.Content).Type == ModuleTypeEnum.Missile_Rack )) sizes.Add(item.Size);
+                if (item != null && getSubType(item.type) == type && item.ContentFrame.Content.GetType() == typeof(DragAndDropFrame)) sizes.Add(((DragAndDropFrame)item.ContentFrame.Content).Size);
             }
-            return 9354;
+            return sizes;
+        }
+        private ModuleTypeEnum getSubType(ModuleTypeEnum type)
+        {
+            switch (type)
+            {
+                case ModuleTypeEnum.Missile_Rack:
+                    return ModuleTypeEnum.Missile;
+                default:
+                    return ModuleTypeEnum.Unknown;
+            }
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -333,7 +350,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
         private void SwitchButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("AKfjsdkljghsdh");
+
         }
 
         private void ShipStatsButton_Click(object sender, RoutedEventArgs e)
