@@ -101,7 +101,7 @@ namespace Star_Citizen_Pfusch
 
         private void ContentFrame_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed && ContentDisplay.Content.GetType() == typeof(Canvas))
             {
                 Line line = new Line();
 
@@ -120,7 +120,10 @@ namespace Star_Citizen_Pfusch
 
         private void ContentDisplay_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            ((Canvas)ContentDisplay.Content).Children.Clear();
+            if (ContentDisplay.Content.GetType() == typeof(Canvas))
+            {
+                ((Canvas)ContentDisplay.Content).Children.Clear();
+            }
         }
     }
 }

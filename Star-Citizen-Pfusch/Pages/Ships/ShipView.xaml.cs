@@ -24,7 +24,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     /// </summary>
     public partial class ShipView : Page
     {
-        private List<ListBoxItem> moduleItems = new List<ListBoxItem>();
+        private ObservableCollection<ListBoxItem> moduleItems = new ObservableCollection<ListBoxItem>();
         private FilterSettings filterSettings = new FilterSettings();
         private ShipStatistics shipStatistics = new ShipStatistics();
         private ModuleStatistics moduleStatistics;
@@ -130,20 +130,119 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         private void filterModules(object sender, RoutedEventArgs e)
         {
             CheckBox box = (CheckBox)sender;
+            double width = 130.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 1920.0);
+            double heigth = 100.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height / 1080.0);
+            List<ListBoxItem> items = new List<ListBoxItem>();
+            List<QuantumDriveItem> quantumDriveList;
+            List<ShieldItem> shieldList;
+            ListBoxItem listBox;
 
             switch (box.Content.ToString())
             {
                 case "Speed":
+                    quantumDriveList = moduleItems.OfType<ListBoxItem>().Select(o => o.Content).OfType<DragAndDropItem>().Select(o => o.moduleItem).OfType<QuantumDriveItem>().OrderByDescending(o => o.data.@params.driveSpeed).ToList();
+                    foreach (var item in quantumDriveList)
+                    {
+                        DragAndDropItem dragAndDropItem = new DragAndDropItem()
+                        {
+                            _id = item._id,
+                            moduleItem = item,
+                            QtNameText = item.name,
+                            QtGradeText = "Grade: " + item.grade,
+                            QtSizeText = "Size: " + item.size,
+                            Size = item.size,
+                            type = (ModuleTypeEnum)item.type,
+                            Width = (int)width,
+                            Height = (int)heigth
+                        };
 
+                        listBox = new ListBoxItem();
+                        listBox.MouseEnter += BoxItem_MouseEnter;
+                        listBox.MouseLeave += BoxItem_MouseLeave;
+                        listBox.MouseDoubleClick += BoxItem_MouseDoubleClick;
+                        listBox.Content = dragAndDropItem;
+
+                        items.Add(listBox);
+                    }
+                    for (int i = 0; i < moduleItems.Count; i++)
+                    {
+                        if (((DragAndDropItem)moduleItems[i].Content).moduleItem.GetType() == typeof(QuantumDriveItem))
+                        {
+                            moduleItems.Remove(moduleItems[i]);
+                            i = 0;
+                        }
+                    }
                     break;
                 case "Efficiency":
+                    quantumDriveList = moduleItems.OfType<ListBoxItem>().Select(o => o.Content).OfType<DragAndDropItem>().Select(o => o.moduleItem).OfType<QuantumDriveItem>().OrderBy(o => o.data.quantumFuelRequirement).ToList();
+                    foreach (var item in quantumDriveList)
+                    {
+                        DragAndDropItem dragAndDropItem = new DragAndDropItem()
+                        {
+                            _id = item._id,
+                            moduleItem = item,
+                            QtNameText = item.name,
+                            QtGradeText = "Grade: " + item.grade,
+                            QtSizeText = "Size: " + item.size,
+                            Size = item.size,
+                            type = (ModuleTypeEnum)item.type,
+                            Width = (int)width,
+                            Height = (int)heigth
+                        };
 
+                        listBox = new ListBoxItem();
+                        listBox.MouseEnter += BoxItem_MouseEnter;
+                        listBox.MouseLeave += BoxItem_MouseLeave;
+                        listBox.MouseDoubleClick += BoxItem_MouseDoubleClick;
+                        listBox.Content = dragAndDropItem;
+
+                        items.Add(listBox);
+                    }
+                    for (int i = 0; i < moduleItems.Count; i++)
+                    {
+                        if (((DragAndDropItem)moduleItems[i].Content).moduleItem.GetType() == typeof(QuantumDriveItem))
+                        {
+                            moduleItems.Remove(moduleItems[i]);
+                            i = 0;
+                        }
+                    }
                     break;
                 case "Power":
 
                     break;
                 case "Shield HP":
+                    shieldList = moduleItems.OfType<ListBoxItem>().Select(o => o.Content).OfType<DragAndDropItem>().Select(o => o.moduleItem).OfType<ShieldItem>().OrderByDescending(o => o.data.maxShieldHealth).ToList();
+                    foreach (var item in shieldList)
+                    {
+                        DragAndDropItem dragAndDropItem = new DragAndDropItem()
+                        {
+                            _id = item._id,
+                            moduleItem = item,
+                            QtNameText = item.name,
+                            QtGradeText = "Grade: " + item.grade,
+                            QtSizeText = "Size: " + item.size,
+                            Size = item.size,
+                            type = (ModuleTypeEnum)item.type,
+                            Width = (int)width,
+                            Height = (int)heigth
+                        };
 
+                        listBox = new ListBoxItem();
+                        listBox.MouseEnter += BoxItem_MouseEnter;
+                        listBox.MouseLeave += BoxItem_MouseLeave;
+                        listBox.MouseDoubleClick += BoxItem_MouseDoubleClick;
+                        listBox.Content = dragAndDropItem;
+
+                        items.Add(listBox);
+                    }
+                    for (int i = 0; i < moduleItems.Count; i++)
+                    {
+                        if (((DragAndDropItem)moduleItems[i].Content).moduleItem.GetType() == typeof(ShieldItem))
+                        {
+                            moduleItems.Remove(moduleItems[i]);
+                            i = 0;
+                        }
+                    }
                     break;
                 case "Regeneration Rate":
 
@@ -152,7 +251,10 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
                     break;
             }
-
+            for (int i = 0; i < items.Count; i++)
+            {
+                moduleItems.Add(items[i]);
+            }
         }
         private void ModuleBox_Checked(object sender, RoutedEventArgs e)
         {
