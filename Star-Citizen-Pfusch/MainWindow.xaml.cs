@@ -1,4 +1,6 @@
-﻿using Star_Citizen_Pfusch.Functions;
+﻿using Newtonsoft.Json;
+using Star_Citizen_Pfusch.Functions;
+using Star_Citizen_Pfusch.Models;
 using Star_Citizen_Pfusch.Pages;
 using System;
 using System.Collections.Generic;
@@ -14,15 +16,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Star_Citizen_Pfusch
 {
@@ -46,6 +41,7 @@ namespace Star_Citizen_Pfusch
             else
             {
                 window = this;
+                loadConfig();
 
                 InitializeComponent();
                 StartServer();
@@ -78,6 +74,18 @@ namespace Star_Citizen_Pfusch
                     server.Close();
                 }
             });
+        }
+        private void loadConfig()
+        {
+            if (!File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg").Equals(""))
+            {
+                UserConfigItem userConfig = JsonConvert.DeserializeObject<UserConfigItem>(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg"));
+
+                System.Windows.Application.Current.Resources["TextColor"] = new BrushConverter().ConvertFrom(userConfig.TextColor);
+                System.Windows.Application.Current.Resources["MenuColor"] = new BrushConverter().ConvertFrom(userConfig.MenuColor);
+                System.Windows.Application.Current.Resources["HeadlineColor"] = new BrushConverter().ConvertFrom(userConfig.HeadlineColor);
+                System.Windows.Application.Current.Resources["Theme"] = userConfig.Theme;
+            }
         }
         private void Menu_Open(object sender, EventArgs e)
         {

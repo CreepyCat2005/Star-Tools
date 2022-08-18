@@ -20,6 +20,7 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
     /// </summary>
     public partial class SettingsMenu : Page
     {
+        private AppearanceSettings AppearanceSettings = new AppearanceSettings();
         public SettingsMenu()
         {
             InitializeComponent();
@@ -38,6 +39,11 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         private void dataItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             
+        }
+
+        private void AppearanceItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            contentDisplay.Navigate(AppearanceSettings);
         }
     }
 }

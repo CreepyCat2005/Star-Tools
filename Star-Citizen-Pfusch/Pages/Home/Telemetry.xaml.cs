@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Linq;
+using System.Windows;
 
 namespace Star_Citizen_Pfusch.Pages.Home
 {
@@ -94,9 +95,10 @@ namespace Star_Citizen_Pfusch.Pages.Home
             for (int i = 0; i < chart.Length; i++)
             {
                 var item = chart[i];
-                TextBox textBox = new TextBox() { HorizontalAlignment = System.Windows.HorizontalAlignment.Center ,FontSize = 5, IsReadOnly = true, Text = String.Format("{0:n0}",item.gross / 100), Background = new SolidColorBrush(Colors.Transparent), Foreground = new SolidColorBrush(Colors.White), BorderThickness = new System.Windows.Thickness(0) };
-                Rectangle rectangle = new Rectangle() { Fill = new SolidColorBrush(Colors.White), Margin = new System.Windows.Thickness(5, 0, 5, 0), Height = item.gross / maxValue * 60.0, Width = 20 };
-                StackPanel stackPanel = new StackPanel() { Orientation = Orientation.Vertical, VerticalAlignment = System.Windows.VerticalAlignment.Bottom };
+                TextBox textBox = new TextBox() { HorizontalAlignment = HorizontalAlignment.Center ,FontSize = 5, IsReadOnly = true, Text = String.Format("{0:n0}",item.gross / 100), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0) };
+                textBox.SetResourceReference(ForegroundProperty, "TextColor");
+                Rectangle rectangle = new Rectangle() { Fill = new SolidColorBrush(Colors.White), Margin = new Thickness(5, 0, 5, 0), Height = item.gross / maxValue * 60.0, Width = 20 };
+                StackPanel stackPanel = new StackPanel() { Orientation = Orientation.Vertical, VerticalAlignment = VerticalAlignment.Bottom };
                 stackPanel.Children.Add(rectangle);
                 stackPanel.Children.Add(textBox);
                 ChartDock.Children.Add(stackPanel);

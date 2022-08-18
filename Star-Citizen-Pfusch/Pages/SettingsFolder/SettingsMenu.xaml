@@ -26,10 +26,11 @@
                     </SolidColorBrush.Color>
                 </SolidColorBrush>
             </TreeView.Background>
-            <TreeViewItem Header="General" Foreground="White" FontSize="25" x:Name="GeneralItem" MouseDoubleClick="GeneralItem_MouseDoubleClick" >
-                <TreeViewItem Header="License" Foreground="White" FontSize="25" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
+            <TreeViewItem Header="General" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" x:Name="GeneralItem" MouseDoubleClick="GeneralItem_MouseDoubleClick" >
+                <TreeViewItem Header="Appearance" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="AppearanceItem_MouseDoubleClick" />
+                <TreeViewItem Header="License" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
             </TreeViewItem>
-            <TreeViewItem Header="Datenschutz" Foreground="White" FontSize="25" x:Name="dataItem" MouseDoubleClick="dataItem_MouseDoubleClick" />
+            <TreeViewItem Header="Datenschutz" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" x:Name="dataItem" MouseDoubleClick="dataItem_MouseDoubleClick" />
         </TreeView>
 
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" BorderThickness="0" >

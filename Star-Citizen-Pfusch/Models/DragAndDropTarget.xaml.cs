@@ -34,11 +34,11 @@ namespace Star_Citizen_Pfusch.Models
             {
                 DragAndDropItem item = e.Data.GetData("Object") as DragAndDropItem;
 
-                if (ContentFrame.Content.GetType() == typeof(DragAndDropFrame))
+                if (ContentFrame.Content != null && ContentFrame.Content.GetType() == typeof(DragAndDropFrame))
                 {
                     if (item.type == getSubType(type) && item.Size.Equals(((DragAndDropFrame)ContentFrame.Content).Size))
                     {
-                        ((DragAndDropFrame)ContentFrame.Content).ContentFrame.Content = new DragAndDropItem(item.QtGradeText, item.Size, item.QtNameText, item.type);
+                        ((DragAndDropFrame)ContentFrame.Content).ContentFrame.Content = new DragAndDropItem("Anzahl: " + ((DragAndDropFrame)ContentFrame.Content).Size.ToString(), item.Size, item.QtNameText, item.type);
                     }
                 }
                 else

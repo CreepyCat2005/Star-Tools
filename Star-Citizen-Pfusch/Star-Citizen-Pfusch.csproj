@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <None Remove="Background.png" />
+    <None Remove="Config\UserConfig.cfg" />
     <None Remove="Graphics\ArrowDown.png" />
     <None Remove="Graphics\ArrowUp.png" />
     <None Remove="Graphics\Cooler.png" />
@@ -111,7 +112,6 @@
     <None Remove="Graphics\ShipImages\cnou_mustang_delta.jpg" />
     <None Remove="Graphics\ShipImages\cnou_mustang_gamma.jpg" />
     <None Remove="Graphics\ShipImages\cnou_mustang_omega.jpg" />
-    <None Remove="Graphics\ShipImages\Constellation Taurus.jpg" />
     <None Remove="Graphics\ShipImages\Constellation_Andromeda.jpg" />
     <None Remove="Graphics\ShipImages\Constellation_Aquila.jpg" />
     <None Remove="Graphics\ShipImages\Constellation_Phoenix.jpg" />
@@ -278,6 +278,7 @@
     <None Remove="Graphics\ShipImages\rsi_constellation_andromeda.jpg" />
     <None Remove="Graphics\ShipImages\rsi_constellation_aquila.jpg" />
     <None Remove="Graphics\ShipImages\rsi_constellation_phoenix.jpg" />
+    <None Remove="Graphics\ShipImages\rsi_constellation_taurus.jpg" />
     <None Remove="Graphics\ShipImages\rsi_mantis.jpg" />
     <None Remove="Graphics\ShipImages\rsi_scorpius.jpg" />
     <None Remove="Graphics\ShipImages\rsi_ursa_rover.jpg" />
@@ -309,6 +310,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Config\UserConfig.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -495,7 +499,7 @@
     <Content Include="Graphics\ShipImages\cnou_mustang_omega.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Graphics\ShipImages\Constellation Taurus.jpg">
+    <Content Include="Graphics\ShipImages\rsi_constellation_taurus.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\ShipImages\Corsair.jpg">
@@ -870,7 +874,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HelixToolkit.Wpf" Version="2.21.1" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.4" />
     <PackageReference Include="MongoDB.Bson" Version="2.16.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -952,10 +956,6 @@
     <None Update="Graphics\ShipImages\X1_Velocity.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Graphics\Models\" />
   </ItemGroup>
 
   <ItemGroup>

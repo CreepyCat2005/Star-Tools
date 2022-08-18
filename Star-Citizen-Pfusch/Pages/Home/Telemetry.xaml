@@ -46,28 +46,28 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Label Content="Total Playtime" Grid.Row="0" Grid.Column="0" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Label Content="Total Playtime" Grid.Row="0" Grid.Column="0" Foreground="{DynamicResource HeadlineColor}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <Rectangle Grid.Row="0" Grid.Column="0" Height="1.5" Margin="0,35,0,0" Fill="{StaticResource Gradient}" VerticalAlignment="Top" />
             <Viewbox Margin="0,35,0,0" Grid.Row="0" Grid.Column="0">
-                <Label x:Name="PlaytimeLabel" VerticalAlignment="Center" Foreground="White" />
+                <Label x:Name="PlaytimeLabel" VerticalAlignment="Center" Foreground="{DynamicResource TextColor}" />
             </Viewbox>
 
-            <Label Content="Client Version" Grid.Row="1" Grid.Column="0" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Label Content="Client Version" Grid.Row="1" Grid.Column="0" Foreground="{DynamicResource HeadlineColor}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <Rectangle Grid.Row="1" Grid.Column="0" Height="1.5" Margin="0,35,0,0" Fill="{StaticResource Gradient}" VerticalAlignment="Top" />
             <Viewbox Margin="0,35,0,0" Grid.Row="1" Grid.Column="0">
-                <Label x:Name="ClientVersionLabel" VerticalAlignment="Center" Foreground="White" />
+                <Label x:Name="ClientVersionLabel" VerticalAlignment="Center" Foreground="{DynamicResource TextColor}" />
             </Viewbox>
 
-            <Label Content="Game Version" Grid.Row="1" Grid.Column="1" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Label Content="Game Version" Grid.Row="1" Grid.Column="1" Foreground="{DynamicResource HeadlineColor}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <Rectangle Grid.Row="1" Grid.Column="1" Height="1.5" Margin="0,35,0,0" Fill="{StaticResource Gradient}" VerticalAlignment="Top" />
             <Viewbox Margin="0,35,0,0" Grid.Row="1" Grid.Column="1">
-                <Label x:Name="GameVersionLabel" VerticalAlignment="Center" Foreground="White" />
+                <Label x:Name="GameVersionLabel" VerticalAlignment="Center" Foreground="{DynamicResource TextColor}" />
             </Viewbox>
 
-            <Label Content="Time until next Patch" Grid.Row="0" Grid.Column="1" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Label Content="Time until next Patch" Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource HeadlineColor}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <Rectangle Grid.Row="0" Grid.Column="1" Height="1.5" Margin="0,35,0,0" Fill="{StaticResource Gradient}" VerticalAlignment="Top" />
             <Viewbox Margin="0,35,0,0" Grid.Row="0" Grid.Column="1">
-                <Label x:Name="NextPatchLabel" VerticalAlignment="Center" Foreground="White" />
+                <Label x:Name="NextPatchLabel" VerticalAlignment="Center" Foreground="{DynamicResource TextColor}" />
             </Viewbox>
 
         </Grid>
@@ -88,18 +88,18 @@
                 <RowDefinition Height=".8*" />
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Ship of the Day" Foreground="White" FontSize="25" HorizontalAlignment="Center" />
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Ship of the Day" Foreground="{DynamicResource HeadlineColor}" FontSize="25" HorizontalAlignment="Center" />
             <Line Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" X1="0" X2="10000" Y1="45" Y2="45" StrokeThickness="2" Stroke="White" />
 
             <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" />
             <GridSplitter Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" />
 
             <Image Margin="1,1" Grid.Row="1" Grid.Column="0" x:Name="DailyShipImage" />
-            <TextBlock Foreground="White" x:Name="DailyShipDetails" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Top"  />
-            <TextBlock Margin="3,0,0,0" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Foreground="White" x:Name="DailyShipDescription" TextWrapping="Wrap" FontSize="18" />
+            <TextBlock Foreground="{DynamicResource TextColor}" x:Name="DailyShipDetails" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Top"  />
+            <TextBlock Margin="3,0,0,0" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Foreground="{DynamicResource TextColor}" x:Name="DailyShipDescription" TextWrapping="Wrap" FontSize="18" />
         </Grid>
 
-        <Label Content="Funding" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Label Content="Funding" FontSize="20" Foreground="{DynamicResource HeadlineColor}" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <ComboBox VerticalAlignment="Top" Height="25" HorizontalAlignment="Right" Width="65" Margin="5" SelectionChanged="ChartComboBox_SelectionChanged" >
             <ComboBoxItem Content="Day" IsSelected="True" />
             <ComboBoxItem Content="Week" />
@@ -133,11 +133,11 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <Image Source="\Graphics\Icons\Dollar-Icon.png" Margin="3" />
-                    <TextBox IsReadOnly="True" Background="Transparent" Foreground="White" BorderThickness="0" x:Name="FundsTextBox" FontSize="22" />
+                    <TextBox IsReadOnly="True" Background="Transparent" Foreground="{DynamicResource TextColor}" BorderThickness="0" x:Name="FundsTextBox" FontSize="22" />
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" >
                     <Image Source="\Graphics\Icons\People-Icon.png" Margin="3" />
-                    <TextBox IsReadOnly="True" Background="Transparent" Foreground="White" BorderThickness="0" x:Name="PlayerTextBox" FontSize="22"  />
+                    <TextBox IsReadOnly="True" Background="Transparent" Foreground="{DynamicResource TextColor}" BorderThickness="0" x:Name="PlayerTextBox" FontSize="22"  />
                 </StackPanel>
             </Grid>
 

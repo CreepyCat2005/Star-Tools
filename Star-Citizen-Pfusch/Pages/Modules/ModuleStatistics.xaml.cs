@@ -16,7 +16,6 @@ using System.Windows.Shapes;
 using Star_Citizen_Pfusch.Models.Enums;
 using Star_Citizen_Pfusch.Models;
 using Newtonsoft.Json;
-using System.Drawing;
 
 namespace Star_Citizen_Pfusch.Pages.Modules
 {
@@ -61,7 +60,6 @@ namespace Star_Citizen_Pfusch.Pages.Modules
                     listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = "Throttleable: " + powerPlantItem.data.isThrottleable, Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
                     listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = "Overclockable: " + powerPlantItem.data.isOverclockable, Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
                     listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Power to EM: {0:g}", powerPlantItem.data.powerToEM), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
-
                     break;
                 case ModuleTypeEnum.Shield:
                     ShieldItem shieldItem = JsonConvert.DeserializeObject<ShieldItem>(res);
@@ -70,7 +68,6 @@ namespace Star_Citizen_Pfusch.Pages.Modules
                     listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Downed Regeneration Delay: {0:g}", shieldItem.data.downedRegenDelay), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
                     listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Damaged Regeneration Delay: {0:g}", shieldItem.data.damagedRegenDelay), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
                     listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Maximum Regeneration: {0:n0}", shieldItem.data.maxShieldRegen), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
-
                     break;
                 case ModuleTypeEnum.Cooler:
                     CoolerItem coolerItem = JsonConvert.DeserializeObject<CoolerItem>(res);
@@ -78,8 +75,21 @@ namespace Star_Citizen_Pfusch.Pages.Modules
                     listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Coolingrate: {0:n0}", coolerItem.data.coolingRate), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
                     listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Supression IRF: {0:g}", coolerItem.data.suppressionIRFactor), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
                     listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Supression Heat: {0:g}", coolerItem.data.suppressionHeatFactor), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
-
                     break;
+                case ModuleTypeEnum.Missile:
+                    MissileItem MissileItem = JsonConvert.DeserializeObject<MissileItem>(res);
+                    addStandartModules(MissileItem);
+                    listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = "Tracking Type: " + MissileItem.data.trackingSignalType, Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
+                    listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Min Range: {0:n0}", MissileItem.data.lockRangeMin), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
+                    listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Max Range: {0:n0}", MissileItem.data.lockRangeMax), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
+                    listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Speed: {0:n0}", MissileItem.data.linearSpeed), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
+                    listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Damage: {0:n0}", MissileItem.data.damage.damagePhysical), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
+                    break;
+                case ModuleTypeEnum.Missile_Rack: 
+                    MissileRackItem MissileRackItem = JsonConvert.DeserializeObject<MissileRackItem>(res);
+                    addStandartModules(MissileRackItem);
+                    listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Port Count: {0:n0}", MissileRackItem.ports.Length), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });
+                    listBoxItems.Add(new ListBoxItem() { Content = new TextBox() { IsReadOnly = true, Text = String.Format("Port Size: {0:n0}", MissileRackItem.ports[0].maxSize), Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), FontSize = 25 } });                    break;
             }
             TreeView treeView = new TreeView()
             {

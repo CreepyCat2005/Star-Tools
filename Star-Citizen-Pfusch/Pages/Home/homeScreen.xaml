@@ -47,7 +47,7 @@
         <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Background="LightGray" />
 
         <ListBox Grid.Row="0" Background="Transparent" BorderThickness="0" Grid.Column="0" >
-            <ListBoxItem Content="Hauptmenü" FontSize="35" Foreground="White" x:Name="MainMenuItem" PreviewMouseLeftButtonUp="MainMenuItem_MouseLeftButtonDown" >
+            <ListBoxItem Content="Hauptmenü" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="MainMenuItem" PreviewMouseLeftButtonUp="MainMenuItem_MouseLeftButtonDown" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -80,7 +80,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem Content="Schiffe" FontSize="35" Foreground="White" x:Name="ShipItem" PreviewMouseLeftButtonUp="ShipItem_MouseLeftButtonDown" >
+            <ListBoxItem Content="Schiffe" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="ShipItem" PreviewMouseLeftButtonUp="ShipItem_MouseLeftButtonDown" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -113,7 +113,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem Content="Fahrzeuge" FontSize="35" Foreground="White" PreviewMouseLeftButtonUp="Vehicle_PreviewMouseLeftButtonUp" >
+            <ListBoxItem Content="Fahrzeuge" FontSize="35" Foreground="{DynamicResource MenuColor}" PreviewMouseLeftButtonUp="Vehicle_PreviewMouseLeftButtonUp" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -146,7 +146,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem Content="Komponenten" FontSize="35" Foreground="White" >
+            <ListBoxItem Content="Komponenten" FontSize="35" Foreground="{DynamicResource MenuColor}" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -179,7 +179,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem Content="Shops" FontSize="35" Foreground="White" x:Name="ShopItem" PreviewMouseLeftButtonUp="ShopItem_PreviewMouseLeftButtonUp" >
+            <ListBoxItem Content="Shops" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="ShopItem" PreviewMouseLeftButtonUp="ShopItem_PreviewMouseLeftButtonUp" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -212,7 +212,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem Content="Einstellungen" FontSize="35" Foreground="White" x:Name="SettingsItem" PreviewMouseLeftButtonUp="SettingsItem_MouseLeftButtonDown" >
+            <ListBoxItem Content="Einstellungen" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="SettingsItem" PreviewMouseLeftButtonUp="SettingsItem_MouseLeftButtonDown" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
