@@ -52,8 +52,10 @@
 
             <CheckBox x:Name="WhiteCheckBox" Content="White" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Checked="CheckBox_Checked" />
             <CheckBox IsChecked="True" x:Name="DarkCheckBox" Content="Dark" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Checked="CheckBox_Checked" />
-            <CheckBox x:Name="RainbowCheckBox" Content="Rainbow" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Checked="CheckBox_Checked" />
-
+            <StackPanel Orientation="Horizontal">
+                <CheckBox x:Name="RainbowCheckBox" Content="Rainbow" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Checked="CheckBox_Checked" />
+                <Slider Width="100" Margin="20,0,0,0" VerticalAlignment="Center" Minimum="0.1" Maximum="1.5" TickFrequency="0.1" IsSnapToTickEnabled="True" x:Name="RainbowSpeed" />
+            </StackPanel>
             <ListBoxItem HorizontalContentAlignment="Stretch" >
                 <Grid>
                     <Rectangle Height="2" >

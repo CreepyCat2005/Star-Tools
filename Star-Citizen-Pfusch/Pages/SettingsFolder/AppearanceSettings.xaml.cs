@@ -2,6 +2,7 @@
 using Star_Citizen_Pfusch.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,10 +26,13 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
     /// </summary>
     public partial class AppearanceSettings : Page
     {
+        private Page ThisPage;
         private Timer timer;
-        private int direction = -1;
+        private double counter = 0;
+
         public AppearanceSettings()
         {
+            ThisPage = this;
             this.Unloaded += AppearanceSettings_Unloaded;
 
             InitializeComponent();
@@ -108,38 +112,82 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             {
                 checkBoxes[i].IsChecked = false;
             }
+            checkBoxes.Add((CheckBox)sender);
 
             switch (checkBoxes.Find(o => o.IsChecked == true).Content)
             {
                 case "White":
-                    timer.Stop();
-                    timer.Dispose();
-
+                    if (timer != null)
+                    {
+                        timer.Stop();
+                        timer.Dispose();
+                    }
+                    Application.Current.Resources["TextColor"] = new SolidColorBrush(Colors.White);
+                    Application.Current.Resources["MenuColor"] = new SolidColorBrush(Colors.White);
+                    Application.Current.Resources["HeadlineColor"] = new SolidColorBrush(Colors.White);
                     break;
                 case "Dark":
-                    timer.Stop();
-                    timer.Dispose();
-
+                    if (timer != null)
+                    {
+                        timer.Stop();
+                        timer.Dispose();
+                    }
+                    Application.Current.Resources["TextColor"] = new SolidColorBrush(Colors.White);
+                    Application.Current.Resources["MenuColor"] = new SolidColorBrush(Colors.White);
+                    Application.Current.Resources["HeadlineColor"] = new SolidColorBrush(Colors.White);
                     break;
                 case "Rainbow":
-                    startRainbow();
+                    StartRainbow();
                     break;
                 default:
                     break;
             }
         }
-        private async void startRainbow()
+        private async void StartRainbow()
         {
             timer = new Timer();
             timer.AutoReset = true;
-            timer.Interval = 100;
+            timer.Interval = 35;
             timer.Elapsed += Timer_Elapsed;
             timer.Enabled = true;
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            
+            Application.Current.Resources["TextColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
+            Application.Current.Resources["MenuColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
+            Application.Current.Resources["HeadlineColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
+            double temp = 0;
+            ThisPage.Dispatcher.Invoke(new Action(() =>
+            {
+                temp = RainbowSpeed.Value;
+            }));
+            counter += temp;
+            Debug.WriteLine("Color assigned: " + ColorFromHSV(counter, 1, 1).R + " " + ColorFromHSV(counter, 1, 1).G + " " + ColorFromHSV(counter, 1, 1).B);
+        }
+        private Color ColorFromHSV(double hue, double saturation, double value)
+        {
+            int hi = Convert.ToInt32(Math.Floor(hue / 60)) % 6;
+            double f = hue / 60 - Math.Floor(hue / 60);
+
+            value = value * 255;
+            byte v = Convert.ToByte(value);
+            byte p = Convert.ToByte(value * (1 - saturation));
+            byte q = Convert.ToByte(value * (1 - f * saturation));
+            byte t = Convert.ToByte(value * (1 - (1 - f) * saturation));
+
+            if (hi == 0)
+                return Color.FromArgb(255, v, t, p);
+            else if (hi == 1)
+                return Color.FromArgb(255, q, v, p);
+            else if (hi == 2)
+                return Color.FromArgb(255, p, v, t);
+            else if (hi == 3)
+                return Color.FromArgb(255, p, q, v);
+            else if (hi == 4)
+                return Color.FromArgb(255, t, p, v);
+            else
+                return Color.FromArgb(255, v, p, q);
         }
     }
 }
