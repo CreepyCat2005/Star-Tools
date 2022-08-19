@@ -80,11 +80,21 @@ namespace Star_Citizen_Pfusch
             if (!File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg").Equals(""))
             {
                 UserConfigItem userConfig = JsonConvert.DeserializeObject<UserConfigItem>(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg"));
+                var colors = userConfig.GetType().GetProperties().Where(o => o.PropertyType == typeof(string)).ToList();
+                var fonts = userConfig.GetType().GetProperties().Where(o => o.PropertyType == typeof(double)).ToList();
 
-                System.Windows.Application.Current.Resources["TextColor"] = new BrushConverter().ConvertFrom(userConfig.TextColor);
-                System.Windows.Application.Current.Resources["MenuColor"] = new BrushConverter().ConvertFrom(userConfig.MenuColor);
-                System.Windows.Application.Current.Resources["HeadlineColor"] = new BrushConverter().ConvertFrom(userConfig.HeadlineColor);
+                foreach (var color in colors)
+                {
+                    if (color.Name.Equals("Theme") || color.GetValue(userConfig) == null) continue;
+                    System.Windows.Application.Current.Resources[color.Name] = new BrushConverter().ConvertFrom(color.GetValue(userConfig));
+                }
                 System.Windows.Application.Current.Resources["Theme"] = userConfig.Theme;
+
+                foreach (var font in fonts)
+                {
+                    if (font.Name.Equals("RainbowValue") || font.GetValue(userConfig) == null) continue;
+                    System.Windows.Application.Current.Resources[font.Name] = font.GetValue(userConfig);
+                }
             }
         }
         private void Menu_Open(object sender, EventArgs e)

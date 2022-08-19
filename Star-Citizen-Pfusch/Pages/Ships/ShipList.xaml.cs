@@ -33,6 +33,10 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         private Frame contentFrame;
         private GridViewColumnHeader lastHeaderClicked = null;
         private ListSortDirection lastDirection = ListSortDirection.Ascending;
+        public ShipList()
+        {
+            InitializeComponent();
+        }
         public ShipList(Frame frame, string type)
         {
 

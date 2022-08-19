@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Star_Citizen_Pfusch"
         mc:Ignorable="d"
-        Title="Star-Tools" Height="450" Width="800" RenderOptions.BitmapScalingMode="HighQuality" MinHeight="400" MinWidth="670">
+        Title="Star-Tools" Height="450" Width="800" RenderOptions.BitmapScalingMode="HighQuality" MinHeight="400" MinWidth="670" WindowStartupLocation="CenterScreen" >
 
 </Window>

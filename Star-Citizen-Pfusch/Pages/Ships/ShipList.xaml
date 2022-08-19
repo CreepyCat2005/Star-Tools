@@ -9,11 +9,10 @@
 
     <Grid>
 
-        <ListView x:Name="ShipListView" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" SelectionChanged="ListView_SelectionChanged" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler" >
+        <ListView x:Name="ShipListView" Background="Transparent" BorderBrush="Transparent" Foreground="White" BorderThickness="0" SelectionChanged="ListView_SelectionChanged" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Foreground" Value="White" />
                     <Setter Property="BorderThickness" Value="1" />
                     <Setter Property="BorderBrush" Value="Transparent" />
                     <Setter Property="FontSize" Value="14" />
@@ -38,35 +37,136 @@
                                 <Setter.Value>
                                     <SolidColorBrush>
                                         <SolidColorBrush.Color>
-                                            <Color A="255" R="60" G="60" B="60" />
+                                            <Color A="200" R="90" G="90" B="90" />
                                         </SolidColorBrush.Color>
                                     </SolidColorBrush>
                                 </Setter.Value>
                             </Setter>
-                            <Setter Property="BorderBrush" Value="Gray" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding name}" />
-                    <GridViewColumn Header="Manufacturer" Width="270" DisplayMemberBinding="{Binding manufacturer.data.name}" />
-                    <GridViewColumn Header="Role" Width="250" DisplayMemberBinding="{Binding data.role}" />
-                    <GridViewColumn Header="Career" Width="170" DisplayMemberBinding="{Binding data.career}" />
-                    <GridViewColumn Header="Size" Width="190" DisplayMemberBinding="{Binding data.size.size}" />
-                    <GridViewColumn Header="Cargo" Width="130" DisplayMemberBinding="{Binding cargo}" />
-                    <GridViewColumn Header="Mass" Width="160" DisplayMemberBinding="{Binding hull.mass, StringFormat='0,0'}" />
-                    <GridViewColumn Header="Health" Width="130" DisplayMemberBinding="{Binding hull.hp, StringFormat='0,0'}" />
-                    <GridViewColumn Header="Speed" Width="120" DisplayMemberBinding="{Binding ifcs.maxSpeed}" />
-                    <GridViewColumn Header="Afterburner" Width="110" DisplayMemberBinding="{Binding ifcs.maxAfterburnSpeed, StringFormat='0,0'}" />
-                    <GridViewColumn Header="Pitch" Width="90" DisplayMemberBinding="{Binding ifcs.velocity.pitch}" />
-                    <GridViewColumn Header="Yaw" Width="90" DisplayMemberBinding="{Binding ifcs.velocity.yaw}" />
-                    <GridViewColumn Header="Roll" Width="90" DisplayMemberBinding="{Binding ifcs.velocity.roll}" />
-                    <GridViewColumn Header="Hydrogen Fuel" Width="140" DisplayMemberBinding="{Binding fuelCapacity, StringFormat='0,0'}" />
-                    <GridViewColumn Header="Quantum Fuel" Width="120" DisplayMemberBinding="{Binding qtFuelCapacity, StringFormat='0,0'}" />
-                    <GridViewColumn Header="Shield Type" Width="130" DisplayMemberBinding="{Binding shield.type}" />
-                    <GridViewColumn Header="Price" Width="120" DisplayMemberBinding="{Binding price, StringFormat='0,0'}" />
+                    <GridViewColumn Header="Name" Width="250" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding name}" Foreground="{DynamicResource GridColumnName}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Manufacturer" Width="270" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding manufacturer.data.name}" Foreground="{DynamicResource GridColumnManufacturer}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Role" Width="250" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding data.role}" Foreground="{DynamicResource GridColumnRole}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Career" Width="170" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding data.career}" Foreground="{DynamicResource GridColumnCareer}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Size" Width="190" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding data.size.size}" Foreground="{DynamicResource GridColumnSize}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Cargo" Width="130" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding cargo}" Foreground="{DynamicResource GridColumnCargo}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Mass" Width="160" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding hull.mass, StringFormat='0,0'}" Foreground="{DynamicResource GridColumnMass}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Health" Width="130" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding hull.hp, StringFormat='0,0'}" Foreground="{DynamicResource GridColumnHealth}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Speed" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ifcs.maxSpeed}" Foreground="{DynamicResource GridColumnSpeed}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Afterburner" Width="110" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ifcs.maxAfterburnSpeed, StringFormat='0,0'}" Foreground="{DynamicResource GridColumnAfterburner}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Pitch" Width="90" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ifcs.velocity.pitch}" Foreground="{DynamicResource GridColumnPitch}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Yaw" Width="90" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ifcs.velocity.yaw}" Foreground="{DynamicResource GridColumnYaw}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Roll" Width="90" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ifcs.velocity.roll}" Foreground="{DynamicResource GridColumnRoll}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Hydrogen Fuel" Width="140" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding fuelCapacity, StringFormat='0,0'}" Foreground="{DynamicResource GridColumnHydrogenFuel}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Quantum Fuel" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding qtFuelCapacity, StringFormat='0,0'}" Foreground="{DynamicResource GridColumnQuantumFuel}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Shield Type" Width="130" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding shield.type}" Foreground="{DynamicResource GridColumnShieldType}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Price" Width="120" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding price, StringFormat='0,0'}" Foreground="{DynamicResource GridColumnPrice}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

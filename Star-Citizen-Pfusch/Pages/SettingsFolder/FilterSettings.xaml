@@ -8,14 +8,7 @@
       d:DesignHeight="700" d:DesignWidth="450"
       Title="FilterSettings" >
 
-    <Grid>
-        <Grid.Background>
-            <SolidColorBrush>
-                <SolidColorBrush.Color>
-                    <Color A="200" R="30" G="30" B="30" />
-                </SolidColorBrush.Color>
-            </SolidColorBrush>
-        </Grid.Background>
+    <Grid Background="{DynamicResource DarkBackgroundColor}" >
 
         <Grid.RowDefinitions>
             <RowDefinition Height=".08*" />

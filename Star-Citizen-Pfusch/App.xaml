@@ -24,5 +24,105 @@
         <system:Double x:Key="TextFontSize" >18</system:Double>
         <system:Double x:Key="MenuFontSize" >26</system:Double>
         <system:Double x:Key="HeadlineFontSize" >24</system:Double>
+        <SolidColorBrush x:Key="BackgroundColor">
+            <SolidColorBrush.Color>
+                <Color A="255" R="40" G="40" B="40" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="DarkBackgroundColor">
+            <SolidColorBrush.Color>
+                <Color A="255" R="30" G="30" B="30" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnName">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnManufacturer">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnRole">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnCareer">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnSize">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnCargo">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnMass">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnHealth">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnSpeed">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnAfterburner">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnPitch">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnYaw">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnRoll">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnHydrogenFuel">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnQuantumFuel">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnShieldType">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="GridColumnPrice">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="ChartColor">
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
     </Application.Resources>
     </Application>

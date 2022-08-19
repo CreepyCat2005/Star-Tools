@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.SettingsFolder"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SettingsMenu">
+      Title="SettingsMenu" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" MaxWidth="450" MinWidth="120" />
@@ -18,14 +18,13 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TreeView x:Name="treeview" BorderThickness="0" Grid.Column="0" >
-            <TreeView.Background>
-                <SolidColorBrush>
-                    <SolidColorBrush.Color>
-                        <Color A="255" R="30" G="30" B="30" />
-                    </SolidColorBrush.Color>
-                </SolidColorBrush>
-            </TreeView.Background>
+        <TreeView x:Name="treeview" BorderThickness="0" Grid.Column="0" Background="{DynamicResource DarkBackgroundColor}" >
+            <TreeView.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black" />
+            </TreeView.Resources>
             <TreeViewItem Header="General" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" x:Name="GeneralItem" MouseDoubleClick="GeneralItem_MouseDoubleClick" >
                 <TreeViewItem Header="Appearance" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="AppearanceItem_MouseDoubleClick" />
                 <TreeViewItem Header="License" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
@@ -43,15 +42,7 @@
             </GridSplitter.Background>
         </GridSplitter>
 
-        <Frame Grid.Row="0" Grid.Column="2" x:Name="contentDisplay" NavigationUIVisibility="Hidden" >
-            <Frame.Background>
-                <SolidColorBrush>
-                    <SolidColorBrush.Color>
-                        <Color A="255" R="40" G="40" B="40" />
-                    </SolidColorBrush.Color>
-                </SolidColorBrush>
-            </Frame.Background>
-        </Frame>
+        <Frame Grid.Row="0" Grid.Column="2" x:Name="contentDisplay" NavigationUIVisibility="Hidden" Background="{DynamicResource BackgroundColor}" />
 
     </Grid>
 </Page>

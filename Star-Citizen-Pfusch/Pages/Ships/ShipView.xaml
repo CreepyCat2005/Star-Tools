@@ -54,15 +54,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Rectangle Grid.Row="0" >
-                <Rectangle.Fill>
-                    <SolidColorBrush>
-                        <SolidColorBrush.Color>
-                            <Color A="255" R="40" G="40" B="40" />
-                        </SolidColorBrush.Color>
-                    </SolidColorBrush>
-                </Rectangle.Fill>
-            </Rectangle>
+            <Rectangle Grid.Row="0" Fill="{DynamicResource BackgroundColor}" />
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
                 <Button HorizontalAlignment="Right" BorderThickness="0" Margin="0,0,5,0" Click="SwitchButton_Click" ToolTip="Anzeigemodus" >

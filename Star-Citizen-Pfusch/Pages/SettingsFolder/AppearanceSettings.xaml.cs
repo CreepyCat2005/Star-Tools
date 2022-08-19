@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Star_Citizen_Pfusch.Models;
+using Star_Citizen_Pfusch.Pages.Ships;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,10 +37,28 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             this.Unloaded += AppearanceSettings_Unloaded;
 
             InitializeComponent();
+            LoadTreeViewItems();
 
             TextBox.SelectedValue = Application.Current.Resources["TextFontSize"].ToString();
             MenuBox.SelectedValue = Application.Current.Resources["MenuFontSize"].ToString();
             HeadlineBox.SelectedValue = Application.Current.Resources["HeadlineFontSize"].ToString();
+        }
+        private void LoadTreeViewItems()
+        {
+            foreach (var item in ((GridView)new ShipList().ShipListView.View).Columns)
+            {
+                StackPanel panel = new StackPanel() { Orientation = Orientation.Horizontal};
+                ColorPicker picker = new ColorPicker() { Width = 80, Name = $"GridColumn{item.Header.ToString().Replace(" ", "")}", Foreground = new SolidColorBrush(Colors.Black), FontSize = 12, DropDownBorderThickness = new Thickness(0), ShowDropDownButton = false };
+                picker.SelectedColorChanged += ColorPicker_SelectedColorChanged;
+                picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources[$"GridColumn{item.Header.ToString().Replace(" ", "")}"]).Color;
+                TextBox box = new TextBox() { IsReadOnly = true, Text = $"Highlight Column '{item.Header}'", Background = new SolidColorBrush(Colors.Transparent), Margin = new Thickness(10,0,0,0), BorderThickness = new Thickness(0) };
+                box.SetResourceReference(ForegroundProperty, "TextColor");
+                box.SetResourceReference(FontSizeProperty, "TextFontSize");
+                panel.Children.Add(picker);
+                panel.Children.Add(box);
+
+                ShipTreeViewItem.Items.Add(panel);
+            }
         }
 
         private void AppearanceSettings_Unloaded(object sender, RoutedEventArgs e)
@@ -52,24 +71,61 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
                 Theme = (string)Application.Current.Resources["Theme"],
                 TextFontSize = (double)Application.Current.Resources["TextFontSize"],
                 MenuFontSize = (double)Application.Current.Resources["MenuFontSize"],
-                HeadlineFontSize = (double)Application.Current.Resources["HeadlineFontSize"]
+                HeadlineFontSize = (double)Application.Current.Resources["HeadlineFontSize"],
+                IsRainbowActive = (bool)RainbowCheckBox.IsChecked,
+                RainbowValue = RainbowSpeed.Value,
+                GridColumnName = ((SolidColorBrush)Application.Current.Resources["GridColumnName"]).Color.ToString(),
+                GridColumnAfterburner = ((SolidColorBrush)Application.Current.Resources["GridColumnAfterburner"]).Color.ToString(),
+                GridColumnCareer = ((SolidColorBrush)Application.Current.Resources["GridColumnCareer"]).Color.ToString(),
+                GridColumnCargo = ((SolidColorBrush)Application.Current.Resources["GridColumnCargo"]).Color.ToString(),
+                GridColumnHealth = ((SolidColorBrush)Application.Current.Resources["GridColumnHealth"]).Color.ToString(),
+                GridColumnHydrogenFuel = ((SolidColorBrush)Application.Current.Resources["GridColumnHydrogenFuel"]).Color.ToString(),
+                GridColumnManufacturer = ((SolidColorBrush)Application.Current.Resources["GridColumnManufacturer"]).Color.ToString(),
+                GridColumnMass = ((SolidColorBrush)Application.Current.Resources["GridColumnMass"]).Color.ToString(),
+                GridColumnPitch = ((SolidColorBrush)Application.Current.Resources["GridColumnPitch"]).Color.ToString(),
+                GridColumnPrice = ((SolidColorBrush)Application.Current.Resources["GridColumnPrice"]).Color.ToString(),
+                GridColumnRole = ((SolidColorBrush)Application.Current.Resources["GridColumnRole"]).Color.ToString(),
+                GridColumnQuantumFuel = ((SolidColorBrush)Application.Current.Resources["GridColumnQuantumFuel"]).Color.ToString(),
+                GridColumnRoll = ((SolidColorBrush)Application.Current.Resources["GridColumnRoll"]).Color.ToString(),
+                GridColumnShieldType = ((SolidColorBrush)Application.Current.Resources["GridColumnShieldType"]).Color.ToString(),
+                GridColumnSize = ((SolidColorBrush)Application.Current.Resources["GridColumnSize"]).Color.ToString(),
+                GridColumnSpeed = ((SolidColorBrush)Application.Current.Resources["GridColumnSpeed"]).Color.ToString(),
+                GridColumnYaw = ((SolidColorBrush)Application.Current.Resources["GridColumnYaw"]).Color.ToString(),
+                BackgroundColor = ((SolidColorBrush)Application.Current.Resources["BackgroundColor"]).Color.ToString(),
+                DarkBackgroundColor = ((SolidColorBrush)Application.Current.Resources["DarkBackgroundColor"]).Color.ToString(),
+                ChartColor = ((SolidColorBrush)Application.Current.Resources["ChartColor"]).Color.ToString()
             };
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg",JsonConvert.SerializeObject(userConfig));
+        }
+        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
+            Application.Current.Resources[((ColorPicker)sender).Name] = new SolidColorBrush((Color)e.NewValue);
+            ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
         }
         private void ColorText_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
             Application.Current.Resources["TextColor"] = new SolidColorBrush((Color)e.NewValue);
+            ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
         }
         private void ColorMenu_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
             Application.Current.Resources["MenuColor"] = new SolidColorBrush((Color)e.NewValue);
+            ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
         }
         private void ColorHeadline_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
             Application.Current.Resources["HeadlineColor"] = new SolidColorBrush((Color)e.NewValue);
+            ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
+        }
+        private void ColorChart_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
+            Application.Current.Resources["ChartColor"] = new SolidColorBrush((Color)e.NewValue);
+            ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
         }
 
         private void ColorText_Loaded(object sender, RoutedEventArgs e)
@@ -86,6 +142,11 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         {
             ColorPicker picker = (ColorPicker)sender;
             picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources["HeadlineColor"]).Color;
+        }
+        private void ColorChart_Loaded(object sender, RoutedEventArgs e)
+        {
+            ColorPicker picker = (ColorPicker)sender;
+            picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources["ChartColor"]).Color;
         }
 
         private void TextBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

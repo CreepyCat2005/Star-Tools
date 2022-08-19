@@ -70,10 +70,13 @@ namespace Star_Citizen_Pfusch
         {
             Window window = new Window();
             window.Title = "Settings";
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             window.Content = new Pages.SettingsFolder.SettingsMenu();
             window.Owner = Application.Current.MainWindow;
             window.Width = 800;
+            window.MinWidth = 420;
             window.Height = 450;
+            window.MinHeight = 300;
             window.Show();
         }
 

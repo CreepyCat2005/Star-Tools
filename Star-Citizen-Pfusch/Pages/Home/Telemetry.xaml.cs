@@ -97,7 +97,7 @@ namespace Star_Citizen_Pfusch.Pages.Home
                 var item = chart[i];
                 TextBox textBox = new TextBox() { HorizontalAlignment = HorizontalAlignment.Center ,FontSize = 5, IsReadOnly = true, Text = String.Format("{0:n0}",item.gross / 100), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0) };
                 textBox.SetResourceReference(ForegroundProperty, "TextColor");
-                Rectangle rectangle = new Rectangle() { Fill = new SolidColorBrush(Colors.White), Margin = new Thickness(5, 0, 5, 0), Height = item.gross / maxValue * 60.0, Width = 20 };
+                Rectangle rectangle = new Rectangle() { Fill = (SolidColorBrush)Application.Current.Resources["ChartColor"], Margin = new Thickness(5, 0, 5, 0), Height = item.gross / maxValue * 60.0, Width = 20 };
                 StackPanel stackPanel = new StackPanel() { Orientation = Orientation.Vertical, VerticalAlignment = VerticalAlignment.Bottom };
                 stackPanel.Children.Add(rectangle);
                 stackPanel.Children.Add(textBox);
