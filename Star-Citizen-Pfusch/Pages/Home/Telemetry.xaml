@@ -32,8 +32,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <GridSplitter Grid.Row="0" Grid.RowSpan="3" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <GridSplitter Grid.Row="0" Grid.RowSpan="3" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
 
         <Grid Grid.Row="0" Grid.Column="2">
 

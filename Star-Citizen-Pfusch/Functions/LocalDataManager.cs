@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace Star_Citizen_Pfusch.Functions
 {
@@ -16,6 +17,7 @@ namespace Star_Citizen_Pfusch.Functions
         private static string mainPath = Environment.GetEnvironmentVariable("appdata") + "/Star-Tools";
         private static string configPath = Environment.GetEnvironmentVariable("appdata") + "/Star-Tools/config";
         private static string passwordPath = Environment.GetEnvironmentVariable("appdata") + "/Star-Tools/config/pwSave.json";
+        private static SQLiteConnection SqLite;
 
         public LocalDataManager()
         {
@@ -49,6 +51,43 @@ namespace Star_Citizen_Pfusch.Functions
         public bool passwordExists()
         {
             return File.Exists(passwordPath);
+        }
+        public static string GetFleetyardToken()
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles");
+            DirectoryInfo[] files = directoryInfo.GetDirectories();
+            string path = files.Where(o => DirSize(o) == files.Select(o => DirSize(o)).Max()).ToList()[0].FullName;
+
+            SqLite = new SQLiteConnection("Data Source=" + path + "\\cookies.sqlite");
+            SqLite.Open();
+
+            string token = "";
+
+            var command = SqLite.CreateCommand();
+            command.CommandText = "SELECT value FROM moz_cookies WHERE host = '.fleetyards.net'";
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                token = reader.GetString(0);
+            }
+            return token;
+        }
+        private static long DirSize(DirectoryInfo d)
+        {
+            long size = 0;
+            // Add file sizes.
+            FileInfo[] fis = d.GetFiles();
+            foreach (FileInfo fi in fis)
+            {
+                size += fi.Length;
+            }
+            // Add subdirectory sizes.
+            DirectoryInfo[] dis = d.GetDirectories();
+            foreach (DirectoryInfo di in dis)
+            {
+                size += DirSize(di);
+            }
+            return size;
         }
     }
 }

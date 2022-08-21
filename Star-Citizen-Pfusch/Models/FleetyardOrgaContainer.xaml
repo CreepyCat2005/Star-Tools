@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Star_Citizen_Pfusch.Models.FleetyardOrgaContainer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="500">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".35*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Border BorderThickness="3" CornerRadius="20" SizeChanged="Border_SizeChanged" Grid.RowSpan="2" >
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Offset=".1" >
+                        <GradientStop.Color>
+                            <Color A="150" R="50" G="50" B="50" />
+                        </GradientStop.Color>
+                    </GradientStop>
+                    <GradientStop Offset="1" >
+                        <GradientStop.Color>
+                            <Color A="150" R="80" G="80" B="80" />
+                        </GradientStop.Color>
+                    </GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.BorderBrush>
+                <LinearGradientBrush>
+                    <GradientStop Color="LightGray" Offset=".1" />
+                    <GradientStop Color="DarkGray" Offset="1" />
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+        </Border>
+
+        <Viewbox Margin="5,0" >
+            <TextBlock x:Name="OrgaName" Foreground="{DynamicResource TextColor}" />
+        </Viewbox>
+
+        <Rectangle Height="1.5" VerticalAlignment="Bottom" >
+            <Rectangle.Fill>
+                <LinearGradientBrush>
+                    <GradientStop Color="Transparent" Offset="0" />
+                    <GradientStop Color="Gray" Offset=".2" />
+                    <GradientStop Color="Gray" Offset=".8" />
+                    <GradientStop Color="Transparent" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Image x:Name="OrgaImage" Grid.Row="1" Margin="0,6,0,0" />
+
+    </Grid>
+</UserControl>

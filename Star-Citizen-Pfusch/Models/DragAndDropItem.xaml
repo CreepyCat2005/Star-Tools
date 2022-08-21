@@ -31,7 +31,7 @@
         <Image x:Name="ModuleImage" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10" />
 
         <Viewbox Grid.Column="1" HorizontalAlignment="Left" >
-            <Label Content="{Binding QtNameText}" Foreground="White" Background="Transparent" BorderThickness="0" />
+            <Label Content="{Binding QtNameText}" Foreground="{DynamicResource TextColor}" Background="Transparent" BorderThickness="0" />
         </Viewbox>
 
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >

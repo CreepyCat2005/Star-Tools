@@ -20,6 +20,11 @@
                 <Color A="255" R="255" G="255" B="255" />
             </SolidColorBrush.Color>
         </SolidColorBrush>
+        <SolidColorBrush x:Key="SliderColor" >
+            <SolidColorBrush.Color>
+                <Color A="255" R="255" G="255" B="255" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
         <system:String x:Key="Theme" >Dark</system:String>
         <system:Double x:Key="TextFontSize" >18</system:Double>
         <system:Double x:Key="MenuFontSize" >26</system:Double>
@@ -124,5 +129,8 @@
                 <Color A="255" R="255" G="255" B="255" />
             </SolidColorBrush.Color>
         </SolidColorBrush>
+        <system:String x:Key="DefaultStartSize" >854x480</system:String>
+        <system:Boolean x:Key="RainbowModeActive" >false</system:Boolean>
+        <system:Double x:Key="RainbowModeValue" >0.1</system:Double>
     </Application.Resources>
     </Application>

@@ -48,7 +48,7 @@
 
             <Image x:Name="ModuleImage" Grid.Column="0" HorizontalAlignment="Left" />
             <Viewbox Grid.Column="1" HorizontalAlignment="Right" >
-                <TextBox IsReadOnly="True" Background="Transparent" Foreground="White" Text="{Binding Text}" BorderThickness="0" />
+                <TextBox IsReadOnly="True" Background="Transparent" Foreground="{DynamicResource TextColor}" Text="{Binding Text}" BorderThickness="0" />
             </Viewbox>
         </Grid>
 

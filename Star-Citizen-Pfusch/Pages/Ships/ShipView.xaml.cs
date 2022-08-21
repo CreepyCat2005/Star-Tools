@@ -326,7 +326,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             {
                 Content = new Grid(),
                 Background = new SolidColorBrush(Colors.Transparent),
-                Foreground = new SolidColorBrush(Colors.White),
                 Template = (ControlTemplate)Resources["ControlTemplate"],
                 Height = 200
             };
@@ -359,7 +358,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 if (grid.Children.Count >= distributedIntegers[distributedIntegersCounter])
                 {
                     ModuleTargetListBox.Items.Add(listBoxItem);
-                    listBoxItem = new ListBoxItem() { Content = new Grid(), Background = new SolidColorBrush(Colors.Transparent), Foreground = new SolidColorBrush(Colors.White), Template = (ControlTemplate)Resources["ControlTemplate"], Height = 200 };
+                    listBoxItem = new ListBoxItem() { Content = new Grid(), Background = new SolidColorBrush(Colors.Transparent), Template = (ControlTemplate)Resources["ControlTemplate"], Height = 200 };
                     grid = (Grid)listBoxItem.Content;
                     counter = 0;
                     distributedIntegersCounter++;
@@ -494,7 +493,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             if (box.Text.Equals("Search"))
             {
                 box.Text = "";
-                box.Foreground = new SolidColorBrush(Colors.White);
+                box.Foreground = (SolidColorBrush)Application.Current.Resources["TextColor"];
             }
         }
 

@@ -33,7 +33,7 @@
         <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,2" >
             <Image x:Name="ModuleImage" Grid.Column="1" Grid.Row="0" />
             <Viewbox VerticalAlignment="Center">
-                <TextBox Grid.Column="1" Text="{Binding ModuleName}" Background="Transparent" Foreground="White" BorderThickness="0" VerticalAlignment="Center"  />
+                <TextBox Grid.Column="1" Text="{Binding ModuleName}" Background="Transparent" Foreground="{DynamicResource TextColor}" BorderThickness="0" VerticalAlignment="Center"  />
             </Viewbox>
         </StackPanel>
 

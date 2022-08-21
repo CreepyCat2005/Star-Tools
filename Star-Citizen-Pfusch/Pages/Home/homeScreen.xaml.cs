@@ -3,6 +3,7 @@ using Star_Citizen_Pfusch.Functions;
 using Star_Citizen_Pfusch.Pages.Home;
 using Star_Citizen_Pfusch.Pages.Ships;
 using Star_Citizen_Pfusch.Pages.Shops;
+using Star_Citizen_Pfusch.Pages.Integration;
 using System;
 using System.Diagnostics;
 using System.Net.Http;
@@ -26,6 +27,7 @@ namespace Star_Citizen_Pfusch
         private ShipList ShipList = null;
         private ShipList VehicleList = null;
         private ShopList ShopList = null;
+        private FleetyardIntegration FleetyardIntegration = null;
         private Point currentPoint = new Point();
         public homeScreen()
         {
@@ -127,6 +129,12 @@ namespace Star_Citizen_Pfusch
             {
                 ((Canvas)ContentDisplay.Content).Children.Clear();
             }
+        }
+
+        private void IntegrationItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (FleetyardIntegration == null) FleetyardIntegration = new FleetyardIntegration(ContentDisplay);
+            ContentDisplay.Navigate(FleetyardIntegration);
         }
     }
 }

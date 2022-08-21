@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -30,18 +32,30 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         private Page ThisPage;
         private Timer timer;
         private double counter = 0;
+        private SolidColorBrush TextColor, MenuColor, HeadlineColor, SliderColor;
 
         public AppearanceSettings()
         {
             ThisPage = this;
-            this.Unloaded += AppearanceSettings_Unloaded;
 
             InitializeComponent();
             LoadTreeViewItems();
 
+            this.Unloaded += AppearanceSettings_Unloaded;
+
+            TextColor = (SolidColorBrush)Application.Current.Resources["TextColor"];
+            MenuColor = (SolidColorBrush)Application.Current.Resources["MenuColor"];
+            HeadlineColor = (SolidColorBrush)Application.Current.Resources["HeadlineColor"];
+            SliderColor = (SolidColorBrush)Application.Current.Resources["SliderColor"];
+
             TextBox.SelectedValue = Application.Current.Resources["TextFontSize"].ToString();
             MenuBox.SelectedValue = Application.Current.Resources["MenuFontSize"].ToString();
             HeadlineBox.SelectedValue = Application.Current.Resources["HeadlineFontSize"].ToString();
+        }
+        private void AppearanceSettings_Unloaded(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Resources["RainbowModeActive"] = RainbowCheckBox.IsChecked;
+            Application.Current.Resources["RainbowModeValue"] = RainbowSpeed.Value;
         }
         private void LoadTreeViewItems()
         {
@@ -59,43 +73,6 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
 
                 ShipTreeViewItem.Items.Add(panel);
             }
-        }
-
-        private void AppearanceSettings_Unloaded(object sender, RoutedEventArgs e)
-        {
-            UserConfigItem userConfig = new UserConfigItem()
-            {
-                HeadlineColor = ((SolidColorBrush)Application.Current.Resources["HeadlineColor"]).Color.ToString(),
-                MenuColor = ((SolidColorBrush)Application.Current.Resources["MenuColor"]).Color.ToString(),
-                TextColor = ((SolidColorBrush)Application.Current.Resources["TextColor"]).Color.ToString(),
-                Theme = (string)Application.Current.Resources["Theme"],
-                TextFontSize = (double)Application.Current.Resources["TextFontSize"],
-                MenuFontSize = (double)Application.Current.Resources["MenuFontSize"],
-                HeadlineFontSize = (double)Application.Current.Resources["HeadlineFontSize"],
-                IsRainbowActive = (bool)RainbowCheckBox.IsChecked,
-                RainbowValue = RainbowSpeed.Value,
-                GridColumnName = ((SolidColorBrush)Application.Current.Resources["GridColumnName"]).Color.ToString(),
-                GridColumnAfterburner = ((SolidColorBrush)Application.Current.Resources["GridColumnAfterburner"]).Color.ToString(),
-                GridColumnCareer = ((SolidColorBrush)Application.Current.Resources["GridColumnCareer"]).Color.ToString(),
-                GridColumnCargo = ((SolidColorBrush)Application.Current.Resources["GridColumnCargo"]).Color.ToString(),
-                GridColumnHealth = ((SolidColorBrush)Application.Current.Resources["GridColumnHealth"]).Color.ToString(),
-                GridColumnHydrogenFuel = ((SolidColorBrush)Application.Current.Resources["GridColumnHydrogenFuel"]).Color.ToString(),
-                GridColumnManufacturer = ((SolidColorBrush)Application.Current.Resources["GridColumnManufacturer"]).Color.ToString(),
-                GridColumnMass = ((SolidColorBrush)Application.Current.Resources["GridColumnMass"]).Color.ToString(),
-                GridColumnPitch = ((SolidColorBrush)Application.Current.Resources["GridColumnPitch"]).Color.ToString(),
-                GridColumnPrice = ((SolidColorBrush)Application.Current.Resources["GridColumnPrice"]).Color.ToString(),
-                GridColumnRole = ((SolidColorBrush)Application.Current.Resources["GridColumnRole"]).Color.ToString(),
-                GridColumnQuantumFuel = ((SolidColorBrush)Application.Current.Resources["GridColumnQuantumFuel"]).Color.ToString(),
-                GridColumnRoll = ((SolidColorBrush)Application.Current.Resources["GridColumnRoll"]).Color.ToString(),
-                GridColumnShieldType = ((SolidColorBrush)Application.Current.Resources["GridColumnShieldType"]).Color.ToString(),
-                GridColumnSize = ((SolidColorBrush)Application.Current.Resources["GridColumnSize"]).Color.ToString(),
-                GridColumnSpeed = ((SolidColorBrush)Application.Current.Resources["GridColumnSpeed"]).Color.ToString(),
-                GridColumnYaw = ((SolidColorBrush)Application.Current.Resources["GridColumnYaw"]).Color.ToString(),
-                BackgroundColor = ((SolidColorBrush)Application.Current.Resources["BackgroundColor"]).Color.ToString(),
-                DarkBackgroundColor = ((SolidColorBrush)Application.Current.Resources["DarkBackgroundColor"]).Color.ToString(),
-                ChartColor = ((SolidColorBrush)Application.Current.Resources["ChartColor"]).Color.ToString()
-            };
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg",JsonConvert.SerializeObject(userConfig));
         }
         private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
@@ -127,6 +104,12 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             Application.Current.Resources["ChartColor"] = new SolidColorBrush((Color)e.NewValue);
             ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
         }
+        private void ColorSlider_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
+            Application.Current.Resources["SliderColor"] = new SolidColorBrush((Color)e.NewValue);
+            ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
+        }
 
         private void ColorText_Loaded(object sender, RoutedEventArgs e)
         {
@@ -148,6 +131,11 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             ColorPicker picker = (ColorPicker)sender;
             picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources["ChartColor"]).Color;
         }
+        private void ColorSlider_Loaded(object sender, RoutedEventArgs e)
+        {
+            ColorPicker picker = (ColorPicker)sender;
+            picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources["SliderColor"]).Color;
+        }
 
         private void TextBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -164,18 +152,11 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             Application.Current.Resources["HeadlineFontSize"] = double.Parse(((ComboBoxItem)((ComboBox)e.Source).SelectedItem).Content.ToString());
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void CheckBox_Clicked(object sender, RoutedEventArgs e)
         {
-            if (DarkCheckBox == null || WhiteCheckBox == null || RainbowCheckBox == null) return;
-            List<CheckBox> checkBoxes = new List<CheckBox>(new CheckBox[] { DarkCheckBox, WhiteCheckBox, RainbowCheckBox });
-            checkBoxes.Remove((CheckBox)sender);
-            for (int i = 0; i < checkBoxes.Count; i++)
-            {
-                checkBoxes[i].IsChecked = false;
-            }
-            checkBoxes.Add((CheckBox)sender);
+            if (WhiteCheckBox == null || RainbowCheckBox == null) return;
 
-            switch (checkBoxes.Find(o => o.IsChecked == true).Content)
+            switch (((CheckBox)sender).Content)
             {
                 case "White":
                     if (timer != null)
@@ -183,22 +164,23 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
                         timer.Stop();
                         timer.Dispose();
                     }
-                    Application.Current.Resources["TextColor"] = new SolidColorBrush(Colors.White);
-                    Application.Current.Resources["MenuColor"] = new SolidColorBrush(Colors.White);
-                    Application.Current.Resources["HeadlineColor"] = new SolidColorBrush(Colors.White);
+                    ((CheckBox)sender).IsChecked = false;
+                    SoundPlayer player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\Sounds\\WindowsErrorSound.wav");
+                    player.Load();
+                    player.Play();
+
                     break;
-                case "Dark":
+                case "Rainbow":
                     if (timer != null)
                     {
                         timer.Stop();
                         timer.Dispose();
                     }
-                    Application.Current.Resources["TextColor"] = new SolidColorBrush(Colors.White);
-                    Application.Current.Resources["MenuColor"] = new SolidColorBrush(Colors.White);
-                    Application.Current.Resources["HeadlineColor"] = new SolidColorBrush(Colors.White);
-                    break;
-                case "Rainbow":
-                    StartRainbow();
+                    if ((bool)((CheckBox)sender).IsChecked) StartRainbow();
+                    Application.Current.Resources["TextColor"] = TextColor;
+                    Application.Current.Resources["MenuColor"] = MenuColor;
+                    Application.Current.Resources["HeadlineColor"] = HeadlineColor;
+                    Application.Current.Resources["SliderColor"] = SliderColor;
                     break;
                 default:
                     break;
@@ -218,6 +200,8 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             Application.Current.Resources["TextColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
             Application.Current.Resources["MenuColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
             Application.Current.Resources["HeadlineColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
+            Application.Current.Resources["ChartColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
+            Application.Current.Resources["SliderColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
             double temp = 0;
             ThisPage.Dispatcher.Invoke(new Action(() =>
             {

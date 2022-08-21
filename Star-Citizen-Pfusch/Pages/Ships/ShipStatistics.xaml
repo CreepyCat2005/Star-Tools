@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Viewbox HorizontalAlignment="Left" Margin="0,0,0,5" >
-            <TextBox Background="Transparent" BorderThickness="0" Text="Schiff Statistiken" Foreground="White" IsReadOnly="True" />
+            <TextBox Background="Transparent" BorderThickness="0" Text="Schiff Statistiken" Foreground="{DynamicResource HeadlineColor}" IsReadOnly="True" />
         </Viewbox>
         <Rectangle Fill="White" Height="2" VerticalAlignment="Bottom" Grid.Row="0" />
 
@@ -37,25 +37,25 @@
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipNameBox" Text="Name: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+                <TextBox IsReadOnly="True" x:Name="ShipNameBox" Text="Name: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipSizeBox" Text="Size: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+                <TextBox IsReadOnly="True" x:Name="ShipSizeBox" Text="Size: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipMassBox" Text="Mass: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+                <TextBox IsReadOnly="True" x:Name="ShipMassBox" Text="Mass: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipRoleBox" Text="Role: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+                <TextBox IsReadOnly="True" x:Name="ShipRoleBox" Text="Role: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipCareerBox" Text="Career: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+                <TextBox IsReadOnly="True" x:Name="ShipCareerBox" Text="Career: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipDescriptionBox" Text="Description: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" TextWrapping="Wrap" />
+                <TextBox IsReadOnly="True" x:Name="ShipDescriptionBox" Text="Description: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" TextWrapping="Wrap" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipCargoBox" Text="Cargo: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="White" />
+                <TextBox IsReadOnly="True" x:Name="ShipCargoBox" Text="Cargo: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
                 <Grid>
@@ -70,7 +70,7 @@
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
                 <TreeView Background="Transparent" BorderThickness="0" >
-                    <TreeViewItem x:Name="ShopTreeView" Foreground="White" Header="Shops" FontSize="25" Background="Transparent" />
+                    <TreeViewItem x:Name="ShopTreeView" Foreground="{DynamicResource TextColor}" Header="Shops" FontSize="25" Background="Transparent" />
                 </TreeView>
             </ListBoxItem>
         </ListBox>

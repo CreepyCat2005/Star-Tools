@@ -25,22 +25,13 @@
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black" />
             </TreeView.Resources>
-            <TreeViewItem Header="General" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" x:Name="GeneralItem" MouseDoubleClick="GeneralItem_MouseDoubleClick" >
-                <TreeViewItem Header="Appearance" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="AppearanceItem_MouseDoubleClick" />
-                <TreeViewItem Header="License" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
-            </TreeViewItem>
+            <TreeViewItem Header="General" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="GeneralItem_MouseDoubleClick" />
+            <TreeViewItem Header="Appearance" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="AppearanceItem_MouseDoubleClick" />
+            <TreeViewItem Header="License" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
             <TreeViewItem Header="Datenschutz" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" x:Name="dataItem" MouseDoubleClick="dataItem_MouseDoubleClick" />
         </TreeView>
 
-        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" BorderThickness="0" >
-            <GridSplitter.Background>
-                <SolidColorBrush>
-                    <SolidColorBrush.Color>
-                        <Color A="255" R="255" G="255" B="255" />
-                    </SolidColorBrush.Color>
-                </SolidColorBrush>
-            </GridSplitter.Background>
-        </GridSplitter>
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" BorderThickness="0" Background="{DynamicResource SliderColor}" />
 
         <Frame Grid.Row="0" Grid.Column="2" x:Name="contentDisplay" NavigationUIVisibility="Hidden" Background="{DynamicResource BackgroundColor}" />
 

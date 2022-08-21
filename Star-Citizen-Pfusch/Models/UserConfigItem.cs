@@ -13,6 +13,7 @@ namespace Star_Citizen_Pfusch.Models
         public string MenuColor { get; set; }
         public string HeadlineColor { get; set; }
         public string ChartColor { get; set; }
+        public string SliderColor { get; set; }
         public string Theme { get; set; }
         public double TextFontSize { get; set; }
         public double MenuFontSize { get; set; }
@@ -38,6 +39,7 @@ namespace Star_Citizen_Pfusch.Models
         public string GridColumnQuantumFuel { get; set; }
         public string GridColumnShieldType { get; set; }
         public string GridColumnPrice { get; set; }
+        public string DefaultStartSize { get; set; }
 
     }
 }

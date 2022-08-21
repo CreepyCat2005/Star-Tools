@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Viewbox HorizontalAlignment="Left" Margin="0,0,0,5" >
-            <TextBox Background="Transparent" BorderThickness="0" Text="Modul Statistiken" Foreground="White" IsReadOnly="True" />
+            <TextBox Background="Transparent" BorderThickness="0" Text="Modul Statistiken" Foreground="{DynamicResource HeadlineColor}" IsReadOnly="True" />
         </Viewbox>
         <Rectangle Fill="White" Height="2" VerticalAlignment="Bottom" Grid.Row="0" />
 
@@ -29,7 +29,7 @@
                                 <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" >
                                     <ContentPresenter />
                                 </Border>
-                            </ControlTemplate>
+                            </ControlTemplate >
                         </Setter.Value>
                     </Setter>
                 </Style>

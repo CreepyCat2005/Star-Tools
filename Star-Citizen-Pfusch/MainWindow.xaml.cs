@@ -27,6 +27,7 @@ namespace Star_Citizen_Pfusch
     public partial class MainWindow : Window
     { 
         private static MainWindow window;
+        private NotifyIcon notifyIcon = new NotifyIcon();
 
         public MainWindow()
         {
@@ -41,11 +42,17 @@ namespace Star_Citizen_Pfusch
             else
             {
                 window = this;
-                loadConfig();
+                this.DataContext = this;
 
+                loadConfig();
                 InitializeComponent();
+
+                Width = double.Parse(((string)System.Windows.Application.Current.Resources["DefaultStartSize"]).Split("x")[0]);
+                Height = double.Parse(((string)System.Windows.Application.Current.Resources["DefaultStartSize"]).Split("x")[1]);
+
+                if (Width == Screen.PrimaryScreen.Bounds.Width && Height == Screen.PrimaryScreen.Bounds.Height) this.WindowState = WindowState.Maximized;
+
                 StartServer();
-                NotifyIcon notifyIcon = new NotifyIcon();
                 notifyIcon.Icon = new System.Drawing.Icon(Directory.GetCurrentDirectory() + "/Star-Tools-Logo.ico");
                 notifyIcon.Visible = true;
                 notifyIcon.ContextMenuStrip = new ContextMenuStrip();
@@ -55,6 +62,7 @@ namespace Star_Citizen_Pfusch
                 this.Content = new startScreen();
             }
         }
+
         private void StartServer()
         {
             Task.Factory.StartNew(() =>
@@ -85,10 +93,11 @@ namespace Star_Citizen_Pfusch
 
                 foreach (var color in colors)
                 {
-                    if (color.Name.Equals("Theme") || color.GetValue(userConfig) == null) continue;
+                    if (color.Name.Equals("Theme") || color.Name.Equals("DefaultStartSize") || color.GetValue(userConfig) == null) continue;
                     System.Windows.Application.Current.Resources[color.Name] = new BrushConverter().ConvertFrom(color.GetValue(userConfig));
                 }
                 System.Windows.Application.Current.Resources["Theme"] = userConfig.Theme;
+                if (userConfig.DefaultStartSize != null) System.Windows.Application.Current.Resources["DefaultStartSize"] = userConfig.DefaultStartSize;
 
                 foreach (var font in fonts)
                 {
@@ -105,6 +114,7 @@ namespace Star_Citizen_Pfusch
         private async void Menu_Close(object sender, EventArgs e)
         {
             await PlaytimeCounter.savePlaytime();
+            notifyIcon.Dispose();
             System.Windows.Application.Current.Shutdown();
         }
         protected override void OnClosing(CancelEventArgs e)

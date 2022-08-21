@@ -42,10 +42,9 @@
                 </Grid>
             </ListBoxItem>
 
-            <CheckBox x:Name="WhiteCheckBox" Content="White" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Checked="CheckBox_Checked" />
-            <CheckBox IsChecked="True" x:Name="DarkCheckBox" Content="Dark" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Checked="CheckBox_Checked" />
+            <CheckBox x:Name="WhiteCheckBox" Content="White" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Clicked" />
             <StackPanel Orientation="Horizontal">
-                <CheckBox x:Name="RainbowCheckBox" Content="Rainbow" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Checked="CheckBox_Checked" />
+                <CheckBox x:Name="RainbowCheckBox" Content="Rainbow" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Clicked" />
                 <Slider Width="100" Margin="20,0,0,0" VerticalAlignment="Center" Minimum="0.1" Maximum="1.5" TickFrequency="0.1" IsSnapToTickEnabled="True" x:Name="RainbowSpeed" />
             </StackPanel>
             <ListBoxItem HorizontalContentAlignment="Stretch" >
@@ -121,7 +120,11 @@
 
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <ext:ColorPicker Width="80" SelectedColorChanged="ColorChart_SelectedColorChanged" Loaded="ColorChart_Loaded" DropDownBorderThickness="0" ShowDropDownButton="False" />
-                <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="Changes the color of charts" Background="Transparent" Foreground="{DynamicResource ChartColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
+                <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="Changes the color of charts" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <ext:ColorPicker Width="80" SelectedColorChanged="ColorSlider_SelectedColorChanged" Loaded="ColorSlider_Loaded" DropDownBorderThickness="0" ShowDropDownButton="False" />
+                <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="Changes the color of slider" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
             </StackPanel>
 
             <ListBoxItem HorizontalContentAlignment="Stretch" >
@@ -147,8 +150,8 @@
                     <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                     <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black" />
                 </TreeView.Resources>
-                <TreeViewItem Header="Ships" Foreground="White" FontSize="{DynamicResource TextFontSize}" x:Name="ShipTreeViewItem" />
-                <TreeViewItem Header="Vehicles" Foreground="White" FontSize="{DynamicResource TextFontSize}" x:Name="VehicleTreeViewItem" />
+                <TreeViewItem Header="Ships" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" x:Name="ShipTreeViewItem" />
+                <TreeViewItem Header="Vehicles" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" x:Name="VehicleTreeViewItem" />
             </TreeView>
         </ListBox>
     </Grid>
