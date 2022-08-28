@@ -64,7 +64,27 @@ namespace Star_Citizen_Pfusch.Functions
             string token = "";
 
             var command = SqLite.CreateCommand();
-            command.CommandText = "SELECT value FROM moz_cookies WHERE host = '.fleetyards.net'";
+            command.CommandText = "SELECT value FROM moz_cookies WHERE host = '.fleetyards.net' and name = 'FLTYRD'";
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                token = reader.GetString(0);
+            }
+            return token;
+        }
+        public static string GetFleetyardPermanentToken()
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles");
+            DirectoryInfo[] files = directoryInfo.GetDirectories();
+            string path = files.Where(o => DirSize(o) == files.Select(o => DirSize(o)).Max()).ToList()[0].FullName;
+
+            SqLite = new SQLiteConnection("Data Source=" + path + "\\cookies.sqlite");
+            SqLite.Open();
+
+            string token = "";
+
+            var command = SqLite.CreateCommand();
+            command.CommandText = "SELECT value FROM moz_cookies WHERE host = '.fleetyards.net' and name = 'FLTYRD_USER_STORED'";
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
