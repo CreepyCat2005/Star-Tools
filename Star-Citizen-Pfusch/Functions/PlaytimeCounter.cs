@@ -42,7 +42,7 @@ namespace Star_Citizen_Pfusch.Functions
             using (HttpClient client = new HttpClient())
             {
                 HttpRequestMessage request = new HttpRequestMessage();
-                request.Content = new StringContent(JsonConvert.SerializeObject(new Models.AccountData() { Playtime = playtime, SessionToken = Config.SessionToken }), Encoding.UTF8, "application/json");
+                request.Content = new StringContent(JsonConvert.SerializeObject(new Models.AccountDataItem() { Playtime = playtime, SessionToken = Config.SessionToken }), Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PutAsync(Config.URL + "/AccountData", request.Content);
                 Debug.WriteLine(await request.Content.ReadAsStringAsync());

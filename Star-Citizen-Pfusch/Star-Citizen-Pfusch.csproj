@@ -27,7 +27,9 @@
     <None Remove="Graphics\Icons\Exit-Icon.png" />
     <None Remove="Graphics\Icons\Fleetyard-Logo.png" />
     <None Remove="Graphics\Icons\Left-Arrow.png" />
+    <None Remove="Graphics\Icons\Minus-Icon.png" />
     <None Remove="Graphics\Icons\People-Icon.png" />
+    <None Remove="Graphics\Icons\Plus-Icon.png" />
     <None Remove="Graphics\Icons\Right-Arrow.png" />
     <None Remove="Graphics\Icons\Ship-Icon.png" />
     <None Remove="Graphics\Icons\Twitch-Logo.png" />
@@ -524,7 +526,13 @@
     <Content Include="Graphics\Icons\Left-Arrow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\Icons\Minus-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\Icons\People-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Icons\Plus-Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\Right-Arrow.png">

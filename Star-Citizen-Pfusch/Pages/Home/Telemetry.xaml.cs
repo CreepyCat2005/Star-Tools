@@ -62,14 +62,15 @@ namespace Star_Citizen_Pfusch.Pages.Home
             response = await client.GetAsync(Config.URL + "/AccountData?History=true");
             res = await response.Content.ReadAsStringAsync();
 
-            AccountData data = JsonConvert.DeserializeObject<AccountData>(res);
+            AccountDataItem data = JsonConvert.DeserializeObject<AccountDataItem>(res);
             var version = Assembly.GetEntryAssembly().GetName().Version;
 
             PlaytimeLabel.Content = formatePlayTime(data.PlaytimeHistory.Sum() + data.Playtime);
             ClientVersionLabel.Content = $"{version.Major}.{version.Minor}.{version.Build}";
 
             //load ShipWatcher
-            
+
+
 
         }
         private async void loadFunding(string type)

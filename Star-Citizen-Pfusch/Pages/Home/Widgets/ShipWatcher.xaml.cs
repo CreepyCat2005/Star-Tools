@@ -24,7 +24,7 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
         public string ShipName { get; set; }
         public string ShipSale { get; set; }
         public string ShipPrice { get; set; }
-        public List<ListBoxItem> ListBoxItems { get; set; }
+        public List<ListBoxItem> ItemsSource { get; set; }
 
         public ShipWatcher()
         {
@@ -39,6 +39,18 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
                 FileName = "https://robertsspaceindustries.com/pledge/Standalone-Ships/" + ((TextBlock)sender).Text.ToString(),
                 UseShellExecute = true
             });
+        }
+
+        private void AddShip_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            ItemsSource.Add(new ListBoxItem() { Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0), Content = "HalloMama" });
+        }
+
+        private void RemoveShip_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

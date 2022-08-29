@@ -11,5 +11,6 @@ namespace Star_Citizen_Pfusch.Models
     {
         public string Username, Email, Password, Salt, ProductKey;
         public AccountDataItem AccountData;
+        public List<ShipItem> ListedShips;
     }
 }

@@ -15,15 +15,35 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height=".1*" />
             <RowDefinition Height="*" />
             <RowDefinition Height=".35*" />
         </Grid.RowDefinitions>
 
-        <ListBox Background="Transparent" BorderThickness="0" Grid.RowSpan="2" ItemsSource="{Binding ListBoxItems}" />
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" >
+            <ToggleButton Background="Transparent" BorderThickness="0" x:Name="ToggleButton" >
+                <Image Source="/Graphics/Icons/Plus-Icon.png" Margin="5" />
+            </ToggleButton>
+            <Button Background="Transparent" BorderThickness="0" Click="RemoveShip_Click" >
+                <Image Source="/Graphics/Icons/Minus-Icon.png" Margin="5" />
+            </Button>
+        </StackPanel>
 
-        <Image Grid.Column="1" Stretch="UniformToFill" x:Name="ShipImage" />
+        <Popup IsOpen="{Binding Path=IsChecked, ElementName=ToggleButton}" Placement="Mouse" StaysOpen="False" >
+            <StackPanel Orientation="Vertical">
+                <Button Content="Arrow" Foreground="White" />
+                <Button Content="Arrow" Foreground="White" />
+                <Button Content="Arrow" Foreground="White" />
+                <Button Content="Arrow" Foreground="White" />
+                <Button Content="Arrow" Foreground="White" />
+            </StackPanel>
+        </Popup>
 
-        <Grid Grid.Row="1" Grid.Column="1" >
+        <ListBox Background="Transparent" BorderThickness="0" Grid.RowSpan="2" Grid.Row="1" ItemsSource="{Binding ItemsSource}" />
+
+        <Image Grid.Column="1" Stretch="UniformToFill" x:Name="ShipImage" Grid.RowSpan="2" />
+
+        <Grid Grid.Row="2" Grid.Column="1" >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -60,7 +80,5 @@
             </Viewbox>
 
         </Grid>
-        
-
     </Grid>
 </UserControl>
