@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Home" 
+      xmlns:widget="clr-namespace:Star_Citizen_Pfusch.Pages.Home.Widgets"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Telemetry" RenderOptions.BitmapScalingMode="HighQuality">
@@ -64,10 +65,10 @@
                 <Label x:Name="GameVersionLabel" VerticalAlignment="Center" Foreground="{DynamicResource TextColor}" />
             </Viewbox>
 
-            <Label Content="Time until next Patch" Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource HeadlineColor}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Label Content="PTU Status" Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource HeadlineColor}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <Rectangle Grid.Row="0" Grid.Column="1" Height="1.5" Margin="0,35,0,0" Fill="{StaticResource Gradient}" VerticalAlignment="Top" />
             <Viewbox Margin="0,35,0,0" Grid.Row="0" Grid.Column="1">
-                <Label x:Name="NextPatchLabel" VerticalAlignment="Center" Foreground="{DynamicResource TextColor}" />
+                <Label x:Name="PTUStatusLabel" VerticalAlignment="Center" Foreground="{DynamicResource TextColor}" />
             </Viewbox>
 
         </Grid>
@@ -152,8 +153,7 @@
             </Viewbox>
         </Grid>
 
-        
-
+        <widget:ShipWatcher Grid.Row="2" x:Name="ShipWatcher" />
 
     </Grid>
 </Page>

@@ -14,7 +14,7 @@ namespace Star_Citizen_Pfusch.Models
     {
         public string _id { get; set; }
         public string gameVersion;
-        public DateTime nextPatch;
+        public string PTUStatus;
         public ShipItem dailyShip;
     }
 }

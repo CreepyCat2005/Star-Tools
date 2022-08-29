@@ -25,7 +25,6 @@ namespace Star_Citizen_Pfusch.Pages.Home
     /// </summary>
     public partial class Telemetry : Page
     {
-        private System.Timers.Timer timer;
         private PublicDataItem item;
 
         public Telemetry()
@@ -37,14 +36,12 @@ namespace Star_Citizen_Pfusch.Pages.Home
             InitializeComponent();
         }
 
-        private void Telemetry_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        private void Telemetry_Unloaded(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Unload");
-            timer.Stop();
-            timer.Dispose();
         }
 
-        private async void OnLoad(object sender, System.Windows.RoutedEventArgs e)
+        private async void OnLoad(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Load");
             HttpClient client = new HttpClient();
@@ -54,7 +51,7 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
             item = JsonConvert.DeserializeObject<PublicDataItem>(res);
 
-            NextPatchLabel.Content = formateDatetime(item.nextPatch - DateTime.Now);
+            PTUStatusLabel.Content = item.PTUStatus;
             GameVersionLabel.Content = item.gameVersion;
             DailyShipDetails.Text = formatedata(item.dailyShip);
             DailyShipDescription.Text = "Beschreibung:\n" + item.dailyShip.description;
@@ -62,19 +59,17 @@ namespace Star_Citizen_Pfusch.Pages.Home
             DailyShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.dailyShip.localName + ".jpg", UriKind.Relative));
 
             client.DefaultRequestHeaders.Add("token", Config.SessionToken);
-            response = await client.GetAsync(Config.URL + "/AccountData");
+            response = await client.GetAsync(Config.URL + "/AccountData?History=true");
             res = await response.Content.ReadAsStringAsync();
 
             AccountData data = JsonConvert.DeserializeObject<AccountData>(res);
             var version = Assembly.GetEntryAssembly().GetName().Version;
 
-            PlaytimeLabel.Content = formatePlayTime(data.Playtime);
-
-            timer = new System.Timers.Timer(1000);
-            timer.Elapsed += elapsed;
-            timer.AutoReset = true;
-            timer.Enabled = true;
+            PlaytimeLabel.Content = formatePlayTime(data.PlaytimeHistory.Sum() + data.Playtime);
             ClientVersionLabel.Content = $"{version.Major}.{version.Minor}.{version.Build}";
+
+            //load ShipWatcher
+            
 
         }
         private async void loadFunding(string type)
@@ -119,18 +114,6 @@ namespace Star_Citizen_Pfusch.Pages.Home
                 default:
                     return null;
             }
-        }
-
-        private string formateDatetime(TimeSpan time)
-        {
-            return $"{time.Days}:{time.Hours}:{time.Minutes}:{time.Seconds}";
-        }
-        private void elapsed(object source, ElapsedEventArgs e)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                NextPatchLabel.Content = formateDatetime(item.nextPatch - DateTime.Now);
-            });
         }
         private string formatePlayTime(int playtime)
         {

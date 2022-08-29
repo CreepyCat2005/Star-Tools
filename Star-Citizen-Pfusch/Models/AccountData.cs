@@ -10,5 +10,6 @@ namespace Star_Citizen_Pfusch.Models
     {
         public int Playtime;
         public string SessionToken;
+        public int[] PlaytimeHistory;
     }
 }

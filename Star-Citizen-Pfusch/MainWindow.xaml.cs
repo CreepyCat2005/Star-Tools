@@ -73,7 +73,7 @@ namespace Star_Citizen_Pfusch
                     server.WaitForConnection();
                     server.ReadByte();
 
-                    Debug.WriteLine("HIASA");
+                    Debug.WriteLine("Pikachu!");
                     window.Dispatcher.Invoke(() =>
                     {
                         window.Show();
