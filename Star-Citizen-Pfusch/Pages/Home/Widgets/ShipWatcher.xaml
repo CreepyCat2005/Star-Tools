@@ -7,6 +7,34 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" x:Name="control" >
 
+    <UserControl.Resources>
+        <Style TargetType="ToggleButton" x:Key="ToggleButtonStyle" >
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton" >
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" >
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Color A="255" R="40" G="40" B="40" />
+                                </SolidColorBrush.Color>
+                            </SolidColorBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -15,35 +43,46 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="38" />
             <RowDefinition Height=".1*" />
             <RowDefinition Height="*" />
             <RowDefinition Height=".35*" />
         </Grid.RowDefinitions>
 
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" >
-            <ToggleButton Background="Transparent" BorderThickness="0" x:Name="ToggleButton" >
+        <Label Grid.ColumnSpan="2" Content="Ship Watcher" FontSize="20" Foreground="{DynamicResource HeadlineColor}" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        
+        <Rectangle Grid.ColumnSpan="2" Height="1.5" VerticalAlignment="Top" Margin="30,35,30,0" >
+            <Rectangle.Fill>
+                <LinearGradientBrush>
+                    <GradientStop Color="Transparent" Offset="0" />
+                    <GradientStop Color="White" Offset=".2" />
+                    <GradientStop Color="White" Offset=".8" />
+                    <GradientStop Color="Transparent" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1" >
+            <ToggleButton BorderThickness="0" x:Name="ToggleButton" Style="{StaticResource ToggleButtonStyle}" >
                 <Image Source="/Graphics/Icons/Plus-Icon.png" Margin="5" />
             </ToggleButton>
-            <Button Background="Transparent" BorderThickness="0" Click="RemoveShip_Click" >
+            <ToggleButton BorderThickness="0" Click="RemoveShip_Click" Style="{StaticResource ToggleButtonStyle}" >
                 <Image Source="/Graphics/Icons/Minus-Icon.png" Margin="5" />
-            </Button>
+            </ToggleButton>
         </StackPanel>
 
-        <Popup IsOpen="{Binding Path=IsChecked, ElementName=ToggleButton}" Placement="Mouse" StaysOpen="False" >
-            <StackPanel Orientation="Vertical">
-                <Button Content="Arrow" Foreground="White" />
-                <Button Content="Arrow" Foreground="White" />
-                <Button Content="Arrow" Foreground="White" />
-                <Button Content="Arrow" Foreground="White" />
-                <Button Content="Arrow" Foreground="White" />
-            </StackPanel>
+        <Popup IsOpen="{Binding Path=IsChecked, ElementName=ToggleButton}" Placement="Mouse" StaysOpen="False" x:Name="ShipPopup" >
+            <ListBox Background="Transparent" x:Name="ShipPopupList" />
         </Popup>
 
-        <ListBox Background="Transparent" BorderThickness="0" Grid.RowSpan="2" Grid.Row="1" ItemsSource="{Binding ItemsSource}" />
+        <ListBox Background="Transparent" BorderThickness="0" Grid.RowSpan="2" Grid.Row="2" x:Name="ShipList" />
 
-        <Image Grid.Column="1" Stretch="UniformToFill" x:Name="ShipImage" Grid.RowSpan="2" />
+        <Image Grid.Column="1" Grid.Row="1" Stretch="UniformToFill" x:Name="ShipImage" Grid.RowSpan="2" Margin="2,0,0,2" />
 
-        <Grid Grid.Row="2" Grid.Column="1" >
+        <Rectangle Fill="Gray" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Width="1.5" HorizontalAlignment="Left" />
+        <Rectangle Fill="Gray" Grid.Row="2" Grid.Column="1" Height="1.5" VerticalAlignment="Bottom" />
+
+        <Grid Grid.Row="3" Grid.Column="1" >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -57,12 +96,25 @@
             </Grid.RowDefinitions>
 
             <Viewbox Grid.ColumnSpan="2" HorizontalAlignment="Center" >
-                <TextBlock Text="{Binding ShipName}" Foreground="{DynamicResource TextColor}" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" >
+                <TextBlock x:Name="ShipNameBox" Text="{Binding ShipName}" Foreground="{DynamicResource TextColor}" />
+            </Viewbox>
+
+            <Viewbox Grid.ColumnSpan="2" HorizontalAlignment="Center" >
+                <TextBlock x:Name="ShipNameLayerBox" Text="{Binding ShipName}" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" >
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="Transparent" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="Gray" />
+                                    <Setter Property="Foreground" >
+                                        <Setter.Value>
+                                            <SolidColorBrush>
+                                                <SolidColorBrush.Color>
+                                                    <Color A="80" R="0" G="0" B="0" />
+                                                </SolidColorBrush.Color>
+                                            </SolidColorBrush>
+                                        </Setter.Value>
+                                    </Setter>
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
                             </Style.Triggers>
@@ -72,11 +124,11 @@
             </Viewbox>
 
             <Viewbox Grid.Row="2" HorizontalAlignment="Center" >
-                <TextBox IsReadOnly="True" Background="Transparent" BorderThickness="0" Text="{Binding ShipSale}" Foreground="{DynamicResource TextColor}" />
+                <TextBox x:Name="ShipSaleBox" IsReadOnly="True" Background="Transparent" BorderThickness="0" Text="{Binding ShipSale}" Foreground="{DynamicResource TextColor}" />
             </Viewbox>
 
             <Viewbox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" >
-                <TextBox IsReadOnly="True" Background="Transparent" BorderThickness="0" Text="{Binding ShipPrice}" Foreground="{DynamicResource TextColor}" />
+                <TextBox x:Name="ShipPriceBox" IsReadOnly="True" Background="Transparent" BorderThickness="0" Text="{Binding ShipPrice}" Foreground="{DynamicResource TextColor}" />
             </Viewbox>
 
         </Grid>

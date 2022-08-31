@@ -13,7 +13,7 @@ namespace Star_Citizen_Pfusch.Models
     {
         public string _id { get; set; }
         public string name { get; set; }
-        public int health, maxLifetimeHours, size;
+        public int health, maxLifetimeHours, size, RealPrice;
         public string type, subtype, grade, description, localName, status;
         public double cargo, qtFuelCapacity, fuelCapacity;
         public ShipDataItem data { get; set; }
