@@ -12,6 +12,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Collections.ObjectModel;
+using System.Text;
 
 namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 {
@@ -23,8 +25,8 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
         public string ShipName { get; set; }
         public string ShipSale { get; set; }
         public string ShipPrice { get; set; }
-        private bool IsBuyable = false;
-        private List<ListBoxItem> listBoxItems;
+        public ObservableCollection<ListBoxItem> listBoxItems { get; set; } = new ObservableCollection<ListBoxItem>();
+        private bool IsBuyable = false, IsDeleteModeActive = false;
 
         public ShipWatcher()
         {
@@ -50,7 +52,21 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
                 listBoxItem.MouseLeftButtonUp += AddShip_Click;
                 ShipPopupList.Items.Add(listBoxItem);
             }
-            ShipList.ItemsSource = listBoxItems;
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, Config.URL + "/AccountData");
+            request.Headers.Add("Token", Config.SessionToken);
+            response = await client.SendAsync(request);
+            res = await response.Content.ReadAsStringAsync();
+
+            AccountDataItem accountItem = JsonConvert.DeserializeObject<AccountDataItem>(res);
+
+            foreach (var item in accountItem.ShipsOnWatcher)
+            {
+                ListBoxItem listItem = new ListBoxItem() { FontSize = 20, Content = new ShipNameContainer() { ShipName = item.name, _id = item._id }, BorderThickness = new Thickness(0) };
+                listItem.MouseLeftButtonUp += LoadShipData_Click;
+                listBoxItems.Add(listItem);
+            }
+
         }
 
         private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -67,18 +83,40 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 
         private void AddShip_Click(object sender, RoutedEventArgs e)
         {
-            ListBoxItem item = new ListBoxItem() { FontSize = 18, Content = new ShipNameContainer() { ShipName = ((ShipNameContainer)((ListBoxItem)sender).Content).ShipName , _id = ((ShipNameContainer)((ListBoxItem)sender).Content)._id}, Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent), BorderThickness = new Thickness(0) };
+            if (listBoxItems.Select(o => ((ShipNameContainer)o.Content)._id).Contains(((ShipNameContainer)((ListBoxItem)sender).Content)._id)) return;
+            ListBoxItem item = new ListBoxItem() { FontSize = 20, Content = new ShipNameContainer() { ShipName = ((ShipNameContainer)((ListBoxItem)sender).Content).ShipName , _id = ((ShipNameContainer)((ListBoxItem)sender).Content)._id}, BorderThickness = new Thickness(0) };
             item.MouseLeftButtonUp += LoadShipData_Click;
             listBoxItems.Add(item);
             ShipPopup.IsOpen = false;
+
+            SendAccountDataUpdate();
+        }
+        private async void SendAccountDataUpdate()
+        {
+            List<ShipWatcherItem> shipWatcherItems = new List<ShipWatcherItem>();
+            foreach (var item in listBoxItems)
+            {
+                shipWatcherItems.Add(new ShipWatcherItem() { name = ((ShipNameContainer)item.Content).ShipName, _id = ((ShipNameContainer)item.Content)._id});
+            }
+            HttpClient client = new HttpClient();
+            StringContent content = new StringContent(JsonConvert.SerializeObject(new AccountDataItem() { SessionToken = Config.SessionToken, ShipsOnWatcher = shipWatcherItems }), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PutAsync(Config.URL + "/AccountData",content);
+            Debug.WriteLine(response.StatusCode);
         }
 
         private void RemoveShip_Click(object sender, RoutedEventArgs e)
         {
-
+            IsDeleteModeActive = true;
         }
         private async void LoadShipData_Click(object sender, RoutedEventArgs e)
         {
+            if (IsDeleteModeActive)
+            {
+                listBoxItems.Remove((ListBoxItem)sender);
+                SendAccountDataUpdate();
+                IsDeleteModeActive = false;
+            }
+
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(Config.URL + $"/Ship?ID={((ShipNameContainer)((ListBoxItem)sender).Content)._id}");
             string res = await response.Content.ReadAsStringAsync();
@@ -87,7 +125,6 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 
             ShipNameBox.Text = shipItem.name;
             ShipNameLayerBox.Text = shipItem.name;
-            ShipPriceBox.Text = String.Format("{0:n0} aUEC", shipItem.shops.Select(o => o.price).ToList()[0]);
             ShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + shipItem.localName + ".jpg", UriKind.Relative));
             if (shipItem.RealPrice != 0)
             {
@@ -98,7 +135,15 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
             {
                 ShipSaleBox.Text = "Not in shop";
                 IsBuyable = false;
-            }       
+            }
+            if (shipItem.shops.Select(o => o.price).ToList().Count > 0)
+            {
+                ShipPriceBox.Text = String.Format("{0:n0} aUEC", shipItem.shops.Select(o => o.price).ToList()[0]);
+            }
+            else
+            {
+                ShipPriceBox.Text = "Not buyable";
+            }
         }
     }
 }

@@ -65,10 +65,8 @@ namespace Star_Citizen_Pfusch.Pages.Home
             AccountDataItem data = JsonConvert.DeserializeObject<AccountDataItem>(res);
             var version = Assembly.GetEntryAssembly().GetName().Version;
 
-            PlaytimeLabel.Content = formatePlayTime(data.PlaytimeHistory.Sum() + data.Playtime);
+            PlaytimeLabel.Content = formatePlayTime(data.PlaytimeHistory.Sum() + (int)data.Playtime);
             ClientVersionLabel.Content = $"{version.Major}.{version.Minor}.{version.Build}";
-
-            //load ShipWatcher
 
 
 
