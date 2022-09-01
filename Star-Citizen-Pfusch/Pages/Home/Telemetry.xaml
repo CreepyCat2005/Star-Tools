@@ -162,7 +162,7 @@
             </Viewbox>
         </Grid>
 
-        <widget:ShipWatcher Grid.Row="2" x:Name="ShipWatcher" />
+        <widget:PlaytimeHistory Grid.Row="2" />
 
     </Grid>
 </Page>

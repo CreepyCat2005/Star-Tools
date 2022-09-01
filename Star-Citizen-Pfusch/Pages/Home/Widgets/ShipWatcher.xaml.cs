@@ -26,15 +26,13 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
         public string ShipSale { get; set; }
         public string ShipPrice { get; set; }
         public ObservableCollection<ListBoxItem> listBoxItems { get; set; } = new ObservableCollection<ListBoxItem>();
-        private bool IsBuyable = false, IsDeleteModeActive = false;
+        private bool IsBuyable = false;
 
         public ShipWatcher()
         {
-
             InitializeComponent();
             init();
             this.DataContext = this;
-
         }
 
         private async void init()
@@ -103,18 +101,13 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
             HttpResponseMessage response = await client.PutAsync(Config.URL + "/AccountData",content);
             Debug.WriteLine(response.StatusCode);
         }
-
-        private void RemoveShip_Click(object sender, RoutedEventArgs e)
-        {
-            IsDeleteModeActive = true;
-        }
         private async void LoadShipData_Click(object sender, RoutedEventArgs e)
         {
-            if (IsDeleteModeActive)
+            if ((bool)DeleteButton.IsChecked)
             {
                 listBoxItems.Remove((ListBoxItem)sender);
                 SendAccountDataUpdate();
-                IsDeleteModeActive = false;
+                DeleteButton.IsChecked = false;
             }
 
             HttpClient client = new HttpClient();

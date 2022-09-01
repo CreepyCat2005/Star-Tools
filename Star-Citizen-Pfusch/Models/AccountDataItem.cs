@@ -12,6 +12,7 @@ namespace Star_Citizen_Pfusch.Models
         public string SessionToken;
         public int[] PlaytimeHistory;
         public List<ShipWatcherItem> ShipsOnWatcher;
+        public DateTime AccountCreatedOn;
     }
     public class ShipWatcherItem
     {

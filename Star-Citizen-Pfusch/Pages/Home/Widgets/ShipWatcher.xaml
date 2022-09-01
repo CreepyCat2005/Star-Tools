@@ -66,7 +66,7 @@
             <ToggleButton BorderThickness="0" x:Name="ToggleButton" Style="{StaticResource ToggleButtonStyle}" >
                 <Image Source="/Graphics/Icons/Plus-Icon.png" Margin="5" />
             </ToggleButton>
-            <ToggleButton BorderThickness="0" Click="RemoveShip_Click" Style="{StaticResource ToggleButtonStyle}" >
+            <ToggleButton BorderThickness="0" Style="{StaticResource ToggleButtonStyle}" x:Name="DeleteButton" >
                 <Image Source="/Graphics/Icons/Minus-Icon.png" Margin="5" />
             </ToggleButton>
         </StackPanel>
