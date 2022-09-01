@@ -6,35 +6,38 @@
              xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models.UserControls.Charts"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+
+    <UserControl.Resources>
+        <Style TargetType="Ellipse" x:Key="EllipseStyle">
+            <Setter Property="ToolTipService.InitialShowDelay" Value="0" />
+        </Style>
+    </UserControl.Resources>
+    <Grid x:Name="Grid" >
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".1*" />
+            <ColumnDefinition Width=".15*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height=".1*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="1" VerticalAlignment="Bottom" >
-            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,50" />
-            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,50" />
-            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,50" />
-            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,50" />
-            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,50" />
-            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,50" />
-            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,50" />
+        <StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,5,0" >
+            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,75" />
+            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,75" />
+            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,75" />
+            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,75" />
+            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,75" />
+            <Rectangle Fill="Gray" Height="1" Margin="0,0,0,38" />
         </StackPanel>
 
         <StackPanel VerticalAlignment="Bottom" >
-            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="0,0,10,24" HorizontalAlignment="Right" />
-            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="0,0,10,25" HorizontalAlignment="Right" />
-            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="0,0,10,24" HorizontalAlignment="Right" />
-            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="0,0,10,24" HorizontalAlignment="Right" />
-            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="0,0,10,25" HorizontalAlignment="Right" />
-            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="0,0,10,25" HorizontalAlignment="Right" />
-            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="0,0,10,37" HorizontalAlignment="Right" />
+            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="18" Margin="0,0,10,52" HorizontalAlignment="Right" x:Name="RowNumber5" />
+            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="18" Margin="0,0,10,52" HorizontalAlignment="Right" x:Name="RowNumber4" />
+            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="18" Margin="0,0,10,52" HorizontalAlignment="Right" x:Name="RowNumber3" />
+            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="18" Margin="0,0,10,52" HorizontalAlignment="Right" x:Name="RowNumber2" />
+            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="18" Margin="0,0,10,51" HorizontalAlignment="Right" x:Name="RowNumber1" />
+            <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="18" Margin="0,0,10,27" HorizontalAlignment="Right" x:Name="RowNumber0" />
         </StackPanel>
 
         <Polygon Grid.Column="1" x:Name="FilledPolygon" >
@@ -46,6 +49,19 @@
                 </SolidColorBrush>
             </Polygon.Fill>
         </Polygon>
+
+        <Polyline Grid.Column="1" x:Name="PolygonLine" StrokeThickness="1" >
+            <Polyline.Stroke>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="0" G="150" B="255" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </Polyline.Stroke>
+        </Polyline>
+
+        <TextBox Width="26" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Column="1" Background="Transparent" Foreground="{DynamicResource TextColor}" BorderBrush="Gray" x:Name="PointCountBox" PreviewTextInput="PointCountBox_PreviewTextInput" TextChanged="PointCountBox_TextChanged" ToolTip="number of points shown" />
+
 
     </Grid>
 </UserControl>
