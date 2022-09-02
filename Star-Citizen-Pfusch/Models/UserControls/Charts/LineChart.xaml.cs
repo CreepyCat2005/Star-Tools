@@ -67,8 +67,9 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
             {
                 Point point = new Point(Width / (int.Parse(PointCountBox.Text) - 1) * i - 1, Height - (Height - 12) * (item.PlaytimeHistory[i] / maxValue));
                 points.Add(point);
-                
-                Ellipse ellipse = new Ellipse() { Fill = new SolidColorBrush(Colors.LightBlue), Width = 6, Height = 6, Margin = new Thickness(point.X - 3, point.Y - 3, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, ToolTip = formatePlayTime(item.PlaytimeHistory[i]), Style = (Style)FindResource("EllipseStyle") };
+
+                Ellipse ellipse = new Ellipse() { Width = 8, Height = 8, Margin = new Thickness(point.X - 4, point.Y - 4, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, ToolTip = formatePlayTime(item.PlaytimeHistory[i]), Style = (Style)FindResource("EllipseStyle") };
+                ellipse.SetResourceReference(Shape.FillProperty, "ChartPointColor");
                 Grid.SetRowSpan(ellipse, 5);
                 Grid.SetColumn(ellipse, 1);
                 Grid.Children.Add(ellipse);

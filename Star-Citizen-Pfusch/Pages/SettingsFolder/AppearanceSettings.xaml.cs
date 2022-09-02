@@ -104,6 +104,18 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             Application.Current.Resources["ChartColor"] = new SolidColorBrush((Color)e.NewValue);
             ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
         }
+        private void ColorChartLine_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
+            Application.Current.Resources["ChartLineColor"] = new SolidColorBrush((Color)e.NewValue);
+            ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
+        }
+        private void ColorChartPoint_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
+            Application.Current.Resources["ChartPointColor"] = new SolidColorBrush((Color)e.NewValue);
+            ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
+        }
         private void ColorSlider_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
@@ -130,6 +142,16 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         {
             ColorPicker picker = (ColorPicker)sender;
             picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources["ChartColor"]).Color;
+        }
+        private void ColorChartPoint_Loaded(object sender, RoutedEventArgs e)
+        {
+            ColorPicker picker = (ColorPicker)sender;
+            picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources["ChartPointColor"]).Color;
+        }
+        private void ColorChartLine_Loaded(object sender, RoutedEventArgs e)
+        {
+            ColorPicker picker = (ColorPicker)sender;
+            picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources["ChartLineColor"]).Color;
         }
         private void ColorSlider_Loaded(object sender, RoutedEventArgs e)
         {
@@ -186,6 +208,12 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
                     break;
             }
         }
+
+        private void ColorPicker_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private async void StartRainbow()
         {
             timer = new Timer();

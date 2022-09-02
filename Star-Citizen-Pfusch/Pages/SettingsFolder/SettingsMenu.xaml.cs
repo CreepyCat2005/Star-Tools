@@ -64,6 +64,8 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
                 BackgroundColor = ((SolidColorBrush)Application.Current.Resources["BackgroundColor"]).Color.ToString(),
                 DarkBackgroundColor = ((SolidColorBrush)Application.Current.Resources["DarkBackgroundColor"]).Color.ToString(),
                 ChartColor = ((SolidColorBrush)Application.Current.Resources["ChartColor"]).Color.ToString(),
+                ChartPointColor = ((SolidColorBrush)Application.Current.Resources["ChartPointColor"]).Color.ToString(),
+                ChartLineColor = ((SolidColorBrush)Application.Current.Resources["ChartLineColor"]).Color.ToString(),
                 SliderColor = ((SolidColorBrush)Application.Current.Resources["SliderColor"]).Color.ToString(),
                 DefaultStartSize = (string)Application.Current.Resources["DefaultStartSize"]
             };

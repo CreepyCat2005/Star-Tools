@@ -44,8 +44,6 @@
         <Viewbox Margin="0,40,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
             <chart:LineChart Width="800" />
         </Viewbox>
-
-
-
+        
     </Grid>
 </UserControl>

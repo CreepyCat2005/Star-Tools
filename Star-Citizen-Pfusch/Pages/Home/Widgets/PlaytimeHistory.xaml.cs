@@ -43,11 +43,8 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 
             PlaytimeTextBox.Text = formatePlayTime((int)item.Playtime + item.PlaytimeHistory.Sum());
             MeasuredTextBox.Text = item.AccountCreatedOn.ToShortDateString();
-
-
-
-
         }
+        
         private string formatePlayTime(int playtime)
         {
             int hour = playtime / 60;

@@ -40,27 +40,11 @@
             <TextBlock Text="0" Foreground="{DynamicResource TextColor}" FontSize="18" Margin="0,0,10,27" HorizontalAlignment="Right" x:Name="RowNumber0" />
         </StackPanel>
 
-        <Polygon Grid.Column="1" x:Name="FilledPolygon" >
-            <Polygon.Fill>
-                <SolidColorBrush>
-                    <SolidColorBrush.Color>
-                        <Color A="80" R="0" G="150" B="255" />
-                    </SolidColorBrush.Color>
-                </SolidColorBrush>
-            </Polygon.Fill>
-        </Polygon>
+        <Polygon Grid.Column="1" x:Name="FilledPolygon" Fill="{DynamicResource ChartColor}" />
 
-        <Polyline Grid.Column="1" x:Name="PolygonLine" StrokeThickness="1" >
-            <Polyline.Stroke>
-                <SolidColorBrush>
-                    <SolidColorBrush.Color>
-                        <Color A="255" R="0" G="150" B="255" />
-                    </SolidColorBrush.Color>
-                </SolidColorBrush>
-            </Polyline.Stroke>
-        </Polyline>
+        <Polyline Grid.Column="1" x:Name="PolygonLine" StrokeThickness="2" Stroke="{DynamicResource ChartLineColor}" />
 
-        <TextBox Width="26" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Column="1" Background="Transparent" Foreground="{DynamicResource TextColor}" BorderBrush="Gray" x:Name="PointCountBox" PreviewTextInput="PointCountBox_PreviewTextInput" TextChanged="PointCountBox_TextChanged" ToolTip="number of points shown" />
+        <TextBox CaretBrush="{DynamicResource TextColor}" Width="26" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Column="1" Background="Transparent" Foreground="{DynamicResource TextColor}" BorderBrush="Gray" x:Name="PointCountBox" PreviewTextInput="PointCountBox_PreviewTextInput" TextChanged="PointCountBox_TextChanged" ToolTip="number of points shown" />
 
 
     </Grid>
