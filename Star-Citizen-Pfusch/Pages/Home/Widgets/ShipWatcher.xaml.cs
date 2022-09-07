@@ -14,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Collections.ObjectModel;
 using System.Text;
-using Star_Citizen_Pfusch.Animations.Symbols;
 using Star_Citizen_Pfusch.Functions;
 
 namespace Star_Citizen_Pfusch.Pages.Home.Widgets

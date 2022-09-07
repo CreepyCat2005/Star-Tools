@@ -319,7 +319,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             jArray = JArray.Parse(moduleRes);
 
-            List<string> validTypes = new List<string>(new string[] { "Shield", "PowerPlant", "QuantumDrive", "Cooler", "MissileLauncher", "Turret" });
+            List<string> validTypes = new List<string>(new string[] { "Shield", "PowerPlant", "QuantumDrive", "Cooler", "MissileLauncher" }); //removed Turret and added it to experimental, Reason: To Unstable
             List<JToken> localNames = new List<JToken>(jArray.Children()["localName"]);
             int counter = 0;
             ListBoxItem listBoxItem = new ListBoxItem()
