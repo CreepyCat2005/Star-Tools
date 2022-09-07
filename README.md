@@ -15,7 +15,7 @@ But you may think now, "haven't you mentioned a database updater?". Yes, i have 
 
 # Why you can't use the software right now
 
-You currently can't create a new account / send requests to the server because i don't want to end up like Cyberbug 2077 and releasing an unfinished and unpolished product. If the first version is ready for testing and maybe a bit later for deployment you won't miss it :)
+You currently **can't create a new account** / **send requests to the server** because i don't want to end up like Cyberbug 2077 and release an unfinished and unpolished product. If the **first version** is ready for testing and maybe a bit later for deployment **you won't miss it** :)
 
 # You wan't to help? Great!
 
