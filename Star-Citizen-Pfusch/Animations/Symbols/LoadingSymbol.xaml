@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Star_Citizen_Pfusch.Animations.Symbols.LoadingSymbol"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Star_Citizen_Pfusch.Animations.Symbols"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200">
+    <Grid>
+        <Ellipse StrokeThickness="20" >
+            <Ellipse.Stroke>
+                <RadialGradientBrush RadiusX="200" >
+                    <GradientStop Color="White" Offset="0.5" />
+                    <GradientStop Color="Transparent" Offset="1" />
+                </RadialGradientBrush>
+            </Ellipse.Stroke>
+        </Ellipse>
+    </Grid>
+</UserControl>

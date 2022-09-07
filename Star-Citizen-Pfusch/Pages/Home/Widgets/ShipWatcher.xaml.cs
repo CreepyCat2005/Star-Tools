@@ -108,6 +108,7 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
                 listBoxItems.Remove((ListBoxItem)sender);
                 SendAccountDataUpdate();
                 DeleteButton.IsChecked = false;
+                return;
             }
 
             HttpClient client = new HttpClient();
