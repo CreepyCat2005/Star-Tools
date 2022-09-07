@@ -1,3 +1,4 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/CreepyCat2005/Star-Tools/.NET)
 
 # Information
 
