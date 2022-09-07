@@ -85,7 +85,7 @@ namespace Star_Citizen_Pfusch
         }
         private void loadConfig()
         {
-            if (!File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg").Equals(""))
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg") && !File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg").Equals(""))
             {
                 UserConfigItem userConfig = JsonConvert.DeserializeObject<UserConfigItem>(File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg"));
                 var colors = userConfig.GetType().GetProperties().Where(o => o.PropertyType == typeof(string)).ToList();
