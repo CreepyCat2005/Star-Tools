@@ -122,10 +122,6 @@
                 <ext:ColorPicker Width="80" SelectedColorChanged="ColorChart_SelectedColorChanged" Loaded="ColorChart_Loaded" DropDownBorderThickness="0" ShowDropDownButton="False" />
                 <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="Changes the color of charts" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" >
-                <ext:ColorPicker Width="80" SelectedColorChanged="ColorChartLine_SelectedColorChanged" Loaded="ColorChartLine_Loaded" DropDownBorderThickness="0" ShowDropDownButton="False" />
-                <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="Changes the color of chart-lines" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
-            </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <ext:ColorPicker Width="80" SelectedColorChanged="ColorChartPoint_SelectedColorChanged" Loaded="ColorChartPoint_Loaded" DropDownBorderThickness="0" ShowDropDownButton="False" />
                 <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="Changes the color of chart-points" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />

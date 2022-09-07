@@ -73,7 +73,7 @@ namespace Star_Citizen_Pfusch.Models
                 case ModuleTypeEnum.Missile_Rack:
                     return ModuleTypeEnum.Missile;
                 default:
-                    return ModuleTypeEnum.Unknown;
+                    return type;
             }
         }
         public string Text { get; set; }

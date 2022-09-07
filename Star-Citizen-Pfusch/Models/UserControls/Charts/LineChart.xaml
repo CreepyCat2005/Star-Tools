@@ -41,9 +41,7 @@
         </StackPanel>
 
         <Polygon Grid.Column="1" x:Name="FilledPolygon" Fill="{DynamicResource ChartColor}" />
-
-        <Polyline Grid.Column="1" x:Name="PolygonLine" StrokeThickness="2" Stroke="{DynamicResource ChartLineColor}" />
-
+        
         <TextBox CaretBrush="{DynamicResource TextColor}" Width="26" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Column="1" Background="Transparent" Foreground="{DynamicResource TextColor}" BorderBrush="Gray" x:Name="PointCountBox" PreviewTextInput="PointCountBox_PreviewTextInput" TextChanged="PointCountBox_TextChanged" ToolTip="number of points shown" />
 
 

@@ -14,7 +14,6 @@ namespace Star_Citizen_Pfusch.Models
         public string HeadlineColor { get; set; }
         public string ChartColor { get; set; }
         public string ChartPointColor { get; set; }
-        public string ChartLineColor { get; set; }
         public string SliderColor { get; set; }
         public string Theme { get; set; }
         public double TextFontSize { get; set; }

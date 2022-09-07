@@ -319,7 +319,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             jArray = JArray.Parse(moduleRes);
 
-            List<string> validTypes = new List<string>(new string[] { "Shield", "PowerPlant", "QuantumDrive", "Cooler", "MissileLauncher" });
+            List<string> validTypes = new List<string>(new string[] { "Shield", "PowerPlant", "QuantumDrive", "Cooler", "MissileLauncher", "Turret" });
             List<JToken> localNames = new List<JToken>(jArray.Children()["localName"]);
             int counter = 0;
             ListBoxItem listBoxItem = new ListBoxItem()
@@ -339,7 +339,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 Grid grid = (Grid)listBoxItem.Content;
                 ModuleItem temp = JsonConvert.DeserializeObject<ModuleItem>(jArray[localNames.IndexOf(element[i].Value<string>("localName"))].ToString());
 
-                DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = element[i].Value<JToken>("itemTypes").Value<JToken>(0).Value<string>("type"), type = (ModuleTypeEnum)temp.type, Size = temp.size };
+                DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = ((ModuleTypeEnum)temp.type).ConvertToString(), type = (ModuleTypeEnum)temp.type, Size = temp.size };
                 if (dragAndDropTarget.type == ModuleTypeEnum.Missile_Rack)
                 {
                     MissileRackItem missileRack = JsonConvert.DeserializeObject<MissileRackItem>(jArray[localNames.IndexOf(element[i].Value<string>("localName"))].ToString());
@@ -347,6 +347,16 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
                     DragAndDropFrame frame = new DragAndDropFrame() { Type = ModuleTypeEnum.Missile_Rack, ModuleName = temp.name, Size = missile.size };
                     frame.ContentFrame.Content = new DragAndDropItem() { type = ModuleTypeEnum.Missile, QtNameText = missile.name, Size = missile.size, QtSizeText = "Size: " + missile.size, QtGradeText = "Anzahl: " + missileRack.ports.Length };
+
+                    dragAndDropTarget.ContentFrame.Content = frame;
+                }
+                else if (dragAndDropTarget.type == ModuleTypeEnum.Mounting)
+                {
+                    MountingItem mounting = JsonConvert.DeserializeObject<MountingItem>(jArray[localNames.IndexOf(element[i].Value<string>("localName"))].ToString());
+                    WeaponItem weapon = JsonConvert.DeserializeObject<WeaponItem>(jArray[localNames.IndexOf(element[i]["loadout"].Select(o => o.Value<JToken>("localName")).ToList()[0])].ToString());
+
+                    DragAndDropFrame frame = new DragAndDropFrame() { Type = ModuleTypeEnum.Mounting, ModuleName = temp.name, Size = weapon.size };
+                    frame.ContentFrame.Content = new DragAndDropItem() { type = ModuleTypeEnum.Weapon, QtNameText = weapon.name, Size = weapon.size, QtSizeText = "Size: " + weapon.size, QtGradeText = "Anzahl: " + mounting.ports.Length };
 
                     dragAndDropTarget.ContentFrame.Content = frame;
                 }
@@ -432,8 +442,10 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             {
                 case ModuleTypeEnum.Missile_Rack:
                     return ModuleTypeEnum.Missile;
+                case ModuleTypeEnum.Turret:
+                    return ModuleTypeEnum.Weapon;
                 default:
-                    return ModuleTypeEnum.Unknown;
+                    return type;
             }
         }
 
@@ -475,7 +487,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             for (int i = 0; i < moduleItems.Count; i++)
             {
                 DragAndDropItem dragAndDropItem = (DragAndDropItem)moduleItems[i].Content;
-                if (!dragAndDropItem.QtNameText.Contains(boxText))
+                if (!dragAndDropItem.QtNameText.ToLower().Contains(boxText.ToLower()))
                 {
                     moduleItems[i].Visibility = Visibility.Collapsed;
                 }

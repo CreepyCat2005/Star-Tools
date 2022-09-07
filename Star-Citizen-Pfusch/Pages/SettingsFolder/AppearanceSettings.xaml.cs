@@ -104,12 +104,6 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             Application.Current.Resources["ChartColor"] = new SolidColorBrush((Color)e.NewValue);
             ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
         }
-        private void ColorChartLine_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
-        {
-            if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
-            Application.Current.Resources["ChartLineColor"] = new SolidColorBrush((Color)e.NewValue);
-            ((ColorPicker)sender).Background = new SolidColorBrush((Color)e.NewValue);
-        }
         private void ColorChartPoint_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             if (e.NewValue == Colors.Transparent) { ((ColorPicker)sender).SelectedColor = e.OldValue; return; }
@@ -147,11 +141,6 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         {
             ColorPicker picker = (ColorPicker)sender;
             picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources["ChartPointColor"]).Color;
-        }
-        private void ColorChartLine_Loaded(object sender, RoutedEventArgs e)
-        {
-            ColorPicker picker = (ColorPicker)sender;
-            picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources["ChartLineColor"]).Color;
         }
         private void ColorSlider_Loaded(object sender, RoutedEventArgs e)
         {

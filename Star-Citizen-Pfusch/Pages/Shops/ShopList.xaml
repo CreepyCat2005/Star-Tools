@@ -9,6 +9,52 @@
       Title="ShopList">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Fill="{DynamicResource BackgroundColor}" />
+
+        <TextBox Text="Search" x:Name="SearchBox" Width="140" Margin="10,5" HorizontalAlignment="Left" BorderThickness="1" FontSize="25" VerticalContentAlignment="Center" TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" >
+            <TextBox.Background>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="30" G="30" B="30" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </TextBox.Background>
+            <TextBox.BorderBrush>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="90" G="90" B="90" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </TextBox.BorderBrush>
+            <TextBox.Foreground>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="80" G="80" B="80" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </TextBox.Foreground>
+        </TextBox>
+
+        <TreeView Grid.Row="1" Background="Transparent" BorderThickness="0" x:Name="TreeView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+            <TreeView.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="DarkGray" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="DarkGray" />
+            </TreeView.Resources>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="{DynamicResource HeadlineColor}" />
+                    <Setter Property="FontSize" Value="28" />
+                    <Setter Property="Margin" Value="0,5" />
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
     </Grid>
 </Page>

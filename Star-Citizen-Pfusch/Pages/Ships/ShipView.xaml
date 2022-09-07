@@ -35,7 +35,7 @@
         <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
         <GridSplitter Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
 
-        <Image Grid.Column="2" Grid.Row="0" x:Name="ShipImage" />
+        <Image Grid.Column="2" Grid.Row="0" x:Name="ShipImage" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
         <Label Grid.Row="0" Grid.Column="2" x:Name="ShipStatus" FontSize="12" Foreground="{DynamicResource TextColor}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
 

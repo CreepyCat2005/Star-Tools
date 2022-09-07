@@ -89,11 +89,10 @@ namespace Star_Citizen_Pfusch
             ContentDisplay.Content = VehicleList;
         }
 
-        private void ShopItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void PureShopDataItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (ShopList == null) ShopList = new ShopList();
-            ContentDisplay.Content = null;
-            ContentDisplay.Content = ShopList;
+            ContentDisplay.Navigate(ShopList);
         }
 
         private void ContentFrame_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -135,6 +134,19 @@ namespace Star_Citizen_Pfusch
         {
             if (FleetyardIntegration == null) FleetyardIntegration = new FleetyardIntegration(ContentDisplay);
             ContentDisplay.Navigate(FleetyardIntegration);
+        }
+
+        private void ModuleListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void WeaponListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void UtilityListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

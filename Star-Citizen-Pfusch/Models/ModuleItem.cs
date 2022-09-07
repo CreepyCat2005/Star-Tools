@@ -15,7 +15,7 @@ namespace Star_Citizen_Pfusch.Models
         public double health, mass;
         public int size, type;
         public ModulePortLoadoutItem[] loadout { get; set; }
-        public ShopItem[] shops;
+        public PureShopDataItem[] shops;
     }
     [BsonIgnoreExtraElements]
     public class ModulePortLoadoutItem

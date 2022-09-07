@@ -8,6 +8,31 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="homeScreen" RenderOptions.BitmapScalingMode="HighQuality" >
 
+    <Page.Resources>
+        <Style TargetType="ListBoxItem" x:Key="ExpanderItemStyle" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                  BorderThickness="{TemplateBinding BorderThickness}" 
+                  Background="{TemplateBinding Background}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Cursor" Value="Hand" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
     <Grid x:Name="Grid" >
 
         <Grid.Background>
@@ -15,7 +40,7 @@
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="260" />
             <ColumnDefinition Width="4" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -147,7 +172,16 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem Content="Komponenten" FontSize="35" Foreground="{DynamicResource MenuColor}" >
+            <ListBoxItem FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="ComponentItem" >
+                <ListBoxItem.Content>
+                    <Expander Header="Komponenten" Foreground="{DynamicResource MenuColor}" IsExpanded="False" >
+                        <ListBox Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ExpanderItemStyle}" >
+                            <ListBoxItem Content="Module" Foreground="{DynamicResource TextColor}" Margin="20,0,0,0" MouseLeftButtonUp="ModuleListBoxItem_MouseLeftButtonUp" />
+                            <ListBoxItem Content="Waffen" Foreground="{DynamicResource TextColor}" Margin="20,0,0,0" MouseLeftButtonUp="WeaponListBoxItem_MouseLeftButtonUp" />
+                            <ListBoxItem Content="Sonstiges" Foreground="{DynamicResource TextColor}" Margin="20,0,0,0" MouseLeftButtonUp="UtilityListBoxItem_MouseLeftButtonUp" />
+                        </ListBox>
+                    </Expander>
+                </ListBoxItem.Content>
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -180,7 +214,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem Content="Shops" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="ShopItem" PreviewMouseLeftButtonUp="ShopItem_PreviewMouseLeftButtonUp" >
+            <ListBoxItem Content="Shops" FontSize="35" Foreground="{DynamicResource MenuColor}" PreviewMouseLeftButtonUp="PureShopDataItem_PreviewMouseLeftButtonUp" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -216,31 +250,7 @@
             <ListBoxItem FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="IntegrationItem" >
                 <ListBoxItem.Content>
                     <Expander Header="Integration" Foreground="{DynamicResource MenuColor}" IsExpanded="False" >
-                        <ListBox Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ListBoxItem">
-                                                <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                  BorderThickness="{TemplateBinding BorderThickness}" 
-                  Background="{TemplateBinding Background}">
-                                                    <Border.Style>
-                                                        <Style TargetType="Border">
-                                                            <Style.Triggers>
-                                                                <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Cursor" Value="Hand" />
-                                                                </Trigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Border.Style>
-                                                    <ContentPresenter />
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListBox.ItemContainerStyle>
+                        <ListBox Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ExpanderItemStyle}" >
                             <ListBoxItem Content="Fleetyard" Foreground="{DynamicResource TextColor}" Margin="20,0,0,0" MouseLeftButtonUp="IntegrationItem_MouseLeftButtonUp" />
                         </ListBox>
                     </Expander>

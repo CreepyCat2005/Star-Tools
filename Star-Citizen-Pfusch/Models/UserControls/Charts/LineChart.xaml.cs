@@ -76,7 +76,6 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
             }
             points.Add(new Point(Width, Height));
             FilledPolygon.Points = points;
-            PolygonLine.Points = points;
         }
 
         private void PointCountBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
