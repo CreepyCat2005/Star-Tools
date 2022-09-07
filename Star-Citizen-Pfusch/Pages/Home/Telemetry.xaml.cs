@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using System.Linq;
 using System.Windows;
 using Star_Citizen_Pfusch.Pages.Home.Widgets;
+using Star_Citizen_Pfusch.Animations.Symbols;
 
 namespace Star_Citizen_Pfusch.Pages.Home
 {
@@ -27,6 +28,8 @@ namespace Star_Citizen_Pfusch.Pages.Home
     public partial class Telemetry : Page
     {
         private PublicDataItem item;
+        private bool LoadedBefore = false;
+        private LoadingSymbol loadingSymbol;
 
         public Telemetry()
         {
@@ -44,6 +47,7 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
         private async void OnLoad(object sender, RoutedEventArgs e)
         {
+            if (LoadedBefore) return;
             Debug.WriteLine("Load");
             HttpClient client = new HttpClient();
 
@@ -51,11 +55,6 @@ namespace Star_Citizen_Pfusch.Pages.Home
             string res = await response.Content.ReadAsStringAsync();
 
             item = JsonConvert.DeserializeObject<PublicDataItem>(res);
-
-            DailyShipDetails.Text = formatedata(item.dailyShip);
-            DailyShipDescription.Text = "Beschreibung:\n" + item.dailyShip.description;
-
-            DailyShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.dailyShip.localName + ".jpg", UriKind.Relative));
 
             client.DefaultRequestHeaders.Add("token", Config.SessionToken);
             response = await client.GetAsync(Config.URL + "/AccountData?History=true");
@@ -79,13 +78,38 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
             //adding shipwatcher widget
             ShipWatcher shipWatcher = new ShipWatcher();
+            shipWatcher.Visibility = Visibility.Hidden;
+            shipWatcher.OnUpdateStatus += ShipWatcher_OnUpdateStatus;
             Grid.SetRow(shipWatcher, 2);
             MasterGrid.Children.Add(shipWatcher);
 
             //adding funding widget
             FundingWidget fundingWidget = new FundingWidget();
             MasterGrid.Children.Add(fundingWidget);
+
+            //adding DailyShip widget
+            DailyShipWidget dailyShipWidget = new DailyShipWidget()
+            {
+                Image = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.dailyShip.localName + ".jpg", UriKind.Relative)),
+                Details = formatedata(item.dailyShip),
+                Description = "Beschreibung:\n" + item.dailyShip.description
+            };
+            Grid.SetRow(dailyShipWidget, 2);
+            Grid.SetColumn(dailyShipWidget, 2);
+            MasterGrid.Children.Add(dailyShipWidget);
+
+            LoadedBefore = true;
         }
+
+        private void ShipWatcher_OnUpdateStatus(object sender, Functions.StatusEventArgs e)
+        {
+            if(e.Status.Equals("Loaded"))
+            {
+                ((ShipWatcher)sender).Visibility = Visibility.Visible;
+                MasterGrid.Children.Remove(MasterGrid.Children.OfType<LoadingSymbol>().ToList()[0]);
+            }
+        }
+
         private string formatePlayTime(int playtime)
         {
             int hour = playtime / 60;

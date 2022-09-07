@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Home.Widgets"
+      xmlns:custom="clr-namespace:Star_Citizen_Pfusch.Animations.Symbols"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" x:Name="control" >
 
@@ -35,7 +36,7 @@
         </Style>
     </UserControl.Resources>
     
-    <Grid>
+    <Grid x:Name="MasterGrid">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".4*" />
@@ -49,9 +50,9 @@
             <RowDefinition Height=".35*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.ColumnSpan="2" Content="Ship Watcher" FontSize="20" Foreground="{DynamicResource HeadlineColor}" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        
-        <Rectangle Grid.ColumnSpan="2" Height="1.5" VerticalAlignment="Top" Margin="30,35,30,0" >
+        <Label Grid.ColumnSpan="2" Content="Ship Watcher" FontSize="20" Foreground="{DynamicResource HeadlineColor}" HorizontalAlignment="Center" VerticalAlignment="Top"  />
+
+        <Rectangle Grid.ColumnSpan="2" Height="1.5" VerticalAlignment="Top" Margin="30,35,30,0"  >
             <Rectangle.Fill>
                 <LinearGradientBrush>
                     <GradientStop Color="Transparent" Offset="0" />
@@ -61,8 +62,8 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1" >
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1"  >
             <ToggleButton BorderThickness="0" x:Name="ToggleButton" Style="{StaticResource ToggleButtonStyle}" >
                 <Image Source="/Graphics/Icons/Plus-Icon.png" Margin="5" />
             </ToggleButton>
@@ -75,7 +76,7 @@
             <ListBox Background="Transparent" x:Name="ShipPopupList" />
         </Popup>
 
-        <ListBox Background="Transparent" BorderThickness="0" Grid.RowSpan="2" Grid.Row="2" x:Name="ShipList" ItemsSource="{Binding listBoxItems}" >
+        <ListBox Background="Transparent" BorderThickness="0" Grid.RowSpan="2" Grid.Row="2" x:Name="ShipList" ItemsSource="{Binding listBoxItems}"  >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Template">
@@ -107,12 +108,12 @@
             </ListBox.ItemContainerStyle>
         </ListBox>
 
-        <Image Grid.Column="1" Grid.Row="1" Stretch="UniformToFill" x:Name="ShipImage" Grid.RowSpan="2" Margin="2,0,0,2" />
+        <Image Grid.Column="1" Grid.Row="1" Stretch="UniformToFill" x:Name="ShipImage" Grid.RowSpan="2" Margin="2,0,0,2" VerticalAlignment="Center" HorizontalAlignment="Center"  />
 
-        <Rectangle Fill="Gray" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Width="1.5" HorizontalAlignment="Left" />
-        <Rectangle Fill="Gray" Grid.Row="2" Grid.Column="1" Height="1.5" VerticalAlignment="Bottom" />
+        <Rectangle Fill="Gray" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Width="1.5" HorizontalAlignment="Left"  />
+        <Rectangle Fill="Gray" Grid.Row="2" Grid.Column="1" Height="1.5" VerticalAlignment="Bottom"  />
 
-        <Grid Grid.Row="3" Grid.Column="1" >
+        <Grid Grid.Row="3" Grid.Column="1"  >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

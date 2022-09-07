@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Collections.ObjectModel;
 using System.Text;
+using Star_Citizen_Pfusch.Animations.Symbols;
+using Star_Citizen_Pfusch.Functions;
 
 namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 {
@@ -27,6 +29,8 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
         public string ShipPrice { get; set; }
         public ObservableCollection<ListBoxItem> listBoxItems { get; set; } = new ObservableCollection<ListBoxItem>();
         private bool IsBuyable = false;
+        public delegate void StatusUpdateHandler(object sender, StatusEventArgs e);
+        public event StatusUpdateHandler OnUpdateStatus;
 
         public ShipWatcher()
         {
@@ -34,7 +38,13 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
             init();
             this.DataContext = this;
         }
+        private void UpdateStatus(string status)
+        {
+            if (OnUpdateStatus == null) return;
 
+            StatusEventArgs args = new StatusEventArgs(status);
+            OnUpdateStatus(this,args);
+        }
         private async void init()
         {
             HttpClient client = new HttpClient();
@@ -65,6 +75,8 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
                 listBoxItems.Add(listItem);
             }
 
+            if(listBoxItems.Count > 0) LoadShip(((ShipNameContainer)listBoxItems[0].Content)._id);
+            UpdateStatus("Loaded");
         }
 
         private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -101,7 +113,7 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
             HttpResponseMessage response = await client.PutAsync(Config.URL + "/AccountData",content);
             Debug.WriteLine(response.StatusCode);
         }
-        private async void LoadShipData_Click(object sender, RoutedEventArgs e)
+        private void LoadShipData_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)DeleteButton.IsChecked)
             {
@@ -110,9 +122,12 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
                 DeleteButton.IsChecked = false;
                 return;
             }
-
+            LoadShip(((ShipNameContainer)((ListBoxItem)sender).Content)._id);
+        }
+        private async void LoadShip(string id)
+        {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(Config.URL + $"/Ship?ID={((ShipNameContainer)((ListBoxItem)sender).Content)._id}");
+            HttpResponseMessage response = await client.GetAsync(Config.URL + $"/Ship?ID={id}");
             string res = await response.Content.ReadAsStringAsync();
 
             ShipItem shipItem = JsonConvert.DeserializeObject<ShipItem>(res);

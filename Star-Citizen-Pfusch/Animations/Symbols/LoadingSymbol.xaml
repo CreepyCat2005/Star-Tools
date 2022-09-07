@@ -7,13 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200">
     <Grid>
-        <Ellipse StrokeThickness="20" >
+        <Ellipse StrokeThickness="12" StrokeDashArray="{Binding HoleSize}" >
             <Ellipse.Stroke>
-                <RadialGradientBrush RadiusX="200" >
-                    <GradientStop Color="White" Offset="0.5" />
-                    <GradientStop Color="Transparent" Offset="1" />
-                </RadialGradientBrush>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="180" R="120" G="120" B="120" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
             </Ellipse.Stroke>
+            <Ellipse.RenderTransform>
+                <RotateTransform x:Name="Rotation" Angle="0" CenterX="{Binding CenterX}" CenterY="{Binding CenterY}" />
+            </Ellipse.RenderTransform>
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever" >
+                            <DoubleAnimation Storyboard.TargetName="Rotation" Storyboard.TargetProperty="Angle" From="0" To="360" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Ellipse.Triggers>
+            
         </Ellipse>
+
+
+
+
+
     </Grid>
 </UserControl>

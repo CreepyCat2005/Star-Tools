@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Home" 
       xmlns:widget="clr-namespace:Star_Citizen_Pfusch.Pages.Home.Widgets"
+      xmlns:symbols="clr-namespace:Star_Citizen_Pfusch.Animations.Symbols"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Telemetry" RenderOptions.BitmapScalingMode="HighQuality">
@@ -36,41 +37,7 @@
         <GridSplitter Grid.Row="0" Grid.RowSpan="3" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
         <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
 
-        <Grid Grid.Row="2" Grid.Column="2">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="2" />
-                <ColumnDefinition Width=".45*" />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="45" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="2" />
-                <RowDefinition Height=".8*" />
-            </Grid.RowDefinitions>
-
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Ship of the Day" Foreground="{DynamicResource HeadlineColor}" FontSize="20" HorizontalAlignment="Center" />
-            <Rectangle Grid.ColumnSpan="3" Height="1.5" VerticalAlignment="Top" Margin="30,35,30,0" >
-                <Rectangle.Fill>
-                    <LinearGradientBrush>
-                        <GradientStop Color="Transparent" Offset="0" />
-                        <GradientStop Color="White" Offset=".2" />
-                        <GradientStop Color="White" Offset=".8" />
-                        <GradientStop Color="Transparent" Offset="1" />
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
-
-            <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" />
-            <GridSplitter Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" />
-
-            <Image Margin="1,1" Grid.Row="1" Grid.Column="0" x:Name="DailyShipImage" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Foreground="{DynamicResource TextColor}" x:Name="DailyShipDetails" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" FontSize="18" VerticalAlignment="Top"  />
-            <TextBlock Margin="3,0,0,0" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Foreground="{DynamicResource TextColor}" x:Name="DailyShipDescription" TextWrapping="Wrap" FontSize="18" />
-        </Grid>
-
+        <symbols:LoadingSymbol Grid.Row="2" Width="100" Height="100" CenterX="50" CenterY="50" HoleSize="6" />
 
     </Grid>
 </Page>

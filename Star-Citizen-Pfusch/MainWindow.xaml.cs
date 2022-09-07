@@ -105,6 +105,11 @@ namespace Star_Citizen_Pfusch
                     System.Windows.Application.Current.Resources[font.Name] = font.GetValue(userConfig);
                 }
             }
+            else
+            {
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Config");
+                File.Create(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg");
+            }
         }
         private void Menu_Open(object sender, EventArgs e)
         {

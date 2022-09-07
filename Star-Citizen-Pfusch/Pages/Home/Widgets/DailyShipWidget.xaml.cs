@@ -13,17 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Star_Citizen_Pfusch.Animations.Symbols
+namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 {
     /// <summary>
-    /// Interaction logic for LoadingSymbol.xaml
+    /// Interaction logic for DailyShipWidget.xaml
     /// </summary>
-    public partial class LoadingSymbol : UserControl
+    public partial class DailyShipWidget : UserControl
     {
-        public DoubleCollection HoleSize { get; set; }
-        public int CenterX { get; set; }
-        public int CenterY { get; set; }
-        public LoadingSymbol()
+        public string Details { get; set; }
+        public string Description { get; set; }
+        public BitmapSource Image { get; set; }
+        public DailyShipWidget()
         {
             InitializeComponent();
             this.DataContext = this;
