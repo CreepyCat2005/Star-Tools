@@ -1,5 +1,4 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/CreepyCat2005/Star-Tools/.NET)
-
 # Information
 
 This Project is currently **under development** in a very early stage. It is intended as **universal Star-Citizen platform** for every information out there about the game. It uses its own API to get the latest information about the game. You may ask now why i am making my own API even if there are so many outside I could use? Well, here are a **few reasons** why i use my **own API**:
