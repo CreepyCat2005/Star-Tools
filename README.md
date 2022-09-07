@@ -22,3 +22,11 @@ You currently **can't create a new account** / **send requests to the server** b
 If you liked the idea and the concept you can help me with the development or just throw in a few ideas :D
 
 [![Join our Discord server!](https://invidget.switchblade.xyz/4ZgQjVsUyR)](https://discord.gg/4ZgQjVsUyR)
+
+
+
+
+
+
+
+I know, my code is a mess if you look at the formating xD
