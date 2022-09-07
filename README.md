@@ -1,4 +1,3 @@
-![Discord Shield](https://discordapp.com/api/guilds/[1017028373832290375]/widget.png?style=shield)
 
 # Information
 
@@ -17,3 +16,9 @@ But you may think now, "haven't you mentioned a database updater?". Yes, i have 
 # Why you can't use the software right now
 
 You currently can't create a new account / send requests to the server because i don't want to end up like Cyberbug 2077 and releasing an unfinished and unpolished product. If the first version is ready for testing and maybe a bit later for deployment you won't miss it :)
+
+# You wan't to help? Great!
+
+If you liked the idea and the concept you can help me with the development or just throw in a few ideas :D
+
+[![Join our Discord server!](https://invidget.switchblade.xyz/4ZgQjVsUyR)](https://discord.gg/4ZgQjVsUyR)
