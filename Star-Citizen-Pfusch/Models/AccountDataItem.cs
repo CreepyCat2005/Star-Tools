@@ -16,7 +16,7 @@ namespace Star_Citizen_Pfusch.Models
     }
     public class ShipWatcherItem
     {
-        public string _id;
+        public string localName;
         public string name;
     }
 }

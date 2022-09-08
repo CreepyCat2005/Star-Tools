@@ -21,7 +21,7 @@ namespace Star_Citizen_Pfusch.Models.UserControls
     public partial class ShipNameContainer : UserControl
     {
         public string ShipName { get; set; }
-        public string _id { get; set; }
+        public string LocalName { get; set; }
         public ShipNameContainer()
         {
             InitializeComponent();

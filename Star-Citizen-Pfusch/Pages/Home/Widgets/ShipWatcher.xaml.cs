@@ -55,7 +55,7 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 
             foreach (var item in jArray)
             {
-                ListBoxItem listBoxItem = new ListBoxItem() { FontSize = 18, Content = new ShipNameContainer() { ShipName = item["name"].ToString(), _id = item["_id"].ToString() }, Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent) };
+                ListBoxItem listBoxItem = new ListBoxItem() { FontSize = 18, Content = new ShipNameContainer() { ShipName = item["name"].ToString(), LocalName = item["localName"].ToString() }, Foreground = new SolidColorBrush(Colors.White), Background = new SolidColorBrush(Colors.Transparent) };
                 listBoxItem.MouseLeftButtonUp += AddShip_Click;
                 ShipPopupList.Items.Add(listBoxItem);
             }
@@ -69,12 +69,12 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 
             foreach (var item in accountItem.ShipsOnWatcher)
             {
-                ListBoxItem listItem = new ListBoxItem() { FontSize = 20, Content = new ShipNameContainer() { ShipName = item.name, _id = item._id }, BorderThickness = new Thickness(0) };
+                ListBoxItem listItem = new ListBoxItem() { FontSize = 20, Content = new ShipNameContainer() { ShipName = item.name, LocalName = item.localName }, BorderThickness = new Thickness(0) };
                 listItem.MouseLeftButtonUp += LoadShipData_Click;
                 listBoxItems.Add(listItem);
             }
 
-            if(listBoxItems.Count > 0) LoadShip(((ShipNameContainer)listBoxItems[0].Content)._id);
+            if(listBoxItems.Count > 0) LoadShip(((ShipNameContainer)listBoxItems[0].Content).LocalName);
             UpdateStatus("Loaded");
         }
 
@@ -92,8 +92,8 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 
         private void AddShip_Click(object sender, RoutedEventArgs e)
         {
-            if (listBoxItems.Select(o => ((ShipNameContainer)o.Content)._id).Contains(((ShipNameContainer)((ListBoxItem)sender).Content)._id)) return;
-            ListBoxItem item = new ListBoxItem() { FontSize = 20, Content = new ShipNameContainer() { ShipName = ((ShipNameContainer)((ListBoxItem)sender).Content).ShipName , _id = ((ShipNameContainer)((ListBoxItem)sender).Content)._id}, BorderThickness = new Thickness(0) };
+            if (listBoxItems.Select(o => ((ShipNameContainer)o.Content).LocalName).Contains(((ShipNameContainer)((ListBoxItem)sender).Content).LocalName)) return;
+            ListBoxItem item = new ListBoxItem() { FontSize = 20, Content = new ShipNameContainer() { ShipName = ((ShipNameContainer)((ListBoxItem)sender).Content).ShipName , LocalName = ((ShipNameContainer)((ListBoxItem)sender).Content).LocalName}, BorderThickness = new Thickness(0) };
             item.MouseLeftButtonUp += LoadShipData_Click;
             listBoxItems.Add(item);
             ShipPopup.IsOpen = false;
@@ -105,7 +105,7 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
             List<ShipWatcherItem> shipWatcherItems = new List<ShipWatcherItem>();
             foreach (var item in listBoxItems)
             {
-                shipWatcherItems.Add(new ShipWatcherItem() { name = ((ShipNameContainer)item.Content).ShipName, _id = ((ShipNameContainer)item.Content)._id});
+                shipWatcherItems.Add(new ShipWatcherItem() { name = ((ShipNameContainer)item.Content).ShipName, localName = ((ShipNameContainer)item.Content).LocalName});
             }
             HttpClient client = new HttpClient();
             StringContent content = new StringContent(JsonConvert.SerializeObject(new AccountDataItem() { SessionToken = Config.SessionToken, ShipsOnWatcher = shipWatcherItems }), Encoding.UTF8, "application/json");
@@ -121,12 +121,12 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
                 DeleteButton.IsChecked = false;
                 return;
             }
-            LoadShip(((ShipNameContainer)((ListBoxItem)sender).Content)._id);
+            LoadShip(((ShipNameContainer)((ListBoxItem)sender).Content).LocalName);
         }
-        private async void LoadShip(string id)
+        private async void LoadShip(string localName)
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(Config.URL + $"/Ship?ID={id}");
+            HttpResponseMessage response = await client.GetAsync(Config.URL + $"/Ship?LocalName={localName}");
             string res = await response.Content.ReadAsStringAsync();
 
             ShipItem shipItem = JsonConvert.DeserializeObject<ShipItem>(res);
