@@ -24,7 +24,7 @@ namespace Star_Citizen_Pfusch
     public partial class homeScreen : Page
     {
         private Telemetry Telemetry = null;
-        private ShipList ShipList = null;
+        private ModernShipList ShipList = null;
         private ShipList VehicleList = null;
         private ShopList ShopList = null;
         private FleetyardIntegration FleetyardIntegration = null;
@@ -63,7 +63,8 @@ namespace Star_Citizen_Pfusch
 
         private void ShipItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (ShipList == null) ShipList = new ShipList(ContentDisplay, "Vehicle_Spaceship");
+            //if (ShipList == null) ShipList = new ShipList(ContentDisplay, "Vehicle_Spaceship");
+            if (ShipList == null) ShipList = new ModernShipList();
             ContentDisplay.Content = null;
             ContentDisplay.Content = ShipList;
         }

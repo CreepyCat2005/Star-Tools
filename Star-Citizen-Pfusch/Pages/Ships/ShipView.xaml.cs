@@ -448,7 +448,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     return type;
             }
         }
-
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
             if (SettingsFrame.Content == null || SettingsFrame.Content.GetType() != typeof(FilterSettings))

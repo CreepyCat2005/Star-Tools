@@ -1,0 +1,63 @@
+﻿<Page x:Class="Star_Citizen_Pfusch.Pages.Ships.ModernShipList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Ships"
+      xmlns:controls="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ModernShipList">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Rectangle >
+            <Rectangle.Fill>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="255" R="40" G="40" B="40" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        
+        
+
+        <ListBox Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                  BorderThickness="{TemplateBinding BorderThickness}" 
+                  Background="{TemplateBinding Background}">
+                                    <ContentPresenter />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="4" VerticalAlignment="Top" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" Weight="23 239kg" Cargo="696SCUs" />
+            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" Weight="23 239kg" Cargo="696SCUs" />
+            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" Weight="23 239kg" Cargo="696SCUs" />
+            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" Weight="23 239kg" Cargo="696SCUs" />
+            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" Weight="23 239kg" Cargo="696SCUs" />
+            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" Weight="23 239kg" Cargo="696SCUs" />
+            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" Weight="23 239kg" Cargo="696SCUs" />
+            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" Weight="23 239kg" Cargo="696SCUs" />
+        </ListBox>
+    </Grid>
+</Page>
