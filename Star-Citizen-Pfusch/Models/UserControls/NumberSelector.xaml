@@ -9,35 +9,48 @@
              d:DesignHeight="50" d:DesignWidth="150">
 
     <UserControl.Resources>
-        
+        <Style TargetType="Polygon" x:Key="PolygonStyle" >
+            <Setter Property="Fill" Value="White" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Fill" Value="Gray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     
     <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Polygon Fill="White" Points="20,40 0,20 20,0 30,0 10,20 30,40" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Polygon Grid.Column="2" Fill="White" Points="20,40 0,20 20,0 30,0 10,20 30,40" VerticalAlignment="Center" HorizontalAlignment="Center" >
+        <Polygon Grid.Row="1" Points="20,36 0,18 20,0 26,0 6,18 26,36" VerticalAlignment="Center" HorizontalAlignment="Center" MouseLeftButtonUp="Left_MouseLeftButtonUp" Style="{StaticResource PolygonStyle}" />
+        <Polygon Grid.Row="1" Grid.Column="2" Points="20,36 0,18 20,0 26,0 6,18 26,36" VerticalAlignment="Center" HorizontalAlignment="Center" MouseLeftButtonUp="Right_MouseLeftButtonUp" Style="{StaticResource PolygonStyle}" >
             <Polygon.RenderTransform>
-                <RotateTransform Angle="180" CenterX="15" CenterY="20" />
+                <RotateTransform Angle="180" CenterX="15" CenterY="18" />
             </Polygon.RenderTransform>
         </Polygon>
 
-        <Border Grid.Column="1" CornerRadius="1000" >
+        <Border Grid.Column="1" Grid.RowSpan="3" CornerRadius="1000" Opacity="{Binding MaskOpacity}" >
             <Border.Background>
                 <SolidColorBrush>
                     <SolidColorBrush.Color>
-                        <Color A="{StaticResource MaskOpacity}" R="0" G="0" B="0" />
+                        <Color A="255" R="0" G="0" B="0" />
                     </SolidColorBrush.Color>
                 </SolidColorBrush>
             </Border.Background>
-            <Viewbox Margin="10" >
-                <TextBlock Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource TextColor}" />
-            </Viewbox>
         </Border>
-
+        <Viewbox Margin="5" Grid.Column="1" Grid.RowSpan="3" >
+            <TextBlock Text="{Binding Properties.Value}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource TextColor}" />
+        </Viewbox>
     </Grid>
 </UserControl>

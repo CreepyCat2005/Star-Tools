@@ -27,13 +27,15 @@ namespace Star_Citizen_Pfusch.Models.UserControls
         }
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ((Border)sender).CornerRadius = new CornerRadius((this.ActualHeight + this.ActualWidth) / 2 / 20);
+            ((Border)sender).CornerRadius = new CornerRadius((this.ActualHeight + this.ActualWidth) / 2 / 35);
+        }
+        private void BorderSpecial_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ((Border)sender).CornerRadius = new CornerRadius(0, 0, (this.ActualHeight + this.ActualWidth) / 2 / 35, (this.ActualHeight + this.ActualWidth) / 2 / 35);
         }
 
         public ImageSource ImageSource { get; set; }
         public string ShipName { get; set; }
         public string ManufacturerName { get; set; }
-        public string Cargo { get; set; }
-        public string Weight { get; set; }
     }
 }
