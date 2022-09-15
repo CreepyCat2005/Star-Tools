@@ -7,7 +7,7 @@
     <UseWPF>true</UseWPF>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <ApplicationIcon>Star-Tools-Logo.ico</ApplicationIcon>
-    <Platforms>AnyCPU;x64</Platforms>
+    <Platforms>AnyCPU;x64;x86</Platforms>
 	<UseWPF>true</UseWPF>
 	<UseWindowsForms>true</UseWindowsForms>
  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -303,7 +303,6 @@
     <None Remove="Graphics\ShipImages\Sabre.jpg" />
     <None Remove="Graphics\ShipImages\San%2527tok.y%25C4%2581i.jpg" />
     <None Remove="Graphics\ShipImages\San%27tok.yāi.jpg" />
-    <None Remove="Graphics\ShipImages\Small\A2 Hercules.jpg" />
     <None Remove="Graphics\ShipImages\Small\aegs_avenger_stalker.jpg" />
     <None Remove="Graphics\ShipImages\Small\aegs_avenger_titan.jpg" />
     <None Remove="Graphics\ShipImages\Small\aegs_avenger_titan_renegade.jpg" />
@@ -330,6 +329,7 @@
     <None Remove="Graphics\ShipImages\Small\anvl_carrack.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_gladiator.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_hawk.jpg" />
+    <None Remove="Graphics\ShipImages\Small\anvl_hornet_f7a.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_hornet_f7c.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_hornet_f7cm.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_hornet_f7cm_heartseeker.jpg" />
@@ -347,7 +347,6 @@
     <None Remove="Graphics\ShipImages\Small\argo_mpuv_transport.jpg" />
     <None Remove="Graphics\ShipImages\Small\argo_raft.jpg" />
     <None Remove="Graphics\ShipImages\Small\banu_defender.jpg" />
-    <None Remove="Graphics\ShipImages\Small\C2 Hercules.jpg" />
     <None Remove="Graphics\ShipImages\Small\Centurion.jpg" />
     <None Remove="Graphics\ShipImages\Small\cnou_hoverquad.jpg" />
     <None Remove="Graphics\ShipImages\Small\cnou_mustang_alpha.jpg" />
@@ -355,17 +354,20 @@
     <None Remove="Graphics\ShipImages\Small\cnou_mustang_delta.jpg" />
     <None Remove="Graphics\ShipImages\Small\cnou_mustang_gamma.jpg" />
     <None Remove="Graphics\ShipImages\Small\cnou_mustang_omega.jpg" />
-    <None Remove="Graphics\ShipImages\Small\Constellation Taurus.jpg" />
+    <None Remove="Graphics\ShipImages\Small\cnou_nomad.jpg" />
     <None Remove="Graphics\ShipImages\Small\Corsair.jpg" />
     <None Remove="Graphics\ShipImages\Small\Crucible.jpg" />
     <None Remove="Graphics\ShipImages\Small\crus_starfighter_inferno.jpg" />
     <None Remove="Graphics\ShipImages\Small\crus_starfighter_ion.jpg" />
+    <None Remove="Graphics\ShipImages\Small\crus_starlifter_a2.jpg" />
+    <None Remove="Graphics\ShipImages\Small\crus_starlifter_c2.jpg" />
+    <None Remove="Graphics\ShipImages\Small\crus_starlifter_m2.jpg" />
     <None Remove="Graphics\ShipImages\Small\crus_star_runner.jpg" />
-    <None Remove="Graphics\ShipImages\Small\Cutlass Blue.jpg" />
     <None Remove="Graphics\ShipImages\Small\Cyclone MT.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_buccaneer.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_caterpillar.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_cutlass_black.jpg" />
+    <None Remove="Graphics\ShipImages\Small\drak_cutlass_blue.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_cutlass_red.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_cutlass_steel.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_dragonfly.jpg" />
@@ -375,12 +377,14 @@
     <None Remove="Graphics\ShipImages\Small\drak_mule.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_vulture.jpg" />
     <None Remove="Graphics\ShipImages\Small\Endeavor.jpg" />
+    <None Remove="Graphics\ShipImages\Small\espr_prowler.jpg" />
     <None Remove="Graphics\ShipImages\Small\espr_talon.jpg" />
     <None Remove="Graphics\ShipImages\Small\espr_talon_shrike.jpg" />
     <None Remove="Graphics\ShipImages\Small\Expanse.jpg" />
-    <None Remove="Graphics\ShipImages\Small\F7A Hornet.jpg" />
+    <None Remove="Graphics\ShipImages\Small\F8C Executive.jpg" />
     <None Remove="Graphics\ShipImages\Small\F8C Lightning Executive-Edition.jpg" />
     <None Remove="Graphics\ShipImages\Small\F8C Lightning.jpg" />
+    <None Remove="Graphics\ShipImages\Small\F8C.jpg" />
     <None Remove="Graphics\ShipImages\Small\G12.jpg" />
     <None Remove="Graphics\ShipImages\Small\G12a.jpg" />
     <None Remove="Graphics\ShipImages\Small\G12r.jpg" />
@@ -398,7 +402,6 @@
     <None Remove="Graphics\ShipImages\Small\krig_p72_archimedes.jpg" />
     <None Remove="Graphics\ShipImages\Small\Legionnaire.jpg" />
     <None Remove="Graphics\ShipImages\Small\Liberator.jpg" />
-    <None Remove="Graphics\ShipImages\Small\M2 Hercules.jpg" />
     <None Remove="Graphics\ShipImages\Small\Merchantman.jpg" />
     <None Remove="Graphics\ShipImages\Small\misc_freelancer.jpg" />
     <None Remove="Graphics\ShipImages\Small\misc_freelancer_dur.jpg" />
@@ -416,7 +419,6 @@
     <None Remove="Graphics\ShipImages\Small\misc_starfarer.jpg" />
     <None Remove="Graphics\ShipImages\Small\misc_starfarer_gemini.jpg" />
     <None Remove="Graphics\ShipImages\Small\Nautilus.jpg" />
-    <None Remove="Graphics\ShipImages\Small\Nomad.jpg" />
     <None Remove="Graphics\ShipImages\Small\Nova.jpg" />
     <None Remove="Graphics\ShipImages\Small\Odyssey.jpg" />
     <None Remove="Graphics\ShipImages\Small\orig_100i.jpg" />
@@ -437,7 +439,6 @@
     <None Remove="Graphics\ShipImages\Small\Perseus.jpg" />
     <None Remove="Graphics\ShipImages\Small\Pioneer.jpg" />
     <None Remove="Graphics\ShipImages\Small\Polaris.jpg" />
-    <None Remove="Graphics\ShipImages\Small\Prowler.jpg" />
     <None Remove="Graphics\ShipImages\Small\PTV.jpg" />
     <None Remove="Graphics\ShipImages\Small\Railen.jpg" />
     <None Remove="Graphics\ShipImages\Small\Ranger CV.jpg" />
@@ -454,6 +455,7 @@
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_andromeda.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_aquila.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_phoenix.jpg" />
+    <None Remove="Graphics\ShipImages\Small\rsi_constellation_taurus.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_mantis.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_scorpius.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_ursa_rover.jpg" />
@@ -566,1038 +568,1038 @@
     <Content Include="Graphics\Mounting.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Graphics\ShipImages\A2 Hercules.jpg">
+    <Content Include="Graphics\ShipImages\A2 Hercules.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_avenger_titan.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_avenger_titan.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_avenger_titan_renegade.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_avenger_titan_renegade.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_avenger_warlock.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_avenger_warlock.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_eclipse.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_eclipse.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_gladius.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_gladius.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_gladius_pir.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_gladius_pir.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_gladius_valiant.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_gladius_valiant.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_hammerhead.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_hammerhead.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_reclaimer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_reclaimer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_redeemer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_redeemer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_retaliator.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_retaliator.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_sabre.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_sabre.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_sabre_comet.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_sabre_comet.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_sabre_raven.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_sabre_raven.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_vanguard.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_vanguard.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_vanguard_harbinger.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_vanguard_harbinger.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_vanguard_hoplite.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_vanguard_hoplite.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\aegs_vanguard_sentinel.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\aegs_vanguard_sentinel.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_arrow.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_arrow.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_ballista.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_ballista.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_c8x_pisces_expedition.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_c8x_pisces_expedition.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_c8_pisces.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_c8_pisces.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_carrack.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_carrack.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_gladiator.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_gladiator.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_hawk.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_hawk.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_hornet_f7c.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_hornet_f7c.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_hornet_f7cm.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_hornet_f7cm.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_hornet_f7cm_heartseeker.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_hornet_f7cm_heartseeker.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_hornet_f7cr.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_hornet_f7cr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_hornet_f7cs.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_hornet_f7cs.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_hornet_f7c_wildfire.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_hornet_f7c_wildfire.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_hurricane.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_hurricane.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_spartan.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_spartan.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_terrapin.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_terrapin.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\anvl_valkyrie.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\anvl_valkyrie.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Apollo Medivac.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Apollo Medivac.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Apollo Triage.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Apollo Triage.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\argo_mole.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\argo_mole.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\argo_mpuv.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\argo_mpuv.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\argo_mpuv_transport.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\argo_mpuv_transport.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\argo_raft.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\argo_raft.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\banu_defender.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\banu_defender.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\C2 Hercules.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\C2 Hercules.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Centurion.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Centurion.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\cnou_hoverquad.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\cnou_hoverquad.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\cnou_mustang_alpha.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\cnou_mustang_alpha.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\cnou_mustang_beta.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\cnou_mustang_beta.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\cnou_mustang_delta.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\cnou_mustang_delta.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\cnou_mustang_gamma.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\cnou_mustang_gamma.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\cnou_mustang_omega.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\cnou_mustang_omega.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Constellation Taurus.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Constellation Taurus.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_constellation_taurus.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_constellation_taurus.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Corsair.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Corsair.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Crucible.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Crucible.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\crus_starfighter_inferno.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\crus_starfighter_inferno.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\crus_starfighter_ion.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\crus_starfighter_ion.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\crus_star_runner.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\crus_star_runner.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Cutlass Blue.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Cutlass Blue.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Cyclone MT.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Cyclone MT.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_buccaneer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_buccaneer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_caterpillar.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_caterpillar.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_cutlass_black.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_cutlass_black.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_cutlass_red.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_cutlass_red.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_cutlass_steel.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_cutlass_steel.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_dragonfly.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_dragonfly.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_dragonfly_pink.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_dragonfly_pink.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_dragonfly_yellow.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_dragonfly_yellow.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_herald.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_herald.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_mule.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_mule.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\drak_vulture.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\drak_vulture.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Endeavor.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Endeavor.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\espr_talon.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\espr_talon.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\espr_talon_shrike.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\espr_talon_shrike.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Expanse.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Expanse.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\F7A Hornet.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\F7A Hornet.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\F8C Lightning Executive-Edition.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\F8C Lightning Executive-Edition.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\F8C Lightning.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\F8C Lightning.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\G12.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\G12.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\G12a.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\G12a.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\G12r.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\G12r.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Genesis.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Genesis.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Hull B.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Hull B.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Hull C.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Hull C.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Hull D.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Hull D.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Hull E.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Hull E.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Idris-M.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Idris-M.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Idris-P.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Idris-P.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Javelin.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Javelin.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Kraken Privateer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Kraken Privateer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Kraken.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Kraken.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\krig_p52_merlin.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\krig_p52_merlin.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\krig_p72_archimedes.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\krig_p72_archimedes.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Legionnaire.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Legionnaire.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Liberator.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Liberator.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\M2 Hercules.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\M2 Hercules.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Merchantman.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Merchantman.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_freelancer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_freelancer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_freelancer_dur.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_freelancer_dur.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_freelancer_max.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_freelancer_max.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_freelancer_mis.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_freelancer_mis.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_hull_a.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_hull_a.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_prospector.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_prospector.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_razor.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_razor.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_razor_ex.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_razor_ex.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_razor_lx.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_razor_lx.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_reliant.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_reliant.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_reliant_mako.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_reliant_mako.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_reliant_sen.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_reliant_sen.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_reliant_tana.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_reliant_tana.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_starfarer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_starfarer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\misc_starfarer_gemini.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\misc_starfarer_gemini.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Nautilus.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Nautilus.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Nomad.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Nomad.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Nova.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Nova.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Odyssey.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Odyssey.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_100i.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_100i.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_125a.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_125a.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_135c.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_135c.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_300i.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_300i.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_315p.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_315p.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_325a.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_325a.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_350r.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_350r.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_400i.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_400i.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_600i.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_600i.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_600i_executive_edition.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_600i_executive_edition.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_600i_touring.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_600i_touring.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_85x.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_85x.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_890jump.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_890jump.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\orig_m50.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\orig_m50.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Orion.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Orion.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Perseus.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Perseus.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Pioneer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Pioneer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Polaris.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Polaris.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Prowler.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Prowler.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\PTV.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\PTV.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Railen.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Railen.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Ranger CV.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Ranger CV.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Ranger RC.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Ranger RC.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Ranger TR.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Ranger TR.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Retaliator.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Retaliator.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\ROC-DS.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\ROC-DS.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\ROC.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\ROC.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_aurora_cl.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_aurora_cl.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_aurora_es.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_aurora_es.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_aurora_ln.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_aurora_ln.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_aurora_lx.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_aurora_lx.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_aurora_mr.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_aurora_mr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_constellation_andromeda.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_constellation_andromeda.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_constellation_aquila.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_constellation_aquila.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_constellation_phoenix.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_constellation_phoenix.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_mantis.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_mantis.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_scorpius.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_scorpius.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_ursa_rover.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_ursa_rover.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\rsi_ursa_rover_emerald.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\rsi_ursa_rover_emerald.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\San'tok.yāi.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\San'tok.yāi.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\A2 Hercules.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_avenger_stalker.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_avenger_stalker.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_avenger_titan.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_avenger_titan.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_avenger_titan_renegade.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_avenger_titan_renegade.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_avenger_warlock.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_avenger_warlock.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_eclipse.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_eclipse.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_gladius.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_gladius.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_gladius_pir.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_gladius_pir.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_gladius_valiant.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_gladius_valiant.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_hammerhead.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_hammerhead.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_reclaimer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_reclaimer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_redeemer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_redeemer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_retaliator.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_retaliator.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_sabre.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_sabre.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_sabre_comet.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_sabre_comet.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_sabre_raven.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_sabre_raven.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_vanguard.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_vanguard.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_vanguard_harbinger.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_vanguard_harbinger.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_vanguard_hoplite.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_vanguard_hoplite.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\aegs_vanguard_sentinel.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\aegs_vanguard_sentinel.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_arrow.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_arrow.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_ballista.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_ballista.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_c8x_pisces_expedition.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_c8x_pisces_expedition.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_c8_pisces.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_c8_pisces.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_carrack.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_carrack.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_gladiator.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_gladiator.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_hawk.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_hawk.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_hornet_f7a.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_hornet_f7c.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_hornet_f7c.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_hornet_f7cm.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_hornet_f7cm.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_hornet_f7cm_heartseeker.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_hornet_f7cm_heartseeker.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_hornet_f7cr.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_hornet_f7cr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_hornet_f7cs.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_hornet_f7cs.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_hornet_f7c_wildfire.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_hornet_f7c_wildfire.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_hurricane.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_hurricane.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_spartan.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_spartan.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_terrapin.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_terrapin.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\anvl_valkyrie.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_valkyrie.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Apollo Medivac.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Apollo Medivac.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Apollo Triage.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Apollo Triage.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\argo_mole.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\argo_mole.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\argo_mpuv.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\argo_mpuv.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\argo_mpuv_transport.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\argo_mpuv_transport.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\argo_raft.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\argo_raft.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\banu_defender.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\banu_defender.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\C2 Hercules.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Centurion.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Centurion.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\cnou_hoverquad.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\cnou_hoverquad.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\cnou_mustang_alpha.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\cnou_mustang_alpha.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\cnou_mustang_beta.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\cnou_mustang_beta.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\cnou_mustang_delta.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\cnou_mustang_delta.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\cnou_mustang_gamma.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\cnou_mustang_gamma.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\cnou_mustang_omega.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\cnou_mustang_omega.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\cnou_nomad.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Constellation Taurus.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Corsair.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Corsair.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Crucible.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Crucible.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\crus_starfighter_inferno.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\crus_starfighter_inferno.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\crus_starfighter_ion.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\crus_starfighter_ion.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\crus_starlifter_a2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\crus_star_runner.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\crus_starlifter_c2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Cutlass Blue.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\crus_starlifter_m2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Cyclone MT.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\crus_star_runner.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_buccaneer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Cyclone MT.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_caterpillar.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_buccaneer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_cutlass_black.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_caterpillar.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_cutlass_red.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_cutlass_black.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_cutlass_steel.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_cutlass_blue.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_dragonfly.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_cutlass_red.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_dragonfly_pink.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_cutlass_steel.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_dragonfly_yellow.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_dragonfly.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_herald.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_dragonfly_pink.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_mule.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_dragonfly_yellow.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\drak_vulture.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_herald.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Endeavor.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_mule.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\espr_talon.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_vulture.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\espr_talon_shrike.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Endeavor.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Expanse.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\espr_prowler.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\F7A Hornet.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\espr_talon.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\F8C Lightning Executive-Edition.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\espr_talon_shrike.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\F8C Lightning.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Expanse.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\G12.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\F8C Executive.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\G12a.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\F8C.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\G12r.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\G12.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Genesis.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\G12a.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Hull B.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\G12r.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Hull C.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Genesis.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Hull D.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Hull B.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Hull E.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Hull C.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Idris-M.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Hull D.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Idris-P.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Hull E.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Javelin.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Idris-M.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Kraken Privateer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Idris-P.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Kraken.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Javelin.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\krig_p52_merlin.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Kraken Privateer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\krig_p72_archimedes.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Kraken.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Legionnaire.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\krig_p52_merlin.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Liberator.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\krig_p72_archimedes.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\M2 Hercules.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Legionnaire.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Merchantman.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Liberator.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_freelancer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Merchantman.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_freelancer_dur.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_freelancer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_freelancer_max.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_freelancer_dur.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_freelancer_mis.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_freelancer_max.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_hull_a.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_freelancer_mis.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_prospector.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_hull_a.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_razor.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_prospector.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_razor_ex.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_razor.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_razor_lx.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_razor_ex.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_reliant.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_razor_lx.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_reliant_mako.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_reliant.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_reliant_sen.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_reliant_mako.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_reliant_tana.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_reliant_sen.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_starfarer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_reliant_tana.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\misc_starfarer_gemini.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_starfarer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Nautilus.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\misc_starfarer_gemini.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Nomad.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Nautilus.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Nova.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Nova.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Odyssey.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Odyssey.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_100i.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_100i.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_125a.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_125a.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_135c.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_135c.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_300i.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_300i.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_315p.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_315p.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_325a.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_325a.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_350r.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_350r.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_400i.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_400i.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_600i.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_600i.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_600i_executive_edition.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_600i_executive_edition.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_600i_touring.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_600i_touring.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_85x.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_85x.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_890jump.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_890jump.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\orig_m50.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\orig_m50.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Orion.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Orion.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Perseus.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Perseus.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Pioneer.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Pioneer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Polaris.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Polaris.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Prowler.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\PTV.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\PTV.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Railen.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Railen.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Ranger CV.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Ranger CV.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Ranger RC.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Ranger RC.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Ranger TR.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Ranger TR.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Retaliator.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Retaliator.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\ROC-DS.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\ROC-DS.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\ROC.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\ROC.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_aurora_cl.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_aurora_cl.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_aurora_es.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_aurora_es.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_aurora_ln.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_aurora_ln.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_aurora_lx.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_aurora_lx.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_aurora_mr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_aurora_mr.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_constellation_andromeda.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_constellation_andromeda.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_constellation_aquila.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_constellation_aquila.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_constellation_phoenix.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_constellation_phoenix.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_constellation_taurus.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_mantis.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_mantis.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_scorpius.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_scorpius.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_ursa_rover.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_ursa_rover.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\rsi_ursa_rover_emerald.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_ursa_rover_emerald.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\San'tok.yāi.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\San'tok.yāi.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\SRV.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\SRV.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\tmbl_cyclone.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\tmbl_cyclone.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\tmbl_cyclone_aa.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\tmbl_cyclone_aa.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\tmbl_cyclone_rc.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\tmbl_cyclone_rc.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\tmbl_cyclone_rn.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\tmbl_cyclone_rn.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\tmbl_cyclone_tr.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\tmbl_cyclone_tr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\vncl_blade.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\vncl_blade.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\vncl_glaive.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\vncl_glaive.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\vncl_scythe.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\vncl_scythe.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\Vulcan.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\Vulcan.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\X1 Force.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\X1 Force.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\X1 Velocity.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\X1 Velocity.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\X1.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\X1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\xian_nox.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\xian_nox.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\xian_nox_kue.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\xian_nox_kue.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Small\xian_scout.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\xian_scout.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\SRV.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\SRV.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\tmbl_cyclone.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\tmbl_cyclone.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\tmbl_cyclone_aa.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\tmbl_cyclone_aa.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\tmbl_cyclone_rc.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\tmbl_cyclone_rc.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\tmbl_cyclone_rn.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\tmbl_cyclone_rn.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\tmbl_cyclone_tr.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\tmbl_cyclone_tr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\vncl_blade.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\vncl_blade.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\vncl_glaive.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\vncl_glaive.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\vncl_scythe.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\vncl_scythe.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\Vulcan.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\Vulcan.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\X1 Force.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\X1 Force.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\X1 Velocity.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\X1 Velocity.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\X1.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\X1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\xian_nox.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\xian_nox.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\xian_nox_kue.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\xian_nox_kue.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Graphics\ShipImages\xian_scout.jpg">
+    </Content>
+    <Content Include="Graphics\ShipImages\xian_scout.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Content Include="Graphics\Sounds\WindowsErrorSound.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

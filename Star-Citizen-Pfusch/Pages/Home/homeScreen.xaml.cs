@@ -53,20 +53,15 @@ namespace Star_Citizen_Pfusch
         }
         private void MainMenuItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (Telemetry == null)
-            {
-                Debug.WriteLine("New Telemetry");
-                Telemetry = new Telemetry();
-            }
+            if (Telemetry == null) Telemetry = new Telemetry();
             ContentDisplay.Navigate(Telemetry);
         }
 
         private void ShipItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             //if (ShipList == null) ShipList = new ShipList(ContentDisplay, "Vehicle_Spaceship");
-            if (ShipList == null) ShipList = new ModernShipList();
-            ContentDisplay.Content = null;
-            ContentDisplay.Content = ShipList;
+            if (ShipList == null) ShipList = new ModernShipList(ContentDisplay, "Vehicle_Spaceship");
+            ContentDisplay.Navigate(new ModernShipList(ContentDisplay, "Vehicle_Spaceship"));
         }
 
         private void SettingsItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -86,8 +81,7 @@ namespace Star_Citizen_Pfusch
         private void Vehicle_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (VehicleList == null) VehicleList = new ShipList(ContentDisplay, "Vehicle_GroundVehicle");
-            ContentDisplay.Content = null;
-            ContentDisplay.Content = VehicleList;
+            ContentDisplay.Navigate(VehicleList);
         }
 
         private void PureShopDataItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)

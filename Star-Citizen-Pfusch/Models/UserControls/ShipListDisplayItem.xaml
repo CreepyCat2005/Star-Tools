@@ -7,14 +7,50 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="550" >
 
+    <UserControl.Resources>
+        <Style TargetType="ToggleButton" x:Key="ToggleButtonStyle" >
+            <Setter Property="Background" >
+                <Setter.Value>
+                    <SolidColorBrush>
+                        <SolidColorBrush.Color>
+                            <Color A="255" R="110" G="110" B="110" />
+                        </SolidColorBrush.Color>
+                    </SolidColorBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton" >
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" >
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Color A="255" R="90" G="90" B="90" />
+                                </SolidColorBrush.Color>
+                            </SolidColorBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        
-        <Border CornerRadius="10" SizeChanged="Border_SizeChanged" Grid.RowSpan="2" BorderThickness="3" BorderBrush="Gray" >
+
+        <Border CornerRadius="10" SizeChanged="Border_SizeChanged" Grid.RowSpan="2" >
             <Border.Background>
                 <LinearGradientBrush>
                     <GradientStop Offset="0" >
@@ -31,12 +67,14 @@
             </Border.Background>
         </Border>
 
-        <Border Grid.Row="1" CornerRadius="0,0,20,20" SizeChanged="BorderSpecial_SizeChanged" Margin="3" >
-            <Border.Background>
-                <ImageBrush ImageSource="{Binding ImageSource}" Stretch="UniformToFill" />
-            </Border.Background>
-        </Border>
+        <Image Grid.Row="1" Stretch="UniformToFill" Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Image.Source>
+                <BitmapImage UriSource="/Graphics/ShipImages/A2 Hercules.jpg" />
+            </Image.Source>
+        </Image>
 
+        <Border CornerRadius="10" SizeChanged="Border_SizeChanged" Grid.RowSpan="2" BorderThickness="3" BorderBrush="Gray" Background="Transparent" />
+        
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -60,6 +98,16 @@
                 </Rectangle.Fill>
             </Rectangle>
 
+            <ToggleButton Grid.RowSpan="2" HorizontalAlignment="Right" BorderThickness="0" x:Name="InfoToggleButton" Margin="25" Style="{StaticResource ToggleButtonStyle}" >
+                <ToggleButton.OpacityMask>
+                    <ImageBrush ImageSource="/Graphics/Info-Icon.png" />
+                </ToggleButton.OpacityMask>
+                <Image Source="/Graphics/Info-Icon.png" Visibility="Hidden" />
+            </ToggleButton>
+
+            <Popup IsOpen="{Binding Path=IsChecked, ElementName=InfoToggleButton}" Placement="Mouse" StaysOpen="False" >
+                <ListBox Background="Transparent" ItemsSource="{Binding ShipInfoItemsSource}" Foreground="White" FontSize="20" />
+            </Popup>
         </Grid>
     </Grid>
 </UserControl>

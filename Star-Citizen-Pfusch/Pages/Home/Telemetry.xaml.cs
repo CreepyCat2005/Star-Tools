@@ -29,7 +29,6 @@ namespace Star_Citizen_Pfusch.Pages.Home
     {
         private PublicDataItem item;
         private bool LoadedBefore = false;
-        private LoadingSymbol loadingSymbol;
 
         public Telemetry()
         {
@@ -42,7 +41,7 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
         private void Telemetry_Unloaded(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Unload");
+            Debug.WriteLine("Telemtry Unload");
         }
 
         private async void OnLoad(object sender, RoutedEventArgs e)

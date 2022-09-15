@@ -7,7 +7,7 @@
       xmlns:controls="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ModernShipList">
+      Title="ModernShipList" >
 
     <Page.Background>
         <SolidColorBrush>
@@ -24,9 +24,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <controls:NumberSelector x:Name="ColumnCountSelector" Width="100" HorizontalAlignment="Left" Margin="10,0,0,0" MaskOpacity="0" Value="2" MinValue="2" MaxValue="4" />
+        <controls:NumberSelector x:Name="ColumnCountSelector" Width="100" HorizontalAlignment="Left" Margin="10,0,0,0" MaskOpacity="0" Value="3" MinValue="2" MaxValue="4" />
 
-        <ListBox Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
+        <ListBox x:Name="ShipListBox" Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Template">
@@ -47,14 +47,6 @@
                     <UniformGrid Columns="{Binding Properties.Value, ElementName=ColumnCountSelector}" VerticalAlignment="Top" />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
-            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" />
-            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" />
-            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" />
-            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" />
-            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" />
-            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" />
-            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" />
-            <controls:ShipListDisplayItem Margin="5" Height="300" HorizontalAlignment="Stretch" ImageSource="/Graphics/ShipImages/A2 Hercules.jpg" ShipName="A2 Hercules" ManufacturerName="Crusader" />
         </ListBox>
     </Grid>
 </Page>
