@@ -247,14 +247,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="IntegrationItem" >
-                <ListBoxItem.Content>
-                    <Expander Header="Integration" Foreground="{DynamicResource MenuColor}" IsExpanded="False" >
-                        <ListBox Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ExpanderItemStyle}" >
-                            <ListBoxItem Content="Fleetyard" Foreground="{DynamicResource TextColor}" Margin="20,0,0,0" MouseLeftButtonUp="IntegrationItem_MouseLeftButtonUp" />
-                        </ListBox>
-                    </Expander>
-                </ListBoxItem.Content>
+            <ListBoxItem Content="Organisationen" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="OrgaItem" PreviewMouseLeftButtonUp="OrgaItem_PreviewMouseLeftButtonUp" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -320,29 +313,5 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
         </ListBox>
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Row="1" >
-            <StackPanel.Style>
-                <Style TargetType="StackPanel">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" >
-                                <Setter.Value>
-                                    <SolidColorBrush>
-                                        <SolidColorBrush.Color>
-                                            <Color A="255" R="30" G="30" B="30" />
-                                        </SolidColorBrush.Color>
-                                    </SolidColorBrush>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </StackPanel.Style>
-            <Image Source="/Graphics/Icons/Left-Arrow.png" Margin="3" />
-            <TextBlock Margin="7,0,0,0" Background="Transparent" Foreground="{DynamicResource TextColor}" Text="Collapse" FontSize="35" />
-        </StackPanel>
-
     </Grid>
 </Page>

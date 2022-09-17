@@ -25,7 +25,6 @@
     <None Remove="Graphics\Icons\Discord-Logo.png" />
     <None Remove="Graphics\Icons\Dollar-Icon.png" />
     <None Remove="Graphics\Icons\Exit-Icon.png" />
-    <None Remove="Graphics\Icons\Fleetyard-Logo.png" />
     <None Remove="Graphics\Icons\Left-Arrow.png" />
     <None Remove="Graphics\Icons\Minus-Icon.png" />
     <None Remove="Graphics\Icons\People-Icon.png" />
@@ -40,6 +39,7 @@
     <None Remove="Graphics\Missile.png" />
     <None Remove="Graphics\Missile_Rack.png" />
     <None Remove="Graphics\Mounting.png" />
+    <None Remove="Graphics\NoImage.png" />
     <None Remove="Graphics\Power_Plant.png" />
     <None Remove="Graphics\Quantum_Drive.png" />
     <None Remove="Graphics\Shield.png" />
@@ -494,6 +494,7 @@
     <None Remove="Graphics\ShipImages\xian_nox_kue.jpg" />
     <None Remove="Graphics\ShipImages\xian_scout.jpg" />
     <None Remove="Graphics\Sounds\WindowsErrorSound.wav" />
+    <None Remove="Graphics\Star-Citizen-Logo.png" />
     <None Remove="Graphics\Star-Tools-Logo-White.png" />
     <None Remove="Graphics\Star-Tools-Logo.png" />
     <None Remove="Graphics\Switch-Icon.png" />
@@ -521,9 +522,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\Exit-Icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Graphics\Icons\Fleetyard-Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\Left-Arrow.png">
@@ -566,6 +564,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Mounting.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\NoImage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\ShipImages\A2 Hercules.jpg">
@@ -1601,6 +1602,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Sounds\WindowsErrorSound.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Star-Citizen-Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Star-Tools-Logo-White.png">

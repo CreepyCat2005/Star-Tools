@@ -1,25 +1,11 @@
-﻿using Newtonsoft.Json;
-using Star_Citizen_Pfusch.Models;
-using Star_Citizen_Pfusch.Pages.Ships;
+﻿using Star_Citizen_Pfusch.Pages.Ships;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Xceed.Wpf.Toolkit;
 
 namespace Star_Citizen_Pfusch.Pages.SettingsFolder
@@ -34,11 +20,24 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         private double counter = 0;
         private SolidColorBrush TextColor, MenuColor, HeadlineColor, SliderColor;
 
+        public bool IsModernShipListActive
+        {
+            get
+            {
+                return Config.ModernShipList;
+            }
+            set
+            {
+                Config.ModernShipList = value;
+            }
+        }
+
         public AppearanceSettings()
         {
             ThisPage = this;
 
             InitializeComponent();
+            this.DataContext = this;
             LoadTreeViewItems();
 
             this.Unloaded += AppearanceSettings_Unloaded;
@@ -61,11 +60,11 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         {
             foreach (var item in ((GridView)new ShipList().ShipListView.View).Columns)
             {
-                StackPanel panel = new StackPanel() { Orientation = Orientation.Horizontal};
+                StackPanel panel = new StackPanel() { Orientation = Orientation.Horizontal };
                 ColorPicker picker = new ColorPicker() { Width = 80, Name = $"GridColumn{item.Header.ToString().Replace(" ", "")}", Foreground = new SolidColorBrush(Colors.Black), FontSize = 12, DropDownBorderThickness = new Thickness(0), ShowDropDownButton = false };
                 picker.SelectedColorChanged += ColorPicker_SelectedColorChanged;
                 picker.SelectedColor = ((SolidColorBrush)Application.Current.Resources[$"GridColumn{item.Header.ToString().Replace(" ", "")}"]).Color;
-                TextBox box = new TextBox() { IsReadOnly = true, Text = $"Highlight Column '{item.Header}'", Background = new SolidColorBrush(Colors.Transparent), Margin = new Thickness(10,0,0,0), BorderThickness = new Thickness(0) };
+                TextBox box = new TextBox() { IsReadOnly = true, Text = $"Highlight Column '{item.Header}'", Background = new SolidColorBrush(Colors.Transparent), Margin = new Thickness(10, 0, 0, 0), BorderThickness = new Thickness(0) };
                 box.SetResourceReference(ForegroundProperty, "TextColor");
                 box.SetResourceReference(FontSizeProperty, "TextFontSize");
                 panel.Children.Add(picker);
@@ -198,11 +197,6 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             }
         }
 
-        private void ColorPicker_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private async void StartRainbow()
         {
             timer = new Timer();
@@ -214,11 +208,11 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Application.Current.Resources["TextColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
-            Application.Current.Resources["MenuColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
-            Application.Current.Resources["HeadlineColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
-            Application.Current.Resources["ChartColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
-            Application.Current.Resources["SliderColor"] = new SolidColorBrush(ColorFromHSV(counter,1,1));
+            Application.Current.Resources["TextColor"] = new SolidColorBrush(ColorFromHSV(counter, 1, 1));
+            Application.Current.Resources["MenuColor"] = new SolidColorBrush(ColorFromHSV(counter, 1, 1));
+            Application.Current.Resources["HeadlineColor"] = new SolidColorBrush(ColorFromHSV(counter, 1, 1));
+            Application.Current.Resources["ChartColor"] = new SolidColorBrush(ColorFromHSV(counter, 1, 1));
+            Application.Current.Resources["SliderColor"] = new SolidColorBrush(ColorFromHSV(counter, 1, 1));
             double temp = 0;
             ThisPage.Dispatcher.Invoke(new Action(() =>
             {

@@ -16,16 +16,16 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Net.Http;
 
-namespace Star_Citizen_Pfusch.Models
+namespace Star_Citizen_Pfusch.Models.UserControls
 {
     /// <summary>
     /// Interaction logic for FleetyardOrgaContainer.xaml
     /// </summary>
-    public partial class FleetyardOrgaContainer : UserControl
+    public partial class OrgaContainer : UserControl
     {
         private Frame ContentFrame;
         private OrgaMenu OrgaMenu;
-        public FleetyardOrgaContainer(FleetYardOrgaItem item, Frame ContentFrame)
+        public OrgaContainer(FleetYardOrgaItem item, Frame ContentFrame)
         {
             this.ContentFrame = ContentFrame;
 

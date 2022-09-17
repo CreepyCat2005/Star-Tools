@@ -91,6 +91,8 @@ namespace Star_Citizen_Pfusch
                 var colors = userConfig.GetType().GetProperties().Where(o => o.PropertyType == typeof(string)).ToList();
                 var fonts = userConfig.GetType().GetProperties().Where(o => o.PropertyType == typeof(double)).ToList();
 
+                Config.ModernShipList = userConfig.IsModernShipListActive;
+
                 foreach (var color in colors)
                 {
                     if (color.Name.Equals("Theme") || color.Name.Equals("DefaultStartSize") || color.GetValue(userConfig) == null) continue;

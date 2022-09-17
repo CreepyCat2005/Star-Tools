@@ -2,7 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,7 +30,6 @@ namespace Star_Citizen_Pfusch.Models.UserControls
         {
             InitializeComponent();
             this.DataContext = this;
-
         }
 
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -38,10 +41,29 @@ namespace Star_Citizen_Pfusch.Models.UserControls
             ((Border)sender).CornerRadius = new CornerRadius(0, 0, (this.ActualHeight + this.ActualWidth) / 2 / 35, (this.ActualHeight + this.ActualWidth) / 2 / 35);
         }
 
+        public BitmapImage ImageSource { get; set; }
+        public FleetItem FleetItem { get; set; }
+        public string Size
+        {
+            get
+            {
+                return FleetItem.data.size.x + " x " + FleetItem.data.size.y + " x " + FleetItem.data.size.z;
+            }
+        }
 
-        public Uri ImageSource { get; set; }
-        public string ShipName { get; set; }
-        public string ManufacturerName { get; set; }
-        public List<string> ShipInfoItemsSource { get; set; }
+        private void Border_MouseEnter(object sender, MouseEventArgs e)
+        {
+            BackgroundBorder.Background = (LinearGradientBrush)this.Resources["HighlightBrush"];
+        }
+
+        private void Border_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BackgroundBorder.Background = (LinearGradientBrush)this.Resources["GradientBrush"];
+        }
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.Height = this.ActualWidth / 1.6;
+        }
     }
 }

@@ -5,6 +5,7 @@ using Star_Citizen_Pfusch.Models.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -24,18 +25,14 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     public partial class ModernShipList : Page
     {
         private ObservableCollection<ShipListDisplayItem> shipItems = new ObservableCollection<ShipListDisplayItem>();
+        private Frame frame;
+
         public ModernShipList(Frame frame, string type)
         {
+            this.frame = frame;
             InitializeComponent();
             init(type);
-            Unloaded += ModernShipList_Unloaded;
         }
-
-        private void ModernShipList_Unloaded(object sender, RoutedEventArgs e)
-        {
-            shipItems.Clear();
-        }
-
         private async void init(string type)
         {
             HttpClient client = new HttpClient();
@@ -60,28 +57,32 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 infoList.Add("Hydrogen      " + item.fuelCapacity);
                 infoList.Add("Quantum       " + item.qtFuelCapacity);
 
+                BitmapImage image = new BitmapImage(new Uri("\\Graphics\\ShipImages\\Small\\" + item.localName + ".jpg", UriKind.Relative));
+
                 ShipListDisplayItem displayItem = new ShipListDisplayItem()
                 {
-                    ShipName = item.name,
-                    ManufacturerName = item.manufacturer.data.name,
-                    ShipInfoItemsSource = infoList,
+                    FleetItem = item,
                     Margin = new Thickness(5),
                     Height = 300,
-                    HorizontalAlignment = HorizontalAlignment.Stretch
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    ImageSource = image
                 };
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "/Graphics/ShipImages/Small/" + item.localName + ".jpg"))
-                {
-                    displayItem.ImageSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "/Graphics/ShipImages/Small/" + item.localName + ".jpg");
-                    shipItems.Add(displayItem);
-                }
+                displayItem.MouseLeftButtonUp += DisplayItem_MouseLeftButtonUp;
+
+                shipItems.Add(displayItem);
             }
             //shipItems = shipItems.OrderBy(x => x.ShipName).ToList();
-
             ShipListBox.ItemsSource = shipItems;
 
             //disposing bullshit
             client.Dispose();
             response.Dispose();
+        }
+
+        private void DisplayItem_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            frame.Navigate(new ShipView(((ShipListDisplayItem)sender).FleetItem._id));
+            frame.RemoveBackEntry();
         }
     }
 }

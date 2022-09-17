@@ -24,10 +24,11 @@ namespace Star_Citizen_Pfusch
     public partial class homeScreen : Page
     {
         private Telemetry Telemetry = null;
-        private ModernShipList ShipList = null;
+        private ModernShipList ModernShipList = null;
         private ShipList VehicleList = null;
+        private ShipList ShipList = null;
         private ShopList ShopList = null;
-        private FleetyardIntegration FleetyardIntegration = null;
+        private OrgaIntegration OrgaIntegration = null;
         private Point currentPoint = new Point();
         public homeScreen()
         {
@@ -51,20 +52,27 @@ namespace Star_Citizen_Pfusch
             PlaytimeCounter.start(1000 * 60);
             ContentDisplay.Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent) };
         }
-        private void MainMenuItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void MainMenuItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (Telemetry == null) Telemetry = new Telemetry();
             ContentDisplay.Navigate(Telemetry);
         }
 
-        private void ShipItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ShipItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //if (ShipList == null) ShipList = new ShipList(ContentDisplay, "Vehicle_Spaceship");
-            if (ShipList == null) ShipList = new ModernShipList(ContentDisplay, "Vehicle_Spaceship");
-            ContentDisplay.Navigate(new ModernShipList(ContentDisplay, "Vehicle_Spaceship"));
+            if (Config.ModernShipList)
+            {
+                if (ModernShipList == null) ModernShipList = new ModernShipList(ContentDisplay, "Vehicle_Spaceship");
+                ContentDisplay.Navigate(ModernShipList);
+            }
+            else
+            {
+                if (ShipList == null) ShipList = new ShipList(ContentDisplay, "Vehicle_Spaceship");
+                ContentDisplay.Navigate(ShipList);
+            }
         }
 
-        private void SettingsItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void SettingsItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Window window = new Window();
             window.Title = "Settings";
@@ -78,13 +86,13 @@ namespace Star_Citizen_Pfusch
             window.Show();
         }
 
-        private void Vehicle_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Vehicle_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (VehicleList == null) VehicleList = new ShipList(ContentDisplay, "Vehicle_GroundVehicle");
             ContentDisplay.Navigate(VehicleList);
         }
 
-        private void PureShopDataItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void PureShopDataItem_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (ShopList == null) ShopList = new ShopList();
             ContentDisplay.Navigate(ShopList);
@@ -98,7 +106,7 @@ namespace Star_Citizen_Pfusch
             }
         }
 
-        private void ContentFrame_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        private void ContentFrame_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed && ContentDisplay.Content.GetType() == typeof(Canvas))
             {
@@ -124,13 +132,6 @@ namespace Star_Citizen_Pfusch
                 ((Canvas)ContentDisplay.Content).Children.Clear();
             }
         }
-
-        private void IntegrationItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            if (FleetyardIntegration == null) FleetyardIntegration = new FleetyardIntegration(ContentDisplay);
-            ContentDisplay.Navigate(FleetyardIntegration);
-        }
-
         private void ModuleListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
 
@@ -142,6 +143,12 @@ namespace Star_Citizen_Pfusch
         private void UtilityListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void OrgaItem_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (OrgaIntegration == null) OrgaIntegration = new OrgaIntegration(ContentDisplay);
+            ContentDisplay.Navigate(OrgaIntegration);
         }
     }
 }

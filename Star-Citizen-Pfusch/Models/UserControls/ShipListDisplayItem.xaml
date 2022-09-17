@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="550" >
+             d:DesignHeight="400" d:DesignWidth="550" SizeChanged="UserControl_SizeChanged" >
 
     <UserControl.Resources>
         <Style TargetType="ToggleButton" x:Key="ToggleButtonStyle" >
@@ -13,7 +13,7 @@
                 <Setter.Value>
                     <SolidColorBrush>
                         <SolidColorBrush.Color>
-                            <Color A="255" R="110" G="110" B="110" />
+                            <Color A="255" R="120" G="120" B="120" />
                         </SolidColorBrush.Color>
                     </SolidColorBrush>
                 </Setter.Value>
@@ -33,7 +33,7 @@
                         <Setter.Value>
                             <SolidColorBrush>
                                 <SolidColorBrush.Color>
-                                    <Color A="255" R="90" G="90" B="90" />
+                                    <Color A="255" R="80" G="80" B="80" />
                                 </SolidColorBrush.Color>
                             </SolidColorBrush>
                         </Setter.Value>
@@ -41,6 +41,30 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <LinearGradientBrush x:Key="HighlightBrush">
+            <GradientStop Offset="0" >
+                <GradientStop.Color>
+                    <Color A="255" R="75" G="75" B="75" />
+                </GradientStop.Color>
+            </GradientStop>
+            <GradientStop Offset="1" >
+                <GradientStop.Color>
+                    <Color A="255" R="90" G="90" B="90" />
+                </GradientStop.Color>
+            </GradientStop>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GradientBrush">
+            <GradientStop Offset="0" >
+                <GradientStop.Color>
+                    <Color A="255" R="55" G="55" B="55" />
+                </GradientStop.Color>
+            </GradientStop>
+            <GradientStop Offset="1" >
+                <GradientStop.Color>
+                    <Color A="255" R="70" G="70" B="70" />
+                </GradientStop.Color>
+            </GradientStop>
+        </LinearGradientBrush>
     </UserControl.Resources>
     
     <Grid>
@@ -50,31 +74,24 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <Border CornerRadius="10" SizeChanged="Border_SizeChanged" Grid.RowSpan="2" >
-            <Border.Background>
-                <LinearGradientBrush>
-                    <GradientStop Offset="0" >
-                        <GradientStop.Color>
-                            <Color A="255" R="55" G="55" B="55" />
-                        </GradientStop.Color>
-                    </GradientStop>
-                    <GradientStop Offset="1" >
-                        <GradientStop.Color>
-                            <Color A="255" R="70" G="70" B="70" />
-                        </GradientStop.Color>
-                    </GradientStop>
-                </LinearGradientBrush>
-            </Border.Background>
-        </Border>
+        <Border CornerRadius="10" SizeChanged="Border_SizeChanged" Grid.RowSpan="2" x:Name="BackgroundBorder" Background="{StaticResource GradientBrush}" />
 
-        <Image Grid.Row="1" Stretch="UniformToFill" Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <Image.Source>
-                <BitmapImage UriSource="/Graphics/ShipImages/A2 Hercules.jpg" />
-            </Image.Source>
-        </Image>
+        <Grid Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <Border CornerRadius="10" SizeChanged="Border_SizeChanged" Grid.RowSpan="2" BorderThickness="3" BorderBrush="Gray" Background="Transparent" />
+            <Border Grid.Row="1" Background="Gray" >
+                <Border.OpacityMask>
+                    <ImageBrush ImageSource="/Graphics/NoImage.png" Stretch="Uniform" />
+                </Border.OpacityMask>
+            </Border>
+        </Grid>
         
+        <Image Grid.Row="1" Stretch="UniformToFill" Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding ImageSource}" />
+
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -82,23 +99,22 @@
             </Grid.RowDefinitions>
 
             <Viewbox Grid.Column="1" HorizontalAlignment="Left" Margin="10,5,0,0" >
-                <TextBlock Text="{Binding ShipName}" Foreground="{DynamicResource TextColor}" ToolTip="Name" />
+                <TextBlock Text="{Binding FleetItem.name}" Foreground="{DynamicResource TextColor}" ToolTip="Name" />
             </Viewbox>
             <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="10,5,0,5" >
-                <TextBlock Text="{Binding ManufacturerName}" Foreground="Gray" ToolTip="Manufacturer" />
+                <TextBlock Text="{Binding FleetItem.manufacturer.data.name}" Foreground="Gray" ToolTip="Manufacturer" />
             </Viewbox>
+        </Grid>
 
-            <Rectangle VerticalAlignment="Top" Grid.ColumnSpan="2" Height="1" >
-                <Rectangle.Fill>
-                    <LinearGradientBrush>
-                        <GradientStop Color="Transparent" Offset="0" />
-                        <GradientStop Color="Gray" Offset=".5" />
-                        <GradientStop Color="Transparent" Offset="1" />
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
+        <Border CornerRadius="10" SizeChanged="Border_SizeChanged" Grid.RowSpan="2" BorderThickness="3" BorderBrush="Gray" Background="Transparent" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" />
 
-            <ToggleButton Grid.RowSpan="2" HorizontalAlignment="Right" BorderThickness="0" x:Name="InfoToggleButton" Margin="25" Style="{StaticResource ToggleButtonStyle}" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height=".7*" />
+            </Grid.RowDefinitions>
+            
+            <ToggleButton Grid.RowSpan="2" HorizontalAlignment="Right" BorderThickness="0" x:Name="InfoToggleButton" Margin="20" Style="{StaticResource ToggleButtonStyle}" >
                 <ToggleButton.OpacityMask>
                     <ImageBrush ImageSource="/Graphics/Info-Icon.png" />
                 </ToggleButton.OpacityMask>
@@ -106,7 +122,16 @@
             </ToggleButton>
 
             <Popup IsOpen="{Binding Path=IsChecked, ElementName=InfoToggleButton}" Placement="Mouse" StaysOpen="False" >
-                <ListBox Background="Transparent" ItemsSource="{Binding ShipInfoItemsSource}" Foreground="White" FontSize="20" />
+                <ListBox Background="Transparent" Foreground="White" FontSize="20" >
+                    <ListBoxItem Content="{Binding FleetItem.data.role}" />
+                    <ListBoxItem Content="{Binding FleetItem.data.career}" />
+                    <ListBoxItem Content="{Binding FleetItem.cargo}" />
+                    <ListBoxItem Content="{Binding FleetItem.hull.hp}" />
+                    <ListBoxItem Content="{Binding Size}" />
+                    <ListBoxItem Content="{Binding FleetItem.hull.mass}" />
+                    <ListBoxItem Content="{Binding FleetItem.fuelCapacity}" />
+                    <ListBoxItem Content="{Binding FleetItem.qtFuelCapacity}" />
+                </ListBox>
             </Popup>
         </Grid>
     </Grid>

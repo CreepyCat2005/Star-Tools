@@ -158,6 +158,25 @@
                 <TreeViewItem Header="Ships" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" x:Name="ShipTreeViewItem" />
                 <TreeViewItem Header="Vehicles" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" x:Name="VehicleTreeViewItem" />
             </TreeView>
+
+            <ListBoxItem HorizontalContentAlignment="Stretch" >
+                <Grid>
+                    <Rectangle Height="2" >
+                        <Rectangle.Fill>
+                            <LinearGradientBrush>
+                                <GradientStop Color="Transparent" Offset=".1" />
+                                <GradientStop Color="Gray" Offset=".2" />
+                                <GradientStop Color="Gray" Offset=".8" />
+                                <GradientStop Color="Transparent" Offset=".9" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBox Text="UI Changes" BorderThickness="0" HorizontalAlignment="Center" Width="145" HorizontalContentAlignment="Center" Foreground="{DynamicResource HeadlineColor}" FontSize="{DynamicResource HeadlineFontSize}" IsReadOnly="True" Background="{DynamicResource BackgroundColor}" />
+                </Grid>
+            </ListBoxItem>
+
+            <CheckBox Content="Modern Shiplist (will increase Ram usage!)" IsChecked="{Binding IsModernShipListActive}" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" />
+
         </ListBox>
     </Grid>
 </Page>
