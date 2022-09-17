@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="150">
+             d:DesignHeight="50" d:DesignWidth="150" MouseWheel="UserControl_MouseWheel" >
 
     <UserControl.Resources>
         <Style TargetType="Polygon" x:Key="PolygonStyle" >

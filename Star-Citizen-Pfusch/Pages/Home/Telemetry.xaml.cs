@@ -80,6 +80,7 @@ namespace Star_Citizen_Pfusch.Pages.Home
             shipWatcher.Visibility = Visibility.Hidden;
             shipWatcher.OnUpdateStatus += ShipWatcher_OnUpdateStatus;
             Grid.SetRow(shipWatcher, 2);
+            Grid.SetColumn(shipWatcher, 2);
             MasterGrid.Children.Add(shipWatcher);
 
             //adding funding widget
@@ -87,15 +88,9 @@ namespace Star_Citizen_Pfusch.Pages.Home
             MasterGrid.Children.Add(fundingWidget);
 
             //adding DailyShip widget
-            DailyShipWidget dailyShipWidget = new DailyShipWidget()
-            {
-                Image = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + item.dailyShip.localName + ".jpg", UriKind.Relative)),
-                Details = formatedata(item.dailyShip),
-                Description = "Beschreibung:\n" + item.dailyShip.description
-            };
-            Grid.SetRow(dailyShipWidget, 2);
-            Grid.SetColumn(dailyShipWidget, 2);
-            MasterGrid.Children.Add(dailyShipWidget);
+            PlaytimeHistory playtime = new PlaytimeHistory();
+            Grid.SetRow(playtime, 2);
+            MasterGrid.Children.Add(playtime);
 
             LoadedBefore = true;
         }

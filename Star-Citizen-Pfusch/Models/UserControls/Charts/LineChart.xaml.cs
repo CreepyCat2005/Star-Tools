@@ -38,7 +38,8 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
             string res = await response.Content.ReadAsStringAsync();
 
             item = JsonConvert.DeserializeObject<AccountDataItem>(res);
-            PointCountBox.Text = item.PlaytimeHistory.Length.ToString();
+            NumberSelector.MaxValue = item.PlaytimeHistory.Length;
+            NumberSelector.Value = item.PlaytimeHistory.Length;
 
             LoadChart();
         }
@@ -63,9 +64,9 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
                 Grid.Children.Remove(Grid.Children.OfType<Ellipse>().First());
             }
 
-            for (int i = 0; i < int.Parse(PointCountBox.Text); i++)
+            for (int i = 0; i < NumberSelector.Value; i++)
             {
-                Point point = new Point(Width / (int.Parse(PointCountBox.Text) - 1) * i - 1, Height - (Height - 12) * (item.PlaytimeHistory[i] / maxValue));
+                Point point = new Point(Width / (NumberSelector.Value - 1) * i - 1, Height - (Height - 12) * (item.PlaytimeHistory[i] / maxValue));
                 points.Add(point);
 
                 Ellipse ellipse = new Ellipse() { Width = 8, Height = 8, Margin = new Thickness(point.X - 4, point.Y - 4, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, ToolTip = formatePlayTime(item.PlaytimeHistory[i]), Style = (Style)FindResource("EllipseStyle") };
@@ -77,27 +78,16 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
             points.Add(new Point(Width, Height));
             FilledPolygon.Points = points;
         }
-
-        private void PointCountBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (new Regex("^[0-9]+").IsMatch(e.Text) && int.Parse(((TextBox)sender).Text + e.Text) <= item.PlaytimeHistory.Length)
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-        private void PointCountBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!((TextBox)sender).Text.Equals("") && !((TextBox)sender).Text.Equals("1")) LoadChart();
-        }
         private string formatePlayTime(int playtime)
         {
             int hour = playtime / 60;
             int minute = playtime - (hour * 60);
             return $"{hour}h {minute}m";
+        }
+
+        private void NumberSelector_ValueChanged(object sender, ValueEventArgs e)
+        {
+            LoadChart();
         }
     }
 }

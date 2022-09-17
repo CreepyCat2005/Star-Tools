@@ -25,6 +25,7 @@ namespace Star_Citizen_Pfusch
     {
         private Telemetry Telemetry = null;
         private ModernShipList ModernShipList = null;
+        private ModernShipList ModernVehicleList = null;
         private ShipList VehicleList = null;
         private ShipList ShipList = null;
         private ShopList ShopList = null;
@@ -88,8 +89,16 @@ namespace Star_Citizen_Pfusch
 
         private void Vehicle_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (VehicleList == null) VehicleList = new ShipList(ContentDisplay, "Vehicle_GroundVehicle");
-            ContentDisplay.Navigate(VehicleList);
+            if (Config.ModernShipList)
+            {
+                if (ModernVehicleList == null) ModernVehicleList = new ModernShipList(ContentDisplay, "Vehicle_GroundVehicle");
+                ContentDisplay.Navigate(ModernVehicleList);
+            }
+            else
+            {
+                if (VehicleList == null) VehicleList = new ShipList(ContentDisplay, "Vehicle_GroundVehicle");
+                ContentDisplay.Navigate(VehicleList);
+            }
         }
 
         private void PureShopDataItem_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)

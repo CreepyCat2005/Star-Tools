@@ -337,6 +337,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             for (int i = 0; i < element.Count; i++)
             {
                 Grid grid = (Grid)listBoxItem.Content;
+                if (!localNames.Contains(element[i].Value<string>("localName"))) continue;
                 ModuleItem temp = JsonConvert.DeserializeObject<ModuleItem>(jArray[localNames.IndexOf(element[i].Value<string>("localName"))].ToString());
 
                 DragAndDropTarget dragAndDropTarget = new DragAndDropTarget() { Text = ((ModuleTypeEnum)temp.type).ConvertToString(), type = (ModuleTypeEnum)temp.type, Size = temp.size };

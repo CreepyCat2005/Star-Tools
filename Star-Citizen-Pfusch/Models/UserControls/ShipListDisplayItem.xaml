@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="550" SizeChanged="UserControl_SizeChanged" >
+             d:DesignHeight="400" d:DesignWidth="550" SizeChanged="UserControl_SizeChanged" Cursor="Hand" >
 
     <UserControl.Resources>
         <Style TargetType="ToggleButton" x:Key="ToggleButtonStyle" >
