@@ -38,8 +38,15 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
             string res = await response.Content.ReadAsStringAsync();
 
             item = JsonConvert.DeserializeObject<AccountDataItem>(res);
-            NumberSelector.MaxValue = item.PlaytimeHistory.Length;
-            NumberSelector.Value = item.PlaytimeHistory.Length;
+            if (NumberSelector.MinValue <= item.PlaytimeHistory.Length)
+            {
+                NumberSelector.Value = item.PlaytimeHistory.Length;
+                NumberSelector.MaxValue = item.PlaytimeHistory.Length;
+            }
+            else
+            {
+                return;
+            }
 
             LoadChart();
         }
