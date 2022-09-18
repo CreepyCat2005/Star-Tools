@@ -71,7 +71,7 @@ namespace Star_Citizen_Pfusch.Pages.Register
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            if (UsernameBox.Text == "" || EMailBox.Text == "" || PasswordBox.Text == "")
+            if (UsernameBox.Text == "" || EMailBox.Text == "" || PasswordBox.Password == "")
             {
                 ErrorBox.Text = "Error: Bitte fülle alle Felder aus!";
                 return;
@@ -83,7 +83,7 @@ namespace Star_Citizen_Pfusch.Pages.Register
             }
 
             PasswordHasher hasher = new PasswordHasher();
-            string hashed = hasher.hashPassword(PasswordBox.Text);
+            string hashed = hasher.hashPassword(PasswordBox.Password);
 
             using (HttpClient client = new HttpClient())
             {
@@ -119,6 +119,9 @@ namespace Star_Citizen_Pfusch.Pages.Register
             currentWindow.Close();
         }
 
-
+        private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ((Border)sender).CornerRadius = new CornerRadius((this.ActualHeight + this.ActualWidth) / 2 / 35);
+        }
     }
 }

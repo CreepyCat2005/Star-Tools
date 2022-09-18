@@ -4,6 +4,7 @@ using Star_Citizen_Pfusch.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -20,25 +21,22 @@ namespace Star_Citizen_Pfusch.Pages
     /// </summary>
     public partial class startScreen : Page
     {
+        public string Login
+        {
+            get
+            {
+                return System.Windows.Application.Current.Resources["start.login"].ToString();
+            }
+        }
+        public string Register
+        {
+            get
+            {
+                return System.Windows.Application.Current.Resources["start.register"].ToString();
+            }
+        }
         public startScreen()
         {
-            ResourceDictionary dictionary = new ResourceDictionary();
-
-            switch (Thread.CurrentThread.CurrentCulture.ToString())
-            {
-                case "en-US":
-                    dictionary.Source = new Uri("/languages/english.xaml", UriKind.Relative);
-                    break;
-                case "de-AT":
-                    dictionary.Source = new Uri("/languages/german.xaml", UriKind.Relative);
-                    break;
-                case "de-DE":
-                    dictionary.Source = new Uri("/languages/german.xaml", UriKind.Relative);
-                    break;
-
-            }
-            this.Resources.MergedDictionaries.Add(dictionary);
-
             InitializeComponent();
         }
 
@@ -99,6 +97,26 @@ namespace Star_Citizen_Pfusch.Pages
             //window.Width = 350;
             //window.Height = 450;
             //window.Show();
+        }
+
+        private void Discord_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ProcessStartInfo info = new ProcessStartInfo()
+            {
+                UseShellExecute = true,
+                FileName = "https://discord.gg/QAR9RTnVVr"
+            };
+            Process.Start(info);
+        }
+
+        private void RSI_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ProcessStartInfo info = new ProcessStartInfo()
+            {
+                UseShellExecute = true,
+                FileName = "https://robertsspaceindustries.com/"
+            };
+            Process.Start(info);
         }
     }
 }

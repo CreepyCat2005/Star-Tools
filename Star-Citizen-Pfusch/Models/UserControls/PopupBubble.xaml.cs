@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,20 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Star_Citizen_Pfusch.Pages.Home.Widgets
+namespace Star_Citizen_Pfusch.Models.UserControls
 {
     /// <summary>
-    /// Interaction logic for DailyShipWidget.xaml
+    /// Interaction logic for PopupBubble.xaml
     /// </summary>
-    public partial class DailyShipWidget : UserControl
+    public partial class PopupBubble : UserControl
     {
-        public string Details { get; set; }
-        public string Description { get; set; }
-        public BitmapSource Image { get; set; }
-        public DailyShipWidget()
+
+        public SolidColorBrush Color { get; set; }
+        public string Text { get; set; }
+
+        public PopupBubble()
         {
             InitializeComponent();
             this.DataContext = this;
+        }
+
+        private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ((Border)sender).CornerRadius = new CornerRadius((this.ActualHeight + this.ActualWidth) / 2 / 35);
         }
     }
 }

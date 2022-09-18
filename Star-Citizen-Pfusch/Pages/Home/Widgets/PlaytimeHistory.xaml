@@ -14,7 +14,7 @@
             <RowDefinition Height=".2*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.ColumnSpan="2" Content="Playtime History" FontSize="20" Foreground="{DynamicResource HeadlineColor}" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Label Grid.ColumnSpan="2" Content="{StaticResource Widgets.PlaytimeHistory}" FontSize="20" Foreground="{DynamicResource HeadlineColor}" HorizontalAlignment="Center" VerticalAlignment="Top" />
 
         <Rectangle Grid.ColumnSpan="2" Height="1.5" VerticalAlignment="Top" Margin="30,35,30,0" >
             <Rectangle.Fill>

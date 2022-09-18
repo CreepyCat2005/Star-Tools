@@ -25,10 +25,10 @@
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black" />
             </TreeView.Resources>
-            <TreeViewItem Header="General" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="GeneralItem_MouseDoubleClick" />
-            <TreeViewItem Header="Appearance" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="AppearanceItem_MouseDoubleClick" />
-            <TreeViewItem Header="License" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
-            <TreeViewItem Header="Datenschutz" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" x:Name="dataItem" MouseDoubleClick="dataItem_MouseDoubleClick" />
+            <TreeViewItem Header="{StaticResource Settings.General}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="GeneralItem_MouseDoubleClick" />
+            <TreeViewItem Header="{StaticResource Settings.Appearance}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="AppearanceItem_MouseDoubleClick" />
+            <TreeViewItem Header="{StaticResource Settings.License}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
+            <TreeViewItem Header="{StaticResource Settings.DataSafety}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" x:Name="dataItem" MouseDoubleClick="dataItem_MouseDoubleClick" />
         </TreeView>
 
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" BorderThickness="0" Background="{DynamicResource SliderColor}" />

@@ -59,6 +59,23 @@ namespace Star_Citizen_Pfusch
                 notifyIcon.ContextMenuStrip.Items.Add("Open", null, Menu_Open);
                 notifyIcon.ContextMenuStrip.Items.Add("Close", null, Menu_Close);
 
+                ResourceDictionary dictionary = new ResourceDictionary();
+
+                switch (Thread.CurrentThread.CurrentCulture.ToString())
+                {
+                    case "en-US":
+                        dictionary.Source = new Uri("/languages/english.xaml", UriKind.Relative);
+                        break;
+                    case "de-AT":
+                        dictionary.Source = new Uri("/languages/german.xaml", UriKind.Relative);
+                        break;
+                    case "de-DE":
+                        dictionary.Source = new Uri("/languages/german.xaml", UriKind.Relative);
+                        break;
+                }
+
+                System.Windows.Application.Current.Resources.MergedDictionaries.Add(dictionary);
+
                 this.Content = new startScreen();
             }
         }

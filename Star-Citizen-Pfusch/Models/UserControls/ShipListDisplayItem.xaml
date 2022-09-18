@@ -76,21 +76,11 @@
 
         <Border CornerRadius="10" SizeChanged="Border_SizeChanged" Grid.RowSpan="2" x:Name="BackgroundBorder" Background="{StaticResource GradientBrush}" />
 
-        <Grid Grid.Row="1" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <Border Grid.Row="1" Background="Gray" >
-                <Border.OpacityMask>
-                    <ImageBrush ImageSource="/Graphics/NoImage.png" Stretch="Uniform" />
-                </Border.OpacityMask>
-            </Border>
-        </Grid>
-        
-        <Image Grid.Row="1" Stretch="UniformToFill" Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding ImageSource}" />
+        <Border Grid.Row="1" CornerRadius="0,0,20,20" SizeChanged="BorderSpecial_SizeChanged" Margin="3" >
+            <Border.Background>
+                <ImageBrush ImageSource="{Binding ImageSource}" Stretch="UniformToFill" />
+            </Border.Background>
+        </Border>
 
         <Grid >
             <Grid.RowDefinitions>

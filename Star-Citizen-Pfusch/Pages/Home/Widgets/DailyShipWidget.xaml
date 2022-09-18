@@ -21,7 +21,7 @@
             <RowDefinition Height=".8*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Ship of the Day" Foreground="{DynamicResource HeadlineColor}" FontSize="20" HorizontalAlignment="Center" />
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="{StaticResource Widgets.DailyShip}" Foreground="{DynamicResource HeadlineColor}" FontSize="20" HorizontalAlignment="Center" />
         <Rectangle Grid.ColumnSpan="3" Height="1.5" VerticalAlignment="Top" Margin="30,35,30,0" >
             <Rectangle.Fill>
                 <LinearGradientBrush>

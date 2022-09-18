@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:uc="clr-namespace:Star_Citizen_Pfusch.Models"
+      xmlns:controls="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ShipInformation" RenderOptions.BitmapScalingMode="HighQuality" >
@@ -18,7 +19,7 @@
         </ControlTemplate>
     </Page.Resources>
 
-    <Grid>
+    <Grid x:Name="MasterGrid" >
 
         <Grid.RowDefinitions>
             <RowDefinition Height=".5*" />
@@ -57,7 +58,7 @@
             <Rectangle Grid.Row="0" Fill="{DynamicResource BackgroundColor}" />
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-                <Button HorizontalAlignment="Right" BorderThickness="0" Margin="0,0,5,0" ToolTip="Add to Shipwatcher" >
+                <Button HorizontalAlignment="Right" BorderThickness="0" Margin="0,0,5,0" ToolTip="Add to Shipwatcher" Click="ShipWatcherButton_Click" >
                     <Button.Style>
                         <Style TargetType="Button" >
                             <Setter Property="Background" Value="Transparent"/>
@@ -203,32 +204,31 @@
                         </TextBox.Foreground>
                     </TextBox>
                 </Viewbox>
+                <controls:NumberSelector Margin="10,0,0,0" x:Name="ColumnCountSelector" MinValue="4" Value="5" MaxValue="12" />
             </StackPanel>
 
-            <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
-                <ListBox Grid.Row="1" x:Name="ModuleList" Background="Transparent" BorderThickness="0" >
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="ListBoxItem">
-                                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+            <ListBox Grid.Row="1" x:Name="ModuleList" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border BorderBrush="{TemplateBinding BorderBrush}" 
                   BorderThickness="{TemplateBinding BorderThickness}" 
                   Background="{TemplateBinding Background}">
-                                            <ContentPresenter />
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                    <ListBox.Template>
-                        <ControlTemplate>
-                            <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
-                        </ControlTemplate>
-                    </ListBox.Template>
-                </ListBox>
-            </ScrollViewer>
+                                        <ContentPresenter />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="{Binding Properties.Value, ElementName=ColumnCountSelector}" VerticalAlignment="Top" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
 
         </Grid>
     </Grid>

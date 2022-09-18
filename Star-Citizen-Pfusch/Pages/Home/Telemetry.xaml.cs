@@ -100,7 +100,10 @@ namespace Star_Citizen_Pfusch.Pages.Home
             if(e.Status.Equals("Loaded"))
             {
                 ((ShipWatcher)sender).Visibility = Visibility.Visible;
-                MasterGrid.Children.Remove(MasterGrid.Children.OfType<LoadingSymbol>().ToList()[0]);
+                if (MasterGrid.Children.OfType<LoadingSymbol>().ToList().Count > 0)
+                {
+                    MasterGrid.Children.Remove(MasterGrid.Children.OfType<LoadingSymbol>().ToList()[0]);
+                }
             }
         }
 

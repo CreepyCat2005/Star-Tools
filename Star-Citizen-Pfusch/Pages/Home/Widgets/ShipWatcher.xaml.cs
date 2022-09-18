@@ -67,11 +67,14 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 
             AccountDataItem accountItem = JsonConvert.DeserializeObject<AccountDataItem>(res);
 
-            foreach (var item in accountItem.ShipsOnWatcher)
+            if (accountItem.ShipsOnWatcher != null)
             {
-                ListBoxItem listItem = new ListBoxItem() { FontSize = 20, Content = new ShipNameContainer() { ShipName = item.name, LocalName = item.localName }, BorderThickness = new Thickness(0) };
-                listItem.MouseLeftButtonUp += LoadShipData_Click;
-                listBoxItems.Add(listItem);
+                foreach (var item in accountItem.ShipsOnWatcher)
+                {
+                    ListBoxItem listItem = new ListBoxItem() { FontSize = 20, Content = new ShipNameContainer() { ShipName = item.name, LocalName = item.localName }, BorderThickness = new Thickness(0) };
+                    listItem.MouseLeftButtonUp += LoadShipData_Click;
+                    listBoxItems.Add(listItem);
+                }
             }
 
             if(listBoxItems.Count > 0) LoadShip(((ShipNameContainer)listBoxItems[0].Content).LocalName);
@@ -141,7 +144,7 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
             }
             else
             {
-                ShipSaleBox.Text = "Not in shop";
+                ShipSaleBox.Text = Application.Current.Resources["Widgets.NotInShop"].ToString();
                 IsBuyable = false;
             }
             if (shipItem.shops.Select(o => o.price).ToList().Count > 0)
@@ -150,8 +153,14 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
             }
             else
             {
-                ShipPriceBox.Text = "Not buyable";
+                ShipPriceBox.Text = Application.Current.Resources["Widgets.NotBuyable"].ToString();
             }
+        }
+
+        private void ReloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxItems.Clear();
+            init();
         }
     }
 }

@@ -16,12 +16,12 @@
         </Grid.RowDefinitions>
 
         <Viewbox HorizontalAlignment="Left" Margin="0,0,0,5" >
-            <TextBox IsReadOnly="True" Background="Transparent" BorderThickness="0" Text="Filter Settings" Foreground="{DynamicResource HeadlineColor}" />
+            <TextBox IsReadOnly="True" Background="Transparent" BorderThickness="0" Text="{StaticResource Settings.FilterSettings}" Foreground="{DynamicResource HeadlineColor}" />
         </Viewbox>
         <Rectangle Fill="White" Height="2" VerticalAlignment="Bottom" Grid.Row="0" />
 
         <TreeView Grid.Row="1" Background="Transparent" BorderThickness="0" >
-            <TreeViewItem Header="Sichtbarkeit" Foreground="{DynamicResource TextColor}" FontSize="25" IsExpanded="True" >
+            <TreeViewItem Header="{StaticResource Settings.Visibility}" Foreground="{DynamicResource TextColor}" FontSize="25" IsExpanded="True" >
                 <CheckBox Foreground="{DynamicResource TextColor}" x:Name="AllBox" Content="All" VerticalContentAlignment="Center" Checked="Box_Checked" />
                 <CheckBox Foreground="{DynamicResource TextColor}" x:Name="QuantumDriveBox" Content="Quantum Drive" VerticalContentAlignment="Center" Checked="Box_Checked" />
                 <CheckBox Foreground="{DynamicResource TextColor}" x:Name="PowerPlantBox" Content="Power Plant" VerticalContentAlignment="Center" Checked="Box_Checked" />

@@ -8,10 +8,57 @@
     <sys:String x:Key="start.key">Produktschlüssel</sys:String>
 
     <sys:String x:Key="home.homeButton">Hauptmenü</sys:String>
+    <sys:String x:Key="home.ships">Schiffe</sys:String>
+    <sys:String x:Key="home.vehicles">Fahrzeuge</sys:String>
+    <sys:String x:Key="home.components">Komponenten</sys:String>
+    <sys:String x:Key="home.shops">Shops</sys:String>
+    <sys:String x:Key="home.orgs">Organisationen</sys:String>
+    <sys:String x:Key="home.settings">Einstellungen</sys:String>
 
     <sys:String x:Key="ProductKey.Cancel">Zurück</sys:String>
     <sys:String x:Key="ProductKey.Submit">Senden</sys:String>
     <sys:String x:Key="ProductKey.keyActive">Produkt Aktiv!</sys:String>
-    <sys:String x:Key="ProductKey.keyNotActive">Das Produkt ist nicht aktiviert!</sys:String>
+    <sys:String x:Key="ProductKey.keyNotActive">Der Schlüssel ist nicht Gültig!</sys:String>
     <sys:String x:Key="ProductKey.activate">🗸</sys:String>
+
+    <sys:String x:Key="Widgets.DailyShip">Ship of the Day</sys:String>
+    <sys:String x:Key="Widgets.Funding">Funding</sys:String>
+    <sys:String x:Key="Widgets.TotalPlaytime">Gesamte Spielzeit</sys:String>
+    <sys:String x:Key="Widgets.PTUStatus">PTU Status</sys:String>
+    <sys:String x:Key="Widgets.ClientVersion">Software Version</sys:String>
+    <sys:String x:Key="Widgets.GameVersion">Star Citizen Version</sys:String>
+    <sys:String x:Key="Widgets.PlaytimeHistory">Spielzeit Verlauf</sys:String>
+    <sys:String x:Key="Widgets.ShipWatcher">Schiffe auf Beobachtung</sys:String>
+    <sys:String x:Key="Widgets.NotBuyable">Nicht Kaufbar</sys:String>
+    <sys:String x:Key="Widgets.NotInShop">Nicht im Pledge Store</sys:String>
+    
+    <sys:String x:Key="Settings.TextColor">Text &amp; Farbe</sys:String>
+    <sys:String x:Key="Settings.White">Weiß</sys:String>
+    <sys:String x:Key="Settings.Rainbow">Regenbogen</sys:String>
+    <sys:String x:Key="Settings.ModernShipList">Moderne Schiffliste (erhöt RAM verbrauch!)</sys:String>
+    <sys:String x:Key="Settings.UIChanges">UI Änderungen</sys:String>
+    <sys:String x:Key="Settings.Ships">Schiffe</sys:String>
+    <sys:String x:Key="Settings.Vehicles">Fahrzeuge</sys:String>
+    <sys:String x:Key="Settings.Highlighting">Hervorhebungen</sys:String>
+    <sys:String x:Key="Settings.StandardText">Ändert die normale Größe</sys:String>
+    <sys:String x:Key="Settings.MenuText">Ändert die Menü Größe</sys:String>
+    <sys:String x:Key="Settings.HeadlineText">Ändert die Überschrift Größe</sys:String>
+    <sys:String x:Key="Settings.TextColorDescription">Ändert die Farbe von Text</sys:String>
+    <sys:String x:Key="Settings.MenuColor">Ändert die Farbe von dem Menü Text</sys:String>
+    <sys:String x:Key="Settings.HeadlineColor">Ändert die Farbe von Überschriften</sys:String>
+    <sys:String x:Key="Settings.ChartColor">Ändert die Farbe von Diagrammen</sys:String>
+    <sys:String x:Key="Settings.ChartPointColor">Ändert die Farbe von Diagramm-Punkten</sys:String>
+    <sys:String x:Key="Settings.SliderColor">Ändert die Farbe von Schiebereglern</sys:String>
+    <sys:String x:Key="Settings.FilterSettings">Filter Einstellungen</sys:String>
+    <sys:String x:Key="Settings.Visibility">Sichtbarkeit</sys:String>
+    <sys:String x:Key="Settings.Startup">Programm Start</sys:String>
+    <sys:String x:Key="Settings.Autostart">Starte Star-Tools mit Windows</sys:String>
+    <sys:String x:Key="Settings.DefaultSize">Standart Start-Größe</sys:String>
+    <sys:String x:Key="Settings.LicenseKey">Lizenzschlüssel</sys:String>
+    <sys:String x:Key="Settings.RelevantDeveloper">Nur relevant für Entwickler!</sys:String>
+    <sys:String x:Key="Settings.General">Allgemein</sys:String>
+    <sys:String x:Key="Settings.Appearance">Erscheinung</sys:String>
+    <sys:String x:Key="Settings.License">Lizenz</sys:String>
+    <sys:String x:Key="Settings.DataSafety">Datenschutz</sys:String>
+
 </ResourceDictionary>  

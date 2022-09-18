@@ -49,6 +49,7 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
             double Height = ActualHeight - 38;
             double Width = ActualWidth - 110;
             double maxValue = item.PlaytimeHistory.Max();
+            if (maxValue == 0) maxValue = 1;
 
             points.Add(new Point(-1, Height));
 

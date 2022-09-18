@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Star_Citizen_Pfusch.Models.UserControls.PopupBubble"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="180">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".3*" />
+        </Grid.RowDefinitions>
+
+        <Border Background="{Binding Color}" CornerRadius="20" SizeChanged="Border_SizeChanged" >
+            <Border.Effect>
+                <DropShadowEffect />
+            </Border.Effect>
+            <Viewbox>
+                <TextBlock Text="{Binding Text}" />
+            </Viewbox>
+        </Border>
+        <Viewbox Grid.Row="1">
+            <Polygon HorizontalAlignment="Center" VerticalAlignment="Top" Points="0,0 50,0 25,23" Fill="{Binding Color}" >
+                <Polygon.Effect>
+                    <DropShadowEffect />
+                </Polygon.Effect>
+            </Polygon>
+        </Viewbox>
+    </Grid>
+</UserControl>

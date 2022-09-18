@@ -5,10 +5,59 @@
 
     <sys:String x:Key="start.login">Login</sys:String>
     <sys:String x:Key="start.register">Register</sys:String>
-    <sys:String x:Key="start.key">Productkey</sys:String>
-    <sys:String x:Key="start.keyActive">Product is active!</sys:String>
-    <sys:String x:Key="start.keyNotActive">Product is not activated yet!</sys:String>
+    <sys:String x:Key="start.key">Product Key</sys:String>
 
-    <sys:String x:Key="home.homeButton">main menu</sys:String>
-    
+    <sys:String x:Key="home.homeButton">Main Menu</sys:String>
+    <sys:String x:Key="home.ships">Ships</sys:String>
+    <sys:String x:Key="home.vehicles">Vehicles</sys:String>
+    <sys:String x:Key="home.components">Components</sys:String>
+    <sys:String x:Key="home.shops">Shops</sys:String>
+    <sys:String x:Key="home.orgs">Organisations</sys:String>
+    <sys:String x:Key="home.settings">Settings</sys:String>
+
+    <sys:String x:Key="ProductKey.Cancel">Back</sys:String>
+    <sys:String x:Key="ProductKey.Submit">Send</sys:String>
+    <sys:String x:Key="ProductKey.keyActive">Product active!</sys:String>
+    <sys:String x:Key="ProductKey.keyNotActive">The key is not valid!</sys:String>
+    <sys:String x:Key="ProductKey.activate">🗸</sys:String>
+
+    <sys:String x:Key="Widgets.DailyShip">Ship of the Day</sys:String>
+    <sys:String x:Key="Widgets.Funding">Funding</sys:String>
+    <sys:String x:Key="Widgets.TotalPlaytime">Gesamte Spielzeit</sys:String>
+    <sys:String x:Key="Widgets.PTUStatus">PTU Status</sys:String>
+    <sys:String x:Key="Widgets.ClientVersion">Software Version</sys:String>
+    <sys:String x:Key="Widgets.GameVersion">Star Citizen Version</sys:String>
+    <sys:String x:Key="Widgets.PlaytimeHistory">Spielzeit Verlauf</sys:String>
+    <sys:String x:Key="Widgets.ShipWatcher">Schiffe</sys:String>
+    <sys:String x:Key="Widgets.NotBuyable">Nicht Kaufbar</sys:String>
+    <sys:String x:Key="Widgets.NotInShop">Nicht im Pledge Store</sys:String>
+
+    <sys:String x:Key="Settings.TextColor">Text &amp; Farbe</sys:String>
+    <sys:String x:Key="Settings.White">Weiß</sys:String>
+    <sys:String x:Key="Settings.Rainbow">Regenbogen</sys:String>
+    <sys:String x:Key="Settings.ModernShipList">Modern Shiplist (will increase Ram usage!)</sys:String>
+    <sys:String x:Key="Settings.UIChanges">UI Änderungen</sys:String>
+    <sys:String x:Key="Settings.Ships">Schiffe</sys:String>
+    <sys:String x:Key="Settings.Vehicles">Fahrzeuge</sys:String>
+    <sys:String x:Key="Settings.Highlighting">Hervorhebungen</sys:String>
+    <sys:String x:Key="Settings.StandardText">Changes the standard size</sys:String>
+    <sys:String x:Key="Settings.MenuText">Changes the menu size</sys:String>
+    <sys:String x:Key="Settings.HeadlineText">Changes the headline size</sys:String>
+    <sys:String x:Key="Settings.TextColorDescription">Changes the color of text</sys:String>
+    <sys:String x:Key="Settings.MenuColor">Changes the color of the menu text</sys:String>
+    <sys:String x:Key="Settings.HeadlineColor">Changes the color of headlines</sys:String>
+    <sys:String x:Key="Settings.ChartColor">Changes the color of charts</sys:String>
+    <sys:String x:Key="Settings.ChartPointColor">Changes the color of chart-points</sys:String>
+    <sys:String x:Key="Settings.SliderColor">Changes the color of slider</sys:String>
+    <sys:String x:Key="Settings.FilterSettings">Filter Settings</sys:String>
+    <sys:String x:Key="Settings.Visibility">Visibility</sys:String>
+    <sys:String x:Key="Settings.Startup">Startup</sys:String>
+    <sys:String x:Key="Settings.Autostart">Start Star-Tools with Windows</sys:String>
+    <sys:String x:Key="Settings.DefaultSize">Default Startup Size</sys:String>
+    <sys:String x:Key="Settings.LicenseKey">License Key</sys:String>
+    <sys:String x:Key="Settings.RelevantDeveloper">Only relevant for developers!</sys:String>
+    <sys:String x:Key="Settings.General">General</sys:String>
+    <sys:String x:Key="Settings.Appearance">Appearance</sys:String>
+    <sys:String x:Key="Settings.License">License</sys:String>
+    <sys:String x:Key="Settings.DataSafety">Data safety</sys:String>
 </ResourceDictionary>

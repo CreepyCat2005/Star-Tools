@@ -37,7 +37,7 @@
         <GridSplitter Grid.Row="0" Grid.RowSpan="3" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
         <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
 
-        <symbols:LoadingSymbol Grid.Row="2" Width="100" Height="100" CenterX="50" CenterY="50" HoleSize="6" />
+        <symbols:LoadingSymbol Grid.Column="2" Grid.Row="2" Width="100" Height="100" CenterX="50" CenterY="50" HoleSize="6" />
 
     </Grid>
 </Page>

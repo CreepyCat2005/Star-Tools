@@ -42,7 +42,7 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
             AccountDataItem item = JsonConvert.DeserializeObject<AccountDataItem>(res);
 
             PlaytimeTextBox.Text = formatePlayTime((int)item.Playtime + item.PlaytimeHistory.Sum());
-            MeasuredTextBox.Text = item.AccountCreatedOn.ToShortDateString();
+            MeasuredTextBox.Text = ((DateTime)item.AccountCreatedOn).ToShortDateString();
         }
         
         private string formatePlayTime(int playtime)

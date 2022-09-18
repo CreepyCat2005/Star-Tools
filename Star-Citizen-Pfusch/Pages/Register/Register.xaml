@@ -6,7 +6,37 @@
       xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Register"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="350"
-      Title="Register" Background="Gray" RenderOptions.BitmapScalingMode="HighQuality">
+      Title="Register" RenderOptions.BitmapScalingMode="HighQuality" >
+    <Page.Background>
+        <SolidColorBrush>
+            <SolidColorBrush.Color>
+                <Color A="255" R="40" G="40" B="40" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+    </Page.Background>
+
+    <Page.Resources>
+        <Style TargetType="TextBox" x:Key="TextBoxStyle" >
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush>
+                        <SolidColorBrush.Color>
+                            <Color A="255" R="30" G="30" B="30" />
+                        </SolidColorBrush.Color>
+                    </SolidColorBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5" >
+                            <ScrollViewer x:Name="PART_ContentHost" FontSize="{TemplateBinding FontSize}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid>
 
@@ -18,32 +48,177 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width=".8*" />
             <ColumnDefinition Width="1.5*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="1.5*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width=".8*" />
         </Grid.ColumnDefinitions>
-        <Button Content="Cancel" Grid.Column="1" Grid.Row="2" Click="Button_Click_1" />
-        <Button Content="Submit" Grid.Column="3" Grid.Row="2" Click="Button_Click" />
+
+        <Button Grid.Column="1" Grid.Row="2" Click="Button_Click_1" >
+            <Button.Effect>
+                <DropShadowEffect />
+            </Button.Effect>
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Color A="255" R="30" G="30" B="30" />
+                                </SolidColorBrush.Color>
+                            </SolidColorBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="{TemplateBinding Background}" CornerRadius="10" >
+                                    <TextBlock Text="Cancel" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush>
+                                        <SolidColorBrush.Color>
+                                            <Color A="255" R="50" G="50" B="50" />
+                                        </SolidColorBrush.Color>
+                                    </SolidColorBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Click" >
+                            <EventTrigger.Actions>
+                                <BeginStoryboard >
+                                    <Storyboard BeginTime="00:00:00" Storyboard.TargetProperty="(Button.Margin)" AutoReverse="True" >
+                                        <ThicknessAnimation Duration="0:0:.1" From="0,0,0,0" To="5,5,0,0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="2" Click="Button_Click" >
+            <Button.Effect>
+                <DropShadowEffect />
+            </Button.Effect>
+            <Button.Style>
+                <Style TargetType="Button" >
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Color A="255" R="30" G="30" B="30" />
+                                </SolidColorBrush.Color>
+                            </SolidColorBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border Background="{TemplateBinding Background}" CornerRadius="10" >
+                                    <TextBlock Text="Submit" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush>
+                                        <SolidColorBrush.Color>
+                                            <Color A="255" R="50" G="50" B="50" />
+                                        </SolidColorBrush.Color>
+                                    </SolidColorBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Click" >
+                            <EventTrigger.Actions>
+                                <BeginStoryboard >
+                                    <Storyboard BeginTime="00:00:00" Storyboard.TargetProperty="(Button.Margin)" AutoReverse="True" >
+                                        <ThicknessAnimation Duration="0:0:.1" From="0,0,0,0" To="5,5,0,0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
         <StackPanel Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Orientation="Vertical" >
 
-            <Label Height="25" Content="Username" Margin="0,20,0,0"/>
-            <TextBox Height="25" x:Name="UsernameBox"/>
-            <Label Height="25" Content="E-Mail" />
-            <TextBox Height="25" x:Name="EMailBox" />
-            <Label Height="25" Content="Password" />
-            <TextBox Height="25" x:Name="PasswordBox" />
+            <TextBlock Text="Username" FontSize="20" Foreground="White"  Margin="0,20,0,0" >
+            </TextBlock>
+            <TextBox Style="{StaticResource TextBoxStyle}" FontSize="18" HorizontalAlignment="Stretch" x:Name="UsernameBox" Foreground="White" BorderThickness="0" Opacity=".8" />
+            <TextBlock Text="E-Mail" FontSize="20" Foreground="White" />
+            <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Stretch" FontSize="18" x:Name="EMailBox" Foreground="White" BorderThickness="0" Opacity=".8" />
+            <TextBlock Text="Password" FontSize="20" Foreground="White" />
+            <PasswordBox HorizontalAlignment="Stretch" FontSize="18" x:Name="PasswordBox" Foreground="White" BorderThickness="0" Opacity=".8" >
+                <PasswordBox.Style>
+                    <Style TargetType="PasswordBox">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <Color A="255" R="30" G="30" B="30" />
+                                    </SolidColorBrush.Color>
+                                    </SolidColorBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="PasswordBox">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="5" >
+                                        <ScrollViewer x:Name="PART_ContentHost" FontSize="{TemplateBinding FontSize}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="{TemplateBinding Foreground}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </PasswordBox.Style>
+            </PasswordBox>
 
-            <CheckBox Margin="0,15,0,0" Content="Save Password" x:Name="SavePasswordBox" />
+                <CheckBox FontSize="18" VerticalContentAlignment="Center" Margin="0,15,0,0" x:Name="SavePasswordBox" Foreground="White" >
+                <CheckBox.Style>
+                    <Style TargetType="CheckBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="CheckBox" >
+                                    <StackPanel Orientation="Horizontal" >
+                                        <Border Height="22" Width="22" CornerRadius="5" VerticalAlignment="Center" Cursor="Hand" >
+                                            <Border.Background>
+                                                <SolidColorBrush>
+                                                    <SolidColorBrush.Color>
+                                                        <Color A="255" R="30" G="30" B="30" />
+                                                    </SolidColorBrush.Color>
+                                                </SolidColorBrush>
+                                            </Border.Background>
+                                            <Image Source="/Graphics/Icons/Exit-Icon.png" x:Name="CheckBoxImage" Visibility="Hidden" />
+                                        </Border>
+                                        <TextBlock VerticalAlignment="Center" Text="Save Password" Background="Transparent" FontSize="16" Margin="10,0,0,0" />
+                                    </StackPanel>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="CheckBoxImage" Property="Visibility" Value="Visible" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </CheckBox.Style>
+            </CheckBox>
 
-            <TextBox Background="Transparent" BorderBrush="Transparent" x:Name="ErrorBox" Margin="0,100,0,0" Foreground="Red" IsEnabled="False" />
-
-
+            <TextBox Background="Transparent" BorderThickness="0" FontSize="16" x:Name="ErrorBox" Margin="0,100,0,0" Foreground="Red" IsReadOnly="True" />
         </StackPanel>
-
-
-
     </Grid>
 </Page>

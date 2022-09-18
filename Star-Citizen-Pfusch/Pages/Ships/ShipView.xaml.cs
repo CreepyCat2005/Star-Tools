@@ -16,6 +16,9 @@ using System.Windows.Media.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Text;
+using System.Windows.Controls.Primitives;
+using Star_Citizen_Pfusch.Models.UserControls;
 
 namespace Star_Citizen_Pfusch.Pages.Ships
 {
@@ -82,8 +85,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 }
 
                 if (!getModuleSize((ModuleTypeEnum)moduleItem.type).Contains(moduleItem.size)) continue;
-                double width = 130.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 1920.0);
-                double heigth = 100.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height / 1080.0);
                 DragAndDropItem dragAndDropItem = new DragAndDropItem()
                 {
                     _id = moduleItem._id,
@@ -92,12 +93,11 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     QtGradeText = "Grade: " + moduleItem.grade,
                     QtSizeText = "Size: " + moduleItem.size,
                     Size = moduleItem.size,
-                    type = (ModuleTypeEnum)moduleItem.type,
-                    Width = (int)width,
-                    Height = (int)heigth
+                    type = (ModuleTypeEnum)moduleItem.type
                 };
 
                 ListBoxItem boxItem = new ListBoxItem() { Content = dragAndDropItem };
+                boxItem.SizeChanged += BoxItem_SizeChanged;
                 boxItem.MouseEnter += BoxItem_MouseEnter;
                 boxItem.MouseLeave += BoxItem_MouseLeave;
                 boxItem.MouseDoubleClick += BoxItem_MouseDoubleClick;
@@ -105,6 +105,12 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 moduleItems.Add(boxItem);
             }
             ModuleList.ItemsSource = moduleItems;
+        }
+
+        private void BoxItem_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ListBoxItem item = (ListBoxItem)sender;
+            item.Height = item.ActualWidth / 1.6;
         }
 
         private ModuleTypeEnum stringToModuleType(string s)
@@ -130,8 +136,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
         private void filterModules(object sender, RoutedEventArgs e)
         {
             CheckBox box = (CheckBox)sender;
-            double width = 130.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 1920.0);
-            double heigth = 100.0 * (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height / 1080.0);
             List<ListBoxItem> items = new List<ListBoxItem>();
             List<QuantumDriveItem> quantumDriveList;
             List<ShieldItem> shieldList;
@@ -151,15 +155,14 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                             QtGradeText = "Grade: " + item.grade,
                             QtSizeText = "Size: " + item.size,
                             Size = item.size,
-                            type = (ModuleTypeEnum)item.type,
-                            Width = (int)width,
-                            Height = (int)heigth
+                            type = (ModuleTypeEnum)item.type
                         };
 
                         listBox = new ListBoxItem();
                         listBox.MouseEnter += BoxItem_MouseEnter;
                         listBox.MouseLeave += BoxItem_MouseLeave;
                         listBox.MouseDoubleClick += BoxItem_MouseDoubleClick;
+                        listBox.SizeChanged += BoxItem_SizeChanged;
                         listBox.Content = dragAndDropItem;
 
                         items.Add(listBox);
@@ -185,15 +188,14 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                             QtGradeText = "Grade: " + item.grade,
                             QtSizeText = "Size: " + item.size,
                             Size = item.size,
-                            type = (ModuleTypeEnum)item.type,
-                            Width = (int)width,
-                            Height = (int)heigth
+                            type = (ModuleTypeEnum)item.type
                         };
 
                         listBox = new ListBoxItem();
                         listBox.MouseEnter += BoxItem_MouseEnter;
                         listBox.MouseLeave += BoxItem_MouseLeave;
                         listBox.MouseDoubleClick += BoxItem_MouseDoubleClick;
+                        listBox.SizeChanged += BoxItem_SizeChanged;
                         listBox.Content = dragAndDropItem;
 
                         items.Add(listBox);
@@ -222,15 +224,14 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                             QtGradeText = "Grade: " + item.grade,
                             QtSizeText = "Size: " + item.size,
                             Size = item.size,
-                            type = (ModuleTypeEnum)item.type,
-                            Width = (int)width,
-                            Height = (int)heigth
+                            type = (ModuleTypeEnum)item.type
                         };
 
                         listBox = new ListBoxItem();
                         listBox.MouseEnter += BoxItem_MouseEnter;
                         listBox.MouseLeave += BoxItem_MouseLeave;
                         listBox.MouseDoubleClick += BoxItem_MouseDoubleClick;
+                        listBox.SizeChanged += BoxItem_SizeChanged;
                         listBox.Content = dragAndDropItem;
 
                         items.Add(listBox);
@@ -529,6 +530,15 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     }
                 }
             }
+        }
+        private async void ShipWatcherButton_Click(object sender, RoutedEventArgs e)
+        {
+            List<ShipWatcherItem> shipWatcherItems = new List<ShipWatcherItem>();
+            shipWatcherItems.Add(new ShipWatcherItem() { localName = shipItem.localName, name = shipItem.name});
+
+            HttpClient client = new HttpClient();
+            StringContent content = new StringContent(JsonConvert.SerializeObject(new AccountDataItem() { SessionToken = Config.SessionToken, ShipsOnWatcher = shipWatcherItems }), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PutAsync(Config.URL + "/AccountData/ShipWatcher", content);
         }
     }
 }

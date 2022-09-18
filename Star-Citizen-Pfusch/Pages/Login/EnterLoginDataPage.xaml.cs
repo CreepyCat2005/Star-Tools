@@ -39,7 +39,7 @@ namespace Star_Citizen_Pfusch.Pages.Login
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (UsernameBox.Text == "" || PasswordBox.Text == "")
+            if (UsernameBox.Text.Equals("") || PasswordBox.Password.Equals(""))
             {
                 ErrorBox.Text = "Error: Bitte fülle alle Felder aus!";
                 return;
@@ -51,7 +51,7 @@ namespace Star_Citizen_Pfusch.Pages.Login
                 string salt = await response.Content.ReadAsStringAsync();
 
                 PasswordHasher hasher = new PasswordHasher();
-                string hashed = hasher.hashPassword(PasswordBox.Text, salt);
+                string hashed = hasher.hashPassword(PasswordBox.Password, salt);
                 AccountItem user = new AccountItem();
                 user.Username = UsernameBox.Text;
                 user.Password = hashed;
@@ -77,8 +77,7 @@ namespace Star_Citizen_Pfusch.Pages.Login
                 }
                 else
                 {
-                    var contents = await ms.Content.ReadAsStringAsync();
-                    ErrorBox.Text = "Error: " + contents.Substring(contents.IndexOf(" "), contents.IndexOf("\r\n") - contents.IndexOf(" "));
+                    ErrorBox.Text = "Error: Login Failed!";
                 }
             }
         }

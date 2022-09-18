@@ -29,6 +29,7 @@
     <None Remove="Graphics\Icons\Minus-Icon.png" />
     <None Remove="Graphics\Icons\People-Icon.png" />
     <None Remove="Graphics\Icons\Plus-Icon.png" />
+    <None Remove="Graphics\Icons\Reload-Icon.png" />
     <None Remove="Graphics\Icons\Right-Arrow.png" />
     <None Remove="Graphics\Icons\Ship-Icon.png" />
     <None Remove="Graphics\Icons\Twitch-Logo.png" />
@@ -534,6 +535,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\Plus-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Icons\Reload-Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\Right-Arrow.png">

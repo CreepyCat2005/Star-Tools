@@ -33,22 +33,6 @@ namespace Star_Citizen_Pfusch
         private Point currentPoint = new Point();
         public homeScreen()
         {
-            ResourceDictionary dictionary = new ResourceDictionary();
-
-            switch (Thread.CurrentThread.CurrentCulture.ToString())
-            {
-                case "en-US":
-                    dictionary.Source = new Uri("/languages/english.xaml", UriKind.Relative);
-                    break;
-                case "de-AT":
-                    dictionary.Source = new Uri("/languages/german.xaml", UriKind.Relative);
-                    break;
-                case "de-DE":
-                    dictionary.Source = new Uri("/languages/german.xaml", UriKind.Relative);
-                    break;
-            }
-            this.Resources.MergedDictionaries.Add(dictionary);
-
             InitializeComponent();
             PlaytimeCounter.start(1000 * 60);
             ContentDisplay.Content = new Canvas() { Background = new SolidColorBrush(Colors.Transparent) };
@@ -159,5 +143,6 @@ namespace Star_Citizen_Pfusch
             if (OrgaIntegration == null) OrgaIntegration = new OrgaIntegration(ContentDisplay);
             ContentDisplay.Navigate(OrgaIntegration);
         }
+
     }
 }

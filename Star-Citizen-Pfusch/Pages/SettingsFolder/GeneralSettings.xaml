@@ -38,15 +38,15 @@
                             </LinearGradientBrush>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <TextBox IsReadOnly="True" Text="Startup" BorderThickness="0" HorizontalAlignment="Center" Width="90" HorizontalContentAlignment="Center" Foreground="{DynamicResource HeadlineColor}" FontSize="{DynamicResource HeadlineFontSize}" Background="{DynamicResource BackgroundColor}" />
+                    <TextBox IsReadOnly="True" Text="{StaticResource Settings.Startup}" BorderThickness="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="{DynamicResource HeadlineColor}" FontSize="{DynamicResource HeadlineFontSize}" Background="{DynamicResource BackgroundColor}" />
                 </Grid>
             </ListBoxItem>
 
-            <CheckBox x:Name="AutostartCheckBox" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" Content="Start Star-Tools with Windows" VerticalContentAlignment="Center" Click="AutoStartCheckBox_Clicked" />
+            <CheckBox x:Name="AutostartCheckBox" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" Content="{StaticResource Settings.Autostart}" VerticalContentAlignment="Center" Click="AutoStartCheckBox_Clicked" />
 
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
                 <ComboBox x:Name="ResolutionBox" Width="145" FontSize="{DynamicResource TextFontSize}" SelectionChanged="ResolutionBox_SelectionChanged" />
-                <TextBox VerticalAlignment="Center" Margin="10,0,0,0" Text="Default Startup Size" IsReadOnly="True" Background="Transparent" BorderThickness="0" FontSize="{DynamicResource TextFontSize}" Foreground="{DynamicResource TextColor}" />
+                <TextBox VerticalAlignment="Center" Margin="10,0,0,0" Text="{StaticResource Settings.DefaultSize}" IsReadOnly="True" Background="Transparent" BorderThickness="0" FontSize="{DynamicResource TextFontSize}" Foreground="{DynamicResource TextColor}" />
             </StackPanel>
             
             

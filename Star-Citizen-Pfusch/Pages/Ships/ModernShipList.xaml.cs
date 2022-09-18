@@ -57,7 +57,16 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 infoList.Add("Hydrogen      " + item.fuelCapacity);
                 infoList.Add("Quantum       " + item.qtFuelCapacity);
 
-                BitmapImage image = new BitmapImage(new Uri("\\Graphics\\ShipImages\\Small\\" + item.localName + ".jpg", UriKind.Relative));
+                BitmapImage image;
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\ShipImages\\Small\\" + item.localName + ".jpg"))
+                {
+                    image = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\ShipImages\\Small\\" + item.localName + ".jpg", UriKind.Absolute));
+                }
+                else
+                {
+                    image = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\NoImage.png", UriKind.Absolute));
+                }
 
                 ShipListDisplayItem displayItem = new ShipListDisplayItem()
                 {
