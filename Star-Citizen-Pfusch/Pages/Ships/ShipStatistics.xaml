@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.Ships"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="450"
-      Title="ShipStatistics">
+      Title="ShipStatistics" >
 
     <Grid>
 
@@ -20,7 +20,7 @@
         </Viewbox>
         <Rectangle Fill="White" Height="2" VerticalAlignment="Bottom" Grid.Row="0" />
 
-        <ListBox Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+        <ListBox Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Template">
@@ -37,25 +37,25 @@
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipNameBox" Text="Name: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
+                <TextBox IsReadOnly="True" Text="{Binding ShipName, StringFormat=Name: {0}}" Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipSizeBox" Text="Size: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
+                <TextBox IsReadOnly="True" Text="{Binding Size, StringFormat=Size: {0}}" Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipMassBox" Text="Mass: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
+                <TextBox IsReadOnly="True" Text="{Binding Mass, StringFormat=Mass: {0}}" Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipRoleBox" Text="Role: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
+                <TextBox IsReadOnly="True" Text="{Binding Role, StringFormat=Role: {0}}" Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipCareerBox" Text="Career: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
+                <TextBox IsReadOnly="True" Text="{Binding Career, StringFormat=Career: {0}}" Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipDescriptionBox" Text="Description: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" TextWrapping="Wrap" />
+                <TextBox IsReadOnly="True" Text="{Binding Description, StringFormat=Description: {0}}" Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" TextWrapping="Wrap" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
-                <TextBox IsReadOnly="True" x:Name="ShipCargoBox" Text="Cargo: " Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
+                <TextBox IsReadOnly="True" Text="{Binding Cargo, StringFormat=Cargo: {0}}" Background="Transparent" BorderThickness="0" FontSize="25" Foreground="{DynamicResource TextColor}" />
             </ListBoxItem>
             <ListBoxItem Margin="0,0,0,5" >
                 <Grid>

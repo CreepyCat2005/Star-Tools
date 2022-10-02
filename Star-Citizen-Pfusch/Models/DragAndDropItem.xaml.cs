@@ -1,5 +1,4 @@
-﻿using Star_Citizen_Pfusch.Models.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,16 +26,16 @@ namespace Star_Citizen_Pfusch.Models
             this.DataContext = this;
         }
 
-        public DragAndDropItem(string grade, int size, string name,ModuleTypeEnum type)
+        public DragAndDropItem(string grade, int size, string name,string Type)
         {
             QtGradeText = grade;
             QtNameText = name;
             QtSizeText = "Size: " + size;
             Size = size;
-            this.type = type;
+            this.Type = Type;
 
             InitializeComponent();
-            ModuleImage.Source = new BitmapImage(new Uri(@"/Graphics/" + type + ".png", UriKind.Relative));
+            ModuleImage.Source = new BitmapImage(new Uri(@"/Graphics/" + Type + ".png", UriKind.Relative));
             this.DataContext = this;
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -45,7 +44,7 @@ namespace Star_Citizen_Pfusch.Models
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DataObject data = new DataObject();
-                if (this.type != ModuleTypeEnum.Missile_Rack)
+                if (!Type.Equals("MissileRack"))
                 {
                     data.SetData("Object", this);
                 }
@@ -63,13 +62,13 @@ namespace Star_Citizen_Pfusch.Models
         public string QtGradeText { get; set; }
         public string QtSizeText { get; set; }
         public string QtNameText { get; set; }
-        public object moduleItem { get; set; }
-        public ModuleTypeEnum type { get; set; }
+        public ModuleItem moduleItem { get; set; }
+        public string Type { get; set; }
 
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             BackgroundBorder.CornerRadius = new CornerRadius((this.ActualHeight + this.ActualWidth) / 2 / 20);
-            ModuleImage.Source = new BitmapImage(new Uri(@"/Graphics/" + type + ".png", UriKind.Relative));
+            ModuleImage.Source = new BitmapImage(new Uri(@"/Graphics/" + Type + ".png", UriKind.Relative));
         }
     }
 }

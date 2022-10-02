@@ -9,13 +9,8 @@ namespace Star_Citizen_Pfusch.Models
     [BsonIgnoreExtraElements]
     public class CoolerItem : ModuleItem
     {
-        [BsonElement("cooler")]
-        public CoolerDataItem data;
-    }
-    [BsonIgnoreExtraElements]
-    public class CoolerDataItem
-    {
-        public int coolingRate;
-        public double suppressionIRFactor, suppressionHeatFactor;
+        public double SuppressionIRFactor { get; set; }
+        public double SuppressionHeatFactor { get; set; }
+        public double CoolingRate { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Star_Citizen_Pfusch.Models.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,14 +26,13 @@ namespace Star_Citizen_Pfusch.Models
             this.DataContext = this;
         }
 
-        public DragAndDropFrame(int size, string name,ModuleTypeEnum type)
+        public DragAndDropFrame(int size, string name,string type)
         {
             this.ModuleName = name;
             this.Type = type;
             this.Size = size;
 
             InitializeComponent();
-            ModuleImage.Source = new BitmapImage(new Uri(@"/Graphics/" + Type + ".png", UriKind.Relative));
             this.DataContext = this;
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -52,13 +50,12 @@ namespace Star_Citizen_Pfusch.Models
         public string _id { get; set; }
         public int Size { get; set; }
         public string ModuleName { get; set; }
-        public ModuleTypeEnum Type { get; set; }
+        public string Type { get; set; }
 
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             BackgroundBorder.CornerRadius = new CornerRadius((this.ActualHeight + this.ActualWidth) / 2 / 20);
             DropField.CornerRadius = new CornerRadius((this.ActualHeight + this.ActualWidth) / 2 / 20);
-            ModuleImage.Source = new BitmapImage(new Uri("/Graphics/" + Type + ".png", UriKind.Relative));
         }
     }
 }

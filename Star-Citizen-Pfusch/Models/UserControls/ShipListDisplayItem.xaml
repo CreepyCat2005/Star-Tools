@@ -89,10 +89,10 @@
             </Grid.RowDefinitions>
 
             <Viewbox Grid.Column="1" HorizontalAlignment="Left" Margin="10,5,0,0" >
-                <TextBlock Text="{Binding FleetItem.name}" Foreground="{DynamicResource TextColor}" ToolTip="Name" />
+                <TextBlock Text="{Binding ShipName}" Foreground="{DynamicResource TextColor}" ToolTip="Name" />
             </Viewbox>
             <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="10,5,0,5" >
-                <TextBlock Text="{Binding FleetItem.manufacturer.data.name}" Foreground="Gray" ToolTip="Manufacturer" />
+                <TextBlock Text="{Binding FleetItem.Manufacturer.Name}" Foreground="Gray" ToolTip="Manufacturer" />
             </Viewbox>
         </Grid>
 
@@ -113,14 +113,14 @@
 
             <Popup IsOpen="{Binding Path=IsChecked, ElementName=InfoToggleButton}" Placement="Mouse" StaysOpen="False" >
                 <ListBox Background="Transparent" Foreground="White" FontSize="20" >
-                    <ListBoxItem Content="{Binding FleetItem.data.role}" />
-                    <ListBoxItem Content="{Binding FleetItem.data.career}" />
-                    <ListBoxItem Content="{Binding FleetItem.cargo}" />
-                    <ListBoxItem Content="{Binding FleetItem.hull.hp}" />
+                    <ListBoxItem Content="{Binding FleetItem.Role}" />
+                    <ListBoxItem Content="{Binding FleetItem.Career}" />
+                    <ListBoxItem Content="{Binding FleetItem.Cargo}" />
+                    <ListBoxItem Content="{Binding FleetItem.Health}" />
                     <ListBoxItem Content="{Binding Size}" />
-                    <ListBoxItem Content="{Binding FleetItem.hull.mass}" />
-                    <ListBoxItem Content="{Binding FleetItem.fuelCapacity}" />
-                    <ListBoxItem Content="{Binding FleetItem.qtFuelCapacity}" />
+                    <ListBoxItem Content="{Binding FleetItem.Mass}" />
+                    <ListBoxItem Content="{Binding FleetItem.HydrogenFuelCapacity}" />
+                    <ListBoxItem Content="{Binding FleetItem.QuantumFuelCapacity}" />
                 </ListBox>
             </Popup>
         </Grid>

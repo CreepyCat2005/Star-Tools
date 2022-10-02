@@ -9,20 +9,12 @@ namespace Star_Citizen_Pfusch.Models
     [BsonIgnoreExtraElements]
     public class QuantumDriveItem : ModuleItem
     {
-        [BsonElement("qdrive")]
-        public QuantumDriveDataItem data;
-    }
-    [BsonIgnoreExtraElements]
-    public class QuantumDriveDataItem
-    {
-        public double quantumFuelRequirement;
-        public int disconnectRange;
-        public QuantumDriveParamsItem @params;
-    }
-    [BsonIgnoreExtraElements]
-    public class QuantumDriveParamsItem
-    {
-        public int driveSpeed, engageSpeed, interdictionEffectTime, calibrationRate, minCalibrationRequirement, maxCalibrationRequirement, calibrationProcessAngleLimit, calibrationWarningAngleLimit;
-        public double calibrationDelayInSeconds, spoolUpTime, cooldownTime, stageOneAccelRate, stageTwoAccelRate;
+        public double quantumFuelRequirement { get; set; }
+        public double stageOneAccelRate { get; set; }
+        public double stageTwoAccelRate { get; set; }
+        public double driveSpeed { get; set; }
+        public double cooldownTime { get; set; }
+        public int disconnectRange { get; set; }
+        public int engageSpeed { get; set; }
     }
 }

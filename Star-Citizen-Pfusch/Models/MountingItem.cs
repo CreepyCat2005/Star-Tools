@@ -9,11 +9,7 @@ namespace Star_Citizen_Pfusch.Models
 {
     public class MountingItem : ModuleItem
     {
-        public MountingDataItem[] ports { get; set; }
-    }
-    public class MountingDataItem
-    {
-        public int minSize { get; set; }
-        public int maxSize { get; set; }
+        public string rotationStyle { get; set; }
+        public double powerRequirement { get; set; }
     }
 }

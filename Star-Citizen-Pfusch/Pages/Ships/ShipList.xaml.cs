@@ -121,12 +121,12 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 foreach (var entry in json)
                 {
                     FleetItem item = JsonConvert.DeserializeObject<FleetItem>(entry.ToString());
-                    item.cargo = (int)item.cargo;
+                    item.Cargo = item.Cargo;
 
                     shipItems.Add(item);
                 }
             }
-            shipItems = shipItems.OrderBy(o => o.name).ToList();
+            shipItems = shipItems.OrderBy(o => o.Name).ToList();
 
             ShipListView.ItemsSource = shipItems;
         }

@@ -5,31 +5,22 @@ namespace Star_Citizen_Pfusch.Models
     [BsonIgnoreExtraElements]
     public class MissileRackItem : ModuleItem
     {
-        public MissileRackPortItem[] ports { get; set; }
-        [BsonElement("missileRack")]
-        public MissilRackDataItem data { get; set; }
+        public double LaunchDelay { get; set; }
+        public double DetachVelocityRight { get; set; }
+        public double DetachVelocityForward { get; set; }
+        public double DetachVelocityUp { get; set; }
+        public string FragReadyUp { get; set; }
+        public string FragStowAway { get; set; }
+        public MissileRackPortItem[] Ports { get; set; }
     }
-    [BsonIgnoreExtraElements]
-    public class MissilRackDataItem
-    {
-        public double launchDelay { get; set; }
-        public double detachVelocityRight { get; set; }
-        public double detachVelocityForward { get; set; }
-        public double detachVelocityUp { get; set; }
-        public bool igniteOnPylon { get; set; }
-
-    }
-    [BsonIgnoreExtraElements]
     public class MissileRackPortItem
     {
-        public int minSize { get; set; }
-        public int maxSize { get; set; }
-        public MissilRackItemTypeItem[] itemTypes { get; set; }
-    }
-    [BsonIgnoreExtraElements]
-    public class MissilRackItemTypeItem
-    {
-        public string type { get; set; }
-        public string subType { get; set; }
+        public string DisplayName { get; set; }
+        public string LocalName { get; set; }
+        public string Type { get; set; }
+        public string[] Tags { get; set; }
+        public string[] RequiredTags { get; set; }
+        public int MinSize { get; set; }
+        public int MaxSize { get; set; }
     }
 }

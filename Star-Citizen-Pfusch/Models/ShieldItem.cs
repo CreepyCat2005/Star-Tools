@@ -5,19 +5,13 @@ namespace Star_Citizen_Pfusch.Models
     [BsonIgnoreExtraElements]
     public class ShieldItem : ModuleItem
     {
-        [BsonElement("shield")]
-        public ShieldDataItem data;
-    }
-    [BsonIgnoreExtraElements]
-    public class ShieldDataItem
-    {
-        public int regenExcessMax, regenExcessChargePerSec, regenExcessUseCooldown, downedRegenDelay, damagedRegenDelay;
-        public double maxShieldRegen, decayRatio, maxShieldHealth;
-        public ShieldAbsorptionItem absorption;
-    }
-    [BsonIgnoreExtraElements]
-    public class ShieldAbsorptionItem
-    {
-        public double physicalMin, physicalMax, energyMin, energyMax, distortionMin, distortionMax, thermalMin, thermalMax, biochemicalMin, biochemicalMax, stunMin, stunMax;
+        public int RegenExcessMax { get; set; }
+        public int RegenExcessChargePerSec { get; set; }
+        public int RegenExcessUseCooldown { get; set; }
+        public int DamagedRegenDelay { get; set; }
+        public double DecayRatio { get; set; }
+        public double MaxShieldRegen { get; set; }
+        public double MaxShieldHealth { get; set; }
+        public double DownedRegenDelay { get; set; }
     }
 }

@@ -65,7 +65,7 @@ namespace Star_Citizen_Pfusch.Pages.Shops
                 bool hit = false;
                 foreach (TreeViewItem item in treeViewItems[i].Items)
                 {
-                    if (item.Header.ToString().ToLower().Contains(boxText.ToLower()) || treeViewItems[i].Header.ToString().Contains(boxText))
+                    if (item.Header.ToString().ToLower().Contains(boxText.ToLower()) || treeViewItems[i].Header.ToString().ToLower().Contains(boxText.ToLower()))
                     {
                         item.Visibility = Visibility.Visible;
                         hit = true;

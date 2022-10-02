@@ -116,11 +116,11 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
         private string formatedata(ShipItem item)
         {
-            return $"Name: {item.name}\n" +
-                $"Größe: {item.data.size.x} x {item.data.size.y} x {item.data.size.z}\n" +
-                $"Rolle: {item.data.role}\n" +
-                $"Career: {item.data.career}\n" +
-                $"Status: {item.status}";
+            return $"Name: {item.Name}\n" +
+                $"Größe: {item.ShipSize.Length} x {item.ShipSize.Width} x {item.ShipSize.Height}\n" +
+                $"Rolle: {item.Role}\n" +
+                $"Career: {item.Career}\n" +
+                $"Status: UNKNOWN";
         }
     }
 }

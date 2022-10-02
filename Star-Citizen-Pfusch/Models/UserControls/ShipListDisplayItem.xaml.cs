@@ -43,11 +43,18 @@ namespace Star_Citizen_Pfusch.Models.UserControls
 
         public BitmapImage ImageSource { get; set; }
         public FleetItem FleetItem { get; set; }
+        public string ShipName
+        {
+            get
+            {
+                return FleetItem.Name.Substring(FleetItem.Name.IndexOf(" ") + 1, FleetItem.Name.Length - FleetItem.Name.IndexOf(" ") - 1);
+            }
+        }
         public string Size
         {
             get
             {
-                return FleetItem.data.size.x + " x " + FleetItem.data.size.y + " x " + FleetItem.data.size.z;
+                return FleetItem.ShipSize.Length + " x " + FleetItem.ShipSize.Width + " x " + FleetItem.ShipSize.Height;
             }
         }
 

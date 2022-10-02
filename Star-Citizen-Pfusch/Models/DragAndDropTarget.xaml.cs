@@ -1,5 +1,4 @@
-﻿using Star_Citizen_Pfusch.Models.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +24,24 @@ namespace Star_Citizen_Pfusch.Models
         {
             InitializeComponent();
             this.DataContext = this;
+
+            Loaded += init;
+        }
+        private void init(object sender, RoutedEventArgs e)
+        {
+            ModuleImage.Source = new BitmapImage(new Uri("/Graphics/" + GetBetterType(type, SubType) + ".png", UriKind.Relative));
+            TextBox.Text = GetBetterType(type,SubType);
+        }
+        private string GetBetterType(string type, string subType)
+        {
+            if (type.Equals("Turret") && subType.Equals("GunTurret"))
+            {
+                return "Mounting";
+            }
+            else
+            {
+                return type;
+            }
         }
 
         protected override void OnDrop(DragEventArgs e)
@@ -36,16 +53,16 @@ namespace Star_Citizen_Pfusch.Models
 
                 if (ContentFrame.Content != null && ContentFrame.Content.GetType() == typeof(DragAndDropFrame))
                 {
-                    if (item.type == getSubType(type) && item.Size.Equals(((DragAndDropFrame)ContentFrame.Content).Size))
+                    if (item.Type == type && item.Size.Equals(((DragAndDropFrame)ContentFrame.Content).Size))
                     {
-                        ((DragAndDropFrame)ContentFrame.Content).ContentFrame.Content = new DragAndDropItem("Anzahl: " + ((DragAndDropFrame)ContentFrame.Content).Size.ToString(), item.Size, item.QtNameText, item.type);
+                        ((DragAndDropFrame)ContentFrame.Content).ContentFrame.Content = new DragAndDropItem("Anzahl: " + ((DragAndDropFrame)ContentFrame.Content).Size.ToString(), item.Size, item.QtNameText, item.Type);
                     }
                 }
                 else
                 {
-                    if (item.type == type && item.Size.Equals(Size))
+                    if (item.Type == type && item.Size.Equals(Size))
                     {
-                        ContentFrame.Content = new DragAndDropItem(item.QtGradeText, item.Size, item.QtNameText, item.type);
+                        ContentFrame.Content = new DragAndDropItem(item.QtGradeText, item.Size, item.QtNameText, item.Type);
                     }
                 }
 
@@ -55,9 +72,9 @@ namespace Star_Citizen_Pfusch.Models
             {
                 DragAndDropItem item = e.Data.GetData("Frame") as DragAndDropItem;
 
-                if (item.type == type && item.Size.Equals(Size))
+                if (item.Type == type && item.Size.Equals(Size))
                 {
-                    ContentFrame.Content = new DragAndDropFrame(item.Size, item.QtNameText, item.type);
+                    ContentFrame.Content = new DragAndDropFrame(item.Size, item.QtNameText, item.Type);
                     item = null;
 
                     e.Effects = DragDropEffects.Move;
@@ -66,24 +83,13 @@ namespace Star_Citizen_Pfusch.Models
 
             e.Handled = true;
         }
-        private ModuleTypeEnum getSubType(ModuleTypeEnum type)
-        {
-            switch (type)
-            {
-                case ModuleTypeEnum.Missile_Rack:
-                    return ModuleTypeEnum.Missile;
-                default:
-                    return type;
-            }
-        }
-        public string Text { get; set; }
         public int Size { get; set; }
-        public ModuleTypeEnum type { get; set; }
+        public string type { get; set; }
+        public string SubType { get; set; }
 
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             DropField.CornerRadius = new CornerRadius((this.ActualHeight + this.ActualWidth) / 2 / 20);
-            ModuleImage.Source = new BitmapImage(new Uri("/Graphics/" + type + ".png", UriKind.Relative));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

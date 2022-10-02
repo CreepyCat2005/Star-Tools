@@ -134,9 +134,9 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
 
             ShipItem shipItem = JsonConvert.DeserializeObject<ShipItem>(res);
 
-            ShipNameBox.Text = shipItem.name;
-            ShipNameLayerBox.Text = shipItem.name;
-            ShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + shipItem.localName + ".jpg", UriKind.Relative));
+            ShipNameBox.Text = shipItem.Name;
+            ShipNameLayerBox.Text = shipItem.Name;
+            ShipImage.Source = new BitmapImage(new Uri(@"/Graphics/ShipImages/" + shipItem.LocalName + ".jpg", UriKind.Relative));
             if (shipItem.RealPrice != 0)
             {
                 ShipSaleBox.Text = String.Format("{0:n} €", double.Parse(shipItem.RealPrice.ToString().Insert(shipItem.RealPrice.ToString().Length - 2, ",")));
@@ -147,9 +147,9 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
                 ShipSaleBox.Text = Application.Current.Resources["Widgets.NotInShop"].ToString();
                 IsBuyable = false;
             }
-            if (shipItem.shops.Select(o => o.price).ToList().Count > 0)
+            if (shipItem.Shops != null && shipItem.Shops.Select(o => o.price).ToList().Count > 0)
             {
-                ShipPriceBox.Text = String.Format("{0:n0} aUEC", shipItem.shops.Select(o => o.price).ToList()[0]);
+                ShipPriceBox.Text = String.Format("{0:n0} aUEC", shipItem.Shops.Select(o => o.price).ToList()[0]);
             }
             else
             {

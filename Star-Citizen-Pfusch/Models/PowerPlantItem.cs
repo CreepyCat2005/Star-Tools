@@ -9,14 +9,15 @@ namespace Star_Citizen_Pfusch.Models
     [BsonIgnoreExtraElements]
     public class PowerPlantItem : ModuleItem
     {
-        [BsonElement("power")]
-        public PowerPlantDataItem data;
-    }
-    [BsonIgnoreExtraElements]
-    public class PowerPlantDataItem
-    {
-        public int powerBase, safeguardPriority, warningDisplayTime;
-        public bool isThrottleable, isOverclockable;
-        public double timeToReachDrawRequest, powerDraw, overclockThresholdMin, overclockThresholdMax, overpowerPerformance, overclockPerformance, powerToEM, decayRateOfEM, warningDelayTime;
+        public int PowerBase { get; set; }
+        public int SafeguardPriority { get; set; }
+        public int WarningDisplayTime { get; set; }
+        public bool IsThrottleable { get; set; }
+        public bool IsOverclockable { get; set; }
+        public double PowerToEM { get; set; }
+        public double DecayRateOfEM { get; set; }
+        public double WarningDelayTime { get; set; }
+        public double TimeToReachDrawRequest { get; set; }
+        public double PowerDraw { get; set; }
     }
 }

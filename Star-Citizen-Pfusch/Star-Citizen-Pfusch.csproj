@@ -18,13 +18,19 @@
     <None Remove="Background.png" />
     <None Remove="Config\UserConfig.cfg" />
     <None Remove="Graphics\ArrowDown.png" />
+    <None Remove="Graphics\ArrowLeft.png" />
+    <None Remove="Graphics\ArrowRight.png" />
+    <None Remove="Graphics\ArrowRightDown.png" />
     <None Remove="Graphics\ArrowUp.png" />
     <None Remove="Graphics\Cooler.png" />
     <None Remove="Graphics\Discord-Logo.png" />
     <None Remove="Graphics\Filter-Icon.png" />
+    <None Remove="Graphics\Icons\Check-Icon.png" />
     <None Remove="Graphics\Icons\Discord-Logo.png" />
     <None Remove="Graphics\Icons\Dollar-Icon.png" />
     <None Remove="Graphics\Icons\Exit-Icon.png" />
+    <None Remove="Graphics\Icons\EyeClosed-Icon.png" />
+    <None Remove="Graphics\Icons\EyeOpen-Icon.png" />
     <None Remove="Graphics\Icons\Left-Arrow.png" />
     <None Remove="Graphics\Icons\Minus-Icon.png" />
     <None Remove="Graphics\Icons\People-Icon.png" />
@@ -38,11 +44,11 @@
     <None Remove="Graphics\Info-Icon.png" />
     <None Remove="Graphics\MadeByTheCommunity_White-00.png" />
     <None Remove="Graphics\Missile.png" />
-    <None Remove="Graphics\Missile_Rack.png" />
+    <None Remove="Graphics\MissileLauncher.png" />
     <None Remove="Graphics\Mounting.png" />
     <None Remove="Graphics\NoImage.png" />
-    <None Remove="Graphics\Power_Plant.png" />
-    <None Remove="Graphics\Quantum_Drive.png" />
+    <None Remove="Graphics\PowerPlant.png" />
+    <None Remove="Graphics\QuantumDrive.png" />
     <None Remove="Graphics\Shield.png" />
     <None Remove="Graphics\ShipImages\100i.jpg" />
     <None Remove="Graphics\ShipImages\135c.jpg" />
@@ -313,6 +319,8 @@
     <None Remove="Graphics\ShipImages\Small\aegs_gladius_pir.jpg" />
     <None Remove="Graphics\ShipImages\Small\aegs_gladius_valiant.jpg" />
     <None Remove="Graphics\ShipImages\Small\aegs_hammerhead.jpg" />
+    <None Remove="Graphics\ShipImages\Small\aegs_idris.jpg" />
+    <None Remove="Graphics\ShipImages\Small\aegs_javelin.jpg" />
     <None Remove="Graphics\ShipImages\Small\aegs_reclaimer.jpg" />
     <None Remove="Graphics\ShipImages\Small\aegs_redeemer.jpg" />
     <None Remove="Graphics\ShipImages\Small\aegs_retaliator.jpg" />
@@ -338,6 +346,7 @@
     <None Remove="Graphics\ShipImages\Small\anvl_hornet_f7cs.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_hornet_f7c_wildfire.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_hurricane.jpg" />
+    <None Remove="Graphics\ShipImages\Small\anvl_lightning_f8.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_spartan.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_terrapin.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_valkyrie.jpg" />
@@ -385,7 +394,6 @@
     <None Remove="Graphics\ShipImages\Small\F8C Executive.jpg" />
     <None Remove="Graphics\ShipImages\Small\F8C Lightning Executive-Edition.jpg" />
     <None Remove="Graphics\ShipImages\Small\F8C Lightning.jpg" />
-    <None Remove="Graphics\ShipImages\Small\F8C.jpg" />
     <None Remove="Graphics\ShipImages\Small\G12.jpg" />
     <None Remove="Graphics\ShipImages\Small\G12a.jpg" />
     <None Remove="Graphics\ShipImages\Small\G12r.jpg" />
@@ -394,9 +402,7 @@
     <None Remove="Graphics\ShipImages\Small\Hull C.jpg" />
     <None Remove="Graphics\ShipImages\Small\Hull D.jpg" />
     <None Remove="Graphics\ShipImages\Small\Hull E.jpg" />
-    <None Remove="Graphics\ShipImages\Small\Idris-M.jpg" />
     <None Remove="Graphics\ShipImages\Small\Idris-P.jpg" />
-    <None Remove="Graphics\ShipImages\Small\Javelin.jpg" />
     <None Remove="Graphics\ShipImages\Small\Kraken Privateer.jpg" />
     <None Remove="Graphics\ShipImages\Small\Kraken.jpg" />
     <None Remove="Graphics\ShipImages\Small\krig_p52_merlin.jpg" />
@@ -453,6 +459,7 @@
     <None Remove="Graphics\ShipImages\Small\rsi_aurora_ln.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_aurora_lx.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_aurora_mr.jpg" />
+    <None Remove="Graphics\ShipImages\Small\rsi_bengal_pu_ai_uee_fleetweek_2021.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_andromeda.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_aquila.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_phoenix.jpg" />
@@ -499,12 +506,23 @@
     <None Remove="Graphics\Star-Tools-Logo-White.png" />
     <None Remove="Graphics\Star-Tools-Logo.png" />
     <None Remove="Graphics\Switch-Icon.png" />
-    <None Remove="Graphics\Weapon.png" />
+    <None Remove="Graphics\Turret.png" />
+    <None Remove="Graphics\TurretBase.png" />
+    <None Remove="Graphics\WeaponGun.png" />
     <None Remove="Star-Tools-Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Config\UserConfig.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ArrowLeft.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ArrowRight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ArrowRightDown.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Background.png">
@@ -516,6 +534,9 @@
     <Content Include="Graphics\Filter-Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\Icons\Check-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\Icons\Discord-Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -523,6 +544,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\Exit-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Icons\EyeClosed-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Icons\EyeOpen-Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\Left-Arrow.png">
@@ -564,7 +591,13 @@
     <Content Include="Graphics\Missile.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Graphics\Missile_Rack.png">
+    <Content Include="Graphics\MissileLauncher.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\TurretBase.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Turret.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Mounting.png">
@@ -1278,7 +1311,7 @@
     <Content Include="Graphics\ShipImages\Small\F8C Executive.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Graphics\ShipImages\Small\F8C.jpg">
+    <Content Include="Graphics\ShipImages\Small\anvl_lightning_f8.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\ShipImages\Small\G12.jpg">
@@ -1305,13 +1338,13 @@
     <Content Include="Graphics\ShipImages\Small\Hull E.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Graphics\ShipImages\Small\Idris-M.jpg">
+    <Content Include="Graphics\ShipImages\Small\aegs_idris.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\ShipImages\Small\Idris-P.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Graphics\ShipImages\Small\Javelin.jpg">
+    <Content Include="Graphics\ShipImages\Small\aegs_javelin.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\ShipImages\Small\Kraken Privateer.jpg">
@@ -1482,6 +1515,9 @@
     <Content Include="Graphics\ShipImages\Small\rsi_aurora_mr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_bengal_pu_ai_uee_fleetweek_2021.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\ShipImages\Small\rsi_constellation_andromeda.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1637,10 +1673,10 @@
     <Content Include="Graphics\Cooler.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Graphics\Power_Plant.png">
+    <Content Include="Graphics\PowerPlant.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Graphics\Quantum_Drive.png">
+    <Content Include="Graphics\QuantumDrive.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Shield.png">
@@ -1652,7 +1688,7 @@
     <Content Include="Graphics\ArrowUp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Graphics\Weapon.png">
+    <Content Include="Graphics\WeaponGun.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

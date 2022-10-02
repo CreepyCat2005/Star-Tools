@@ -6,15 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Star_Citizen_Pfusch.Pages.Ships
@@ -45,23 +40,23 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             foreach (var entry in json)
             {
                 FleetItem item = JsonConvert.DeserializeObject<FleetItem>(entry.ToString());
-                item.cargo = (int)item.cargo;
+                item.Cargo = item.Cargo;
 
                 List<string> infoList = new List<string>();
-                infoList.Add("Role      " + item.data.role);
-                infoList.Add("Career      " + item.data.career);
-                infoList.Add("Cargo      " + item.cargo);
-                infoList.Add("HP      " + item.hull.hp);
-                infoList.Add("Size      " + item.data.size.x + " x " + item.data.size.y + " x " + item.data.size.z + " m");
-                infoList.Add("Mass      " + item.hull.mass);
-                infoList.Add("Hydrogen      " + item.fuelCapacity);
-                infoList.Add("Quantum       " + item.qtFuelCapacity);
+                infoList.Add("Role      " + item.Role);
+                infoList.Add("Career      " + item.Career);
+                infoList.Add("Cargo      " + item.Career);
+                infoList.Add("HP      " + item.Health);
+                infoList.Add("Size      " + item.ShipSize.Length + " x " + item.ShipSize.Width + " x " + item.ShipSize.Height + " m");
+                infoList.Add("Mass      " + item.Mass);
+                infoList.Add("Hydrogen      " + item.HydrogenFuelCapacity);
+                infoList.Add("Quantum       " + item.QuantumFuelCapacity);
 
                 BitmapImage image;
 
-                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\ShipImages\\Small\\" + item.localName + ".jpg"))
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\ShipImages\\Small\\" + item.LocalName + ".jpg"))
                 {
-                    image = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\ShipImages\\Small\\" + item.localName + ".jpg", UriKind.Absolute));
+                    image = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\ShipImages\\Small\\" + item.LocalName + ".jpg", UriKind.Absolute));
                 }
                 else
                 {
@@ -90,8 +85,11 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
         private void DisplayItem_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            frame.Navigate(new ShipView(((ShipListDisplayItem)sender).FleetItem._id));
-            frame.RemoveBackEntry();
+            if (((ShipListDisplayItem)sender).FleetItem.Manufacturer != null)
+            {
+                frame.Navigate(new ModernShipView(((ShipListDisplayItem)sender).FleetItem._id));
+                frame.RemoveBackEntry();
+            }
         }
     }
 }

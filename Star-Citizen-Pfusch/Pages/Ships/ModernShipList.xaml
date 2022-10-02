@@ -24,7 +24,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <controls:NumberSelector x:Name="ColumnCountSelector" Width="100" HorizontalAlignment="Left" Margin="10,0,0,0" MaskOpacity="0" Value="3" MinValue="2" MaxValue="4" />
+        <controls:NumberSelector x:Name="ColumnCountSelector" Width="100" HorizontalAlignment="Left" Margin="10,0,0,0" MaskOpacity="0" Value="3" MinValue="2" MaxValue="5" />
 
         <ListBox Grid.Row="1" x:Name="ShipListBox" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
             <ListBox.ItemContainerStyle>

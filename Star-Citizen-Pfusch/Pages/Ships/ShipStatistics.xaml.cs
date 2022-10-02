@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Star_Citizen_Pfusch.Pages.Ships
 {
@@ -20,9 +9,19 @@ namespace Star_Citizen_Pfusch.Pages.Ships
     /// </summary>
     public partial class ShipStatistics : Page
     {
+        public string ShipName { get; set; }
+        public string Size { get; set; }
+        public string Mass { get; set; }
+        public string Role { get; set; }
+        public string Career { get; set; }
+        public string Description { get; set; }
+        public string Cargo { get; set; }
+
         public ShipStatistics()
         {
+
             InitializeComponent();
+            this.DataContext = this;
         }
     }
 }

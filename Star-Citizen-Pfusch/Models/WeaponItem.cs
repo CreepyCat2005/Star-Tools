@@ -7,17 +7,27 @@ using System.Threading.Tasks;
 
 namespace Star_Citizen_Pfusch.Models
 {
+    [BsonIgnoreExtraElements]
     public class WeaponItem : ModuleItem
     {
-        public WeaponDataItem weapon;
+        public int idealCombatRange { get; set; }
+        public double supplementaryFireTime { get; set; }
+        public bool isAllowedInGreenZones { get; set; }
+        public WeaponAmmoItem Ammo { get; set; }
+        public WeaponDamageItem Damage { get; set; }
     }
-    public class WeaponDataItem
+    public class WeaponAmmoItem
     {
-        public WeaponDamageItem damage;
+        public int initialAmmoCount { get; set; }
+        public int maxAmmoCount { get; set; }
     }
     public class WeaponDamageItem
     {
-        public double alphaMax, alphaMin, fireRateMax, fireRateMin;
+        public int DamagePhysical { get; set; }
+        public int DamageEnergy { get; set; }
+        public int DamageDistortion { get; set; }
+        public int DamageThermal { get; set; }
+        public int DamageBiochemical { get; set; }
+        public int DamageStun { get; set; }
     }
-
 }

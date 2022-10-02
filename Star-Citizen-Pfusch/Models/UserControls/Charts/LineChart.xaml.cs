@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -15,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Star_Citizen_Pfusch.Functions;
+using System.Diagnostics;
 
 namespace Star_Citizen_Pfusch.Models.UserControls.Charts
 {
@@ -58,8 +61,6 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
             double maxValue = item.PlaytimeHistory.Max();
             if (maxValue == 0) maxValue = 1;
 
-            points.Add(new Point(-1, Height));
-
             RowNumber5.Text = formatePlayTime((int)maxValue);
             RowNumber4.Text = formatePlayTime((int)(maxValue * 0.8));
             RowNumber3.Text = formatePlayTime((int)(maxValue * 0.6));
@@ -74,16 +75,19 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
 
             for (int i = 0; i < NumberSelector.Value; i++)
             {
-                Point point = new Point(Width / (NumberSelector.Value - 1) * i - 1, Height - (Height - 12) * (item.PlaytimeHistory[i] / maxValue));
+                Point point = new Point(Width / (NumberSelector.Value - 1) * i - 1, Height - (Height - 12) * (item.PlaytimeHistory[item.PlaytimeHistory.Length - 1 - i] / maxValue));
                 points.Add(point);
 
-                Ellipse ellipse = new Ellipse() { Width = 8, Height = 8, Margin = new Thickness(point.X - 4, point.Y - 4, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, ToolTip = formatePlayTime(item.PlaytimeHistory[i]), Style = (Style)FindResource("EllipseStyle") };
+                Ellipse ellipse = new Ellipse() { Width = 8, Height = 8, Margin = new Thickness(point.X - 4, point.Y - 4, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, ToolTip = formatePlayTime(item.PlaytimeHistory[item.PlaytimeHistory.Length - 1 - i]), Style = (Style)FindResource("EllipseStyle") };
                 ellipse.SetResourceReference(Shape.FillProperty, "ChartPointColor");
                 Grid.SetRowSpan(ellipse, 5);
                 Grid.SetColumn(ellipse, 1);
                 Grid.Children.Add(ellipse);
             }
+
+            points.Insert(0, new Point(-1, Height));
             points.Add(new Point(Width, Height));
+
             FilledPolygon.Points = points;
         }
         private string formatePlayTime(int playtime)
