@@ -10,6 +10,7 @@ namespace Star_Citizen_Pfusch.Models
     {
         public string itemPortName { get; set; }
         public string localName { get; set; }
+        public bool editable { get; set; }
         public LoadoutItem[] Loadout { get; set; }
     }
 }

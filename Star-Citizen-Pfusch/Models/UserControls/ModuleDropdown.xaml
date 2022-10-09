@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="600" x:Name="UserControl" >
+             d:DesignHeight="100" d:DesignWidth="600" x:Name="UserControl" RenderOptions.BitmapScalingMode="HighQuality" >
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding ElementName=UserControl, Path=ActualHeight}" />
@@ -20,29 +22,8 @@
             <TextBlock Text="{Binding ModuleName}" Foreground="White" />
         </Viewbox>
 
-        <Button Grid.Column="2" Grid.RowSpan="2" Margin="20" >
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="White" />
-                    <Setter Property="Template" >
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}" >
-                                    <Border.OpacityMask>
-                                        <ImageBrush ImageSource="/Graphics/ArrowDown.png" />
-                                    </Border.OpacityMask>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="Gray" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
-
+        <Border Grid.Column="2" Grid.RowSpan="2" CornerRadius="2000" Margin="13" x:Name="ArrowButton" MouseLeftButtonUp="ArrowButton_MouseLeftButtonUp" MouseEnter="ArrowButton_MouseEnter" Background="Transparent" MouseLeave="ArrowButton_MouseLeave" >
+            <Image Source="/Graphics/ArrowDown.png" x:Name="DropDownImage" Margin="5" />
+        </Border>
     </Grid>
 </UserControl>

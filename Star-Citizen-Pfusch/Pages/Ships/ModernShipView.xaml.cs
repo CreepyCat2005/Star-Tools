@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -59,7 +60,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             List<ModuleItem> modules = new List<ModuleItem>();
             foreach (var item in jArray)
             {
-                modules.Add(JsonConvert.DeserializeObject<ModuleItem>(item.ToString()));
+                ModuleItem.DeserializeItem(item, modules);
             }
             ModuleArray = modules.ToArray();
 
@@ -71,13 +72,23 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 {
                     Source = new BitmapImage(new Uri("/Graphics/" + item.Type + ".png", UriKind.Relative)),
                     Margin = new Thickness(10, 0, 10, 0),
-                    ModuleItems = moduleArray.Where(o => o.LocalName.Equals(item.LocalName)).ToArray()
+                    ModuleItems = moduleArray.Where(o => o.LocalName.Equals(item.LocalName)).ToArray(),
+                    shipItem = shipItem,
+                    ModuleArray = ModuleArray
                 };
-                frame.MouseLeftButtonUp += Frame_MouseLeftButtonUp;
+                frame.OnModuleRequest += Frame_OnModuleRequest;
 
                 ItemStackPanel.Children.Add(frame);
             }
 
+            ShipInfoStackPanel.Children.Add(new TextBlock()
+            {
+                FontSize = 18,
+                Text = "Info",
+                FontWeight = FontWeights.Bold,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Foreground = new SolidColorBrush(Colors.White),
+            });
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Name", shipItem.Name));
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Manufacturer", shipItem.Manufacturer.Name));
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Description", shipItem.Description));
@@ -85,16 +96,101 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Role", shipItem.Role));
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Career", shipItem.Career));
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Size", shipItem.Size.ToString()));
-            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Cargo", shipItem.Cargo.ToString()));
-            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Mass", shipItem.Mass.ToString()));
-            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Hydrogen Fuel", shipItem.HydrogenFuelCapacity.ToString()));
-            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Quantum Fuel", shipItem.QuantumFuelCapacity.ToString()));
-            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Price", shipItem.Price + " aUEC"));
-            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Real Price", shipItem.RealPrice + "€"));
+            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Cargo", String.Format("{0:n0} SCU", shipItem.Cargo)));
+            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Mass", String.Format("{0:n0}", shipItem.Mass)));
+            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Hydrogen Fuel", String.Format("{0:n0}", shipItem.HydrogenFuelCapacity)));
+            ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Quantum Fuel", String.Format("{0:n0}", shipItem.QuantumFuelCapacity)));
+            if (shipItem.Shops.Length > 0) ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Price", String.Format("{0:n0} aUEC", shipItem.Shops[0].price)));
+            else ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Price", "Not buyable ingame!"));
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Status", shipItem.Status.ToString()));
+            ShipInfoStackPanel.Children.Add(new TextBlock()
+            {
+                FontSize = 18,
+                Text = "\nShops",
+                FontWeight = FontWeights.Bold,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Foreground = new SolidColorBrush(Colors.White),
+            });
+            foreach (var item in shipItem.Shops)
+            {
+                if (!item.name.Contains("Rental"))
+                {
+                    ShipInfoStackPanel.Children.Add(new TextBlock()
+                    {
+                        FontSize = 18,
+                        Text = $"{item.location} | {item.name} | {String.Format("{0:n0} aUEC", item.price)}",
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Foreground = new SolidColorBrush(Colors.White),
+                    });
+                }
+                else
+                {
+                    ShipInfoStackPanel.Children.Add(new TextBlock()
+                    {
+                        FontSize = 18,
+                        Text = $"{item.location} | {item.name} | Depends on days",
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Foreground = new SolidColorBrush(Colors.White),
+                    });
+                }
+            }
 
         }
-        private Border CreateStackPanelGrid(string name, string value, int width = 370)
+
+        private void Frame_OnModuleRequest(object sender, ModuleRequestArgs e)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(Config.URL + $"/Module/Specific?_id={e.ModuleDropdown.ModuleItem._id}&type={e.ModuleDropdown.ModuleItem.Type}").Result;
+            string res = response.Content.ReadAsStringAsync().Result;
+
+            object item;
+            switch (e.ModuleDropdown.ModuleItem.Type)
+            {
+                case "Shield":
+                    item = JsonConvert.DeserializeObject<ShieldItem>(res);
+                    break;
+                case "PowerPlant":
+                    item = JsonConvert.DeserializeObject<PowerPlantItem>(res);
+                    break;
+                case "Cooler":
+                    item = JsonConvert.DeserializeObject<CoolerItem>(res);
+                    break;
+                case "QuantumDrive":
+                    item = JsonConvert.DeserializeObject<QuantumDriveItem>(res);
+                    break;
+                case "WeaponGun":
+                    item = JsonConvert.DeserializeObject<WeaponItem>(res);
+                    break;
+                case "Turret":
+                    item = JsonConvert.DeserializeObject<MountingItem>(res);
+                    break;
+                default:
+                    item = JsonConvert.DeserializeObject<ModuleItem>(res);
+                    break;
+            }
+            ModuleInfoStackPanel.Children.Clear();
+
+            SetStackPanelPropertiers(item);
+
+            BackgroundBorderLeft.Visibility = Visibility.Visible;
+        }
+        private void SetStackPanelPropertiers(object item)
+        {
+            foreach (var prop in item.GetType().GetProperties())
+            {
+                bool aasds = prop.PropertyType != typeof(string) && prop.PropertyType != typeof(string[]) && prop.PropertyType.IsClass && prop.GetValue(item, null) != null;
+                if (prop.PropertyType != typeof(string) && prop.PropertyType != typeof(string[]) && prop.PropertyType.IsClass && prop.GetValue(item, null) != null)
+                {
+                    SetStackPanelPropertiers(prop.GetValue(item, null));
+                    continue;
+                }
+                var value = prop.GetValue(item, null);
+                if (value == null || prop.Name.Equals("_id")) continue;
+                if (value.GetType() == typeof(string[])) value = StringArrayToString((string[])value);
+                ModuleInfoStackPanel.Children.Add(CreateStackPanelGrid(prop.Name, value.ToString(), 470));
+            }
+        }
+        private Border CreateStackPanelGrid(string name, string value, int width = 500)
         {
             Grid grid = new Grid()
             {
@@ -154,135 +250,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
             scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + e.Delta / 10);
         }
-        private void Frame_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            StackPanel stackPanel = new StackPanel();
-            foreach (var item in ((ArrowFrame)sender).ModuleItems)
-            {
-                LoadoutItem loadout = GetLowestContainer(shipItem.Loadout.Where(o => o.localName.Equals(item.LocalName)).First());
-                ModuleItem moduleContainer = ModuleArray.Where(o => o.LocalName.Equals(loadout.localName)).First();
-
-                ModuleDropdown dropdown = new ModuleDropdown()
-                {
-                    CornerRadius = new CornerRadius(10),
-                    ModuleName = moduleContainer.Name,
-                    Height = 50,
-                    Background = (SolidColorBrush)Resources["ItemBackground"],
-                    BorderBrush = (SolidColorBrush)Resources["ItemStroke"],
-                    ModuleItem = moduleContainer
-                };
-                dropdown.MouseDoubleClick += ModuleDropdown_MouseDoubleClick;
-
-                stackPanel.Children.Add(dropdown);
-
-                for (int i = 0; i < loadout.Loadout.Length; i++)
-                {
-                    var moduleArray = ModuleArray.Where(o => o.LocalName.Equals(loadout.Loadout[i].localName));
-                    if (moduleArray.Count() == 0) continue;
-                    ModuleItem module = moduleArray.First();
-
-                    Image image = new Image()
-                    {
-                        Source = new BitmapImage(new Uri("/Graphics/ArrowRightDown.png", UriKind.Relative)),
-                        Stretch = Stretch.Uniform,
-                        Margin = new Thickness(5)
-                    };
-                    Grid.SetColumn(image, 0);
-
-                    ModuleDropdown moduleDropdown = new ModuleDropdown()
-                    {
-                        CornerRadius = new CornerRadius(10),
-                        ModuleName = module.Name,
-                        Height = 50,
-                        Background = (SolidColorBrush)Resources["ItemBackground"],
-                        BorderBrush = (SolidColorBrush)Resources["ItemStroke"],
-                        ModuleItem = module
-                    };
-                    moduleDropdown.MouseDoubleClick += ModuleDropdown_MouseDoubleClick;
-                    Grid.SetColumn(moduleDropdown, 1);
-
-                    Grid grid = new Grid();
-                    grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(moduleDropdown.Height) });
-                    grid.ColumnDefinitions.Add(new ColumnDefinition());
-                    grid.Children.Add(image);
-                    grid.Children.Add(moduleDropdown);
-
-                    stackPanel.Children.Add(grid);
-
-                }
-            }
-
-            Popup popup = new Popup()
-            {
-                AllowsTransparency = true,
-                PlacementTarget = (ArrowFrame)sender,
-                StaysOpen = false,
-                Effect = new DropShadowEffect()
-                {
-                    ShadowDepth = 2,
-                    Opacity = .6
-                },
-                IsOpen = true,
-                VerticalOffset = 10,
-                Child = new Border()
-                {
-                    BorderBrush = (SolidColorBrush)Resources["ItemStroke"],
-                    BorderThickness = new Thickness(1),
-                    CornerRadius = new CornerRadius(10),
-                    Background = (SolidColorBrush)Resources["ItemBackground"],
-                    Child = stackPanel,
-                    Effect = new DropShadowEffect()
-                    {
-                        ShadowDepth = 0,
-                        Opacity = .6
-                    }
-                }
-            };
-        }
-
-        private void ModuleDropdown_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync(Config.URL + $"/Module/Specific?_id={((ModuleDropdown)sender).ModuleItem._id}&type={((ModuleDropdown)sender).ModuleItem.Type}").Result;
-            string res = response.Content.ReadAsStringAsync().Result;
-
-            object item;
-            switch (((ModuleDropdown)sender).ModuleItem.Type)
-            {
-                case "Shield":
-                    item = JsonConvert.DeserializeObject<ShieldItem>(res);
-                    break;
-                case "PowerPlant":
-                    item = JsonConvert.DeserializeObject<PowerPlantItem>(res);
-                    break;
-                case "Cooler":
-                    item = JsonConvert.DeserializeObject<CoolerItem>(res);
-                    break;
-                case "QuantumDrive":
-                    item = JsonConvert.DeserializeObject<QuantumDriveItem>(res);
-                    break;
-                default:
-                    item = ((ModuleDropdown)sender).ModuleItem;
-                    break;
-            }
-            ModuleInfoStackPanel.Children.Clear();
-
-            foreach (var prop in item.GetType().GetProperties())
-            {
-                var value = prop.GetValue(item, null);
-                if (value == null) continue;
-                if (value.GetType() == typeof(string[])) value = StringArrayToString((string[])value);
-                ModuleInfoStackPanel.Children.Add(CreateStackPanelGrid(prop.Name, value.ToString(), 470));
-            }
-
-            //ModuleInfoStackPanel.Children.Add(CreateStackPanelGrid("Description", item.Description));
-            //ModuleInfoStackPanel.Children.Add(CreateStackPanelGrid("Size", item.Size.ToString()));
-            //ModuleInfoStackPanel.Children.Add(CreateStackPanelGrid("Grade", item.Grade.ToString()));
-            //ModuleInfoStackPanel.Children.Add(CreateStackPanelGrid("Health", item.Health.ToString()));
-            //ModuleInfoStackPanel.Children.Add(CreateStackPanelGrid("Mass", item.Mass.ToString()));
-
-            BackgroundBorderLeft.Visibility = Visibility.Visible;
-        }
         private string StringArrayToString(string[] arr)
         {
             string output = "";
@@ -291,19 +258,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 output += item + "\n";
             }
             return output.Substring(0, output.Length - 1);
-        }
-
-        private LoadoutItem GetLowestContainer(LoadoutItem loadout)
-        {
-            if (loadout.Loadout != null && loadout.Loadout.Length > 0 && loadout.Loadout[0].Loadout != null)
-            {
-                return GetLowestContainer(loadout.Loadout[0]);
-            }
-            else
-            {
-                if (loadout.Loadout == null) loadout.Loadout = new LoadoutItem[0];
-                return loadout;
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -318,7 +272,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     CenterY = 15
                 };
 
-                DoubleAnimation doubleAnimation = new DoubleAnimation(30,400,new Duration(new TimeSpan(0, 0, 0, 0, 200)));
+                DoubleAnimation doubleAnimation = new DoubleAnimation(30, 500, new Duration(new TimeSpan(0, 0, 0, 0, 200)));
 
                 BackgroundBorderRight.BeginAnimation(WidthProperty, doubleAnimation);
                 btn.Content = "Extended";
@@ -332,7 +286,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     CenterY = 15
                 };
 
-                DoubleAnimation doubleAnimation = new DoubleAnimation(400, 30, new Duration(new TimeSpan(0, 0, 0, 0, 200)));
+                DoubleAnimation doubleAnimation = new DoubleAnimation(500, 30, new Duration(new TimeSpan(0, 0, 0, 0, 200)));
 
                 BackgroundBorderRight.BeginAnimation(WidthProperty, doubleAnimation);
                 btn.Content = "Retracted";

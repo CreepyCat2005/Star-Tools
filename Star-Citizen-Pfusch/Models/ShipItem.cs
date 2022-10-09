@@ -27,13 +27,12 @@ namespace Star_Citizen_Pfusch.Models
         public int Grade { get; set; }
         public double Cargo { get; set; }
         public double Mass { get; set; }
-        public int Price { get; set; }
         public StatusEnum Status { get; set; }
         public double HydrogenFuelCapacity { get; set; }
         public double QuantumFuelCapacity { get; set; }
         public ShipSize ShipSize { get; set; }
         public LoadoutItem[] Loadout { get; set; }
-        public ShopDataItem[] Shops { get; set; }
+        public PureShopDataItem[] Shops { get; set; }
         public int RealPrice { get; set; }
         public Manufacturer Manufacturer { get; set; }
     }

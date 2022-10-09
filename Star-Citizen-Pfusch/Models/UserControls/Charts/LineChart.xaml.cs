@@ -75,18 +75,18 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
 
             for (int i = 0; i < NumberSelector.Value; i++)
             {
-                Point point = new Point(Width / (NumberSelector.Value - 1) * i - 1, Height - (Height - 12) * (item.PlaytimeHistory[item.PlaytimeHistory.Length - 1 - i] / maxValue));
+                Point point = new Point(Width - (Width / (NumberSelector.Value - 1) * i - 1), Height - (Height - 12) * (item.PlaytimeHistory[i] / maxValue));
                 points.Add(point);
 
-                Ellipse ellipse = new Ellipse() { Width = 8, Height = 8, Margin = new Thickness(point.X - 4, point.Y - 4, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, ToolTip = formatePlayTime(item.PlaytimeHistory[item.PlaytimeHistory.Length - 1 - i]), Style = (Style)FindResource("EllipseStyle") };
+                Ellipse ellipse = new Ellipse() { Width = 8, Height = 8, Margin = new Thickness(point.X - 4, point.Y - 4, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, ToolTip = formatePlayTime(item.PlaytimeHistory[i]), Style = (Style)FindResource("EllipseStyle") };
                 ellipse.SetResourceReference(Shape.FillProperty, "ChartPointColor");
                 Grid.SetRowSpan(ellipse, 5);
                 Grid.SetColumn(ellipse, 1);
                 Grid.Children.Add(ellipse);
             }
 
-            points.Insert(0, new Point(-1, Height));
-            points.Add(new Point(Width, Height));
+            points.Insert(0, new Point(Width, Height));
+            points.Add(new Point(-1, Height));
 
             FilledPolygon.Points = points;
         }

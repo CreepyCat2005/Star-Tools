@@ -54,7 +54,7 @@ namespace Star_Citizen_Pfusch.Models.UserControls
         {
             get
             {
-                return FleetItem.ShipSize.Length + " x " + FleetItem.ShipSize.Width + " x " + FleetItem.ShipSize.Height;
+                return "Size: " + FleetItem.ShipSize.Length + " x " + FleetItem.ShipSize.Width + " x " + FleetItem.ShipSize.Height;
             }
         }
 

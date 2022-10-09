@@ -5,8 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="220" d:DesignWidth="200">
-
+             d:DesignHeight="220" d:DesignWidth="200" MouseLeftButtonUp="Frame_MouseLeftButtonUp" >
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="ItemBackground" >
+            <SolidColorBrush.Color>
+                <Color A="150" R="80" G="80" B="80" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <SolidColorBrush x:Key="ItemStroke" >
+            <SolidColorBrush.Color>
+                <Color A="200" R="40" G="40" B="40" />
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+    </UserControl.Resources>
     <Grid>
 
         <Grid.RowDefinitions>

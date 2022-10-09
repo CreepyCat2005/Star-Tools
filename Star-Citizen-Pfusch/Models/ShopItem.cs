@@ -18,7 +18,7 @@ namespace Star_Citizen_Pfusch.Models
     }
     public class PureShopDataItem
     {
-        public string name, location;
+        public string name, location, localName;
         public int price;
     }
 }

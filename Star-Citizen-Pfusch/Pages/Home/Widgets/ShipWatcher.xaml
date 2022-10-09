@@ -21,6 +21,17 @@
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Color A="255" R="40" G="40" B="40" />
+                                </SolidColorBrush.Color>
+                            </SolidColorBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" >
                         <Setter.Value>

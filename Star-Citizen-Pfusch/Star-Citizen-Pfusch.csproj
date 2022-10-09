@@ -32,6 +32,7 @@
     <None Remove="Graphics\Icons\EyeClosed-Icon.png" />
     <None Remove="Graphics\Icons\EyeOpen-Icon.png" />
     <None Remove="Graphics\Icons\Left-Arrow.png" />
+    <None Remove="Graphics\Icons\Lock-Icon.png" />
     <None Remove="Graphics\Icons\Minus-Icon.png" />
     <None Remove="Graphics\Icons\People-Icon.png" />
     <None Remove="Graphics\Icons\Plus-Icon.png" />
@@ -336,6 +337,7 @@
     <None Remove="Graphics\ShipImages\Small\anvl_c8x_pisces_expedition.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_c8_pisces.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_carrack.jpg" />
+    <None Remove="Graphics\ShipImages\Small\anvl_carrack_expedition.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_gladiator.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_hawk.jpg" />
     <None Remove="Graphics\ShipImages\Small\anvl_hornet_f7a.jpg" />
@@ -353,6 +355,8 @@
     <None Remove="Graphics\ShipImages\Small\Apollo Medivac.jpg" />
     <None Remove="Graphics\ShipImages\Small\Apollo Triage.jpg" />
     <None Remove="Graphics\ShipImages\Small\argo_mole.jpg" />
+    <None Remove="Graphics\ShipImages\Small\argo_mole_carbon.jpg" />
+    <None Remove="Graphics\ShipImages\Small\argo_mole_talus.jpg" />
     <None Remove="Graphics\ShipImages\Small\argo_mpuv.jpg" />
     <None Remove="Graphics\ShipImages\Small\argo_mpuv_transport.jpg" />
     <None Remove="Graphics\ShipImages\Small\argo_raft.jpg" />
@@ -376,6 +380,7 @@
     <None Remove="Graphics\ShipImages\Small\Cyclone MT.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_buccaneer.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_caterpillar.jpg" />
+    <None Remove="Graphics\ShipImages\Small\drak_caterpillar_pirate.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_cutlass_black.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_cutlass_blue.jpg" />
     <None Remove="Graphics\ShipImages\Small\drak_cutlass_red.jpg" />
@@ -398,6 +403,9 @@
     <None Remove="Graphics\ShipImages\Small\G12a.jpg" />
     <None Remove="Graphics\ShipImages\Small\G12r.jpg" />
     <None Remove="Graphics\ShipImages\Small\Genesis.jpg" />
+    <None Remove="Graphics\ShipImages\Small\grin_ptv.jpg" />
+    <None Remove="Graphics\ShipImages\Small\grin_roc.jpg" />
+    <None Remove="Graphics\ShipImages\Small\grin_roc_ds.jpg" />
     <None Remove="Graphics\ShipImages\Small\Hull B.jpg" />
     <None Remove="Graphics\ShipImages\Small\Hull C.jpg" />
     <None Remove="Graphics\ShipImages\Small\Hull D.jpg" />
@@ -407,6 +415,7 @@
     <None Remove="Graphics\ShipImages\Small\Kraken.jpg" />
     <None Remove="Graphics\ShipImages\Small\krig_p52_merlin.jpg" />
     <None Remove="Graphics\ShipImages\Small\krig_p72_archimedes.jpg" />
+    <None Remove="Graphics\ShipImages\Small\krig_p72_archimedes_emerald.jpg" />
     <None Remove="Graphics\ShipImages\Small\Legionnaire.jpg" />
     <None Remove="Graphics\ShipImages\Small\Liberator.jpg" />
     <None Remove="Graphics\ShipImages\Small\Merchantman.jpg" />
@@ -463,6 +472,7 @@
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_andromeda.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_aquila.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_phoenix.jpg" />
+    <None Remove="Graphics\ShipImages\Small\rsi_constellation_phoenix_emerald.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_constellation_taurus.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_mantis.jpg" />
     <None Remove="Graphics\ShipImages\Small\rsi_scorpius.jpg" />
@@ -472,6 +482,7 @@
     <None Remove="Graphics\ShipImages\Small\SRV.jpg" />
     <None Remove="Graphics\ShipImages\Small\tmbl_cyclone.jpg" />
     <None Remove="Graphics\ShipImages\Small\tmbl_cyclone_aa.jpg" />
+    <None Remove="Graphics\ShipImages\Small\tmbl_cyclone_mt.jpg" />
     <None Remove="Graphics\ShipImages\Small\tmbl_cyclone_rc.jpg" />
     <None Remove="Graphics\ShipImages\Small\tmbl_cyclone_rn.jpg" />
     <None Remove="Graphics\ShipImages\Small\tmbl_cyclone_tr.jpg" />
@@ -555,6 +566,9 @@
     <Content Include="Graphics\Icons\Left-Arrow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\Icons\Lock-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\Icons\Minus-Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -592,6 +606,36 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\MissileLauncher.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\anvl_carrack_expedition.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\argo_mole_carbon.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\argo_mole_talus.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\drak_caterpillar_pirate.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\grin_ptv.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\grin_roc.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\grin_roc_ds.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\krig_p72_archimedes_emerald.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\rsi_constellation_phoenix_emerald.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\ShipImages\Small\tmbl_cyclone_mt.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\TurretBase.png">

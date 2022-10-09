@@ -111,16 +111,59 @@
                 <Image Source="/Graphics/Info-Icon.png" Visibility="Hidden" />
             </ToggleButton>
 
-            <Popup IsOpen="{Binding Path=IsChecked, ElementName=InfoToggleButton}" Placement="Mouse" StaysOpen="False" >
-                <ListBox Background="Transparent" Foreground="White" FontSize="20" >
-                    <ListBoxItem Content="{Binding FleetItem.Role}" />
-                    <ListBoxItem Content="{Binding FleetItem.Career}" />
-                    <ListBoxItem Content="{Binding FleetItem.Cargo}" />
-                    <ListBoxItem Content="{Binding FleetItem.Health}" />
+            <Popup IsOpen="{Binding Path=IsChecked, ElementName=InfoToggleButton}" Placement="Mouse" StaysOpen="False" AllowsTransparency="True" >
+                <ListBox Foreground="White" FontSize="20" BorderThickness="0" >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                  BorderThickness="{TemplateBinding BorderThickness}" 
+                  Background="{TemplateBinding Background}">
+                                            <ContentPresenter />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.Style>
+                        <Style TargetType="ListBox">
+                            <Setter Property="Background" >
+                                <Setter.Value>
+                                    <SolidColorBrush>
+                                        <SolidColorBrush.Color>
+                                            <Color A="255" R="50" G="50" B="50" />
+                                        </SolidColorBrush.Color>
+                                    </SolidColorBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBox">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderThickness="2" BorderBrush="Gray" Margin="10" >
+                                            <Border.Effect>
+                                                <DropShadowEffect Opacity=".8" ShadowDepth="2" />
+                                            </Border.Effect>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Margin="0,0,0,5" HorizontalAlignment="Center" Text="Quickinfo" FontWeight="Bold" />
+                                                <ItemsPresenter />
+                                            </StackPanel>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.Style>
+                    <ListBoxItem Content="{Binding FleetItem.Role}" ContentStringFormat="Role: {0}" />
+                    <ListBoxItem Content="{Binding FleetItem.Career}" ContentStringFormat="Career: {0}" />
+                    <ListBoxItem Content="{Binding FleetItem.Cargo}" ContentStringFormat="Cargo: {0} SCU" />
+                    <ListBoxItem Content="{Binding FleetItem.Health}" ContentStringFormat="Health: {0}" />
                     <ListBoxItem Content="{Binding Size}" />
-                    <ListBoxItem Content="{Binding FleetItem.Mass}" />
-                    <ListBoxItem Content="{Binding FleetItem.HydrogenFuelCapacity}" />
-                    <ListBoxItem Content="{Binding FleetItem.QuantumFuelCapacity}" />
+                    <ListBoxItem Content="{Binding FleetItem.Mass}" ContentStringFormat="Mass: {0}" />
+                    <ListBoxItem Content="{Binding FleetItem.HydrogenFuelCapacity}" ContentStringFormat="Hydrogen: {0}" />
+                    <ListBoxItem Content="{Binding FleetItem.QuantumFuelCapacity}" ContentStringFormat="Quantum: {0}" />
                 </ListBox>
             </Popup>
         </Grid>
