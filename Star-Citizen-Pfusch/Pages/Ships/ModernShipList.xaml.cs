@@ -5,9 +5,10 @@ using Star_Citizen_Pfusch.Models.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -89,6 +90,24 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             {
                 frame.Navigate(new ModernShipView(((ShipListDisplayItem)sender).FleetItem._id));
                 frame.RemoveBackEntry();
+            }
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            for (int i = 0; i < shipItems.Count; i++)
+            {
+                shipItems[i].Visibility = Visibility.Visible;
+                shipItems[i].Width = double.NaN;
+                shipItems[i].Height = double.NaN;
+            }
+            TextBox textBox = (TextBox)sender;
+            var items = shipItems.Where(o => !o.FleetItem.Name.ToLower().Contains(textBox.Text.ToLower())).ToList();
+            for (int i = 0; i < items.Count; i++)
+            {
+                items[i].Visibility = Visibility.Collapsed;
+                items[i].Width = 0;
+                items[i].Height = 0;
             }
         }
     }
