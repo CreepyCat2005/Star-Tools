@@ -15,6 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Star_Citizen_Pfusch.Models.UserControls;
+using System.Windows.Media.Effects;
 
 namespace Star_Citizen_Pfusch
 {
@@ -52,8 +54,8 @@ namespace Star_Citizen_Pfusch
             }
             else
             {
-                if (ShipList == null) ShipList = new ShipList(ContentDisplay, "Vehicle_Spaceship");
-                ContentDisplay.Navigate(ShipList);
+                if (ModernShipList == null) ModernShipList = new ModernShipList(ContentDisplay, "Vehicle_Spaceship");
+                ContentDisplay.Navigate(ModernShipList);
             }
         }
 
@@ -80,8 +82,8 @@ namespace Star_Citizen_Pfusch
             }
             else
             {
-                if (VehicleList == null) VehicleList = new ShipList(ContentDisplay, "Vehicle_GroundVehicle");
-                ContentDisplay.Navigate(VehicleList);
+                if (ModernVehicleList == null) ModernVehicleList = new ModernShipList(ContentDisplay, "Vehicle_GroundVehicle");
+                ContentDisplay.Navigate(ModernVehicleList);
             }
         }
 
@@ -144,5 +146,25 @@ namespace Star_Citizen_Pfusch
             ContentDisplay.Navigate(OrgaIntegration);
         }
 
+        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            Popup popup = new Popup()
+            {
+                AllowsTransparency = true,
+                Placement = PlacementMode.Center,
+                PlacementTarget = this,
+                MinWidth = 500,
+            };
+            popup.Child = new ReportPopup(popup, ContentDisplay.Content.ToString())
+            {
+                Effect = new DropShadowEffect()
+                {
+                    ShadowDepth = 2,
+                    Opacity = .6
+                },
+                Margin = new Thickness(10),
+            };
+            popup.IsOpen = true;
+        }
     }
 }

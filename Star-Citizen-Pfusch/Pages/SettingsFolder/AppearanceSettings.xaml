@@ -38,72 +38,9 @@
                             </LinearGradientBrush>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <TextBox IsReadOnly="True" Text="Theme" BorderThickness="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="{DynamicResource HeadlineColor}" FontSize="{DynamicResource HeadlineFontSize}" Background="{DynamicResource BackgroundColor}" />
-                </Grid>
-            </ListBoxItem>
-
-            <CheckBox x:Name="WhiteCheckBox" Content="{StaticResource Settings.White}" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Clicked" />
-            <StackPanel Orientation="Horizontal">
-                <CheckBox x:Name="RainbowCheckBox" Content="{StaticResource Settings.Rainbow}" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Clicked" />
-                <Slider Width="100" Margin="20,0,0,0" VerticalAlignment="Center" Minimum="0.1" Maximum="1.5" TickFrequency="0.1" IsSnapToTickEnabled="True" x:Name="RainbowSpeed" />
-            </StackPanel>
-            <ListBoxItem HorizontalContentAlignment="Stretch" >
-                <Grid>
-                    <Rectangle Height="2" >
-                        <Rectangle.Fill>
-                            <LinearGradientBrush>
-                                <GradientStop Color="Transparent" Offset=".1" />
-                                <GradientStop Color="Gray" Offset=".2" />
-                                <GradientStop Color="Gray" Offset=".8" />
-                                <GradientStop Color="Transparent" Offset=".9" />
-                            </LinearGradientBrush>
-                        </Rectangle.Fill>
-                    </Rectangle>
                     <TextBox Text="{StaticResource Settings.TextColor}" BorderThickness="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="{DynamicResource HeadlineColor}" FontSize="{DynamicResource HeadlineFontSize}" IsReadOnly="True" Background="{DynamicResource BackgroundColor}" />
                 </Grid>
             </ListBoxItem>
-
-            <StackPanel Orientation="Horizontal">
-                <ComboBox Width="60" FontSize="{DynamicResource TextFontSize}" x:Name="TextBox" SelectedValuePath="Content" SelectionChanged="TextBox_SelectionChanged" >
-                    <ComboBoxItem Content="8" />
-                    <ComboBoxItem Content="10" />
-                    <ComboBoxItem Content="12" />
-                    <ComboBoxItem Content="14" />
-                    <ComboBoxItem Content="16" />
-                    <ComboBoxItem Content="18" />
-                    <ComboBoxItem Content="20" />
-                    <ComboBoxItem Content="22" />
-                    <ComboBoxItem Content="24" />
-                </ComboBox>
-                <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="{StaticResource Settings.StandardText}" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <ComboBox Width="60" FontSize="{DynamicResource TextFontSize}" x:Name="MenuBox" SelectedValuePath="Content" SelectionChanged="MenuBox_SelectionChanged" >
-                    <ComboBoxItem Content="14" />
-                    <ComboBoxItem Content="16" />
-                    <ComboBoxItem Content="18" />
-                    <ComboBoxItem Content="20" />
-                    <ComboBoxItem Content="22" />
-                    <ComboBoxItem Content="24" />
-                    <ComboBoxItem Content="26" />
-                    <ComboBoxItem Content="28" />
-                    <ComboBoxItem Content="30" />
-                </ComboBox>
-                <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="{StaticResource Settings.MenuText}" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <ComboBox Width="60" FontSize="{DynamicResource TextFontSize}" x:Name="HeadlineBox" SelectedValuePath="Content" SelectionChanged="HeadlineBox_SelectionChanged" >
-                    <ComboBoxItem Content="14" />
-                    <ComboBoxItem Content="16" />
-                    <ComboBoxItem Content="18" />
-                    <ComboBoxItem Content="20" />
-                    <ComboBoxItem Content="22" />
-                    <ComboBoxItem Content="24" />
-                    <ComboBoxItem Content="28" />
-                    <ComboBoxItem Content="30" />
-                </ComboBox>
-                <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="{StaticResource Settings.HeadlineText}" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
-            </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <ext:ColorPicker Width="80" SelectedColorChanged="ColorText_SelectedColorChanged" Loaded="ColorText_Loaded" DropDownBorderThickness="0" ShowDropDownButton="False" />
@@ -126,38 +63,11 @@
                 <ext:ColorPicker Width="80" SelectedColorChanged="ColorChartPoint_SelectedColorChanged" Loaded="ColorChartPoint_Loaded" DropDownBorderThickness="0" ShowDropDownButton="False" />
                 <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="{StaticResource Settings.ChartPointColor}" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
                 <ext:ColorPicker Width="80" SelectedColorChanged="ColorSlider_SelectedColorChanged" Loaded="ColorSlider_Loaded" DropDownBorderThickness="0" ShowDropDownButton="False" />
                 <TextBox IsReadOnly="True" Margin="10,0,0,0" Text="{StaticResource Settings.SliderColor}" Background="Transparent" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" BorderThickness="0" />
             </StackPanel>
-
-            <ListBoxItem HorizontalContentAlignment="Stretch" >
-                <Grid>
-                    <Rectangle Height="2" >
-                        <Rectangle.Fill>
-                            <LinearGradientBrush>
-                                <GradientStop Color="Transparent" Offset=".1" />
-                                <GradientStop Color="Gray" Offset=".2" />
-                                <GradientStop Color="Gray" Offset=".8" />
-                                <GradientStop Color="Transparent" Offset=".9" />
-                            </LinearGradientBrush>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBox Text="{StaticResource Settings.Highlighting}" BorderThickness="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="{DynamicResource HeadlineColor}" FontSize="{DynamicResource HeadlineFontSize}" IsReadOnly="True" Background="{DynamicResource BackgroundColor}" />
-                </Grid>
-            </ListBoxItem>
-
-            <TreeView Background="Transparent" BorderThickness="0" >
-                <TreeView.Resources>
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
-                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
-                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black" />
-                </TreeView.Resources>
-                <TreeViewItem Header="{StaticResource Settings.Ships}" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" x:Name="ShipTreeViewItem" />
-                <TreeViewItem Header="{StaticResource Settings.Vehicles}" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" x:Name="VehicleTreeViewItem" />
-            </TreeView>
 
             <ListBoxItem HorizontalContentAlignment="Stretch" >
                 <Grid>
@@ -176,6 +86,13 @@
             </ListBoxItem>
 
             <CheckBox Content="{StaticResource Settings.ModernShipList}" IsChecked="{Binding IsModernShipListActive}" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" />
+
+            <StackPanel Orientation="Horizontal" >
+                <CheckBox x:Name="LowCheckBox" Content="Low"  Margin="0,0,10,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
+                <CheckBox IsChecked="True" x:Name="MediumCheckBox" Content="Medium" Margin="0,0,10,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
+                <CheckBox x:Name="HighCheckBox" Content="High" Margin="0,0,30,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
+                <TextBlock FontSize="{DynamicResource TextFontSize}" Foreground="{DynamicResource TextColor}" Background="Transparent" Text="Changes the resolution of charts" />
+            </StackPanel>
 
         </ListBox>
     </Grid>

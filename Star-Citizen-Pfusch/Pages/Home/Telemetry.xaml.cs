@@ -69,9 +69,10 @@ namespace Star_Citizen_Pfusch.Pages.Home
             { 
                 PTUStatus = item.PTUStatus,
                 GameVersion = item.gameVersion,
-                Playtime = formatePlayTime(data.PlaytimeHistory.Sum() + (int)data.Playtime),
                 ClientVersion = $"{version.Major}.{version.Minor}.{version.Build}"
             };
+            if (data.PlaytimeHistory != null) informationWidget.Playtime = formatePlayTime(data.PlaytimeHistory.Sum() + (int)data.Playtime);
+            else informationWidget.Playtime = formatePlayTime(0);
             Grid.SetColumn(informationWidget, 2);
             MasterGrid.Children.Add(informationWidget);
 

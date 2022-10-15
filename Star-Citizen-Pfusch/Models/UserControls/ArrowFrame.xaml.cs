@@ -52,7 +52,8 @@ namespace Star_Citizen_Pfusch.Models.UserControls
         }
         private bool ArrayContainsArray(string[] baseArray, string[] checkArray)
         {
-            if (checkArray == null) return true;
+            if (checkArray == null || (baseArray == null && checkArray == null)) return true;
+            if (baseArray == null && checkArray != null) return false;
             bool value = true;
             for (int i = 0; i < checkArray.Length; i++)
             {

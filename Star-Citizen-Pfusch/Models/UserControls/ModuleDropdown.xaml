@@ -19,7 +19,7 @@
 
         <Image Margin="10" Grid.RowSpan="2" x:Name="TypeImage" />
         <Viewbox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" >
-            <TextBlock Text="{Binding ModuleName}" Foreground="White" />
+            <TextBlock Text="{Binding ModuleName}" Foreground="{DynamicResource HeadlineColor}" />
         </Viewbox>
 
         <Border Grid.Column="2" Grid.RowSpan="2" CornerRadius="2000" Margin="13" x:Name="ArrowButton" MouseLeftButtonUp="ArrowButton_MouseLeftButtonUp" MouseEnter="ArrowButton_MouseEnter" Background="Transparent" MouseLeave="ArrowButton_MouseLeave" >

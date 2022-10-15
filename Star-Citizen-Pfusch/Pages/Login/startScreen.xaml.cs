@@ -81,6 +81,7 @@ namespace Star_Citizen_Pfusch.Pages
                 Window window = new Window();
                 window.Title = "Login";
                 window.Owner = Application.Current.MainWindow;
+                window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 window.Content = new Login.EnterLoginDataPage(window);
                 window.Width = 350;
                 window.Height = 450;
@@ -90,13 +91,14 @@ namespace Star_Citizen_Pfusch.Pages
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            //Window window = new Window();
-            //window.Title = "Register";
-            //window.Owner = Application.Current.MainWindow;
-            //window.Content = new Register.Register(window);
-            //window.Width = 350;
-            //window.Height = 450;
-            //window.Show();
+            Window window = new Window();
+            window.Title = "Register";
+            window.Owner = Application.Current.MainWindow;
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            window.Content = new Register.Register(window);
+            window.Width = 350;
+            window.Height = 450;
+            window.Show();
         }
 
         private void Discord_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)

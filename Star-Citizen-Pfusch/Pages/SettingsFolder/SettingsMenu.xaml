@@ -18,18 +18,39 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TreeView x:Name="treeview" BorderThickness="0" Grid.Column="0" Background="{DynamicResource DarkBackgroundColor}" >
-            <TreeView.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
-                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
-                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black" />
-            </TreeView.Resources>
-            <TreeViewItem Header="{StaticResource Settings.General}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="GeneralItem_MouseDoubleClick" />
-            <TreeViewItem Header="{StaticResource Settings.Appearance}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="AppearanceItem_MouseDoubleClick" />
-            <TreeViewItem Header="{StaticResource Settings.License}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseDoubleClick="LicenseItem_MouseDoubleClick" />
-            <TreeViewItem Header="{StaticResource Settings.DataSafety}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" x:Name="dataItem" MouseDoubleClick="dataItem_MouseDoubleClick" />
-        </TreeView>
+        <ListBox BorderThickness="0" Grid.Column="0" Background="{DynamicResource DarkBackgroundColor}" >
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Background="{TemplateBinding Background}" >
+                                    <ContentPresenter Margin="5,0,0,0" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True" >
+                            <Setter Property="Background" >
+                                <Setter.Value>
+                                    <SolidColorBrush>
+                                        <SolidColorBrush.Color>
+                                            <Color A="255" R="45" G="45" B="45" />
+                                        </SolidColorBrush.Color>
+                                    </SolidColorBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBoxItem Content="{StaticResource Settings.General}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseLeftButtonUp="GeneralItem_MouseDoubleClick" />
+            <ListBoxItem Content="{StaticResource Settings.Appearance}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseLeftButtonUp="AppearanceItem_MouseDoubleClick" />
+            <ListBoxItem Content="{StaticResource Settings.License}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseLeftButtonUp="LicenseItem_MouseDoubleClick" />
+            <ListBoxItem Content="{StaticResource Settings.DataSafety}" Foreground="{DynamicResource MenuColor}" FontSize="{DynamicResource MenuFontSize}" MouseLeftButtonUp="dataItem_MouseDoubleClick" />
+        </ListBox>
 
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" BorderThickness="0" Background="{DynamicResource SliderColor}" />
 

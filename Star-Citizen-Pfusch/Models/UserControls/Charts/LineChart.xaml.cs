@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Star_Citizen_Pfusch.Functions;
 using System.Diagnostics;
+using MathNet.Numerics.Interpolation;
 
 namespace Star_Citizen_Pfusch.Models.UserControls.Charts
 {
@@ -27,6 +28,7 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
     public partial class LineChart : UserControl
     {
         private AccountDataItem item;
+        private int offset;
         public LineChart()
         {
             InitializeComponent();
@@ -41,9 +43,10 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
             string res = await response.Content.ReadAsStringAsync();
 
             item = JsonConvert.DeserializeObject<AccountDataItem>(res);
+            if (item.PlaytimeHistory == null) return;
             if (NumberSelector.MinValue <= item.PlaytimeHistory.Length)
             {
-                NumberSelector.Value = item.PlaytimeHistory.Length;
+                if (NumberSelector.Value == 0) NumberSelector.Value = item.PlaytimeHistory.Length;
                 NumberSelector.MaxValue = item.PlaytimeHistory.Length;
             }
             else
@@ -75,17 +78,30 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
 
             for (int i = 0; i < NumberSelector.Value; i++)
             {
-                Point point = new Point(Width - (Width / (NumberSelector.Value - 1) * i - 1), Height - (Height - 12) * (item.PlaytimeHistory[i] / maxValue));
+                Point point = new Point(Width - (Width / (NumberSelector.Value - 1) * i - 1), Height - (Height - 12) * (item.PlaytimeHistory[i + offset] / maxValue));
                 points.Add(point);
 
-                Ellipse ellipse = new Ellipse() { Width = 8, Height = 8, Margin = new Thickness(point.X - 4, point.Y - 4, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, ToolTip = formatePlayTime(item.PlaytimeHistory[i]), Style = (Style)FindResource("EllipseStyle") };
+                var time = DateTime.Now - new TimeSpan(i, 0, 0, 0);
+
+                Ellipse ellipse = new Ellipse() { Width = 8, Height = 8, Margin = new Thickness(points[i].X - 4, points[i].Y - 4, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top, ToolTip = formatePlayTime(item.PlaytimeHistory[i]) + "\n" + time.ToShortDateString(), Style = (Style)FindResource("EllipseStyle") };
                 ellipse.SetResourceReference(Shape.FillProperty, "ChartPointColor");
                 Grid.SetRowSpan(ellipse, 5);
                 Grid.SetColumn(ellipse, 1);
                 Grid.Children.Add(ellipse);
             }
 
-            points.Insert(0, new Point(Width, Height));
+            //interpolate
+            var interpolation = CubicSpline.InterpolatePchip(points.Select(o => o.X), points.Select(o => o.Y));
+            double max = points.Select(o => o.X).Max();
+            int pointCount = points.Count * Config.ChartResolution;
+            points.Clear();
+            for (int i = 0; i <= pointCount; i++)
+            {
+                var cY = interpolation.Interpolate((max / pointCount) * i);
+                points.Add(new Point(Width / pointCount * i, cY));
+            }
+
+            points.Add(new Point(Width, Height));
             points.Add(new Point(-1, Height));
 
             FilledPolygon.Points = points;
@@ -99,7 +115,22 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
 
         private void NumberSelector_ValueChanged(object sender, ValueEventArgs e)
         {
+            if (NumberSelector.Value + offset > item.PlaytimeHistory.Length) offset = item.PlaytimeHistory.Length - NumberSelector.Value;
             LoadChart();
+        }
+
+        private void Rectangle_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0 && offset < item.PlaytimeHistory.Length - NumberSelector.Value)
+            {
+                offset++;
+                LoadChart();
+            }
+            if (e.Delta < 0 && offset > 0)
+            {
+                offset--;
+                LoadChart();
+            }
         }
     }
 }

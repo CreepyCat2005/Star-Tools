@@ -95,19 +95,26 @@ namespace Star_Citizen_Pfusch.Pages.Ships
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            for (int i = 0; i < shipItems.Count; i++)
-            {
-                shipItems[i].Visibility = Visibility.Visible;
-                shipItems[i].Width = double.NaN;
-                shipItems[i].Height = double.NaN;
-            }
             TextBox textBox = (TextBox)sender;
-            var items = shipItems.Where(o => !o.FleetItem.Name.ToLower().Contains(textBox.Text.ToLower())).ToList();
-            for (int i = 0; i < items.Count; i++)
+            if (textBox.Text.Equals("Search")) return;
+            var items = shipItems.Where(o => o.FleetItem.Name.ToLower().Contains(textBox.Text.ToLower())).ToList();
+
+            ShipListBox.ItemsSource = items;
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (((TextBox)sender).Text.Equals("Search"))
             {
-                items[i].Visibility = Visibility.Collapsed;
-                items[i].Width = 0;
-                items[i].Height = 0;
+                ((TextBox)sender).Text = "";
+            }
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (((TextBox)sender).Text.Equals(""))
+            {
+                ((TextBox)sender).Text = "Search";
             }
         }
     }

@@ -86,28 +86,23 @@ namespace Star_Citizen_Pfusch.Pages.Shops
             }
         }
 
-        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox box = (TextBox)sender;
 
             if (box.Text.Equals("Search"))
             {
                 box.Text = "";
-                box.Foreground = (SolidColorBrush)Application.Current.Resources["TextColor"];
-
             }
         }
 
-        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox box = (TextBox)sender;
 
             if (box.Text.Equals(""))
             {
                 box.Text = "Search";
-                box.Foreground = new SolidColorBrush(Color.FromArgb(255, 80, 80, 80));
-
-                
             }
         }
     }

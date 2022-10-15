@@ -89,7 +89,7 @@
             </Grid.RowDefinitions>
 
             <Viewbox Grid.Column="1" HorizontalAlignment="Left" Margin="10,5,0,0" >
-                <TextBlock Text="{Binding ShipName}" Foreground="{DynamicResource TextColor}" ToolTip="Name" />
+                <TextBlock Text="{Binding ShipName}" Foreground="{DynamicResource HeadlineColor}" ToolTip="Name" />
             </Viewbox>
             <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="10,5,0,5" >
                 <TextBlock Text="{Binding FleetItem.Manufacturer.Name}" Foreground="Gray" ToolTip="Manufacturer" />

@@ -43,7 +43,9 @@
 
         <Polygon Grid.Column="1" x:Name="FilledPolygon" Fill="{DynamicResource ChartColor}" />
 
-        <controls:NumberSelector x:Name="NumberSelector" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Column="1" Width="80" Height="25" MinValue="2" ValueChanged="NumberSelector_ValueChanged" />
+        <controls:NumberSelector x:Name="NumberSelector" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Grid.Column="1" Width="80" Height="25" MinValue="3" ValueChanged="NumberSelector_ValueChanged" />
+
+        <Rectangle Grid.Column="1" Margin="0,0,0,36" MouseWheel="Rectangle_MouseWheel" Fill="Transparent" />
 
     </Grid>
 </UserControl>

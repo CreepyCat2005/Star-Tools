@@ -81,14 +81,15 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 ItemStackPanel.Children.Add(frame);
             }
 
-            ShipInfoStackPanel.Children.Add(new TextBlock()
+            TextBlock header = new TextBlock()
             {
                 FontSize = 18,
                 Text = "Info",
                 FontWeight = FontWeights.Bold,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Foreground = new SolidColorBrush(Colors.White),
-            });
+            };
+            header.SetResourceReference(ForegroundProperty, "HeadlineColor");
+            ShipInfoStackPanel.Children.Add(header);
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Name", shipItem.Name));
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Manufacturer", shipItem.Manufacturer.Name));
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Description", shipItem.Description));
@@ -103,35 +104,38 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             if (shipItem.Shops.Length > 0) ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Price", String.Format("{0:n0} aUEC", shipItem.Shops[0].price)));
             else ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Price", "Not buyable ingame!"));
             ShipInfoStackPanel.Children.Add(CreateStackPanelGrid("Status", shipItem.Status.ToString()));
-            ShipInfoStackPanel.Children.Add(new TextBlock()
+            TextBlock shops = new TextBlock()
             {
                 FontSize = 18,
                 Text = "\nShops",
                 FontWeight = FontWeights.Bold,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Foreground = new SolidColorBrush(Colors.White),
-            });
+            };
+            shops.SetResourceReference(ForegroundProperty, "HeadlineColor");
+            ShipInfoStackPanel.Children.Add(shops);
             foreach (var item in shipItem.Shops)
             {
                 if (!item.name.Contains("Rental"))
                 {
-                    ShipInfoStackPanel.Children.Add(new TextBlock()
+                    TextBlock text = new TextBlock()
                     {
                         FontSize = 18,
                         Text = $"{item.location} | {item.name} | {String.Format("{0:n0} aUEC", item.price)}",
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        Foreground = new SolidColorBrush(Colors.White),
-                    });
+                        HorizontalAlignment = HorizontalAlignment.Center
+                    };
+                    text.SetResourceReference(ForegroundProperty, "TextColor");
+                    ShipInfoStackPanel.Children.Add(text);
                 }
                 else
                 {
-                    ShipInfoStackPanel.Children.Add(new TextBlock()
+                    TextBlock text = new TextBlock()
                     {
                         FontSize = 18,
                         Text = $"{item.location} | {item.name} | Depends on days",
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        Foreground = new SolidColorBrush(Colors.White),
-                    });
+                        HorizontalAlignment = HorizontalAlignment.Center
+                    };
+                    text.SetResourceReference(ForegroundProperty, "TextColor");
+                    ShipInfoStackPanel.Children.Add(text);
                 }
             }
 
@@ -203,23 +207,25 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                 Style = (Style)this.Resources["BorderStyle"]
             };
 
-            grid.Children.Add(new TextBlock()
+            TextBlock text1 = new TextBlock()
             {
                 FontSize = 18,
                 Text = name,
                 HorizontalAlignment = HorizontalAlignment.Left,
-                Foreground = new SolidColorBrush(Colors.White),
                 Width = width / 2
-            });
-            grid.Children.Add(new TextBlock()
+            };
+            text1.SetResourceReference(ForegroundProperty, "TextColor");
+            grid.Children.Add(text1);
+            TextBlock text2 = new TextBlock()
             {
                 FontSize = 18,
                 Text = value,
                 HorizontalAlignment = HorizontalAlignment.Right,
-                Foreground = new SolidColorBrush(Colors.White),
                 Width = width / 2,
                 TextWrapping = TextWrapping.Wrap
-            });
+            };
+            text2.SetResourceReference(ForegroundProperty, "TextColor");
+            grid.Children.Add(text2);
 
             return border;
         }
