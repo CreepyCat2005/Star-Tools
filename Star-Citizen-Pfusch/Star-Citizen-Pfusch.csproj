@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <None Remove="Background.png" />
-    <None Remove="Config\UserConfig.cfg" />
     <None Remove="Graphics\ArrowDown.png" />
     <None Remove="Graphics\ArrowLeft.png" />
     <None Remove="Graphics\ArrowRight.png" />
@@ -39,6 +38,7 @@
     <None Remove="Graphics\Icons\Reload-Icon.png" />
     <None Remove="Graphics\Icons\Right-Arrow.png" />
     <None Remove="Graphics\Icons\Ship-Icon.png" />
+    <None Remove="Graphics\Icons\ShoppingCart-Icon.png" />
     <None Remove="Graphics\Icons\Twitch-Logo.png" />
     <None Remove="Graphics\Icons\Website-Icon.png" />
     <None Remove="Graphics\Icons\Youtube-Logo.png" />
@@ -49,6 +49,7 @@
     <None Remove="Graphics\Mounting.png" />
     <None Remove="Graphics\NoImage.png" />
     <None Remove="Graphics\PowerPlant.png" />
+    <None Remove="Graphics\Privacy.html" />
     <None Remove="Graphics\QuantumDrive.png" />
     <None Remove="Graphics\Shield.png" />
     <None Remove="Graphics\ShipImages\100i.jpg" />
@@ -516,6 +517,7 @@
     <None Remove="Graphics\Star-Citizen-Logo.png" />
     <None Remove="Graphics\Star-Tools-Logo-White.png" />
     <None Remove="Graphics\Star-Tools-Logo.png" />
+    <None Remove="Graphics\style.css" />
     <None Remove="Graphics\Switch-Icon.png" />
     <None Remove="Graphics\Turret.png" />
     <None Remove="Graphics\TurretBase.png" />
@@ -524,9 +526,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Config\UserConfig.cfg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Graphics\ArrowLeft.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -542,7 +541,7 @@
     <Content Include="Graphics\Discord-Logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Graphics\Filter-Icon.png">
+    <Content Include="Graphics\Icons\Filter-Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\Check-Icon.png">
@@ -587,6 +586,9 @@
     <Content Include="Graphics\Icons\Ship-Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Graphics\Icons\ShoppingCart-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Graphics\Icons\Twitch-Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -606,6 +608,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\MissileLauncher.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Privacy.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\ShipImages\Small\anvl_carrack_expedition.jpg">
@@ -636,6 +641,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\ShipImages\Small\tmbl_cyclone_mt.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\style.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\TurretBase.png">
@@ -1708,9 +1716,11 @@
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.4.0" />
     <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+    <PackageReference Include="MdXaml" Version="1.16.0" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.4" />
     <PackageReference Include="MongoDB.Bson" Version="2.16.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.116" />
   </ItemGroup>
 
@@ -1796,6 +1806,10 @@
     <Page Update="Models\DragAndDropFrame.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Config\" />
   </ItemGroup>
 
 </Project>

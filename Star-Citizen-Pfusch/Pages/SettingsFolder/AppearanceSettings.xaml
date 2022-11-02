@@ -89,8 +89,9 @@
 
             <StackPanel Orientation="Horizontal" >
                 <CheckBox x:Name="LowCheckBox" Content="Low"  Margin="0,0,10,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
-                <CheckBox IsChecked="True" x:Name="MediumCheckBox" Content="Medium" Margin="0,0,10,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
-                <CheckBox x:Name="HighCheckBox" Content="High" Margin="0,0,30,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
+                <CheckBox x:Name="MediumCheckBox" Content="Medium" Margin="0,0,10,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
+                <CheckBox x:Name="HighCheckBox" Content="High" Margin="0,0,10,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
+                <CheckBox x:Name="OffCheckBox" Content="Off" Margin="0,0,30,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
                 <TextBlock FontSize="{DynamicResource TextFontSize}" Foreground="{DynamicResource TextColor}" Background="Transparent" Text="Changes the resolution of charts" />
             </StackPanel>
 

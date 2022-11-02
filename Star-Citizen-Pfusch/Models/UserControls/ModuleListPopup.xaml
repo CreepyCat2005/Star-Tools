@@ -8,25 +8,30 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="GridViewColumnHeader" x:Key="GridViewHeaderStyle" >
-            <Setter Property="Background" >
-                <Setter.Value>
-                    <SolidColorBrush>
-                        <SolidColorBrush.Color>
-                            <Color A="255" R="50" G="50" B="50" />
-                        </SolidColorBrush.Color>
-                    </SolidColorBrush>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="GridViewColumnHeader">
-                        <Border Background="Transparent" >
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" >
                             <TextBlock Margin="15,0,15,5" FontSize="{TemplateBinding FontSize}" Text="{TemplateBinding Content}" Width="{TemplateBinding Width}" TextAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush>
+                                <SolidColorBrush.Color>
+                                    <Color A="220" R="80" G="80" B="80" />
+                                </SolidColorBrush.Color>
+                            </SolidColorBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </UserControl.Resources>
     
@@ -38,7 +43,7 @@
                 </SolidColorBrush.Color>
             </SolidColorBrush>
         </Border.Background>
-        <ListView x:Name="ModuleListView" Background="Transparent" BorderThickness="0" Margin="10" Foreground="White" FontSize="16" ScrollViewer.CanContentScroll="False" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ModuleListView_SelectionChanged" >
+        <ListView GridViewColumnHeader.Click="ColumnHeaderClick_Click"  x:Name="ModuleListView" Background="Transparent" BorderThickness="0" Margin="10" Foreground="White" FontSize="16" ScrollViewer.CanContentScroll="False" d:ItemsSource="{d:SampleData ItemCount=5}" MouseLeftButtonUp="ModuleListView_MouseLeftButtonUp" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Background" Value="Transparent" />

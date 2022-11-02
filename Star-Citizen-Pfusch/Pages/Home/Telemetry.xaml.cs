@@ -1,24 +1,14 @@
-﻿using MongoDB.Bson;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Star_Citizen_Pfusch.Animations.Symbols;
 using Star_Citizen_Pfusch.Models;
+using Star_Citizen_Pfusch.Pages.Home.Widgets;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Net.Cache;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Timers;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Linq;
 using System.Windows;
-using Star_Citizen_Pfusch.Pages.Home.Widgets;
-using Star_Citizen_Pfusch.Animations.Symbols;
+using System.Windows.Controls;
 
 namespace Star_Citizen_Pfusch.Pages.Home
 {
@@ -28,7 +18,10 @@ namespace Star_Citizen_Pfusch.Pages.Home
     public partial class Telemetry : Page
     {
         private PublicDataItem item;
-        private bool LoadedBefore = false;
+        private InformationWidget informationWidget;
+        private ShipWatcher shipWatcher;
+        private FundingWidget fundingWidget;
+        private PlaytimeHistory playtime;
 
         public Telemetry()
         {
@@ -46,7 +39,6 @@ namespace Star_Citizen_Pfusch.Pages.Home
 
         private async void OnLoad(object sender, RoutedEventArgs e)
         {
-            if (LoadedBefore) return;
             Debug.WriteLine("Load");
             HttpClient client = new HttpClient();
 
@@ -63,10 +55,18 @@ namespace Star_Citizen_Pfusch.Pages.Home
             var version = Assembly.GetEntryAssembly().GetName().Version;
 
             //---------------------------------------adding widgets---------------------------------------------------
+            for (int i = 0; i < MasterGrid.Children.Count; i++)
+            {
+                if (MasterGrid.Children[i].GetType() != typeof(GridSplitter))
+                {
+                    MasterGrid.Children.RemoveAt(i);
+                    i--;
+                }
+            }
 
             //  adding information widget
-            InformationWidget informationWidget = new InformationWidget()
-            { 
+            informationWidget = new InformationWidget()
+            {
                 PTUStatus = item.PTUStatus,
                 GameVersion = item.gameVersion,
                 ClientVersion = $"{version.Major}.{version.Minor}.{version.Build}"
@@ -77,7 +77,7 @@ namespace Star_Citizen_Pfusch.Pages.Home
             MasterGrid.Children.Add(informationWidget);
 
             //adding shipwatcher widget
-            ShipWatcher shipWatcher = new ShipWatcher();
+            shipWatcher = new ShipWatcher();
             shipWatcher.Visibility = Visibility.Hidden;
             shipWatcher.OnUpdateStatus += ShipWatcher_OnUpdateStatus;
             Grid.SetRow(shipWatcher, 2);
@@ -85,20 +85,19 @@ namespace Star_Citizen_Pfusch.Pages.Home
             MasterGrid.Children.Add(shipWatcher);
 
             //adding funding widget
-            FundingWidget fundingWidget = new FundingWidget();
+            fundingWidget = new FundingWidget();
             MasterGrid.Children.Add(fundingWidget);
 
             //adding DailyShip widget
-            PlaytimeHistory playtime = new PlaytimeHistory();
+            playtime = new PlaytimeHistory();
             Grid.SetRow(playtime, 2);
             MasterGrid.Children.Add(playtime);
 
-            LoadedBefore = true;
         }
 
         private void ShipWatcher_OnUpdateStatus(object sender, Functions.StatusEventArgs e)
         {
-            if(e.Status.Equals("Loaded"))
+            if (e.Status.Equals("Loaded"))
             {
                 ((ShipWatcher)sender).Visibility = Visibility.Visible;
                 if (MasterGrid.Children.OfType<LoadingSymbol>().ToList().Count > 0)
@@ -113,15 +112,6 @@ namespace Star_Citizen_Pfusch.Pages.Home
             int hour = playtime / 60;
             int minute = playtime - (hour * 60);
             return $"{hour}h {minute}m";
-        }
-
-        private string formatedata(ShipItem item)
-        {
-            return $"Name: {item.Name}\n" +
-                $"Größe: {item.ShipSize.Length} x {item.ShipSize.Width} x {item.ShipSize.Height}\n" +
-                $"Rolle: {item.Role}\n" +
-                $"Career: {item.Career}\n" +
-                $"Status: UNKNOWN";
         }
     }
 }

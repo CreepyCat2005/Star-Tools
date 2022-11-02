@@ -3,12 +3,12 @@ using Newtonsoft.Json.Linq;
 using Star_Citizen_Pfusch.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
+using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace Star_Citizen_Pfusch.Functions
 {
@@ -52,7 +52,7 @@ namespace Star_Citizen_Pfusch.Functions
         {
             return File.Exists(passwordPath);
         }
-        public static string GetFleetyardToken()
+        public static string GetRSICookieString()
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles");
             DirectoryInfo[] files = directoryInfo.GetDirectories();
@@ -61,36 +61,104 @@ namespace Star_Citizen_Pfusch.Functions
             SqLite = new SQLiteConnection("Data Source=" + path + "\\cookies.sqlite");
             SqLite.Open();
 
-            string token = "";
+            var nameList = new List<string>();
+            var valueList = new List<string>();
 
             var command = SqLite.CreateCommand();
-            command.CommandText = "SELECT value FROM moz_cookies WHERE host = '.fleetyards.net' and name = 'FLTYRD'";
+            command.CommandText = "SELECT name,value FROM moz_cookies WHERE host LIKE '%robertsspaceindustries%'";
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                token = reader.GetString(0);
+                nameList.Add(reader.GetString(0));
+                valueList.Add(reader.GetString(1));
             }
+
+            string token = "";
+            for (int i = 0; i < valueList.Count; i++)
+            {
+                token += nameList[i] + "=" + valueList[i] + "; ";
+            }
+
             return token;
         }
-        public static string GetFleetyardPermanentToken()
+        public static PledgeItem[] GetPledgeItems()
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo(Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles");
-            DirectoryInfo[] files = directoryInfo.GetDirectories();
-            string path = files.Where(o => DirSize(o) == files.Select(o => DirSize(o)).Max()).ToList()[0].FullName;
+            if (Config.BrowserType.Equals("") || Config.BrowserType == null) return null;
+            string cookieString = "";
 
-            SqLite = new SQLiteConnection("Data Source=" + path + "\\cookies.sqlite");
-            SqLite.Open();
-
-            string token = "";
-
-            var command = SqLite.CreateCommand();
-            command.CommandText = "SELECT value FROM moz_cookies WHERE host = '.fleetyards.net' and name = 'FLTYRD_USER_STORED'";
-            var reader = command.ExecuteReader();
-            while (reader.Read())
+            switch (Config.BrowserType)
             {
-                token = reader.GetString(0);
+                case "Firefox":
+                    cookieString = GetRSICookieString();
+                    break;
+                case "Chrome":
+                    cookieString = CookieMonster.GetCookieString();
+                    break;
+                default:
+                    return null;
             }
-            return token;
+            HttpClient client = new HttpClient();
+
+            List<PledgeItem> nameList = new List<PledgeItem>();
+            PledgeItem[] pledgeItems;
+            int counter = 1;
+            do
+            {
+                pledgeItems = GetPledgeItems(client, cookieString, counter);
+                nameList.AddRange(pledgeItems);
+
+                counter++;
+            }
+            while (pledgeItems.Length != 0);
+
+            return nameList.ToArray();
+        }
+        private static PledgeItem[] GetPledgeItems(HttpClient client, string cookieString, int page)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, $"https://robertsspaceindustries.com/account/pledges?page={page}&pagesize=100");
+            request.Headers.Add("Cookie", cookieString);
+            HttpResponseMessage response = client.SendAsync(request).Result;
+            string res = response.Content.ReadAsStringAsync().Result;
+            res = Regex.Replace(res, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
+
+            string[] lineArray = res.Split("\n");
+            List<PledgeItem> nameList = new List<PledgeItem>();
+
+            for (int i = 0; i < lineArray.Length; i++)
+            {
+                if (!lineArray[i].Contains("<input type=\"hidden\" class=\"")) continue;
+
+                PledgeItem item = new PledgeItem()
+                {
+                    id = int.Parse(GetValue(lineArray[i])),
+                    name = GetValue(lineArray[i + 1]),
+                    value = GetValue(lineArray[i + 2]),
+                    configValue = GetValue(lineArray[i + 3]),
+                    curreny = GetValue(lineArray[i + 4]),
+                    lastAlpha = int.Parse(GetValue(lineArray[i + 5]))
+                };
+
+                for (int x = 0; x < 30; x++)
+                {
+                    if (lineArray[i - x].Contains("style=\"background-image:url('"))
+                    {
+                        item.ImagePath = lineArray[i - x].Substring(lineArray[i - x].IndexOf("('") + 2, lineArray[i - x].LastIndexOf("')") - lineArray[i - x].IndexOf("('") - 2);
+                    }
+                    else if (lineArray[i + x].Contains("<label>Created:</label>")) item.createdAt = lineArray[i + x + 1].Trim();
+                    else if (lineArray[i + x].Contains("<label>Contains:</label>")) item.contains = lineArray[i + x + 1].Trim();
+                }
+
+                i += 8;
+                nameList.Add(item);
+            }
+
+            return nameList.ToArray();
+        }
+
+
+        private static string GetValue(string line)
+        {
+            return line.Substring(line.IndexOf("value=\"") + 7, line.IndexOf("\">", line.IndexOf("value=\"") + 7) - line.IndexOf("value=\"") - 7);
         }
         private static long DirSize(DirectoryInfo d)
         {
@@ -109,5 +177,6 @@ namespace Star_Citizen_Pfusch.Functions
             }
             return size;
         }
+
     }
 }

@@ -25,6 +25,8 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
     {
         private AppearanceSettings AppearanceSettings = new AppearanceSettings();
         private GeneralSettings GeneralSettings = new GeneralSettings();
+        private AccountSettings AccountSettings;
+        private PrivacySettings PrivacySettings;
         public SettingsMenu()
         {
             InitializeComponent();
@@ -67,7 +69,8 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
                 ChartPointColor = ((SolidColorBrush)Application.Current.Resources["ChartPointColor"]).Color.ToString(),
                 SliderColor = ((SolidColorBrush)Application.Current.Resources["SliderColor"]).Color.ToString(),
                 DefaultStartSize = (string)Application.Current.Resources["DefaultStartSize"],
-                IsModernShipListActive = Config.ModernShipList
+                IsModernShipListActive = Config.ModernShipList,
+                ChartResolution = Config.ChartResolution
             };
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg", JsonConvert.SerializeObject(userConfig));
         }
@@ -82,11 +85,18 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         }
         private void dataItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+            if (PrivacySettings == null) PrivacySettings = new PrivacySettings();
+            contentDisplay.Navigate(PrivacySettings);
         }
         private void AppearanceItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             contentDisplay.Navigate(AppearanceSettings);
+        }
+
+        private void AccountSettings_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (AccountSettings == null) AccountSettings = new AccountSettings();
+            contentDisplay.Navigate(AccountSettings);
         }
     }
 }

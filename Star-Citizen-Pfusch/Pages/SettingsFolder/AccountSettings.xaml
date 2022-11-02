@@ -1,4 +1,4 @@
-﻿<Page x:Class="Star_Citizen_Pfusch.Pages.SettingsFolder.PrivacySettings"
+﻿<Page x:Class="Star_Citizen_Pfusch.Pages.SettingsFolder.AccountSettings"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,9 @@
       xmlns:local="clr-namespace:Star_Citizen_Pfusch.Pages.SettingsFolder"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PrivacySettings">
+      Title="AccountSettings">
 
-    <Frame x:Name="WebDisplay" />
+    <ListBox Background="Transparent" BorderThickness="0" >
+        
+    </ListBox>
 </Page>

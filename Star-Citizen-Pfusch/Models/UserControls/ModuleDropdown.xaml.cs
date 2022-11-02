@@ -29,6 +29,7 @@ namespace Star_Citizen_Pfusch.Models.UserControls
         private ModuleItem moduleItem;
         private Popup popup;
 
+        public bool Child { get; set; } = false;
         public int Index { get; set; }
         public int LoadOutIndex { get; set; }
         public new SolidColorBrush Background { get; set; }

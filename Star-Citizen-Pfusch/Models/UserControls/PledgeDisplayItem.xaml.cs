@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,24 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Star_Citizen_Pfusch.Pages.SettingsFolder
+namespace Star_Citizen_Pfusch.Models.UserControls
 {
     /// <summary>
-    /// Interaction logic for PrivacySettings.xaml
+    /// Interaction logic for PledgeDisplayItem.xaml
     /// </summary>
-    public partial class PrivacySettings : Page
+    public partial class PledgeDisplayItem : UserControl
     {
-        public PrivacySettings()
+        public BitmapImage ImageURI { get; set; }
+        public string PledgeName { get; set; }
+        public string PledgeCreated { get; set; }
+        public string PledgeContains { get; set; }
+
+        public PledgeDisplayItem()
         {
             InitializeComponent();
             this.DataContext = this;
-
-            init();
-        }
-
-        private void init()
-        {
-            WebDisplay.Source = new Uri(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\Privacy.html");
         }
     }
 }

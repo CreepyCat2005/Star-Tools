@@ -42,6 +42,8 @@ namespace Star_Citizen_Pfusch.Models
         public string GridColumnShieldType { get; set; }
         public string GridColumnPrice { get; set; }
         public string DefaultStartSize { get; set; }
+        public int ChartResolution { get; set; }
+        public string BrowserType { get; set; }
 
     }
 }

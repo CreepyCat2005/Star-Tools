@@ -159,7 +159,6 @@
                     <ListBoxItem Content="{Binding FleetItem.Role}" ContentStringFormat="Role: {0}" />
                     <ListBoxItem Content="{Binding FleetItem.Career}" ContentStringFormat="Career: {0}" />
                     <ListBoxItem Content="{Binding FleetItem.Cargo}" ContentStringFormat="Cargo: {0} SCU" />
-                    <ListBoxItem Content="{Binding FleetItem.Health}" ContentStringFormat="Health: {0}" />
                     <ListBoxItem Content="{Binding Size}" />
                     <ListBoxItem Content="{Binding FleetItem.Mass}" ContentStringFormat="Mass: {0}" />
                     <ListBoxItem Content="{Binding FleetItem.HydrogenFuelCapacity}" ContentStringFormat="Hydrogen: {0}" />

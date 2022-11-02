@@ -1,8 +1,4 @@
-﻿using Star_Citizen_Pfusch.Pages.Ships;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Media;
+﻿using System.Collections.Generic;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,8 +13,6 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
     public partial class AppearanceSettings : Page
     {
         private Page ThisPage;
-        private Timer timer;
-        private double counter = 0;
         private SolidColorBrush TextColor, MenuColor, HeadlineColor, SliderColor;
 
         public bool IsModernShipListActive
@@ -44,6 +38,19 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             MenuColor = (SolidColorBrush)Application.Current.Resources["MenuColor"];
             HeadlineColor = (SolidColorBrush)Application.Current.Resources["HeadlineColor"];
             SliderColor = (SolidColorBrush)Application.Current.Resources["SliderColor"];
+
+            switch (Config.ChartResolution)
+            {
+                case 5:
+                    LowCheckBox.IsChecked = true;
+                    break;
+                case 12:
+                    MediumCheckBox.IsChecked = true;
+                    break;
+                case 20:
+                    HighCheckBox.IsChecked = true;
+                    break;
+            }
         }
         private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
@@ -110,6 +117,7 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             checkBoxes.Add(LowCheckBox);
             checkBoxes.Add(MediumCheckBox);
             checkBoxes.Add(HighCheckBox);
+            checkBoxes.Add(OffCheckBox);
             checkBoxes.Remove((CheckBox)sender);
 
             foreach (var item in checkBoxes)
@@ -123,11 +131,15 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             }
             else if ((bool)MediumCheckBox.IsChecked)
             {
-                Config.ChartResolution = 10;
+                Config.ChartResolution = 12;
             }
             else if ((bool)HighCheckBox.IsChecked)
             {
-                Config.ChartResolution = 15;
+                Config.ChartResolution = 20;
+            }
+            else if ((bool)OffCheckBox.IsChecked)
+            {
+                Config.ChartResolution = 1;
             }
         }
 

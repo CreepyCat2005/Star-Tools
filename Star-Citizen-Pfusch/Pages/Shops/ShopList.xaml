@@ -10,13 +10,20 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Fill="{DynamicResource BackgroundColor}" >
+        <Rectangle>
+            <Rectangle.Fill>
+                <SolidColorBrush>
+                    <SolidColorBrush.Color>
+                        <Color A="200" R="60" G="60" B="60" />
+                    </SolidColorBrush.Color>
+                </SolidColorBrush>
+            </Rectangle.Fill>
             <Rectangle.Effect>
-                <DropShadowEffect Opacity=".6" ShadowDepth="2" />
+                <DropShadowEffect Opacity=".6" ShadowDepth="3" />
             </Rectangle.Effect>
         </Rectangle>
 

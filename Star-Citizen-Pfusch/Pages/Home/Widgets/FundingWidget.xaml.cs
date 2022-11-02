@@ -23,12 +23,14 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
     /// </summary>
     public partial class FundingWidget : UserControl
     {
+        private string type = "Week";
         public FundingWidget()
         {
             InitializeComponent();
-            init("Week");
+            Loaded += init;
         }
-        private async void init(string type)
+
+        private async void init(object sender, RoutedEventArgs e)
         {
             HttpClient client = new HttpClient();
 
@@ -61,7 +63,8 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
         {
             if (!((ComboBoxItem)e.AddedItems[0]).Content.Equals(""))
             {
-                init(((ComboBoxItem)e.AddedItems[0]).Content.ToString());
+                type = ((ComboBoxItem)e.AddedItems[0]).Content.ToString();
+                init(this, new RoutedEventArgs());
             }
         }
         private FundingDataItem[] GetFundingDataItems(FundingItem item, string type)

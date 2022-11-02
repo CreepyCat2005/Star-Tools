@@ -23,13 +23,15 @@
         <Style TargetType="Border" x:Key="BorderStyle" >
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="BorderThickness" Value="1.5" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="Gray" />
                     <Setter Property="Background" >
                         <Setter.Value>
                             <SolidColorBrush>
                                 <SolidColorBrush.Color>
-                                    <Color A="200" R="90" G="90" B="90" />
+                                    <Color A="150" R="80" G="80" B="80" />
                                 </SolidColorBrush.Color>
                             </SolidColorBrush>
                         </Setter.Value>
@@ -79,6 +81,30 @@
             </Button.Style>
         </Button>
 
+        <Button Margin="5" Visibility="Hidden" Grid.Column="2" x:Name="ShoppingButton" >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Template" >
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" >
+                                    <Border.OpacityMask>
+                                        <ImageBrush ImageSource="/Graphics/Icons/ShoppingCart-Icon.png" Stretch="Uniform" />
+                                    </Border.OpacityMask>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Gray" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        
         <Button Margin="5" Click="HideButton_Click" Visibility="Hidden" x:Name="HideButton" >
             <Button.Style>
                 <Style TargetType="Button">
@@ -163,7 +189,7 @@
                     <ColumnDefinition Width="30" />
                 </Grid.ColumnDefinitions>
 
-                <Button Height="30" Grid.Column="1" Click="ModuleInfoButton_Click" Content="Retracted" >
+                <Button Height="30" Grid.Column="1" Click="ModuleInfoButton_Click" Content="Retracted" x:Name="LeftBorderExtractorButton" >
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="White" />
@@ -192,6 +218,5 @@
                 </ScrollViewer>
             </Grid>
         </Border>
-
     </Grid>
 </Page>

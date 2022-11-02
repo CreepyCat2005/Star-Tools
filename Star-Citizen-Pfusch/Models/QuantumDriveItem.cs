@@ -33,6 +33,14 @@ namespace Star_Citizen_Pfusch.Models
                 this.driveSpeedINTERN = value;
             }
         }
+        public double efficieny
+        {
+            get
+            {
+                return driveSpeed / quantumFuelRequirement / 10000;
+            }
+        }
+        public int range { get; set; }
         public double cooldownTime { get; set; }
         public int disconnectRange { get; set; }
         public int engageSpeed { get; set; }

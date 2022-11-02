@@ -28,10 +28,10 @@ namespace Star_Citizen_Pfusch.Pages.Home.Widgets
         public PlaytimeHistory()
         {
             InitializeComponent();
-            init();
+            Loaded += init;
         }
 
-        private async void init()
+        private async void init(object sender, RoutedEventArgs e)
         {
             HttpClient client = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, Config.URL + "/AccountData?History=true");

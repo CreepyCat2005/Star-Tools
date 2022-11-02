@@ -46,6 +46,9 @@ namespace Star_Citizen_Pfusch.Models
                 case "MissileLauncher":
                     list.Add(JsonConvert.DeserializeObject<MissileRackItem>(token.ToString()));
                     break;
+                case "WeaponGun":
+                    list.Add(JsonConvert.DeserializeObject<WeaponItem>(token.ToString()));
+                    break;
                 default:
                     list.Add(JsonConvert.DeserializeObject<ModuleItem>(token.ToString()));
                     break;

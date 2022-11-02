@@ -20,14 +20,26 @@ namespace Star_Citizen_Pfusch.Models
     {
         public int initialAmmoCount { get; set; }
         public int maxAmmoCount { get; set; }
+        public string GetAmmo
+        {
+            get
+            {
+                if (initialAmmoCount == 0) return "∞";
+                else return initialAmmoCount.ToString();
+            }
+        }
     }
     public class WeaponDamageItem
     {
-        public int DamagePhysical { get; set; }
-        public int DamageEnergy { get; set; }
-        public int DamageDistortion { get; set; }
-        public int DamageThermal { get; set; }
-        public int DamageBiochemical { get; set; }
-        public int DamageStun { get; set; }
+        public double DamagePhysical { get; set; }
+        public double DamageEnergy { get; set; }
+        public double DamageDistortion { get; set; }
+        public double DamageThermal { get; set; }
+        public double DamageBiochemical { get; set; }
+        public double DamageStun { get; set; }
+        public double alphaMin { get; set; }
+        public double alphaMax { get; set; }
+        public double fireRateMin { get; set; }
+        public double fireRateMax { get; set; }
     }
 }

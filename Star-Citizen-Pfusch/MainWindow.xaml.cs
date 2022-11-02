@@ -3,16 +3,11 @@ using Star_Citizen_Pfusch.Functions;
 using Star_Citizen_Pfusch.Models;
 using Star_Citizen_Pfusch.Pages;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.IO.MemoryMappedFiles;
 using System.IO.Pipes;
 using System.Linq;
-using System.Net.Http;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,14 +20,14 @@ namespace Star_Citizen_Pfusch
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    { 
+    {
         private static MainWindow window;
         private NotifyIcon notifyIcon = new NotifyIcon();
 
         public MainWindow()
         {
             Process[] processes = Process.GetProcessesByName("Star-Citizen-Pfusch");
-            if(processes.Length > 1)
+            if (processes.Length > 1)
             {
                 var client = new NamedPipeClientStream("Star-Tools-Pipe");
                 client.Connect();
@@ -109,10 +104,12 @@ namespace Star_Citizen_Pfusch
                 var fonts = userConfig.GetType().GetProperties().Where(o => o.PropertyType == typeof(double)).ToList();
 
                 Config.ModernShipList = userConfig.IsModernShipListActive;
+                Config.ChartResolution = userConfig.ChartResolution;
+                Config.BrowserType = userConfig.BrowserType;
 
                 foreach (var color in colors)
                 {
-                    if (color.Name.Equals("Theme") || color.Name.Equals("DefaultStartSize") || color.GetValue(userConfig) == null) continue;
+                    if (color.Name.Equals("Theme") || color.Name.Equals("BrowserType") || color.Name.Equals("DefaultStartSize") || color.GetValue(userConfig) == null) continue;
                     System.Windows.Application.Current.Resources[color.Name] = new BrushConverter().ConvertFrom(color.GetValue(userConfig));
                 }
                 System.Windows.Application.Current.Resources["Theme"] = userConfig.Theme;

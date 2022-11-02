@@ -14,6 +14,8 @@
     <sys:String x:Key="home.shops">Shops</sys:String>
     <sys:String x:Key="home.orgs">Organisations</sys:String>
     <sys:String x:Key="home.settings">Settings</sys:String>
+    <sys:String x:Key="home.notes">Notes</sys:String>
+    <sys:String x:Key="home.inventory">Inventory</sys:String>
 
     <sys:String x:Key="ProductKey.Cancel">Back</sys:String>
     <sys:String x:Key="ProductKey.Submit">Send</sys:String>
@@ -60,4 +62,5 @@
     <sys:String x:Key="Settings.Appearance">Appearance</sys:String>
     <sys:String x:Key="Settings.License">License</sys:String>
     <sys:String x:Key="Settings.DataSafety">Data safety</sys:String>
+    <sys:String x:Key="Settings.AccountSettings">Account Info</sys:String>
 </ResourceDictionary>

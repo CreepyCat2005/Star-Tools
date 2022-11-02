@@ -3,7 +3,7 @@ using Star_Citizen_Pfusch.Functions;
 using Star_Citizen_Pfusch.Pages.Home;
 using Star_Citizen_Pfusch.Pages.Ships;
 using Star_Citizen_Pfusch.Pages.Shops;
-using Star_Citizen_Pfusch.Pages.Integration;
+using Star_Citizen_Pfusch.Pages.Extras;
 using System;
 using System.Diagnostics;
 using System.Net.Http;
@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Star_Citizen_Pfusch.Models.UserControls;
 using System.Windows.Media.Effects;
+using System.IO;
 
 namespace Star_Citizen_Pfusch
 {
@@ -28,10 +29,9 @@ namespace Star_Citizen_Pfusch
         private Telemetry Telemetry = null;
         private ModernShipList ModernShipList = null;
         private ModernShipList ModernVehicleList = null;
-        private ShipList VehicleList = null;
-        private ShipList ShipList = null;
+        private NotesPage NotesPage = null;
         private ShopList ShopList = null;
-        private OrgaIntegration OrgaIntegration = null;
+        private PledgeList PledgeList = null;
         private Point currentPoint = new Point();
         public homeScreen()
         {
@@ -139,11 +139,10 @@ namespace Star_Citizen_Pfusch
         {
 
         }
-
-        private void OrgaItem_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void Inventory_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (OrgaIntegration == null) OrgaIntegration = new OrgaIntegration(ContentDisplay);
-            ContentDisplay.Navigate(OrgaIntegration);
+            if (PledgeList == null) PledgeList = new PledgeList();
+            ContentDisplay.Navigate(PledgeList);
         }
 
         private void ReportButton_Click(object sender, RoutedEventArgs e)
@@ -165,6 +164,12 @@ namespace Star_Citizen_Pfusch
                 Margin = new Thickness(10),
             };
             popup.IsOpen = true;
+        }
+
+        private void NotesListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (NotesPage == null) NotesPage = new NotesPage();
+            ContentDisplay.Navigate(NotesPage);
         }
     }
 }

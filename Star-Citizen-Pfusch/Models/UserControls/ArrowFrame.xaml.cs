@@ -34,6 +34,11 @@ namespace Star_Citizen_Pfusch.Models.UserControls
 
         private void ArrowFrame_Loaded(object sender, RoutedEventArgs e)
         {
+            foreach (QuantumDriveItem item in ModuleArray.Where(o => o.Type.Equals("QuantumDrive")))
+            {
+                item.range = (int)(shipItem.QuantumFuelCapacity / (item.quantumFuelRequirement / 1000000));
+            }
+
             foreach (var item in ModuleItems)
             {
                 LoadoutItem loadout = GetLowestContainer(shipItem.Loadout.Where(o => o.localName.Equals(item.LocalName)).First());
@@ -41,7 +46,9 @@ namespace Star_Citizen_Pfusch.Models.UserControls
 
                 for (int i = 0; i < loadout.Loadout.Length; i++)
                 {
-                    moduleItems.Add(ModuleArray.Where(o => o.LocalName.Equals(loadout.Loadout[i].localName)).First());
+                    var module = ModuleArray.Where(o => o.LocalName.Equals(loadout.Loadout[i].localName)).FirstOrDefault();
+                    if (loadout.Loadout[i].localName.Equals("") || module == null) continue;
+                    moduleItems.Add(module);
                 }
 
                 item.Loadout = moduleItems.ToArray();
@@ -111,6 +118,7 @@ namespace Star_Citizen_Pfusch.Models.UserControls
                         Background = (SolidColorBrush)Resources["ItemBackground"],
                         BorderBrush = (SolidColorBrush)Resources["ItemStroke"],
                         ModuleItem = module,
+                        Child = true,
                         Editable = true,
                         ModuleArray = ModuleArray,
                         Index = x,
@@ -163,7 +171,7 @@ namespace Star_Citizen_Pfusch.Models.UserControls
         {
             ModuleDropdown moduleDropdown = (ModuleDropdown)sender;
 
-            if (!moduleDropdown.ModuleItem.Type.Equals("Missile") && !moduleDropdown.ModuleItem.Type.Equals("WeaponGun"))
+            if (moduleDropdown.Child == false)
             {
                 ModuleLoadoutItem[moduleDropdown.Index] = moduleDropdown.ModuleItem;
             }

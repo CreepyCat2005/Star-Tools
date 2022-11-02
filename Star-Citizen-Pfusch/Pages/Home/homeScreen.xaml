@@ -172,16 +172,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="ComponentItem" >
-                <ListBoxItem.Content>
-                    <Expander Header="{StaticResource home.components}" Foreground="{DynamicResource MenuColor}" IsExpanded="False" >
-                        <ListBox Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ExpanderItemStyle}" >
-                            <ListBoxItem Content="Module" Foreground="{DynamicResource TextColor}" Margin="20,0,0,0" MouseLeftButtonUp="ModuleListBoxItem_MouseLeftButtonUp" />
-                            <ListBoxItem Content="Waffen" Foreground="{DynamicResource TextColor}" Margin="20,0,0,0" MouseLeftButtonUp="WeaponListBoxItem_MouseLeftButtonUp" />
-                            <ListBoxItem Content="Sonstiges" Foreground="{DynamicResource TextColor}" Margin="20,0,0,0" MouseLeftButtonUp="UtilityListBoxItem_MouseLeftButtonUp" />
-                        </ListBox>
-                    </Expander>
-                </ListBoxItem.Content>
+            <ListBoxItem Content="{StaticResource home.notes}" FontSize="35" Foreground="{DynamicResource MenuColor}" MouseLeftButtonUp="NotesListBoxItem_MouseLeftButtonUp" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -247,7 +238,7 @@
                 </ListBoxItem.Style>
             </ListBoxItem>
 
-            <ListBoxItem Content="{StaticResource home.orgs}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="OrgaItem" PreviewMouseLeftButtonUp="OrgaItem_PreviewMouseLeftButtonUp" >
+            <ListBoxItem Content="{StaticResource home.inventory}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="Inventory" PreviewMouseLeftButtonUp="Inventory_PreviewMouseLeftButtonUp" >
                 <ListBoxItem.Style>
                     <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Background" Value="Transparent"/>

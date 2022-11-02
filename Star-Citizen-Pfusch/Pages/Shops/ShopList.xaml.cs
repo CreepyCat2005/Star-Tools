@@ -4,6 +4,7 @@ using Star_Citizen_Pfusch.Pages.SettingsFolder;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -46,6 +47,7 @@ namespace Star_Citizen_Pfusch.Pages.Shops
                 TreeViewItem treeViewItem = new TreeViewItem() { Header = item.name + " | " + item.location };
                 foreach (var subItem in item.inventory)
                 {
+                    if (subItem.name == null) continue;
                     TreeViewItem viewItem = new TreeViewItem() { Header = subItem.name + " | " + String.Format("{0:n0} aUEC", subItem.price), FontSize = 24, Margin = new Thickness(0,2,0,2) };
                     viewItem.SetResourceReference(ForegroundProperty, "TextColor");
                     treeViewItem.Items.Add(viewItem);
@@ -75,7 +77,7 @@ namespace Star_Citizen_Pfusch.Pages.Shops
                         item.Visibility = Visibility.Collapsed;
                     }
                 }
-                if (!hit)
+                if (!hit && !boxText.Equals(""))
                 {
                     treeViewItems[i].Visibility = Visibility.Collapsed;
                 }

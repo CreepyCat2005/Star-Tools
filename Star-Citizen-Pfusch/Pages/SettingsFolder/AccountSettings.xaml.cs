@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,21 +16,13 @@ using System.Windows.Shapes;
 namespace Star_Citizen_Pfusch.Pages.SettingsFolder
 {
     /// <summary>
-    /// Interaction logic for PrivacySettings.xaml
+    /// Interaction logic for AccountSettings.xaml
     /// </summary>
-    public partial class PrivacySettings : Page
+    public partial class AccountSettings : Page
     {
-        public PrivacySettings()
+        public AccountSettings()
         {
             InitializeComponent();
-            this.DataContext = this;
-
-            init();
-        }
-
-        private void init()
-        {
-            WebDisplay.Source = new Uri(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\Privacy.html");
         }
     }
 }

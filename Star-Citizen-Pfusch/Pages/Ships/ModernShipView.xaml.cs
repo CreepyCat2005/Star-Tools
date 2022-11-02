@@ -1,30 +1,19 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Star_Citizen_Pfusch.Models;
-using Star_Citizen_Pfusch.Models.Enums;
 using Star_Citizen_Pfusch.Models.UserControls;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
-using System.Windows.Media.Media3D;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Windows.UI.Core.AnimationMetrics;
 
 namespace Star_Citizen_Pfusch.Pages.Ships
 {
@@ -161,6 +150,7 @@ namespace Star_Citizen_Pfusch.Pages.Ships
                     break;
                 case "QuantumDrive":
                     item = JsonConvert.DeserializeObject<QuantumDriveItem>(res);
+                    ((QuantumDriveItem)item).range = (int)(shipItem.QuantumFuelCapacity / ((QuantumDriveItem)item).quantumFuelRequirement);
                     break;
                 case "WeaponGun":
                     item = JsonConvert.DeserializeObject<WeaponItem>(res);
@@ -177,12 +167,26 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             SetStackPanelPropertiers(item);
 
             BackgroundBorderLeft.Visibility = Visibility.Visible;
+
+            if (BackgroundBorderLeft.ActualWidth <= 50)
+            {
+                LeftBorderExtractorButton.RenderTransform = new RotateTransform()
+                {
+                    Angle = 180,
+                    CenterX = 15,
+                    CenterY = 15
+                };
+
+                DoubleAnimation doubleAnimation = new DoubleAnimation(30, 500, new Duration(new TimeSpan(0, 0, 0, 0, 200)));
+
+                BackgroundBorderLeft.BeginAnimation(WidthProperty, doubleAnimation);
+                LeftBorderExtractorButton.Content = "Extended";
+            }
         }
         private void SetStackPanelPropertiers(object item)
         {
             foreach (var prop in item.GetType().GetProperties())
             {
-                bool aasds = prop.PropertyType != typeof(string) && prop.PropertyType != typeof(string[]) && prop.PropertyType.IsClass && prop.GetValue(item, null) != null;
                 if (prop.PropertyType != typeof(string) && prop.PropertyType != typeof(string[]) && prop.PropertyType.IsClass && prop.GetValue(item, null) != null)
                 {
                     SetStackPanelPropertiers(prop.GetValue(item, null));
