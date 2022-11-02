@@ -127,18 +127,6 @@ namespace Star_Citizen_Pfusch
                 ((Canvas)ContentDisplay.Content).Children.Clear();
             }
         }
-        private void ModuleListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-        private void WeaponListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-        private void UtilityListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
         private void Inventory_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (PledgeList == null) PledgeList = new PledgeList();
@@ -170,6 +158,11 @@ namespace Star_Citizen_Pfusch
         {
             if (NotesPage == null) NotesPage = new NotesPage();
             ContentDisplay.Navigate(NotesPage);
+        }
+
+        private void Orga_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

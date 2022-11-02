@@ -40,7 +40,7 @@
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260" />
+            <ColumnDefinition Width="280" />
             <ColumnDefinition Width="4" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -73,236 +73,58 @@
         <GridSplitter Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
 
         <ListBox Grid.Row="0" Background="Transparent" BorderThickness="0" Grid.Column="0" Name="ListBox" >
-            <ListBoxItem Content="{StaticResource home.homeButton}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="MainMenuItem" PreviewMouseLeftButtonUp="MainMenuItem_MouseLeftButtonDown" >
-                <ListBoxItem.Style>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" >
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="White" Offset="0.025"/>
-                                            <GradientStop Offset="0.025">
-                                                <GradientStop.Color>
-                                                    <Color A="255" R="40" G="40" B="40" />
-                                                </GradientStop.Color>
-                                            </GradientStop>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBoxItem.Style>
-            </ListBoxItem>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" >
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="White" Offset="0.025"/>
+                                        <GradientStop Offset="0.025">
+                                            <GradientStop.Color>
+                                                <Color A="255" R="40" G="40" B="40" />
+                                            </GradientStop.Color>
+                                        </GradientStop>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            
+            <ListBoxItem Content="{StaticResource home.homeButton}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="MainMenuItem" PreviewMouseLeftButtonUp="MainMenuItem_MouseLeftButtonDown" />
 
-            <ListBoxItem Content="{StaticResource home.ships}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="ShipItem" PreviewMouseLeftButtonUp="ShipItem_MouseLeftButtonDown" >
-                <ListBoxItem.Style>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" >
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="White" Offset="0.025"/>
-                                            <GradientStop Offset="0.025">
-                                                <GradientStop.Color>
-                                                    <Color A="255" R="40" G="40" B="40" />
-                                                </GradientStop.Color>
-                                            </GradientStop>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBoxItem.Style>
-            </ListBoxItem>
+            <ListBoxItem Content="{StaticResource home.ships}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="ShipItem" PreviewMouseLeftButtonUp="ShipItem_MouseLeftButtonDown" />
 
-            <ListBoxItem Content="{StaticResource home.vehicles}" FontSize="35" Foreground="{DynamicResource MenuColor}" PreviewMouseLeftButtonUp="Vehicle_PreviewMouseLeftButtonUp" >
-                <ListBoxItem.Style>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background">
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="White" Offset="0.025"/>
-                                            <GradientStop Offset="0.025">
-                                                <GradientStop.Color>
-                                                    <Color A="255" R="40" G="40" B="40" />
-                                                </GradientStop.Color>
-                                            </GradientStop>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBoxItem.Style>
-            </ListBoxItem>
+            <ListBoxItem Content="{StaticResource home.vehicles}" FontSize="35" Foreground="{DynamicResource MenuColor}" PreviewMouseLeftButtonUp="Vehicle_PreviewMouseLeftButtonUp" />
 
-            <ListBoxItem Content="{StaticResource home.notes}" FontSize="35" Foreground="{DynamicResource MenuColor}" MouseLeftButtonUp="NotesListBoxItem_MouseLeftButtonUp" >
-                <ListBoxItem.Style>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" >
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="White" Offset="0.025"/>
-                                            <GradientStop Offset="0.025">
-                                                <GradientStop.Color>
-                                                    <Color A="255" R="40" G="40" B="40" />
-                                                </GradientStop.Color>
-                                            </GradientStop>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBoxItem.Style>
-            </ListBoxItem>
+            <ListBoxItem Content="{StaticResource home.shops}" FontSize="35" Foreground="{DynamicResource MenuColor}" PreviewMouseLeftButtonUp="PureShopDataItem_PreviewMouseLeftButtonUp" />
 
-            <ListBoxItem Content="{StaticResource home.shops}" FontSize="35" Foreground="{DynamicResource MenuColor}" PreviewMouseLeftButtonUp="PureShopDataItem_PreviewMouseLeftButtonUp" >
-                <ListBoxItem.Style>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" >
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="White" Offset="0.025"/>
-                                            <GradientStop Offset="0.025">
-                                                <GradientStop.Color>
-                                                    <Color A="255" R="40" G="40" B="40" />
-                                                </GradientStop.Color>
-                                            </GradientStop>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBoxItem.Style>
-            </ListBoxItem>
+            <ListBoxItem Content="{StaticResource home.inventory}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="Inventory" PreviewMouseLeftButtonUp="Inventory_PreviewMouseLeftButtonUp" />
 
-            <ListBoxItem Content="{StaticResource home.inventory}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="Inventory" PreviewMouseLeftButtonUp="Inventory_PreviewMouseLeftButtonUp" >
-                <ListBoxItem.Style>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" >
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="White" Offset="0.025"/>
-                                            <GradientStop Offset="0.025">
-                                                <GradientStop.Color>
-                                                    <Color A="255" R="40" G="40" B="40" />
-                                                </GradientStop.Color>
-                                            </GradientStop>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBoxItem.Style>
-            </ListBoxItem>
+            <Expander Header="{StaticResource home.orgs}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="Orga" PreviewMouseLeftButtonUp="Orga_PreviewMouseLeftButtonUp" >
+                <StackPanel Orientation="Vertical" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Transparent" >
+                    <Button Content="1" />
+                    <Button Content="1" />
+                    <Button Content="1" />
+                </StackPanel>
+            </Expander>
 
-            <ListBoxItem Content="{StaticResource home.settings}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="SettingsItem" PreviewMouseLeftButtonUp="SettingsItem_MouseLeftButtonDown" >
-                <ListBoxItem.Style>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" >
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="White" Offset="0.025"/>
-                                            <GradientStop Offset="0.025">
-                                                <GradientStop.Color>
-                                                    <Color A="255" R="40" G="40" B="40" />
-                                                </GradientStop.Color>
-                                            </GradientStop>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBoxItem.Style>
-            </ListBoxItem>
+            <ListBoxItem Content="{StaticResource home.notes}" FontSize="35" Foreground="{DynamicResource MenuColor}" MouseLeftButtonUp="NotesListBoxItem_MouseLeftButtonUp" />
+
+            <ListBoxItem Content="{StaticResource home.settings}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="SettingsItem" PreviewMouseLeftButtonUp="SettingsItem_MouseLeftButtonDown" />
         </ListBox>
 
         <Button Content="Report Bug" Grid.Row="1" FontSize="25" BorderThickness="0" Foreground="{DynamicResource MenuColor}" Click="ReportButton_Click" >
