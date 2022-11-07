@@ -89,7 +89,6 @@ namespace Star_Citizen_Pfusch.Pages.Ships
             if (((ShipListDisplayItem)sender).FleetItem.Manufacturer != null)
             {
                 frame.Navigate(new ModernShipView(((ShipListDisplayItem)sender).FleetItem._id));
-                frame.RemoveBackEntry();
             }
         }
 
