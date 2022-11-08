@@ -7,7 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="120" d:DesignWidth="400">
 
-    <Border Background="{Binding OrgaBackground}" CornerRadius="{Binding CornerRadius}" MouseLeftButtonUp="Border_MouseLeftButtonUp" >
+    <Border CornerRadius="{Binding CornerRadius}" MouseLeftButtonUp="Border_MouseLeftButtonUp" >
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Background" Value="{Binding OrgaBackground}" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#aa323232" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
         <StackPanel Orientation="Horizontal">
             <Image Margin="5" Source="{Binding Image}" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" >
                 <Image.OpacityMask>
@@ -18,7 +28,7 @@
                     </VisualBrush>
                 </Image.OpacityMask>
             </Image>
-            <TextBlock Text="{Binding OrgaName}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="LightGray" Margin="10,0,0,0" FontSize="{Binding OrgaFontSize}" />
+            <TextBlock Text="{Binding OrgaName}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="LightGray" Margin="10,0,5,0" FontSize="{Binding OrgaFontSize}" />
         </StackPanel>
     </Border>
 </UserControl>

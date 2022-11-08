@@ -36,17 +36,26 @@ namespace Star_Citizen_Pfusch
         private NotesPage NotesPage = null;
         private ShopList ShopList = null;
         private PledgeList PledgeList = null;
+
         public homeScreen()
         {
             InitializeComponent();
             PlaytimeCounter.start(1000 * 60);
             InkCanvas.DefaultDrawingAttributes.Color = Colors.White;
+
+            ContentDisplay.Navigated += ContentDisplay_Navigated;
         }
+
+        private void ContentDisplay_Navigated(object sender, NavigationEventArgs e)
+        {
+            InkCanvas.Visibility = Visibility.Collapsed;
+            Debug.WriteLine("Navigated!");
+        }
+
         private void MainMenuItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (Telemetry == null) Telemetry = new Telemetry();
             ContentDisplay.Navigate(Telemetry);
-            InkCanvas.Visibility = Visibility.Collapsed;
         }
 
         private void ShipItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -61,7 +70,6 @@ namespace Star_Citizen_Pfusch
                 if (ModernShipList == null) ModernShipList = new ModernShipList(ContentDisplay, "Vehicle_Spaceship");
                 ContentDisplay.Navigate(ModernShipList);
             }
-            InkCanvas.Visibility = Visibility.Collapsed;
         }
 
         private void SettingsItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -90,20 +98,17 @@ namespace Star_Citizen_Pfusch
                 if (ModernVehicleList == null) ModernVehicleList = new ModernShipList(ContentDisplay, "Vehicle_GroundVehicle");
                 ContentDisplay.Navigate(ModernVehicleList);
             }
-            InkCanvas.Visibility = Visibility.Collapsed;
         }
 
         private void PureShopDataItem_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (ShopList == null) ShopList = new ShopList();
             ContentDisplay.Navigate(ShopList);
-            InkCanvas.Visibility = Visibility.Collapsed;
         }
         private void Inventory_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (PledgeList == null) PledgeList = new PledgeList();
             ContentDisplay.Navigate(PledgeList);
-            InkCanvas.Visibility = Visibility.Collapsed;
         }
 
         private void ReportButton_Click(object sender, RoutedEventArgs e)
@@ -131,37 +136,6 @@ namespace Star_Citizen_Pfusch
         {
             if (NotesPage == null) NotesPage = new NotesPage();
             ContentDisplay.Navigate(NotesPage);
-            InkCanvas.Visibility = Visibility.Collapsed;
-        }
-
-        private async void Orga_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            HttpClient client = new HttpClient();
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://robertsspaceindustries.com/account/organization");
-            request.Headers.Add("Cookie", LocalDataManager.GetRSICookieString());
-
-            HttpResponseMessage response = await client.SendAsync(request);
-            string res = await response.Content.ReadAsStringAsync();
-            res = Regex.Replace(res, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
-
-            string[] lineArray = res.Split("\n");
-
-            for (int i = 0; i < lineArray.Length; i++)
-            {
-                if (lineArray[i].Contains("<div class=\"left-col\">"))
-                {
-                    OrgaStackPanel.Children.Add(new OrgaDisplayItem()
-                    {
-                        OrgaBackground = new SolidColorBrush(Colors.Transparent),
-                        OrgaFontSize = 25,
-                        CornerRadius = new CornerRadius(10),
-                        Height = 50,
-                        Image = new BitmapImage(new Uri("https://robertsspaceindustries.com" + lineArray[i + 3].Substring(lineArray[i + 3].IndexOf("><img src=\"") + 11, lineArray[i + 3].IndexOf("\" /></a>") - lineArray[i + 3].IndexOf("><img src=\"") - 11))),
-                        OrgaName = lineArray[i + 9].Substring(lineArray[i + 9].IndexOf("class=\"value\">") + 14, lineArray[i + 9].IndexOf("</a>") - lineArray[i + 9].IndexOf("class=\"value\">") - 14),
-                        Link = lineArray[i + 9].Substring(lineArray[i + 9].IndexOf("<a href=\"") + 9, lineArray[i + 9].IndexOf("\" class=\"value\">") - lineArray[i + 9].IndexOf("<a href=\"") - 9)
-                    });
-                }
-            }
         }
 
         private void ContentDisplay_KeyUp(object sender, KeyEventArgs e)
@@ -199,6 +173,37 @@ namespace Star_Citizen_Pfusch
         private void InkCanvas_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
             ((InkCanvas)sender).Strokes.Clear();
+        }
+         
+        private async void Expander_Expanded(object sender, RoutedEventArgs e)
+        {
+            HttpClient client = new HttpClient();
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://robertsspaceindustries.com/account/organization");
+            request.Headers.Add("Cookie", LocalDataManager.GetRSICookieString());
+
+            HttpResponseMessage response = await client.SendAsync(request);
+            string res = await response.Content.ReadAsStringAsync();
+            res = Regex.Replace(res, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
+
+            string[] lineArray = res.Split("\n");
+            OrgaStackPanel.Children.Clear();
+
+            for (int i = 0; i < lineArray.Length; i++)
+            {
+                if (lineArray[i].Contains("<div class=\"left-col\">"))
+                {
+                    OrgaStackPanel.Children.Add(new OrgaDisplayItem(ContentDisplay)
+                    {
+                        OrgaBackground = new SolidColorBrush(Colors.Transparent),
+                        OrgaFontSize = 25,
+                        CornerRadius = new CornerRadius(10),
+                        Height = 50,
+                        Image = new BitmapImage(new Uri("https://robertsspaceindustries.com" + lineArray[i + 3].Substring(lineArray[i + 3].IndexOf("><img src=\"") + 11, lineArray[i + 3].IndexOf("\" /></a>") - lineArray[i + 3].IndexOf("><img src=\"") - 11))),
+                        OrgaName = lineArray[i + 9].Substring(lineArray[i + 9].IndexOf("class=\"value\">") + 14, lineArray[i + 9].IndexOf("</a>") - lineArray[i + 9].IndexOf("class=\"value\">") - 14),
+                        Link = lineArray[i + 9].Substring(lineArray[i + 9].IndexOf("<a href=\"") + 9, lineArray[i + 9].IndexOf("\" class=\"value\">") - lineArray[i + 9].IndexOf("<a href=\"") - 9)
+                    });
+                }
+            }
         }
     }
 }

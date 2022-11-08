@@ -41,7 +41,6 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="280" />
-            <ColumnDefinition Width="4" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -50,7 +49,7 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <Frame x:Name="ContentDisplay" Grid.Column="2" Grid.Row="0" Grid.RowSpan="8" BorderThickness="0" NavigationUIVisibility="Hidden" KeyUp="ContentDisplay_KeyUp" >
+        <Frame x:Name="ContentDisplay" Grid.Column="1" Grid.Row="0" Grid.RowSpan="8" BorderThickness="0" NavigationUIVisibility="Hidden" KeyUp="ContentDisplay_KeyUp" >
             <Frame.Background>
                 <SolidColorBrush>
                     <SolidColorBrush.Color>
@@ -63,21 +62,38 @@
         <InkCanvas Background="Transparent" x:Name="InkCanvas" Grid.Column="2" Grid.Row="0" Grid.RowSpan="8" MouseRightButtonUp="InkCanvas_MouseRightButtonUp" />
 
         <Rectangle Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" >
+            <Rectangle.Effect>
+                <DropShadowEffect ShadowDepth="2" Opacity=".5" BlurRadius="10" />
+            </Rectangle.Effect>
             <Rectangle.Fill>
                 <SolidColorBrush>
                     <SolidColorBrush.Color>
-                        <Color A="230" R="40" G="40" B="40" />
+                        <Color A="230" R="45" G="45" B="45" />
                     </SolidColorBrush.Color>
                 </SolidColorBrush>
             </Rectangle.Fill>
         </Rectangle>
 
-        <GridSplitter Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" Background="{DynamicResource SliderColor}" />
-
-        <ListBox Grid.Row="0" Background="Transparent" BorderThickness="0" Grid.Column="0" Name="ListBox" >
+        <ListBox Grid.Row="0" BorderThickness="0" Grid.Column="0" Name="ListBox" Background="Transparent" >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="{x:Type ListBoxItem}">
-                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="0" Color="#aa292929" />
+                                <GradientStop Offset="0" >
+                                    <GradientStop.Color>
+                                        <Color A="0" R="45" G="45" B="45" />
+                                    </GradientStop.Color>
+                                </GradientStop>
+                                <GradientStop Offset="1" >
+                                    <GradientStop.Color>
+                                        <Color A="0" R="45" G="45" B="45" />
+                                    </GradientStop.Color>
+                                </GradientStop>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -88,20 +104,26 @@
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" >
-                                <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                        <GradientStop Color="White" Offset="0.025"/>
-                                        <GradientStop Offset="0.025">
-                                            <GradientStop.Color>
-                                                <Color A="255" R="40" G="40" B="40" />
-                                            </GradientStop.Color>
-                                        </GradientStop>
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
+                        <EventTrigger RoutedEvent="MouseEnter" >
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation BeginTime="0:0:0.05" Duration="0:0:0.20" Storyboard.TargetProperty="Background.GradientStops[0].Offset" To="1" />
+                                        <DoubleAnimation Duration="0:0:0.20" Storyboard.TargetProperty="Background.GradientStops[1].Offset" To="1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave" >
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:0.20" Storyboard.TargetProperty="Background.GradientStops[0].Offset" To="0" />
+                                        <DoubleAnimation BeginTime="0:0:0.05" Duration="0:0:0.20" Storyboard.TargetProperty="Background.GradientStops[1].Offset" To="0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
                     </Style.Triggers>
                 </Style>
             </ListBox.ItemContainerStyle>
@@ -116,7 +138,7 @@
 
             <ListBoxItem Content="{StaticResource home.inventory}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="Inventory" PreviewMouseLeftButtonUp="Inventory_PreviewMouseLeftButtonUp" />
 
-            <Expander Header="{StaticResource home.orgs}" FontSize="35" Foreground="{DynamicResource MenuColor}" PreviewMouseLeftButtonUp="Orga_PreviewMouseLeftButtonUp" >
+            <Expander Header="{StaticResource home.orgs}" FontSize="35" Foreground="{DynamicResource MenuColor}" Expanded="Expander_Expanded" >
                 <StackPanel Orientation="Vertical" ScrollViewer.VerticalScrollBarVisibility="Disabled" x:Name="OrgaStackPanel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Transparent" />
             </Expander>
 
@@ -124,6 +146,8 @@
 
             <ListBoxItem Content="{StaticResource home.settings}" FontSize="35" Foreground="{DynamicResource MenuColor}" x:Name="SettingsItem" PreviewMouseLeftButtonUp="SettingsItem_MouseLeftButtonDown" />
         </ListBox>
+
+        <GridSplitter Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Right" Width="4" Background="Transparent" />
 
         <Button Content="Report Bug" Grid.Row="1" FontSize="25" BorderThickness="0" Foreground="{DynamicResource MenuColor}" Click="ReportButton_Click" >
             <Button.Style>

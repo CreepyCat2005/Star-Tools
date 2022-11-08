@@ -1,7 +1,9 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Star_Citizen_Pfusch.Pages.Extras;
 
 namespace Star_Citizen_Pfusch.Models.UserControls
 {
@@ -17,15 +19,19 @@ namespace Star_Citizen_Pfusch.Models.UserControls
         public SolidColorBrush OrgaBackground { get; set; }
         public string Link { get; set; }
 
-        public OrgaDisplayItem()
+        private Frame contentFrame;
+
+        public OrgaDisplayItem(Frame contentDisplay)
         {
+            contentFrame = contentDisplay;
+
             InitializeComponent();
             this.DataContext = this;
         }
 
         private void Border_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
+            contentFrame.Navigate(new OrgaPage(Link));
         }
     }
 }
