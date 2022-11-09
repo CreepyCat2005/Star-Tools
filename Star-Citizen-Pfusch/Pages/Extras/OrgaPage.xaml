@@ -14,6 +14,24 @@
             <GradientStop Color="Gray" Offset=".5" />
             <GradientStop Color="Transparent" Offset="1" />
         </LinearGradientBrush>
+        <Style TargetType="Button" x:Key="ButtonStyle" >
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5" >
+                            <ContentPresenter Margin="3" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ff252525" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
 
     <Grid>
@@ -41,11 +59,11 @@
                 <DropShadowEffect BlurRadius="15" ShadowDepth="0" Opacity=".5" />
             </Border.Effect>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="10,0,0,0" Text="Startseite" VerticalAlignment="Center" Foreground="#feee" FontSize="22" />
+                <Button Margin="10,0,0,0" Content="Startseite" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" />
                 <Rectangle Width="1" Fill="{StaticResource SplitterGradient}" Margin="10,2,10,2" />
-                <TextBlock Text="Mitglieder" VerticalAlignment="Center" Foreground="#feee" FontSize="22" />
-                <Rectangle Width="1" Fill="{StaticResource SplitterGradient}" Margin="10,2,10,2" />
-                <TextBlock Text="Admin" VerticalAlignment="Center" Foreground="#feee" FontSize="22" />
+                <Button Content="Mitglieder" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" Click="MemberButton_Click" />
+                <Rectangle Width="1" Fill="{StaticResource SplitterGradient}" Margin="10,2,10,2" Visibility="{Binding IsOwner}" />
+                <Button Content="Admin" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" Click="AdminButton_Click" Visibility="{Binding IsOwner}" />
             </StackPanel>
         </Border>
         <StackPanel x:Name="CategoryStackpanel" Grid.Column="1" Grid.Row="1" FlowDirection="RightToLeft" Orientation="Horizontal" />

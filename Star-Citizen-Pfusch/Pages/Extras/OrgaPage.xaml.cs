@@ -1,40 +1,50 @@
-﻿using System;
+﻿using Star_Citizen_Pfusch.Functions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
 using System.Net.Http;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Star_Citizen_Pfusch.Pages.Extras
 {
     /// <summary>
     /// Interaction logic for OrgaPage.xaml
     /// </summary>
-    public partial class OrgaPage : Page
+    public partial class OrgaPage : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private readonly string link;
+
+        public Visibility IsOwner { get; set; } = Visibility.Collapsed;
 
         public OrgaPage(string link)
         {
             InitializeComponent();
             this.DataContext = this;
-
-            init(link);
+            this.link = link;
+            init();
         }
 
-        private async void init(string link)
+        private async void init()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://robertsspaceindustries.com" + link);
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://robertsspaceindustries.com" + link);
+            request.Headers.Add("Cookie", LocalDataManager.GetRSICookieString());
+            request.Headers.Add("Host", "robertsspaceindustries.com");
+            request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0");
+            request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8");
+            request.Headers.Add("Accept-Language", "de,en-US;q=0.7,en;q=0.3");
+            request.Headers.Add("Connection", "keep-alive");
+            request.Headers.Add("Upgrade-Insecure-Requests", "1");
+            request.Headers.Add("Sec-Fetch-Dest", "document");
+            request.Headers.Add("Sec-Fetch-Mode", "navigate");
+            request.Headers.Add("Sec-Fetch-Site", "cross-site");
+            HttpResponseMessage response = await client.SendAsync(request);
             string res = await response.Content.ReadAsStringAsync();
             res = Regex.Replace(res, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
 
@@ -79,9 +89,36 @@ namespace Star_Citizen_Pfusch.Pages.Extras
                         ToolTip = tooltip
                     });
                 }
+                else if (lineArray[i].Contains("/admin/overview"))
+                {
+                    IsOwner = Visibility.Visible;
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(IsOwner)));
+                }
             }
+        }
 
+        private async void MemberButton_Click(object sender, RoutedEventArgs e)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("https://robertsspaceindustries.com" + link + "/members");
+            string res = await response.Content.ReadAsStringAsync();
+            res = Regex.Replace(res, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
 
+            string[] lineArray = res.Split("\n");
+            Dictionary<int, string> dict = new Dictionary<int, string>();
+
+            for (int i = 0; i < lineArray.Length; i++)
+            {
+                if (lineArray[i].Contains("<input type=\"radio\" class=\"js-rank js-form-data\" name=\"rank\""))
+                {
+                    dict.Add(int.Parse(lineArray[i].Substring(lineArray[i].IndexOf("value=\"") + 7, lineArray[i].IndexOf("\" >") - lineArray[i].IndexOf("value=\"") - 7)),
+                        lineArray[i + 1].Substring(lineArray[i + 1].IndexOf("<span>") + 6, lineArray[i + 1].IndexOf("</span>") - lineArray[i + 1].IndexOf("<span>") - 6));
+                }
+            }
+        }
+
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
