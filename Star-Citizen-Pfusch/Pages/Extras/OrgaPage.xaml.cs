@@ -1,4 +1,6 @@
 ﻿using Star_Citizen_Pfusch.Functions;
+using Star_Citizen_Pfusch.Models;
+using Star_Citizen_Pfusch.Pages.Extras.OrgaExtras;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +21,8 @@ namespace Star_Citizen_Pfusch.Pages.Extras
         public event PropertyChangedEventHandler PropertyChanged;
 
         private readonly string link;
+        private OrgaItem orgaitem = new OrgaItem();
+        private OrgaAdminSettings orgaAdminSettings;
 
         public Visibility IsOwner { get; set; } = Visibility.Collapsed;
 
@@ -27,10 +31,10 @@ namespace Star_Citizen_Pfusch.Pages.Extras
             InitializeComponent();
             this.DataContext = this;
             this.link = link;
-            init();
+            Init();
         }
 
-        private async void init()
+        private async void Init()
         {
             HttpClient client = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://robertsspaceindustries.com" + link);
@@ -65,7 +69,10 @@ namespace Star_Citizen_Pfusch.Pages.Extras
                 else if (lineArray[i].Contains(" / <span class=\"symbol\">"))
                 {
                     string name = lineArray[i].Substring(lineArray[i].IndexOf("<h1>") + 4, lineArray[i].IndexOf(" / <span class=\"symbol\">") - lineArray[i].IndexOf("<h1>") - 4);
+                    string shortName = lineArray[i].Substring(lineArray[i].IndexOf("<span class=\"symbol\">") + 21, lineArray[i].IndexOf("</span></h1>") - lineArray[i].IndexOf("<span class=\"symbol\">") - 21);
                     OrgaNameTextblock.Text = name;
+                    orgaitem.ShortName = shortName;
+                    orgaitem.Name = name;
                 }
                 else if (lineArray[i].Contains("<li class=\"primary tooltip-wrap\">"))
                 {
@@ -119,7 +126,8 @@ namespace Star_Citizen_Pfusch.Pages.Extras
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (orgaAdminSettings == null) orgaAdminSettings = new OrgaAdminSettings(orgaitem);
+            ContentDisplay.Navigate(orgaAdminSettings);
         }
     }
 }

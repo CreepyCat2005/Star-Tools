@@ -67,8 +67,8 @@
             </StackPanel>
         </Border>
         <StackPanel x:Name="CategoryStackpanel" Grid.Column="1" Grid.Row="1" FlowDirection="RightToLeft" Orientation="Horizontal" />
-        
-        
+
+        <Frame x:Name="ContentDisplay" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" />
 
     </Grid>
 </Page>
