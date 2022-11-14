@@ -1,13 +1,16 @@
-﻿using Star_Citizen_Pfusch.Functions;
+﻿using Newtonsoft.Json;
+using Star_Citizen_Pfusch.Functions;
 using Star_Citizen_Pfusch.Models;
 using Star_Citizen_Pfusch.Pages.Extras.OrgaExtras;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -20,6 +23,7 @@ namespace Star_Citizen_Pfusch.Pages.Extras
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private bool isRegistered = false;
         private readonly string link;
         private OrgaItem orgaitem = new OrgaItem();
         private OrgaAdminSettings orgaAdminSettings;
@@ -58,7 +62,7 @@ namespace Star_Citizen_Pfusch.Pages.Extras
             {
                 if (lineArray[i].Contains("<img src=\"/rsi/static/images/organization/defaults") && HeadImage.Source == null)
                 {
-                    string uri = lineArray[i].Substring(lineArray[i].IndexOf("<img src=\"") + 10, lineArray[i].IndexOf("\" /></div>") - lineArray[i].IndexOf("<img src=\"") - 10);
+                    string uri = lineArray[i].Substring(lineArray[i].IndexOf("<div class=\"banner\"><img src=\"") + 30, lineArray[i].IndexOf("\" /></div>") - lineArray[i].IndexOf("<div class=\"banner\"><img src=\"") - 30);
                     HeadImage.Source = new BitmapImage(new Uri("https://robertsspaceindustries.com" + uri));
                 }
                 else if (lineArray[i].Contains("<div class=\"logo \">"))
@@ -102,6 +106,21 @@ namespace Star_Citizen_Pfusch.Pages.Extras
                     PropertyChanged(this, new PropertyChangedEventArgs(nameof(IsOwner)));
                 }
             }
+            //fetching data from server
+            LoadData();
+            LoadIcons();
+        }
+        private void LoadData()
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(Config.URL + "/Orga?shortName=" + orgaitem.ShortName).Result;
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string res = response.Content.ReadAsStringAsync().Result;
+                orgaitem = JsonConvert.DeserializeObject<OrgaItem>(res);
+                isRegistered = true;
+            }
         }
 
         private async void MemberButton_Click(object sender, RoutedEventArgs e)
@@ -126,8 +145,59 @@ namespace Star_Citizen_Pfusch.Pages.Extras
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            if (orgaAdminSettings == null) orgaAdminSettings = new OrgaAdminSettings(orgaitem);
+            if (orgaAdminSettings == null) orgaAdminSettings = new OrgaAdminSettings(orgaitem, isRegistered);
             ContentDisplay.Navigate(orgaAdminSettings);
+        }
+
+        private void LoadIcons()
+        {
+            if (orgaitem.Ts3URL != null)
+            {
+                Image image = new Image()
+                {
+                    Source = new BitmapImage(new Uri("/Graphics/Icons/Website-Icon.png", UriKind.Relative)),
+                    Cursor = Cursors.Hand,
+                    Margin = new Thickness(8,0,0,0)
+                };
+                image.MouseLeftButtonUp += (object sender, MouseButtonEventArgs e) => Process.Start(new ProcessStartInfo
+                {
+                    FileName = orgaitem.Ts3URL,
+                    UseShellExecute = true
+                });
+                LinkStackpanel.Children.Add(image);
+            }
+
+            if (orgaitem.DiscordURL != null)
+            {
+                Image image = new Image()
+                {
+                    Source = new BitmapImage(new Uri("/Graphics/Icons/Discord-Logo.png", UriKind.Relative)),
+                    Cursor = Cursors.Hand,
+                    Margin = new Thickness(8, 2, 0, 2)
+                };
+                image.MouseLeftButtonUp += (object sender, MouseButtonEventArgs e) => Process.Start(new ProcessStartInfo
+                {
+                    FileName = orgaitem.DiscordURL,
+                    UseShellExecute = true
+                });
+                LinkStackpanel.Children.Add(image);
+            }
+
+            if (orgaitem.WebsiteURL != null)
+            {
+                Image image = new Image()
+                {
+                    Source = new BitmapImage(new Uri("/Graphics/Icons/Website-Icon.png", UriKind.Relative)),
+                    Cursor = Cursors.Hand,
+                    Margin = new Thickness(8, 0, 0, 0)
+                };
+                image.MouseLeftButtonUp += (object sender, MouseButtonEventArgs e) => Process.Start(new ProcessStartInfo
+                {
+                    FileName = orgaitem.WebsiteURL,
+                    UseShellExecute = true
+                });
+                LinkStackpanel.Children.Add(image);
+            }
         }
     }
 }
