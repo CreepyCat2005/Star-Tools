@@ -9,6 +9,6 @@
       Title="OrgaHomePage">
 
     <Grid>
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Text="           Nice that you are here!&#x0a;This page will be available soone :)" Foreground="White" />
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Text="           Nice that you are here!&#x0a;This page will be available soon :)" Foreground="White" />
     </Grid>
 </Page>

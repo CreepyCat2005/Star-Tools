@@ -60,7 +60,7 @@
                 <DropShadowEffect BlurRadius="15" ShadowDepth="0" Opacity=".5" />
             </Border.Effect>
             <StackPanel Orientation="Horizontal">
-                <Button Margin="10,0,0,0" Content="Startseite" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" />
+                <Button Margin="10,0,0,0" Content="Startseite" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" Click="MainPageButton_Click" />
                 <Rectangle Width="1" Fill="{StaticResource SplitterGradient}" Margin="10,2,10,2" />
                 <Button Content="Mitglieder" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" Click="MemberButton_Click" />
                 <Rectangle Width="1" Fill="{StaticResource SplitterGradient}" Margin="10,2,10,2" Visibility="{Binding IsOwner}" />
@@ -69,11 +69,7 @@
         </Border>
         <StackPanel x:Name="CategoryStackpanel" Grid.Column="1" Grid.Row="1" FlowDirection="RightToLeft" Orientation="Horizontal" />
 
-        <Frame x:Name="ContentDisplay" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" >
-            <Frame.Content>
-                <local:OrgaHomePage />
-            </Frame.Content>
-        </Frame>
+        <Frame x:Name="ContentDisplay" Grid.Row="2" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" />
 
     </Grid>
 </Page>

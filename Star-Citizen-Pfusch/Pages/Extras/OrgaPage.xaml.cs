@@ -28,6 +28,7 @@ namespace Star_Citizen_Pfusch.Pages.Extras
         private readonly string link;
         private OrgaItem orgaitem = new OrgaItem();
         private OrgaAdminSettings orgaAdminSettings;
+        private OrgaHomePage orgaHomePage = new OrgaHomePage();
         private OrgaMemberPage orgaMemberPage;
 
         public Visibility IsOwner { get; set; } = Visibility.Collapsed;
@@ -35,6 +36,7 @@ namespace Star_Citizen_Pfusch.Pages.Extras
         public OrgaPage(string link)
         {
             InitializeComponent();
+            ContentDisplay.Navigate(orgaHomePage);
             this.DataContext = this;
             this.link = link;
             Init();
@@ -165,6 +167,11 @@ namespace Star_Citizen_Pfusch.Pages.Extras
                 });
                 LinkStackpanel.Children.Add(image);
             }
+        }
+
+        private void MainPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDisplay.Navigate(orgaHomePage);
         }
     }
 }
