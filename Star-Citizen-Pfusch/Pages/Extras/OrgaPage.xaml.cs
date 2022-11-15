@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -27,6 +28,7 @@ namespace Star_Citizen_Pfusch.Pages.Extras
         private readonly string link;
         private OrgaItem orgaitem = new OrgaItem();
         private OrgaAdminSettings orgaAdminSettings;
+        private OrgaMemberPage orgaMemberPage;
 
         public Visibility IsOwner { get; set; } = Visibility.Collapsed;
 
@@ -42,7 +44,7 @@ namespace Star_Citizen_Pfusch.Pages.Extras
         {
             HttpClient client = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://robertsspaceindustries.com" + link);
-            request.Headers.Add("Cookie", LocalDataManager.GetRSICookieString());
+            request.Headers.Add("Cookie", Config.RSICookieString);
             request.Headers.Add("Host", "robertsspaceindustries.com");
             request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0");
             request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8");
@@ -60,9 +62,9 @@ namespace Star_Citizen_Pfusch.Pages.Extras
 
             for (int i = 0; i < lineArray.Length; i++)
             {
-                if (lineArray[i].Contains("<img src=\"/rsi/static/images/organization/defaults") && HeadImage.Source == null)
+                if (lineArray[i].Contains("<div class=\"banner\">") && HeadImage.Source == null)
                 {
-                    string uri = lineArray[i].Substring(lineArray[i].IndexOf("<div class=\"banner\"><img src=\"") + 30, lineArray[i].IndexOf("\" /></div>") - lineArray[i].IndexOf("<div class=\"banner\"><img src=\"") - 30);
+                    string uri = lineArray[i].Substring(lineArray[i].IndexOf("<img src=\"") + 10, lineArray[i].IndexOf("\" /></div>") - lineArray[i].IndexOf("<img src=\"") - 10);
                     HeadImage.Source = new BitmapImage(new Uri("https://robertsspaceindustries.com" + uri));
                 }
                 else if (lineArray[i].Contains("<div class=\"logo \">"))
@@ -123,24 +125,10 @@ namespace Star_Citizen_Pfusch.Pages.Extras
             }
         }
 
-        private async void MemberButton_Click(object sender, RoutedEventArgs e)
+        private void MemberButton_Click(object sender, RoutedEventArgs e)
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://robertsspaceindustries.com" + link + "/members");
-            string res = await response.Content.ReadAsStringAsync();
-            res = Regex.Replace(res, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
-
-            string[] lineArray = res.Split("\n");
-            Dictionary<int, string> dict = new Dictionary<int, string>();
-
-            for (int i = 0; i < lineArray.Length; i++)
-            {
-                if (lineArray[i].Contains("<input type=\"radio\" class=\"js-rank js-form-data\" name=\"rank\""))
-                {
-                    dict.Add(int.Parse(lineArray[i].Substring(lineArray[i].IndexOf("value=\"") + 7, lineArray[i].IndexOf("\" >") - lineArray[i].IndexOf("value=\"") - 7)),
-                        lineArray[i + 1].Substring(lineArray[i + 1].IndexOf("<span>") + 6, lineArray[i + 1].IndexOf("</span>") - lineArray[i + 1].IndexOf("<span>") - 6));
-                }
-            }
+            if (orgaMemberPage == null) orgaMemberPage = new OrgaMemberPage(link);
+            ContentDisplay.Navigate(orgaMemberPage);
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
@@ -151,49 +139,28 @@ namespace Star_Citizen_Pfusch.Pages.Extras
 
         private void LoadIcons()
         {
-            if (orgaitem.Ts3URL != null)
-            {
-                Image image = new Image()
-                {
-                    Source = new BitmapImage(new Uri("/Graphics/Icons/Website-Icon.png", UriKind.Relative)),
-                    Cursor = Cursors.Hand,
-                    Margin = new Thickness(8,0,0,0)
-                };
-                image.MouseLeftButtonUp += (object sender, MouseButtonEventArgs e) => Process.Start(new ProcessStartInfo
-                {
-                    FileName = orgaitem.Ts3URL,
-                    UseShellExecute = true
-                });
-                LinkStackpanel.Children.Add(image);
-            }
+            CreateIconImage(orgaitem.Ts3URL, "/Graphics/Icons/TS3-Icon.png", new Thickness(12, 2, 0, 2));
+            CreateIconImage(orgaitem.DiscordURL, "/Graphics/Icons/Discord-Logo.png", new Thickness(12, 2, 0, 2));
+            CreateIconImage(orgaitem.WebsiteURL, "/Graphics/Icons/Website-Icon.png", new Thickness(12, 0, 0, 0));
+        }
 
-            if (orgaitem.DiscordURL != null)
+        private void CreateIconImage(string URL, string iconPath, Thickness margin)
+        {
+            if (URL != null)
             {
-                Image image = new Image()
-                {
-                    Source = new BitmapImage(new Uri("/Graphics/Icons/Discord-Logo.png", UriKind.Relative)),
-                    Cursor = Cursors.Hand,
-                    Margin = new Thickness(8, 2, 0, 2)
-                };
-                image.MouseLeftButtonUp += (object sender, MouseButtonEventArgs e) => Process.Start(new ProcessStartInfo
-                {
-                    FileName = orgaitem.DiscordURL,
-                    UseShellExecute = true
-                });
-                LinkStackpanel.Children.Add(image);
-            }
+                BitmapImage bitmap = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + iconPath, UriKind.Absolute));
 
-            if (orgaitem.WebsiteURL != null)
-            {
                 Image image = new Image()
                 {
-                    Source = new BitmapImage(new Uri("/Graphics/Icons/Website-Icon.png", UriKind.Relative)),
+                    Source = bitmap,
                     Cursor = Cursors.Hand,
-                    Margin = new Thickness(8, 0, 0, 0)
+                    Margin = margin,
+                    ToolTip = URL
                 };
+
                 image.MouseLeftButtonUp += (object sender, MouseButtonEventArgs e) => Process.Start(new ProcessStartInfo
                 {
-                    FileName = orgaitem.WebsiteURL,
+                    FileName = URL,
                     UseShellExecute = true
                 });
                 LinkStackpanel.Children.Add(image);

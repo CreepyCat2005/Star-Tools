@@ -40,6 +40,7 @@ namespace Star_Citizen_Pfusch
                 this.DataContext = this;
 
                 loadConfig();
+                Config.RSICookieString = LocalDataManager.GetRSICookieString();
                 InitializeComponent();
 
                 Width = double.Parse(((string)System.Windows.Application.Current.Resources["DefaultStartSize"]).Split("x")[0]);

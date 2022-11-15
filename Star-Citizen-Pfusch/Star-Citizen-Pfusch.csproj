@@ -12,7 +12,14 @@
 	<UseWindowsForms>true</UseWindowsForms>
  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<Deterministic>false</Deterministic>
-  </PropertyGroup> 
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Config\**" />
+    <EmbeddedResource Remove="Config\**" />
+    <None Remove="Config\**" />
+    <Page Remove="Config\**" />
+  </ItemGroup> 
 
   <ItemGroup>
     <None Remove="Background.png" />
@@ -39,6 +46,7 @@
     <None Remove="Graphics\Icons\Right-Arrow.png" />
     <None Remove="Graphics\Icons\Ship-Icon.png" />
     <None Remove="Graphics\Icons\ShoppingCart-Icon.png" />
+    <None Remove="Graphics\Icons\TS3-Icon.png" />
     <None Remove="Graphics\Icons\Twitch-Logo.png" />
     <None Remove="Graphics\Icons\Website-Icon.png" />
     <None Remove="Graphics\Icons\Youtube-Logo.png" />
@@ -587,6 +595,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\ShoppingCart-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Icons\TS3-Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Graphics\Icons\Twitch-Logo.png">
@@ -1806,10 +1817,6 @@
     <Page Update="Models\DragAndDropFrame.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Config\" />
   </ItemGroup>
 
   <ItemGroup>

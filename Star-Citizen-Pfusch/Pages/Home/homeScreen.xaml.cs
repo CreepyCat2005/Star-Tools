@@ -179,7 +179,7 @@ namespace Star_Citizen_Pfusch
         {
             HttpClient client = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://robertsspaceindustries.com/account/organization");
-            request.Headers.Add("Cookie", LocalDataManager.GetRSICookieString());
+            request.Headers.Add("Cookie", Config.RSICookieString);
 
             HttpResponseMessage response = await client.SendAsync(request);
             string res = await response.Content.ReadAsStringAsync();
