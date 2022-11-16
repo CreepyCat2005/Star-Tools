@@ -63,6 +63,8 @@
                 <Button Margin="10,0,0,0" Content="Startseite" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" Click="MainPageButton_Click" />
                 <Rectangle Width="1" Fill="{StaticResource SplitterGradient}" Margin="10,2,10,2" />
                 <Button Content="Mitglieder" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" Click="MemberButton_Click" />
+                <Rectangle Width="1" Fill="{StaticResource SplitterGradient}" Margin="10,2,10,2" />
+                <Button Content="Schiffe" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" Click="ShipButton_Click" />
                 <Rectangle Width="1" Fill="{StaticResource SplitterGradient}" Margin="10,2,10,2" Visibility="{Binding IsOwner}" />
                 <Button Content="Admin" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" Foreground="#feee" FontSize="22" Click="AdminButton_Click" Visibility="{Binding IsOwner}" />
             </StackPanel>

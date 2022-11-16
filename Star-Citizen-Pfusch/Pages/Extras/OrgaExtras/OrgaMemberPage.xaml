@@ -11,6 +11,7 @@
     <ListBox Margin="5" x:Name="MemberListBox" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
         <ListBox.ItemContainerStyle>
             <Style TargetType="ListBoxItem">
+                <Setter Property="Height" Value="100" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ListBoxItem">
@@ -26,7 +27,7 @@
         </ListBox.ItemContainerStyle>
         <ListBox.ItemsPanel>
             <ItemsPanelTemplate>
-                <UniformGrid Columns="{Binding Properties.Value, ElementName=ColumnCountSelector}" VerticalAlignment="Top" />
+                <UniformGrid Columns="2" VerticalAlignment="Top" />
             </ItemsPanelTemplate>
         </ListBox.ItemsPanel>
     </ListBox>

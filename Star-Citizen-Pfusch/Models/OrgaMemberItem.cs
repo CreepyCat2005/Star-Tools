@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Star_Citizen_Pfusch.Models
 {
-    internal class OrgaMemberItem
+    public class OrgaMemberItem
     {
         public string Name { get; set; }
         public string Nickname { get; set; }

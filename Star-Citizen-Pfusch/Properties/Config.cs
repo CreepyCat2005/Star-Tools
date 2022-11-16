@@ -20,6 +20,7 @@ namespace Star_Citizen_Pfusch
         public static string SessionToken;
         public static bool ModernShipList;
         public static int ChartResolution = 12;
+        public static bool SendPledgeData;
         public static string BrowserType
         {
             get

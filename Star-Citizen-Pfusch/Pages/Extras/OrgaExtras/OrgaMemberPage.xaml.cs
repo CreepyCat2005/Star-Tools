@@ -1,6 +1,8 @@
 ﻿using Star_Citizen_Pfusch.Models;
+using Star_Citizen_Pfusch.Models.UserControls;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
@@ -45,11 +47,16 @@ namespace Star_Citizen_Pfusch.Pages.Extras.OrgaExtras
                     members.Last().Name = lineArray[i].Substring(lineArray[i].IndexOf(">") + 1, lineArray[i].IndexOf("</span>") - lineArray[i].IndexOf(">") - 1);
                     members.Last().Nickname = lineArray[i + 1].Substring(lineArray[i + 1].IndexOf(">") + 1, lineArray[i + 1].IndexOf("</span>") - lineArray[i + 1].IndexOf(">") - 1);
                     members.Last().Rank = lineArray[i + 8].Substring(lineArray[i + 8].IndexOf(">") + 1, lineArray[i + 8].IndexOf("</span>") - lineArray[i + 8].IndexOf(">") - 1);
-                    i += 20;
                 }
             }
 
-
+            foreach (var item in members)
+            {
+                MemberListBox.Items.Add(new OrgaMemberDisplayItem()
+                {
+                    Item = item
+                });
+            }
 
 
         }

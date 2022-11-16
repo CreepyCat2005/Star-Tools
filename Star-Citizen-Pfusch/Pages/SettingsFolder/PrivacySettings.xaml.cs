@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,17 +22,22 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
     /// </summary>
     public partial class PrivacySettings : Page
     {
+        public bool SendPledgeData
+        {
+            get
+            {
+                return Config.SendPledgeData;
+            }
+            set
+            {
+                Config.SendPledgeData = value;
+            }
+        }
+
         public PrivacySettings()
         {
             InitializeComponent();
             this.DataContext = this;
-
-            init();
-        }
-
-        private void init()
-        {
-            WebDisplay.Source = new Uri(AppDomain.CurrentDomain.BaseDirectory + "Graphics\\Privacy.html");
         }
     }
 }

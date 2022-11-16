@@ -20,9 +20,19 @@ namespace Star_Citizen_Pfusch.Models.UserControls
     /// </summary>
     public partial class OrgaMemberDisplayItem : UserControl
     {
+        public OrgaMemberItem Item { get; set; }
+        public string NickRank
+        {
+            get
+            {
+                return Item.Nickname + " / " + Item.Rank;
+            }
+        }
+
         public OrgaMemberDisplayItem()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
     }
 }

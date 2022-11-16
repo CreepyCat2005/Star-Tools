@@ -56,7 +56,15 @@ namespace Star_Citizen_Pfusch.Functions
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(Environment.GetEnvironmentVariable("USERPROFILE") + "\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles");
             DirectoryInfo[] files = directoryInfo.GetDirectories();
-            string path = files.Where(o => DirSize(o) == files.Select(o => DirSize(o)).Max()).ToList()[0].FullName;
+            string path = "";
+            while (path.Equals(""))
+            {
+                try
+                {
+                    path = files.Where(o => DirSize(o) == files.Select(o => DirSize(o)).Max()).ToList()[0].FullName;
+                } 
+                catch { }
+            }
 
             SqLite = new SQLiteConnection("Data Source=" + path + "\\cookies.sqlite");
             SqLite.Open();
@@ -89,10 +97,7 @@ namespace Star_Citizen_Pfusch.Functions
             switch (Config.BrowserType)
             {
                 case "Firefox":
-                    cookieString = GetRSICookieString();
-                    break;
-                case "Chrome":
-                    cookieString = CookieMonster.GetCookieString();
+                    cookieString = Config.RSICookieString;
                     break;
                 default:
                     return null;

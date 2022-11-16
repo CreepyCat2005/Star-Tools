@@ -10,6 +10,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace Star_Citizen_Pfusch.Pages.Extras.OrgaExtras
 {
@@ -72,13 +74,21 @@ namespace Star_Citizen_Pfusch.Pages.Extras.OrgaExtras
             if (res.Equals("true")) return true;
             else return false;
         }
+        private void DisplayMessage(string message, Color color)
+        {
+            InfoLabel.Foreground = new SolidColorBrush(color);
+            InfoLabel.Content = message;
+
+            DoubleAnimation doubleAnimation = new DoubleAnimation(1, 0, new TimeSpan(0, 0, 3));
+            InfoLabel.BeginAnimation(OpacityProperty, doubleAnimation);
+        }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckURL(OrgaItem.WebsiteURL) ||
                 !CheckURL(OrgaItem.DiscordURL))
             {
-                Debug.WriteLine("Invalid Url!");
+                DisplayMessage("Invalid URL!", Colors.Red);
                 return;
             }
 
@@ -87,7 +97,7 @@ namespace Star_Citizen_Pfusch.Pages.Extras.OrgaExtras
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 restoreItem = (OrgaItem)OrgaItem.Clone();
-                Debug.WriteLine("I am a cat!");
+                DisplayMessage("Saved!", Colors.Green);
             }
         }
 
@@ -98,6 +108,8 @@ namespace Star_Citizen_Pfusch.Pages.Extras.OrgaExtras
 
         private bool CheckURL(string url)
         {
+            if (url.Equals("")) return true;
+
             Uri uri;
             return Uri.TryCreate(url, UriKind.Absolute, out uri) && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
         }

@@ -70,7 +70,8 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
                 SliderColor = ((SolidColorBrush)Application.Current.Resources["SliderColor"]).Color.ToString(),
                 DefaultStartSize = (string)Application.Current.Resources["DefaultStartSize"],
                 IsModernShipListActive = Config.ModernShipList,
-                ChartResolution = Config.ChartResolution
+                ChartResolution = Config.ChartResolution,
+                SendPledgeData = Config.SendPledgeData
             };
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg", JsonConvert.SerializeObject(userConfig));
         }

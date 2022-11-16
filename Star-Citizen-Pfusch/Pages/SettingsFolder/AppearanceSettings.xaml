@@ -85,8 +85,6 @@
                 </Grid>
             </ListBoxItem>
 
-            <CheckBox Content="{StaticResource Settings.ModernShipList}" IsChecked="{Binding IsModernShipListActive}" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" />
-
             <StackPanel Orientation="Horizontal" >
                 <CheckBox x:Name="LowCheckBox" Content="Low"  Margin="0,0,10,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />
                 <CheckBox x:Name="MediumCheckBox" Content="Medium" Margin="0,0,10,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" Click="CheckBox_Click" />

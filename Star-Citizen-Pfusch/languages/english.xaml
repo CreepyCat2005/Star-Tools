@@ -63,4 +63,5 @@
     <sys:String x:Key="Settings.License">License</sys:String>
     <sys:String x:Key="Settings.DataSafety">Data safety</sys:String>
     <sys:String x:Key="Settings.AccountSettings">Account Info</sys:String>
+    <sys:String x:Key="Settings.Orgas">Organisations</sys:String>
 </ResourceDictionary>

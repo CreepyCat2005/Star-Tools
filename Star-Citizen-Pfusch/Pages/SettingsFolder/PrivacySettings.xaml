@@ -8,5 +8,39 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PrivacySettings">
 
-    <Frame x:Name="WebDisplay" />
+    <ListBox Margin="10" Background="Transparent" BorderThickness="0" ScrollViewer.CanContentScroll="False" >
+        <ListBox.ItemContainerStyle>
+            <Style TargetType="ListBoxItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                  BorderThickness="{TemplateBinding BorderThickness}" 
+                  Background="{TemplateBinding Background}">
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ListBox.ItemContainerStyle>
+        <ListBoxItem HorizontalContentAlignment="Stretch" >
+            <Grid>
+                <Rectangle Height="2" >
+                    <Rectangle.Fill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="Transparent" Offset=".1" />
+                            <GradientStop Color="Gray" Offset=".2" />
+                            <GradientStop Color="Gray" Offset=".8" />
+                            <GradientStop Color="Transparent" Offset=".9" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBox Text="{StaticResource Settings.Orgas}" BorderThickness="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="{DynamicResource HeadlineColor}" FontSize="{DynamicResource HeadlineFontSize}" IsReadOnly="True" Background="{DynamicResource BackgroundColor}" />
+            </Grid>
+        </ListBoxItem>
+
+        <CheckBox IsChecked="{Binding SendPledgeData}" Content="share pledged ships with your orgs" Margin="0,0,10,0" Foreground="{DynamicResource TextColor}" FontSize="{DynamicResource TextFontSize}" VerticalContentAlignment="Center" />
+
+    </ListBox>
 </Page>

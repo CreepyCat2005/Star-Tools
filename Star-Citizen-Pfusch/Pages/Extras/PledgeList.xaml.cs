@@ -18,22 +18,7 @@ namespace Star_Citizen_Pfusch.Pages.Extras
         public PledgeList()
         {
             InitializeComponent();
-            if (Config.BrowserType == null || Config.BrowserType.Equals(""))
-            {
-                browserPopup();
-                Task task = Task.Run(() =>
-                {
-                    while (Config.BrowserType == null)
-                    {
-                        Thread.Sleep(100);
-                    }
-                    this.Dispatcher.Invoke(() => init());
-                });
-            }
-            else
-            {
-                init();
-            }
+            init();
         }
 
         private void init()
@@ -54,17 +39,6 @@ namespace Star_Citizen_Pfusch.Pages.Extras
 
                 MasterListBox.Items.Add(pledgeItem);
             }
-        }
-        private void browserPopup()
-        {
-            Popup popup = new Popup()
-            {
-                AllowsTransparency = true,
-                Placement = PlacementMode.Center,
-                PlacementTarget = this
-            };
-            popup.Child = new SelectBrowserPopup(popup);
-            popup.IsOpen = true;
         }
     }
 }

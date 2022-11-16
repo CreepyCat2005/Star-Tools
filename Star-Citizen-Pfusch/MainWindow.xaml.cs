@@ -107,6 +107,7 @@ namespace Star_Citizen_Pfusch
                 Config.ModernShipList = userConfig.IsModernShipListActive;
                 Config.ChartResolution = userConfig.ChartResolution;
                 Config.BrowserType = userConfig.BrowserType;
+                Config.SendPledgeData = userConfig.SendPledgeData;
 
                 foreach (var color in colors)
                 {

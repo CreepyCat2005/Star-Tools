@@ -5,8 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Citizen_Pfusch.Models.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="340" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="240" d:DesignWidth="600">
+
+    <Border CornerRadius="10" Margin="3" >
+        <Border.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="#dd252525" Offset="0" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <StackPanel Orientation="Horizontal" >
+            <Image Source="{Binding Item.ImageURI}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" />
+            <Grid Margin="10,0,0,0" VerticalAlignment="Center" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Item.Name}" Foreground="{DynamicResource TextColor}" FontSize="30" />
+                <TextBlock Grid.Row="1" Text="{Binding NickRank}" Foreground="Gray" FontSize="20" />
+            </Grid>
+        </StackPanel>
+    </Border>
 </UserControl>

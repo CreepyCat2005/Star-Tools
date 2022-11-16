@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -148,7 +149,7 @@ namespace Star_Citizen_Pfusch.Pages.Extras
 
         private void CreateIconImage(string URL, string iconPath, Thickness margin)
         {
-            if (URL != null)
+            if (URL != null && !URL.Equals(""))
             {
                 BitmapImage bitmap = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + iconPath, UriKind.Absolute));
 
@@ -160,18 +161,32 @@ namespace Star_Citizen_Pfusch.Pages.Extras
                     ToolTip = URL
                 };
 
-                image.MouseLeftButtonUp += (object sender, MouseButtonEventArgs e) => Process.Start(new ProcessStartInfo
+                image.MouseLeftButtonUp += (object sender, MouseButtonEventArgs e) => StartProcess(URL);
+                LinkStackpanel.Children.Add(image);
+            }
+        }
+
+        private void StartProcess(string URL)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo
                 {
                     FileName = URL,
                     UseShellExecute = true
                 });
-                LinkStackpanel.Children.Add(image);
             }
+            catch { }
         }
 
         private void MainPageButton_Click(object sender, RoutedEventArgs e)
         {
             ContentDisplay.Navigate(orgaHomePage);
+        }
+
+        private void ShipButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

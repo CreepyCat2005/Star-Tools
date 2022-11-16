@@ -21,6 +21,7 @@ namespace Star_Citizen_Pfusch.Models
         public double HeadlineFontSize { get; set; }
         public bool IsRainbowActive { get; set; }
         public bool IsModernShipListActive { get; set; }
+        public bool SendPledgeData { get; set; }
         public double RainbowValue { get; set; }    
         public string BackgroundColor { get; set; }
         public string DarkBackgroundColor { get; set; }
