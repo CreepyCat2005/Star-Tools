@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="240" d:DesignWidth="600">
 
-    <Border CornerRadius="10" Margin="3" >
+    <Border CornerRadius="10" Margin="3" BorderThickness="1.5" BorderBrush="#f444" >
         <Border.Background>
             <LinearGradientBrush>
                 <GradientStop Color="#dd252525" Offset="0" />

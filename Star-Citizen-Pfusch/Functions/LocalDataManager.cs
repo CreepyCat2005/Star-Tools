@@ -91,12 +91,12 @@ namespace Star_Citizen_Pfusch.Functions
         }
         public static PledgeItem[] GetPledgeItems()
         {
-            if (Config.BrowserType.Equals("") || Config.BrowserType == null) return null;
+            if (Config.BrowserType.Equals("")) return null;
             string cookieString = "";
 
             switch (Config.BrowserType)
             {
-                case "Firefox":
+                case Models.Enums.BrowserEnum.Firefox:
                     cookieString = Config.RSICookieString;
                     break;
                 default:

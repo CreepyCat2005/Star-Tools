@@ -1,27 +1,23 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Ink;
 using Star_Citizen_Pfusch.Functions;
+using Star_Citizen_Pfusch.Models.UserControls;
+using Star_Citizen_Pfusch.Pages.Extras;
 using Star_Citizen_Pfusch.Pages.Home;
 using Star_Citizen_Pfusch.Pages.Ships;
 using Star_Citizen_Pfusch.Pages.Shops;
-using Star_Citizen_Pfusch.Pages.Extras;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net.Http;
-using System.Threading;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Star_Citizen_Pfusch.Models.UserControls;
 using System.Windows.Media.Effects;
-using System.IO;
-using Microsoft.Ink;
-using System.Text.RegularExpressions;
-using System.Linq;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 
 namespace Star_Citizen_Pfusch
 {
@@ -102,12 +98,18 @@ namespace Star_Citizen_Pfusch
 
         private void PureShopDataItem_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (ShopList == null) ShopList = new ShopList();
+            ShopList ??= new ShopList();
             ContentDisplay.Navigate(ShopList);
         }
         private void Inventory_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (PledgeList == null) PledgeList = new PledgeList();
+            if (Config.RSICookieString.Equals("") || Config.RSICookieString == null)
+            {
+                MessageBox.Show("You have to select a browser in the settings before you can use this feature!");
+                return;
+            }
+
+            PledgeList ??= new PledgeList();
             ContentDisplay.Navigate(PledgeList);
         }
 
@@ -174,9 +176,16 @@ namespace Star_Citizen_Pfusch
         {
             ((InkCanvas)sender).Strokes.Clear();
         }
-         
+
         private async void Expander_Expanded(object sender, RoutedEventArgs e)
         {
+            if (Config.RSICookieString.Equals("") || Config.RSICookieString == null)
+            {
+                MessageBox.Show("You have to select a browser in the settings before you can use this feature!");
+                ((Expander)sender).IsExpanded = false;
+                return;
+            }
+
             HttpClient client = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://robertsspaceindustries.com/account/organization");
             request.Headers.Add("Cookie", Config.RSICookieString);

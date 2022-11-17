@@ -46,12 +46,12 @@
 
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
                 <ComboBox x:Name="ResolutionBox" Width="145" FontSize="{DynamicResource TextFontSize}" SelectionChanged="ResolutionBox_SelectionChanged" />
-                <TextBox VerticalAlignment="Center" Margin="10,0,0,0" Text="{StaticResource Settings.DefaultSize}" IsReadOnly="True" Background="Transparent" BorderThickness="0" FontSize="{DynamicResource TextFontSize}" Foreground="{DynamicResource TextColor}" />
+                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{StaticResource Settings.DefaultSize}" Background="Transparent" FontSize="{DynamicResource TextFontSize}" Foreground="{DynamicResource TextColor}" />
             </StackPanel>
-            
-            
-            
-            
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
+                <ComboBox Width="145" FontSize="{DynamicResource TextFontSize}" x:Name="BrowserComboBox" SelectionChanged="BrowserComboBox_SelectionChanged" />
+                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="Standard Browser" Background="Transparent" FontSize="{DynamicResource TextFontSize}" Foreground="{DynamicResource TextColor}" />
+            </StackPanel>
         </ListBox>
     </Grid>
 </Page>

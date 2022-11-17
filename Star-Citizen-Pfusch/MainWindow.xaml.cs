@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Star_Citizen_Pfusch.Functions;
 using Star_Citizen_Pfusch.Models;
+using Star_Citizen_Pfusch.Models.Enums;
 using Star_Citizen_Pfusch.Pages;
 using System;
 using System.ComponentModel;
@@ -40,7 +41,6 @@ namespace Star_Citizen_Pfusch
                 this.DataContext = this;
 
                 loadConfig();
-                Config.RSICookieString = LocalDataManager.GetRSICookieString();
                 InitializeComponent();
 
                 Width = double.Parse(((string)System.Windows.Application.Current.Resources["DefaultStartSize"]).Split("x")[0]);
@@ -106,7 +106,7 @@ namespace Star_Citizen_Pfusch
 
                 Config.ModernShipList = userConfig.IsModernShipListActive;
                 Config.ChartResolution = userConfig.ChartResolution;
-                Config.BrowserType = userConfig.BrowserType;
+                Config.BrowserType = userConfig.BrowserType ?? BrowserEnum.Unknown;
                 Config.SendPledgeData = userConfig.SendPledgeData;
 
                 foreach (var color in colors)
@@ -128,6 +128,9 @@ namespace Star_Citizen_Pfusch
                 Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/Config");
                 File.Create(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg");
             }
+
+            if (Config.BrowserType == BrowserEnum.Firefox) Config.RSICookieString = LocalDataManager.GetRSICookieString();
+            else Config.RSICookieString = CookieMonster.GetCookieString();
         }
         private void Menu_Open(object sender, EventArgs e)
         {

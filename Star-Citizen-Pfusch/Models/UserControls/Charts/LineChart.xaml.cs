@@ -129,7 +129,7 @@ namespace Star_Citizen_Pfusch.Models.UserControls.Charts
 
         private void Rectangle_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            if (e.Delta > 0 && offset < item.PlaytimeHistory.Length - NumberSelector.Value)
+            if (item.PlaytimeHistory != null && e.Delta > 0 && offset < item.PlaytimeHistory.Length - NumberSelector.Value)
             {
                 offset++;
                 LoadChart();

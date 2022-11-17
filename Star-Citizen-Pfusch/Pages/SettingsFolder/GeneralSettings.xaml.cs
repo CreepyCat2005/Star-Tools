@@ -1,20 +1,8 @@
 ﻿using Microsoft.Win32;
+using Star_Citizen_Pfusch.Models.Enums;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Star_Citizen_Pfusch.Pages.SettingsFolder
 {
@@ -23,6 +11,8 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
     /// </summary>
     public partial class GeneralSettings : Page
     {
+        private string[] BrowserNames = { "Firefox", "Chrome", "Opera", "OperaGX", "Edge" };
+
         public GeneralSettings()
         {
             InitializeComponent();
@@ -36,20 +26,33 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
             {
                 if (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width >= int.Parse(item.Split("x")[0]) && System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height >= int.Parse(item.Split("x")[1]))
                 {
-                    if (item.Equals(Application.Current.Resources["DefaultStartSize"])) ResolutionBox.Items.Add(new ComboBoxItem() { Content = item, IsSelected = true});
+                    if (item.Equals(Application.Current.Resources["DefaultStartSize"])) ResolutionBox.Items.Add(new ComboBoxItem() { Content = item, IsSelected = true });
                     else ResolutionBox.Items.Add(new ComboBoxItem() { Content = item });
                 }
             }
 
             if (Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run").GetValue("Star-Tools") != null) AutostartCheckBox.IsChecked = true;
             else AutostartCheckBox.IsChecked = false;
+
+            foreach (var item in BrowserNames)
+            {
+                if (item.Equals(Config.BrowserType.ToString())) BrowserComboBox.Items.Add(new ComboBoxItem() 
+                { 
+                    Content = item,
+                    IsSelected = true
+                });
+                else BrowserComboBox.Items.Add(new ComboBoxItem()
+                {
+                    Content = item
+                });
+            }
         }
 
         private void AutoStartCheckBox_Clicked(object sender, RoutedEventArgs e)
         {
             if ((bool)((CheckBox)sender).IsChecked)
             {
-                Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run").SetValue("Star-Tools",AppDomain.CurrentDomain.BaseDirectory + "Star-Citizen-Pfusch.exe");
+                Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run").SetValue("Star-Tools", AppDomain.CurrentDomain.BaseDirectory + "Star-Citizen-Pfusch.exe");
             }
             else
             {
@@ -60,6 +63,11 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         private void ResolutionBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Application.Current.Resources["DefaultStartSize"] = ((ComboBoxItem)((ComboBox)sender).SelectedItem).Content;
+        }
+
+        private void BrowserComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Config.BrowserType = Enum.Parse<BrowserEnum>(((ComboBoxItem)((ComboBox)sender).SelectedItem).Content.ToString());
         }
     }
 }

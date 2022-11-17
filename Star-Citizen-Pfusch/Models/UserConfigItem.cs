@@ -4,6 +4,7 @@ using System.Windows.Media;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Star_Citizen_Pfusch.Models.Enums;
 
 namespace Star_Citizen_Pfusch.Models
 {
@@ -44,7 +45,7 @@ namespace Star_Citizen_Pfusch.Models
         public string GridColumnPrice { get; set; }
         public string DefaultStartSize { get; set; }
         public int ChartResolution { get; set; }
-        public string BrowserType { get; set; }
+        public BrowserEnum? BrowserType { get; set; }
 
     }
 }

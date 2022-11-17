@@ -30,6 +30,9 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
         public SettingsMenu()
         {
             InitializeComponent();
+
+            contentDisplay.Navigate(GeneralSettings);
+
             this.Unloaded += SettingsMenu_Unloaded;
         }
 
@@ -71,7 +74,8 @@ namespace Star_Citizen_Pfusch.Pages.SettingsFolder
                 DefaultStartSize = (string)Application.Current.Resources["DefaultStartSize"],
                 IsModernShipListActive = Config.ModernShipList,
                 ChartResolution = Config.ChartResolution,
-                SendPledgeData = Config.SendPledgeData
+                SendPledgeData = Config.SendPledgeData,
+                BrowserType = Config.BrowserType
             };
             File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "/Config/UserConfig.cfg", JsonConvert.SerializeObject(userConfig));
         }
